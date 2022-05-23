@@ -64,4 +64,9 @@ export const family = {
   Poppins_Bold: 'Poppins-Bold',
   Poppins_BlackItalic: 'Poppins-BlackItalic',
   Poppins_Black: 'Poppins-Black',
+  Ubuntu_LightItalic: 'Ubuntu-LightItalic',
+  Ubuntu_Bold: 'Ubuntu-Bold',
+  Ubuntu_Light: 'Ubuntu-Light',
+  Ubuntu_Medium: 'Ubuntu-Medium',
+  Ubuntu_Regular: 'Ubuntu-Regular',
 };

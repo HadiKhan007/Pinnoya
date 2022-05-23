@@ -29,7 +29,7 @@ export const colors = {
   b10: '#120D26',
 
   //Gray Color
-  g1: '#999999',
+  g1: '#808080',
   g2: '#ADA4A5',
   g3: '#626262',
   g4: '#2F2E2E',
@@ -66,4 +66,5 @@ export const colors = {
   // red
   red: 'red',
   r1: '#CB0005',
+  default_color: '#E5E5E5',
 };

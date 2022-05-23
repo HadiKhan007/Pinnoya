@@ -1,6 +1,7 @@
 //Header
-
+export * from './Header/AuthHeader';
 //Button
+export * from './Button/Button';
 
 //Spacer
 
@@ -13,6 +14,7 @@
 //Footer
 
 //Box
+export * from './Box/ImageBox';
 
 //Tabs
 // export * from './Tabs/BottomTab';
@@ -20,6 +22,7 @@
 //Circle
 
 // Bar
+export * from './IntroSlider/IntroSlider';
 
 //Cards
 
