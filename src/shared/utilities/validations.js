@@ -2,11 +2,9 @@ import * as yup from 'yup';
 
 import {emailRegex} from './constant';
 
-export const signupFormFields = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  password: '',
+export const signupFormFields1 = {
+  city: '',
+  country: '',
 };
 
 export const updateFormFields = {
@@ -48,17 +46,9 @@ export const LoginVS = yup.object().shape({
     .required('Password Required'),
 });
 
-export const SignUpVS = yup.object().shape({
-  firstName: yup.string().required('First Name Required').label('firstName'),
-  lastName: yup.string().required('Last Name Required').label('lastName'),
-  email: yup
-    .string()
-    .required('Email Required')
-    .email('Please provide a valid email address'),
-  password: yup
-    .string()
-    .min(6, 'Password must be at least 6 characters')
-    .required('Password Required'),
+export const SignUpVS1 = yup.object().shape({
+  city: yup.string().required('City Name Required').label('city'),
+  country: yup.string().required('Country Name Required').label('country'),
 });
 
 export const ResetPasswordVS = yup.object().shape({

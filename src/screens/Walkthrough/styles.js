@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    paddingHorizontal: WP('3'),
+    paddingHorizontal: WP('4'),
     alignItems: 'center',
   },
   secondContainer: {

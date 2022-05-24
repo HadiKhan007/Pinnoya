@@ -1,9 +1,16 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import MyStatusBar from '../Bar/MyStatusBar';
-import {appImages, appLogos, colors, WP} from '../../shared/exporter';
+import {
+  appImages,
+  appLogos,
+  colors,
+  family,
+  size,
+  WP,
+} from '../../shared/exporter';
 import BackArrow from 'react-native-vector-icons/AntDesign';
-export const AuthHeader = ({backIcon, onPressBack, headerIcon, rightIcon}) => {
+export const AuthHeader = ({backIcon, onPressBack, headerIcon, rightArea}) => {
   return (
     <>
       <MyStatusBar backgroundColor={colors.white} />
@@ -24,10 +31,10 @@ export const AuthHeader = ({backIcon, onPressBack, headerIcon, rightIcon}) => {
           </View>
 
           <View>
-            {rightIcon && (
-              <TouchableOpacity>
-                <BackArrow name={'left'} size={20} />
-              </TouchableOpacity>
+            {rightArea && (
+              <View>
+                <Text style={styles.subText}>1 of 4</Text>
+              </View>
             )}
           </View>
         </View>
@@ -44,7 +51,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingVertical: WP('3'),
-    paddingHorizontal: WP('3'),
+    paddingHorizontal: WP('4'),
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -54,5 +61,11 @@ const styles = StyleSheet.create({
     height: 36,
     resizeMode: 'contain',
     width: WP('60'),
+  },
+  subText: {
+    fontSize: size.tiny,
+    fontFamily: family.Ubuntu_Regular,
+    color: colors.p1,
+    right: 5,
   },
 });

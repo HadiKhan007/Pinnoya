@@ -9,7 +9,13 @@ import {
   WP,
 } from '../../../shared/exporter';
 import styles from './styles';
-import {AppInput, AuthHeader, AuthHeading, Button} from '../../../components';
+import {
+  AppInput,
+  AuthFooter,
+  AuthHeader,
+  AuthHeading,
+  Button,
+} from '../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 import {loginRequest} from '../../../redux/actions';
@@ -134,23 +140,13 @@ const Login = ({navigation}) => {
                   textColor={colors.b1}
                   btnText={'Login via Apple ID'}
                 />
-                <Text
+                <AuthFooter
                   onPress={() => {
                     navigation?.navigate('SignUp');
                   }}
-                  style={styles.footerText}>
-                  Not yet on Pinoyaya?{' '}
-                  <Text
-                    onPress={() => {
-                      navigation?.navigate('SignUp');
-                    }}
-                    style={[
-                      styles.footerText,
-                      {color: colors.p1, fontFamily: family.Ubuntu_Bold},
-                    ]}>
-                    Register
-                  </Text>
-                </Text>
+                  title={'Not yet on Pinoyaya? '}
+                  subtitle={'Register'}
+                />
               </View>
             </KeyboardAwareScrollView>
           )}

@@ -15,8 +15,8 @@ export {
 export {
   LoginVS,
   loginFormFields,
-  signupFormFields,
-  SignUpVS,
+  signupFormFields1,
+  SignUpVS1,
   forgotFormFields,
   ForgotPasswordVS,
   resetFormFields,

@@ -1,16 +1,19 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {
-  appIcons,
   colors,
-  family,
-  loginFormFields,
-  LoginVS,
+  forgotFormFields,
+  ForgotPasswordVS,
   spacing,
-  WP,
 } from '../../../shared/exporter';
 import styles from './styles';
-import {AppInput, AuthHeader, AuthHeading, Button} from '../../../components';
+import {
+  AppInput,
+  AuthFooter,
+  AuthHeader,
+  AuthHeading,
+  Button,
+} from '../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 
@@ -27,11 +30,11 @@ const ForgotPassword = ({navigation}) => {
       <View style={styles.container}>
         {/* Login Inputs */}
         <Formik
-          initialValues={loginFormFields}
+          initialValues={forgotFormFields}
           onSubmit={values => {
             console.log(values);
           }}
-          validationSchema={LoginVS}>
+          validationSchema={ForgotPasswordVS}>
           {({
             values,
             handleChange,
@@ -65,23 +68,13 @@ const ForgotPassword = ({navigation}) => {
                     btnText={'Enter'}
                   />
                 </View>
-                <Text
+                <AuthFooter
                   onPress={() => {
                     navigation?.navigate('Login');
                   }}
-                  style={styles.footerText}>
-                  Already reset?{' '}
-                  <Text
-                    onPress={() => {
-                      navigation?.navigate('Login');
-                    }}
-                    style={[
-                      styles.footerText,
-                      {color: colors.p1, fontFamily: family.Ubuntu_Bold},
-                    ]}>
-                    Login
-                  </Text>
-                </Text>
+                  subtitle={'Login'}
+                  title={'Already reset? '}
+                />
               </View>
             </KeyboardAwareScrollView>
           )}
