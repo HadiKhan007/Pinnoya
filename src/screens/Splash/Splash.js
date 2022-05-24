@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 import styles from './styles';
+import {AuthHeader} from '../../components';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
@@ -10,14 +11,17 @@ const Splash = ({navigation}) => {
   const handleAppEntry = async () => {
     setTimeout(() => {
       navigation.replace('Walkthrough');
-    }, 2500);
+    }, 1500);
   };
 
   return (
     <>
-      <SafeAreaView>
-        <Text>Pinoyaya</Text>
-      </SafeAreaView>
+      <AuthHeader />
+      <View style={styles.container}>
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>Pinoyaya</Text>
+        </View>
+      </View>
     </>
   );
 };

@@ -8,6 +8,7 @@ export * from './Button/Button';
 //Loader
 
 //Input
+export * from './Input/AppInput';
 
 //CheckBox
 
@@ -29,5 +30,6 @@ export * from './IntroSlider/IntroSlider';
 //Modals
 
 //Headings
+export * from './Headings/AuthHeading';
 
 //Field

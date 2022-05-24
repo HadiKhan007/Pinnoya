@@ -11,6 +11,7 @@ import MainNavigation from './src/navigation';
 //   web_client_id,
 // } from './src/shared/exporter';
 // import {StripeProvider} from '@stripe/stripe-react-native';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 // ignore warnings
 LogBox.ignoreAllLogs();
@@ -40,7 +41,9 @@ const App = () => {
     //       barStyle={'dark-content'}
     //     />
     //     <PersistGate persistor={persistor}>
-    <MainNavigation />
+    <PaperProvider>
+      <MainNavigation />
+    </PaperProvider>
     //     </PersistGate>
     //   </Provider>
     // </StripeProvider>
