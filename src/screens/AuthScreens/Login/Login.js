@@ -12,10 +12,29 @@ import styles from './styles';
 import {AppInput, AuthHeader, AuthHeading, Button} from '../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
-
+import {loginRequest} from '../../../redux/actions';
+import {useDispatch, useSelector} from 'react-redux';
 const Login = ({navigation}) => {
+  const auth = useSelector(state => state?.auth);
+  const dispatch = useDispatch();
+  //On Submit Request
   const onSubmitLogin = () => {
-    navigation?.navigate('App');
+    const body = {
+      email: 'umer@gmail.com',
+      password: '123456',
+    };
+    dispatch(
+      loginRequest(
+        body,
+        () => {
+          console.log('Success');
+        },
+        () => {
+          console.log('Failed');
+        },
+      ),
+    );
+    // navigation?.navigate('App');
   };
   return (
     <>
@@ -85,6 +104,9 @@ const Login = ({navigation}) => {
                     onPressBtn={handleSubmit}
                   />
                   <Button
+                    onPressBtn={() => {
+                      navigation?.navigate('ForgotPassword');
+                    }}
                     bgColor={colors.half_white_gradient}
                     width={WP('45')}
                     textColor={colors.p1}
@@ -112,7 +134,11 @@ const Login = ({navigation}) => {
                   textColor={colors.b1}
                   btnText={'Login via Apple ID'}
                 />
-                <Text style={styles.footerText}>
+                <Text
+                  onPress={() => {
+                    navigation?.navigate('SignUp');
+                  }}
+                  style={styles.footerText}>
                   Not yet on Pinoyaya?{' '}
                   <Text
                     onPress={() => {

@@ -27,7 +27,7 @@ export const ImageBox = ({logo, id}) => {
 
 const styles = StyleSheet.create({
   imgBg: {
-    height: WP('100'),
+    height: WP('80'),
     width: WP('100'),
     alignItems: 'center',
     justifyContent: 'center',
