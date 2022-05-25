@@ -29,6 +29,7 @@ export * from './IntroSlider/IntroSlider';
 //Cards
 
 //Modals
+export * from './Modal/LocationModal';
 
 //Headings
 export * from './Headings/AuthHeading';

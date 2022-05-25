@@ -10,6 +10,7 @@ import SPSignUp2 from '../../screens/AuthScreens/SPRegister/RegisterStep2';
 import ForgotPassword from '../../screens/AuthScreens/ForgotPassword';
 import ResetPassword from '../../screens/AuthScreens/ResetPassword';
 import VerifyOtp from '../../screens/AuthScreens/VerifyOtp';
+import AddPersonalInfo from '../../screens/AuthScreens/CustomerRegister/AddPersonalInfo';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ function AuthStack(props) {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="CSignUp" component={CSignUp} />
       <Stack.Screen name="CSignUp2" component={CSignUp2} />
+      <Stack.Screen name="AddPersonalInfo" component={AddPersonalInfo} />
       <Stack.Screen name="SPSignUp" component={SPSignUp} />
       <Stack.Screen name="SPSignUp2" component={SPSignUp2} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />

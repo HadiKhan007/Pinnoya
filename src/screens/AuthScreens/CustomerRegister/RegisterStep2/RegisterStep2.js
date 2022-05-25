@@ -127,7 +127,9 @@ const RegisterStep2 = ({navigation}) => {
                 />
                 <View style={styles.buttonContainer}>
                   <Button
-                    onPressBtn={handleSubmit}
+                    onPressBtn={() => {
+                      navigation?.navigate('VerifyOtp');
+                    }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
                     btnText={'Next'}
