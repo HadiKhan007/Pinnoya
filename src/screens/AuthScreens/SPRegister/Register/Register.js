@@ -1,6 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {colors, signupFormFields1, SignUpVS1} from '../../../shared/exporter';
+import {
+  colors,
+  SPRegisterStep1Fields,
+  SPRegisterStep1VS,
+} from '../../../../shared/exporter';
 import styles from './styles';
 import {
   AppInput,
@@ -8,7 +12,7 @@ import {
   AuthHeader,
   AuthHeading,
   Button,
-} from '../../../components';
+} from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 
@@ -26,11 +30,11 @@ const Register = ({navigation}) => {
       <View style={styles.container}>
         {/* Signup Inputs */}
         <Formik
-          initialValues={signupFormFields1}
+          initialValues={SPRegisterStep1Fields}
           onSubmit={values => {
             onSubmitLogin(values);
           }}
-          validationSchema={SignUpVS1}>
+          validationSchema={SPRegisterStep1VS}>
           {({
             values,
             handleChange,
@@ -71,7 +75,9 @@ const Register = ({navigation}) => {
                 />
                 <View style={styles.buttonContainer}>
                   <Button
-                    onPressBtn={handleSubmit}
+                    onPressBtn={() => {
+                      navigation?.navigate('SPSignup2');
+                    }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
                     btnText={'Next'}

@@ -63,7 +63,7 @@ export const AppInput = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: WP('3'),
+    marginVertical: WP('2'),
   },
 
   inputStyle: {

@@ -1,5 +1,5 @@
 import {Platform, StyleSheet} from 'react-native';
-import {colors, family, size, WP} from '../../../shared/exporter';
+import {colors, family, size, WP} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
   container: {

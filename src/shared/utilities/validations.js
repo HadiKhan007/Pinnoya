@@ -2,15 +2,43 @@ import * as yup from 'yup';
 
 import {emailRegex} from './constant';
 
-export const signupFormFields1 = {
+export const CustomerRegisterStep1Fields = {
+  address: '',
+  street: '',
+  postCode: '',
+  province: '',
+  barangay: '',
   city: '',
   country: '',
 };
 
-export const updateFormFields = {
+export const CustomerRegisterStep2Fields = {
   firstName: '',
   lastName: '',
   email: '',
+  phone: '',
+  govtID: '',
+  password: '',
+};
+
+export const SPRegisterStep1Fields = {
+  city: '',
+  country: '',
+};
+
+export const SPRegisterStep2Fields = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  govtID: '',
+  password: '',
+};
+
+export const SPRegisterStep3Fields = {
+  hourly_rate: '',
+  sp_doc_id: '',
+  sp_doc: '',
 };
 
 export const loginFormFields = {
@@ -27,13 +55,6 @@ export const forgotFormFields = {
 export const codeFormFields = {
   code: '',
 };
-export const AddNewExerciseFormFields = {
-  exercise_name: '',
-  category: '',
-  bodyPart: '',
-};
-
-const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
 
 export const LoginVS = yup.object().shape({
   email: yup
@@ -46,9 +67,46 @@ export const LoginVS = yup.object().shape({
     .required('Password Required'),
 });
 
-export const SignUpVS1 = yup.object().shape({
+export const CustomerRegisterStep1VS = yup.object().shape({
+  address: yup.string().required('Address Required').label('address'),
+  street: yup.string().required('Street Name Required').label('street'),
+  postCode: yup.string().required('Post Code Required').label('postCode'),
+  province: yup.string().required('Province Name Required').label('province'),
+  barangay: yup.string().required('Barangay Name Required').label('barangay'),
   city: yup.string().required('City Name Required').label('city'),
   country: yup.string().required('Country Name Required').label('country'),
+});
+
+export const CustomerRegisterStep2VS = yup.object().shape({
+  firstName: yup.string().required('First Name Required').label('firstName'),
+  lastName: yup.string().required('Last Name Required').label('lastName'),
+  email: yup.string().required('Email Address Required').label('email'),
+  phone: yup.string().required('Phone Number Required').label('phone'),
+  govtID: yup.string().required('Govt ID Required').label('govtID'),
+  password: yup.string().required('Password Required').label('password'),
+});
+
+export const SPRegisterStep1VS = yup.object().shape({
+  city: yup.string().required('City Name Required').label('city'),
+  country: yup.string().required('Country Name Required').label('country'),
+});
+
+export const SPRegisterStep2VS = yup.object().shape({
+  firstName: yup.string().required('First Name Required').label('firstName'),
+  lastName: yup.string().required('Last Name Required').label('lastName'),
+  email: yup.string().required('Email Address Required').label('email'),
+  phone: yup.string().required('Phone Number Required').label('phone'),
+  govtID: yup.string().required('Govt ID Required').label('govtID'),
+  password: yup.string().required('Password Required').label('password'),
+});
+
+export const SPRegisterStep3VS = yup.object().shape({
+  hourly_rate: yup
+    .string()
+    .required('Hourly Rate Required')
+    .label('hourly_rate'),
+  sp_doc_id: yup.string().required('Document ID Required').label('sp_doc_id'),
+  sp_doc: yup.string().required('Document Required').label('sp_doc'),
 });
 
 export const ResetPasswordVS = yup.object().shape({
@@ -65,15 +123,6 @@ export const ResetPasswordVS = yup.object().shape({
 });
 
 export const ForgotPasswordVS = yup.object().shape({
-  email: yup
-    .string()
-    .required('Email Required')
-    .email('Please provide a valid email address'),
-});
-
-export const UpdateVS = yup.object().shape({
-  firstName: yup.string().required('First Name Required').label('firstName'),
-  lastName: yup.string().required('Last Name Required').label('lastName'),
   email: yup
     .string()
     .required('Email Required')

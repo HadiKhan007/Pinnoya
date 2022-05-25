@@ -10,7 +10,13 @@ import {
   WP,
 } from '../../shared/exporter';
 import BackArrow from 'react-native-vector-icons/AntDesign';
-export const AuthHeader = ({backIcon, onPressBack, headerIcon, rightArea}) => {
+export const AuthHeader = ({
+  backIcon,
+  onPressBack,
+  headerIcon,
+  rightArea,
+  subTitle,
+}) => {
   return (
     <>
       <MyStatusBar backgroundColor={colors.white} />
@@ -33,7 +39,7 @@ export const AuthHeader = ({backIcon, onPressBack, headerIcon, rightArea}) => {
           <View>
             {rightArea && (
               <View>
-                <Text style={styles.subText}>1 of 4</Text>
+                <Text style={styles.subText}>{subTitle}</Text>
               </View>
             )}
           </View>
