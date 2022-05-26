@@ -28,6 +28,7 @@ export const AppInput = ({
   maxLength,
   editable,
   rightIcon,
+  rightText,
 }) => {
   return (
     <View style={styles.container}>

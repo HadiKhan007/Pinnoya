@@ -142,7 +142,7 @@ const Login = ({navigation}) => {
                 />
                 <AuthFooter
                   onPress={() => {
-                    navigation?.navigate('SPSignUp');
+                    navigation?.navigate('CSignUp');
                   }}
                   title={'Not yet on Pinoyaya? '}
                   subtitle={'Register'}

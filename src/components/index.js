@@ -4,6 +4,7 @@ export * from './Header/HomeHeader';
 
 //Button
 export * from './Button/Button';
+export * from './Button/SmallButton';
 
 //Spacer
 
@@ -13,6 +14,7 @@ export * from './Button/Button';
 export * from './Input/AppInput';
 
 //CheckBox
+export * from './CheckBox/CheckBox';
 
 //Footer
 export * from './Footer/AuthFooter';

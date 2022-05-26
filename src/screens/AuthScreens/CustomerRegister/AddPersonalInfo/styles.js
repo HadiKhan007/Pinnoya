@@ -20,6 +20,25 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: '100%',
     marginVertical: WP('5'),
+    alignItems: 'center',
+  },
+  aiFlexEnd: {
+    alignItems: 'flex-end',
+    width: '100%',
+  },
+  boxContainer: {
+    marginVertical: 20,
+    borderRadius: 10,
+    backgroundColor: colors.white,
+    padding: 20,
+    shadowColor: colors.box_shadow,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 6.27,
+    elevation: 8,
   },
 });
 

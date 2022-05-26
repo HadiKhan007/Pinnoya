@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {
   colors,
@@ -12,11 +12,13 @@ import {
   AuthHeader,
   AuthHeading,
   Button,
+  Checkbox,
+  SmallButton,
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
-
 const AddPersonalInfo = ({navigation}) => {
+  const [checked, setchecked] = useState(false);
   return (
     <>
       <AuthHeader
@@ -48,7 +50,34 @@ const AddPersonalInfo = ({navigation}) => {
                   title={'Personal Information'}
                   subtitle={'Put information to get best experience'}
                 />
-
+                <View style={styles.aiFlexEnd}>
+                  <SmallButton title={'Add More Kid'} />
+                </View>
+                <View style={styles.boxContainer}>
+                  <AppInput
+                    placeholder={'Kid Name'}
+                    placeholderTextColor={colors.g2}
+                  />
+                  <AppInput
+                    placeholder={'Kid Age'}
+                    placeholderTextColor={colors.g2}
+                  />
+                  <Checkbox
+                    toggleCheckBox={checked}
+                    setToggleCheckBox={() => {
+                      setchecked(!checked);
+                    }}
+                  />
+                </View>
+                <View style={styles.aiFlexEnd}>
+                  <SmallButton title={'Add More Pet'} />
+                </View>
+                <View style={styles.boxContainer}>
+                  <AppInput
+                    placeholder={'Pets (Optional)'}
+                    placeholderTextColor={colors.g2}
+                  />
+                </View>
                 <View style={styles.buttonContainer}>
                   <Button
                     onPressBtn={() => {
