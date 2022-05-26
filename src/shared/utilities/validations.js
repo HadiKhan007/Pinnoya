@@ -37,8 +37,6 @@ export const SPRegisterStep2Fields = {
 
 export const SPRegisterStep3Fields = {
   hourly_rate: '',
-  sp_doc_id: '',
-  sp_doc: '',
 };
 
 export const loginFormFields = {
@@ -105,8 +103,6 @@ export const SPRegisterStep3VS = yup.object().shape({
     .string()
     .required('Hourly Rate Required')
     .label('hourly_rate'),
-  sp_doc_id: yup.string().required('Document ID Required').label('sp_doc_id'),
-  sp_doc: yup.string().required('Document Required').label('sp_doc'),
 });
 
 export const ResetPasswordVS = yup.object().shape({

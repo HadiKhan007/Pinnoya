@@ -2,8 +2,8 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {
   colors,
-  CustomerRegisterStep2Fields,
-  CustomerRegisterStep2VS,
+  SPRegisterStep2Fields,
+  SPRegisterStep2VS,
 } from '../../../../shared/exporter';
 import styles from './styles';
 import {
@@ -26,14 +26,14 @@ const RegisterStep2 = ({navigation}) => {
         }}
         headerIcon={true}
         rightArea={true}
-        subTitle={'2 of 3'}
+        subTitle={'2 of 4'}
       />
       <View style={styles.container}>
         {/* Signup Inputs */}
         <Formik
-          initialValues={CustomerRegisterStep2Fields}
+          initialValues={SPRegisterStep2Fields}
           onSubmit={values => {}}
-          validationSchema={CustomerRegisterStep2VS}>
+          validationSchema={SPRegisterStep2VS}>
           {({
             values,
             handleChange,
@@ -127,7 +127,9 @@ const RegisterStep2 = ({navigation}) => {
                 />
                 <View style={styles.buttonContainer}>
                   <Button
-                    onPressBtn={handleSubmit}
+                    onPressBtn={() => {
+                      navigation?.navigate('UploadDoc');
+                    }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
                     btnText={'Next'}

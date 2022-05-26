@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import styles from './styles';
 import {AuthHeader} from '../../components';
+import MyStatusBar from '../../components/Bar/MyStatusBar';
+import {colors} from '../../shared/exporter';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
@@ -10,17 +12,15 @@ const Splash = ({navigation}) => {
 
   const handleAppEntry = async () => {
     setTimeout(() => {
-      navigation.replace('Walkthrough');
+      navigation.replace('Auth');
     }, 1500);
   };
 
   return (
     <>
-      <AuthHeader />
+      <MyStatusBar backgroundColor={colors.white} />
       <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <Text style={styles.title}>Pinoyaya</Text>
-        </View>
+        <Text style={styles.title}>Pinoyaya</Text>
       </View>
     </>
   );

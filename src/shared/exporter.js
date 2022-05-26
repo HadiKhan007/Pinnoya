@@ -47,6 +47,8 @@ export {
   profile_uri,
   stripe_publishableKey,
   video_url,
+  tabArray,
+  serviceList,
 } from './utilities/constant';
 export {header, authHeader} from './utilities/headers';
 export {

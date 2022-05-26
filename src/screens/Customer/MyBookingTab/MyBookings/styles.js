@@ -1,18 +1,15 @@
 import {Platform, StyleSheet} from 'react-native';
-import {colors, family, size} from '../../shared/exporter';
+import {colors} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+  },
+  contentContainer: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  title: {
-    fontSize: size.h1,
-    color: colors.b1,
-    fontFamily: family.Ubuntu_Bold,
   },
 });
 

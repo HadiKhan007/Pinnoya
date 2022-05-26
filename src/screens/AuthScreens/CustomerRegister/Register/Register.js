@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {
+  appImages,
   colors,
   CustomerRegisterStep1Fields,
   CustomerRegisterStep1VS,
@@ -12,11 +13,16 @@ import {
   AuthHeader,
   AuthHeading,
   Button,
+  LocationModal,
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 
 const Register = ({navigation}) => {
+  const locationBSheetRef = useRef(null);
+  const onRegisterStep1Hanlder = () => {
+    locationBSheetRef.current.open();
+  };
   return (
     <>
       <AuthHeader
@@ -141,7 +147,7 @@ const Register = ({navigation}) => {
                 <View style={styles.buttonContainer}>
                   <Button
                     onPressBtn={() => {
-                      navigation?.navigate('CSignUp2');
+                      onRegisterStep1Hanlder();
                     }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
@@ -160,6 +166,16 @@ const Register = ({navigation}) => {
           )}
         </Formik>
       </View>
+      <LocationModal
+        locationRef={locationBSheetRef}
+        img={appImages.locationImg}
+        title={'Where are you?'}
+        subtitle={'Set your location so we can offer you the best specialists'}
+        onPress={() => {
+          locationBSheetRef?.current?.close();
+          navigation?.navigate('CSignUp2');
+        }}
+      />
     </>
   );
 };

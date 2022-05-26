@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     paddingVertical: WP('10'),
     borderTopRightRadius: 24,
     borderTopLeftRadius: 24,
-    marginTop: 30,
+    marginTop: WP('15'),
   },
   footerText: {
     textAlign: 'center',

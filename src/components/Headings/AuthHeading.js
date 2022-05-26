@@ -13,7 +13,8 @@ export const AuthHeading = ({title, subtitle}) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: WP('10'),
+    paddingVertical: WP('5'),
+    paddingTop: WP('5'),
   },
   title: {
     fontSize: size.large,

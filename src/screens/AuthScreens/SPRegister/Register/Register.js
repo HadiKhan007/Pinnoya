@@ -26,6 +26,7 @@ const Register = ({navigation}) => {
         }}
         headerIcon={true}
         rightArea={true}
+        subTitle={'1 of 4'}
       />
       <View style={styles.container}>
         {/* Signup Inputs */}
@@ -76,7 +77,7 @@ const Register = ({navigation}) => {
                 <View style={styles.buttonContainer}>
                   <Button
                     onPressBtn={() => {
-                      navigation?.navigate('SPSignup2');
+                      navigation?.navigate('SPSignUp2');
                     }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
