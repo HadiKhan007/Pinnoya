@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {StatusBar, Platform, LogBox} from 'react-native';
 import MainNavigation from './src/navigation';
-// import {Provider} from 'react-redux';
-// import {PersistGate} from 'redux-persist/lib/integration/react';
-// import store, {persistor} from './src/redux/store';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/lib/integration/react';
+import store, {persistor} from './src/redux/store';
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {
 //   initialConfig,
@@ -11,6 +11,7 @@ import MainNavigation from './src/navigation';
 //   web_client_id,
 // } from './src/shared/exporter';
 // import {StripeProvider} from '@stripe/stripe-react-native';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 // ignore warnings
 LogBox.ignoreAllLogs();
@@ -33,16 +34,13 @@ const App = () => {
     // <StripeProvider
     //   publishableKey={stripe_publishableKey}
     //   merchantIdentifier="merchant.com.billionpound.app">
-    //   <Provider store={store}>
-    //     <StatusBar
-    //       translucent={true}
-    //       backgroundColor={'transparent'}
-    //       barStyle={'dark-content'}
-    //     />
-    //     <PersistGate persistor={persistor}>
-    <MainNavigation />
-    //     </PersistGate>
-    //   </Provider>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <PaperProvider>
+          <MainNavigation />
+        </PaperProvider>
+      </PersistGate>
+    </Provider>
     // </StripeProvider>
   );
 };

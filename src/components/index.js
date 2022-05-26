@@ -1,23 +1,29 @@
 //Header
 export * from './Header/AuthHeader';
+export * from './Header/HomeHeader';
+
 //Button
 export * from './Button/Button';
+export * from './Button/SmallButton';
 
 //Spacer
 
 //Loader
 
 //Input
+export * from './Input/AppInput';
 
 //CheckBox
+export * from './CheckBox/CheckBox';
 
 //Footer
+export * from './Footer/AuthFooter';
 
 //Box
 export * from './Box/ImageBox';
 
 //Tabs
-// export * from './Tabs/BottomTab';
+export * from './Tabs/BottomTab';
 
 //Circle
 
@@ -25,9 +31,14 @@ export * from './Box/ImageBox';
 export * from './IntroSlider/IntroSlider';
 
 //Cards
+export * from './Cards/ServiceCard/ServiceCard';
 
 //Modals
+export * from './Modal/LocationModal';
+export * from './Modal/HomeTabModal';
+export * from './Modal/HomeModal';
 
 //Headings
+export * from './Headings/AuthHeading';
 
 //Field

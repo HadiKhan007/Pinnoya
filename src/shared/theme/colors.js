@@ -1,6 +1,6 @@
 export const colors = {
   // Primary Color
-  p1: '#01BAFF',
+  p1: '#941C6B',
   p2: '#01BAFFCC',
   p3: '#01BAFF99',
   p4: '#01BAFF66',
@@ -30,7 +30,7 @@ export const colors = {
 
   //Gray Color
   g1: '#808080',
-  g2: '#ADA4A5',
+  g2: '#D7D7D7',
   g3: '#626262',
   g4: '#2F2E2E',
   g5: '#7B6F72',
@@ -51,6 +51,7 @@ export const colors = {
   gr1: '#24D18F',
   //White colors
   white: '#ffffff',
+  white2: '#FAFAFA',
 
   //******************- Gradients -*******************/
 
@@ -59,8 +60,20 @@ export const colors = {
   //Secondary Gradient
   s_gradient: ['#E79069', '#E7BB69'],
   t_gradient: ['#01BAFF', '#01BAFF'],
+  b_gradient: [
+    '#D390A6',
+    '#CF89A2',
+    '#C57699',
+    '#B45689',
+    '#9C2B72',
+    '#941C6B',
+    '#941C6B',
+    '#941C6B',
+  ],
+  db_gradient: ['#FFFFFF', '#FFFFFF'],
   shadowColor: 'rgba(1, 186, 255, 0.2)',
-  box_shadow: 'rgba(0, 0, 0, 0.18)',
+  half_white_gradient: ['#FAFAFA', '#FAFAFA'],
+  box_shadow: 'rgba(0, 0, 0, 0.15)',
   introSliderColor: '#34C8FF',
   light_shadow: '#979797',
   // red

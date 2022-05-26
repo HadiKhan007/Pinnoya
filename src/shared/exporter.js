@@ -15,15 +15,20 @@ export {
 export {
   LoginVS,
   loginFormFields,
-  signupFormFields,
-  SignUpVS,
   forgotFormFields,
   ForgotPasswordVS,
   resetFormFields,
   ResetPasswordVS,
-  updateFormFields,
-  UpdateVS,
-  AddNewExerciseFormFields,
+  CustomerRegisterStep1Fields,
+  CustomerRegisterStep2Fields,
+  SPRegisterStep1Fields,
+  SPRegisterStep2Fields,
+  SPRegisterStep3Fields,
+  CustomerRegisterStep1VS,
+  CustomerRegisterStep2VS,
+  SPRegisterStep1VS,
+  SPRegisterStep2VS,
+  SPRegisterStep3VS,
 } from './utilities/validations';
 export {
   StatusBarHeight,
@@ -42,6 +47,8 @@ export {
   profile_uri,
   stripe_publishableKey,
   video_url,
+  tabArray,
+  serviceList,
 } from './utilities/constant';
 export {header, authHeader} from './utilities/headers';
 export {
