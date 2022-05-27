@@ -7,14 +7,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   contentContainer: {
-    flex: 0.08,
+    flex: 0.1,
     paddingHorizontal: WP('4'),
     backgroundColor: colors.white,
-  },
-  headerText: {
-    fontSize: size.xxtiny,
-    fontFamily: family.Ubuntu_Regular,
-    color: colors.g1,
+    zIndex: 9999,
   },
   secondContentContainer: {
     flex: 1,
@@ -23,20 +19,14 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 24,
     padding: WP('4'),
   },
-  subtitle: {
-    fontSize: size.normal,
-    color: colors.b1,
-    fontFamily: family.Ubuntu_Medium,
-    paddingVertical: 10,
-  },
-  listContainer: {
-    flex: 0.98,
-    marginHorizontal: 5,
+  firstCardContainer: {
+    zIndex: 99999,
   },
   imageStyle: {
-    height: 90,
-    width: 90,
+    height: 20,
+    width: 20,
     resizeMode: 'contain',
+    left: 20,
   },
 });
 

@@ -23,6 +23,11 @@ export const appIcons = {
   user: require('../../assets/icons/user.png'),
   notification: require('../../assets/icons/notification.png'),
   tabIcon: require('../../assets/icons/tabIcon.png'),
+  filter: require('../../assets/icons/filter.png'),
+  photo: require('../../assets/icons/photo.png'),
+  bookmark: require('../../assets/icons/bookmark.png'),
+  fillbookmark: require('../../assets/icons/fillbookmark.png'),
+  zoom: require('../../assets/icons/zoom.png'),
 };
 
 export const appSvgs = {

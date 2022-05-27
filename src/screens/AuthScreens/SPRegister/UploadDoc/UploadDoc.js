@@ -14,6 +14,7 @@ import {
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
+import UploadIcon from 'react-native-vector-icons/AntDesign';
 
 const UploadDoc = ({navigation}) => {
   return (
@@ -71,7 +72,9 @@ const UploadDoc = ({navigation}) => {
                   autoCapitalize="none"
                   touched={touched.sp_doc_id}
                   error={errors.sp_doc_id}
-                  rightIcon={true}
+                  rightIcon={() => (
+                    <UploadIcon name={'upload'} size={20} color={colors.g2} />
+                  )}
                 />
                 <AppInput
                   editable={false}
@@ -85,7 +88,9 @@ const UploadDoc = ({navigation}) => {
                   autoCapitalize="none"
                   touched={touched.sp_doc}
                   error={errors.sp_doc}
-                  rightIcon={true}
+                  rightIcon={() => (
+                    <UploadIcon name={'upload'} size={20} color={colors.g2} />
+                  )}
                 />
                 <Button
                   onPressBtn={handleSubmit}

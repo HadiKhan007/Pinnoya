@@ -9,7 +9,7 @@ export const colors = {
   p7: '#CCF1FF',
 
   // Secondary Color
-  s1: '#EF9924',
+  s1: '#FFA873',
   s2: '#EF9924CC',
   s3: '#EF992499',
   s4: '#EF992466',
@@ -31,8 +31,8 @@ export const colors = {
   //Gray Color
   g1: '#808080',
   g2: '#D7D7D7',
-  g3: '#626262',
-  g4: '#2F2E2E',
+  g3: '#E8E8E8',
+  g4: '#C8C8C8',
   g5: '#7B6F72',
   g6: '#747471',
   g7: '#747688',
@@ -44,11 +44,13 @@ export const colors = {
   g12: '#F7F8F8',
   g13: '#DA840D',
 
+  // Blue
+  bl1: '#0066FF',
   // Yellow
   y1: '#F2AD50',
 
   //Green Color
-  gr1: '#24D18F',
+  gr1: '#00A41A',
   //White colors
   white: '#ffffff',
   white2: '#FAFAFA',

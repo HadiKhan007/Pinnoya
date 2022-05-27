@@ -30,8 +30,16 @@ const Dashboard = ({navigation}) => {
               data={serviceList}
               renderItem={({item}) => {
                 return (
-                  <TouchableOpacity style={spacing.mx1}>
-                    <ServiceCard item={item} />
+                  <TouchableOpacity
+                    style={spacing.mx1}
+                    onPress={() => {
+                      navigation?.navigate('ServiceDetail');
+                    }}>
+                    <ServiceCard
+                      item={item}
+                      imgStyle={styles.imageStyle}
+                      disabled={true}
+                    />
                   </TouchableOpacity>
                 );
               }}
