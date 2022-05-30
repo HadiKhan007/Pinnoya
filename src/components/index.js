@@ -40,11 +40,16 @@ export * from './Cards/SecondaryCard/SecondaryCard';
 export * from './Cards/SpecialityCard/SpecialityCard';
 export * from './Cards/UploadPicCard/UploadPicCard';
 export * from './Cards/VerificationCard/VerificationCard';
+export * from './Cards/ReviewCard/ReviewCard';
+export * from './Cards/DatePickerCard/DatePickerCard';
 
 //Modals
 export * from './Modal/LocationModal';
 export * from './Modal/HomeTabModal';
 export * from './Modal/HomeModal';
+export * from './Modal/ReviewModal';
+export * from './Modal/JobModal';
+export * from './Cards/TimePickerCard/TimePickerCard';
 
 //Headings
 export * from './Headings/AuthHeading';

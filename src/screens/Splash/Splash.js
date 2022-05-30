@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import styles from './styles';
-import {AuthHeader} from '../../components';
 import MyStatusBar from '../../components/Bar/MyStatusBar';
 import {colors} from '../../shared/exporter';
 
@@ -12,7 +11,7 @@ const Splash = ({navigation}) => {
 
   const handleAppEntry = async () => {
     setTimeout(() => {
-      navigation.replace('Walkthrough');
+      navigation.replace('App');
     }, 1500);
   };
 

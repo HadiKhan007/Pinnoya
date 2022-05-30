@@ -2,8 +2,15 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {appIcons, colors, family, size, WP} from '../../../shared/exporter';
 import TickIcon from 'react-native-vector-icons/Feather';
+import {Rating} from 'react-native-elements';
 
-export const PrimaryCard = ({status}) => {
+export const PrimaryCard = ({
+  status,
+  onlineStatus,
+  desc,
+  rightIcon,
+  rating,
+}) => {
   return (
     <View style={styles.container}>
       {status && (
@@ -17,17 +24,29 @@ export const PrimaryCard = ({status}) => {
           <TouchableOpacity style={styles.btnCon}>
             <TickIcon name="check" size={8} color={colors.white} />
           </TouchableOpacity>
-          <Text style={styles.h2}>Online</Text>
+          {onlineStatus && <Text style={styles.h2}>{onlineStatus}</Text>}
         </View>
+
         <View>
-          <Image source={appIcons.fillbookmark} style={styles.smImgStyle} />
+          {rightIcon && (
+            <Image source={appIcons.fillbookmark} style={styles.smImgStyle} />
+          )}
+          {rating && (
+            <View style={styles.aiRow}>
+              <Rating
+                type="custom"
+                ratingImage={appIcons.star}
+                ratingColor={colors.white2}
+                ratingBackgroundColor={colors.white2}
+                ratingCount={5}
+                imageSize={18}
+              />
+              <Text style={styles.ratingText}>5.0</Text>
+            </View>
+          )}
         </View>
       </View>
-      <Text style={styles.paraStyle}>
-        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet
-        ligula. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-        dui.
-      </Text>
+      {desc && <Text style={styles.paraStyle}>{desc}</Text>}
     </View>
   );
 };
@@ -88,5 +107,11 @@ const styles = StyleSheet.create({
     fontSize: size.tiny,
     color: colors.g1,
     fontFamily: family.Ubuntu_Regular,
+  },
+  ratingText: {
+    fontSize: size.normal,
+    color: colors.b1,
+    fontFamily: family.Ubuntu_Medium,
+    paddingLeft: 8,
   },
 });

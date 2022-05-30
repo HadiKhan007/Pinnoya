@@ -49,6 +49,7 @@ export {
   video_url,
   tabArray,
   serviceList,
+  job_list,
 } from './utilities/constant';
 export {header, authHeader} from './utilities/headers';
 export {

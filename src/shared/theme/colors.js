@@ -33,7 +33,7 @@ export const colors = {
   g2: '#D7D7D7',
   g3: '#E8E8E8',
   g4: '#C8C8C8',
-  g5: '#7B6F72',
+  g5: '#F7F7F7',
   g6: '#747471',
   g7: '#747688',
   g8: '#DDDADA',

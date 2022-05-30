@@ -5,6 +5,7 @@ import Dashboard from '../../../screens/Customer/HomeTab/Dashboard';
 import ServiceDetail from '../../../screens/Customer/HomeTab/ServiceDetail';
 import ServiceItemDetail from '../../../screens/Customer/HomeTab/ServiceItemDetail';
 import BookingDetail from '../../../screens/Customer/HomeTab/BookingDetail/BookingDetail';
+import ScheduleNow from '../../../screens/Customer/HomeTab/ScheduleNow/ScheduleNow';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ function HomeStack(props) {
       <Stack.Screen name="ServiceDetail" component={ServiceDetail} />
       <Stack.Screen name="ServiceItemDetail" component={ServiceItemDetail} />
       <Stack.Screen name="BookingDetail" component={BookingDetail} />
+      <Stack.Screen name="ScheduleNow" component={ScheduleNow} />
     </Stack.Navigator>
   );
 }

@@ -28,6 +28,7 @@ export const appIcons = {
   bookmark: require('../../assets/icons/bookmark.png'),
   fillbookmark: require('../../assets/icons/fillbookmark.png'),
   zoom: require('../../assets/icons/zoom.png'),
+  star: require('../../assets/icons/star.png'),
 };
 
 export const appSvgs = {
