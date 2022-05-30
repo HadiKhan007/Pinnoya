@@ -11,6 +11,7 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 import {
   colors,
   family,
+  scrHeight,
   size,
   spacing,
   tabArray,
@@ -22,7 +23,7 @@ export const HomeTabModal = ({tabRef, title, subtitle, img, onPressClose}) => {
   return (
     <RBSheet
       ref={tabRef}
-      height={WP('180')}
+      height={scrHeight / 1.2}
       openDuration={250}
       customStyles={{
         container: styles.container,

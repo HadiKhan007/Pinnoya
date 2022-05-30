@@ -55,6 +55,32 @@ const serviceList = [
   },
 ];
 
+export const job_list = [
+  {
+    id: 1,
+    title: 'Lorem ipsum dolor',
+    body: 'Pellentesque in ipsum id orci porta dapibus.',
+    expanded: false,
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum dolor',
+    body: 'Pellentesque in ipsum id orci porta dapibus.',
+    expanded: false,
+  },
+  {
+    id: 3,
+    title: 'Lorem ipsum dolor',
+    body: 'Pellentesque in ipsum id orci porta dapibus.',
+    expanded: false,
+  },
+  {
+    id: 4,
+    title: 'Lorem ipsum dolor',
+    body: 'Pellentesque in ipsum id orci porta dapibus.',
+    expanded: false,
+  },
+];
 const stripe_publishableKey = '';
 const profile_uri = '';
 export {

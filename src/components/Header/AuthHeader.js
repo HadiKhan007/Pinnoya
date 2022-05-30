@@ -25,7 +25,7 @@ export const AuthHeader = ({
           <View>
             {backIcon && (
               <TouchableOpacity onPress={onPressBack}>
-                <BackArrow name={'left'} size={20} />
+                <BackArrow name={'left'} size={20} color={colors.b1} />
               </TouchableOpacity>
             )}
           </View>

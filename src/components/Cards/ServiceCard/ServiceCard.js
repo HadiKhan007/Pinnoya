@@ -1,17 +1,20 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {colors, family, size, WP} from '../../../shared/exporter';
 
-export const ServiceCard = ({title, item}) => {
+export const ServiceCard = ({item, imgStyle, onPress, disabled}) => {
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
         <Text style={styles.titleStyle}>{item?.title}</Text>
         <Text style={styles.subTitle}>{item?.subtitle}</Text>
       </View>
-      <View style={styles.rightContainer}>
-        <Image style={styles.imageStyle} source={item?.img} />
-      </View>
+      <TouchableOpacity
+        style={styles.rightContainer}
+        onPress={onPress}
+        disabled={disabled}>
+        <Image style={imgStyle} source={item?.img} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -42,6 +45,8 @@ const styles = StyleSheet.create({
   },
   rightContainer: {
     width: '30%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   titleStyle: {
     fontSize: size.large,
@@ -53,10 +58,5 @@ const styles = StyleSheet.create({
     fontSize: size.xxxtiny,
     color: colors.g1,
     fontFamily: family.Ubuntu_Regular,
-  },
-  imageStyle: {
-    height: 90,
-    width: 90,
-    resizeMode: 'contain',
   },
 });

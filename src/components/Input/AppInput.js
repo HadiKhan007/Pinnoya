@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import {colors, family, size, WP} from '../../shared/exporter';
 import {TextInput} from 'react-native-paper';
-import UploadIcon from 'react-native-vector-icons/AntDesign';
 export const AppInput = ({
   placeholder,
   placeholderTextColor,
@@ -29,6 +28,7 @@ export const AppInput = ({
   editable,
   rightIcon,
   rightText,
+  numberofLines,
 }) => {
   return (
     <View style={styles.container}>
@@ -53,15 +53,7 @@ export const AppInput = ({
         activeOutlineColor={colors.p1}
         theme={{roundness: 10}}
         dense={true}
-        right={
-          rightIcon && (
-            <TextInput.Icon
-              name={() => (
-                <UploadIcon name={'upload'} size={20} color={colors.g2} />
-              )}
-            />
-          )
-        }
+        right={rightIcon && <TextInput.Icon name={rightIcon} />}
       />
       {touched && error && (
         <View>
