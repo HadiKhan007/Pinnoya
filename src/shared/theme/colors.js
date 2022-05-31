@@ -1,7 +1,7 @@
 export const colors = {
   // Primary Color
   p1: '#941C6B',
-  p2: '#01BAFFCC',
+  p2: '#F0E4EC',
   p3: '#01BAFF99',
   p4: '#01BAFF66',
   p5: '#01BAFF33',
@@ -34,15 +34,7 @@ export const colors = {
   g3: '#E8E8E8',
   g4: '#C8C8C8',
   g5: '#F7F7F7',
-  g6: '#747471',
-  g7: '#747688',
-  g8: '#DDDADA',
-  g8: '#E1E1E1',
-  g9: '#626262',
-  g10: '#E6E6E6',
-  g11: '#C4C4C4',
-  g12: '#F7F8F8',
-  g13: '#DA840D',
+  g6: '#E9E9E9',
 
   // Blue
   bl1: '#0066FF',
@@ -54,6 +46,7 @@ export const colors = {
   //White colors
   white: '#ffffff',
   white2: '#FAFAFA',
+  white3: '#E7E7E7',
 
   //******************- Gradients -*******************/
 

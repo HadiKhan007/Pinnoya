@@ -63,10 +63,14 @@ const AddPersonalInfo = ({navigation}) => {
                     placeholderTextColor={colors.g2}
                   />
                   <Checkbox
+                    checkSize={14}
                     toggleCheckBox={checked}
                     setToggleCheckBox={() => {
                       setchecked(!checked);
                     }}
+                    title={
+                      'If child with special needs or PWD Person With Disability'
+                    }
                   />
                 </View>
                 <View style={styles.aiFlexEnd}>

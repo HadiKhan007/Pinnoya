@@ -55,6 +55,29 @@ const serviceList = [
   },
 ];
 
+const filterServiceList = [
+  {
+    id: 0,
+    title: 'For Babysitter',
+  },
+  {
+    id: 1,
+    title: 'Housekeeper',
+  },
+  {
+    id: 2,
+    title: 'For Pets',
+  },
+  {
+    id: 3,
+    title: 'Senior Caregiver',
+  },
+  {
+    id: 4,
+    title: 'Tutor',
+  },
+];
+
 export const job_list = [
   {
     id: 1,
@@ -81,6 +104,135 @@ export const job_list = [
     expanded: false,
   },
 ];
+
+const kids = [
+  {
+    id: 1,
+    text: 1,
+  },
+  {
+    id: 2,
+    text: 2,
+  },
+  {
+    id: 3,
+    text: 3,
+  },
+  {
+    id: 4,
+    text: 4,
+  },
+  {
+    id: 5,
+    text: 5,
+  },
+  {
+    id: 6,
+    text: 6,
+  },
+  {
+    id: 7,
+    text: 7,
+  },
+  {
+    id: 8,
+    text: 8,
+  },
+];
+
+const cities = [
+  {
+    id: 1,
+    text: 'Lahore',
+  },
+  {
+    id: 2,
+    text: 'Karachi',
+  },
+  {
+    id: 3,
+    text: 'Peshawer',
+  },
+  {
+    id: 4,
+    text: 'Quetta',
+  },
+  {
+    id: 5,
+    text: 'Multan',
+  },
+];
+
+const pets = [
+  {
+    id: 1,
+    text: 1,
+  },
+  {
+    id: 2,
+    text: 2,
+  },
+  {
+    id: 3,
+    text: 3,
+  },
+  {
+    id: 4,
+    text: 4,
+  },
+  {
+    id: 5,
+    text: 5,
+  },
+  {
+    id: 6,
+    text: 6,
+  },
+  {
+    id: 7,
+    text: 7,
+  },
+  {
+    id: 8,
+    text: 8,
+  },
+];
+
+const work_exp = [
+  {
+    id: 1,
+    text: '1-2 years',
+  },
+  {
+    id: 2,
+    text: '2-3 years',
+  },
+  {
+    id: 3,
+    text: '3-4 years',
+  },
+  {
+    id: 4,
+    text: '4-5 years',
+  },
+  {
+    id: 5,
+    text: '5-6 years',
+  },
+  {
+    id: 6,
+    text: '6-7 years',
+  },
+  {
+    id: 7,
+    text: '8-9 years',
+  },
+  {
+    id: 8,
+    text: '9-10 years',
+  },
+];
+
 const stripe_publishableKey = '';
 const profile_uri = '';
 export {
@@ -94,4 +246,9 @@ export {
   stripe_publishableKey,
   tabArray,
   serviceList,
+  kids,
+  pets,
+  cities,
+  work_exp,
+  filterServiceList,
 };

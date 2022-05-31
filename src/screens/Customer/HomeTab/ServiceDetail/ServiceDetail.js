@@ -28,7 +28,9 @@ const ServiceDetail = ({navigation}) => {
                 img: appIcons.filter,
               }}
               imgStyle={styles.imageStyle}
-              onPress={() => {}}
+              onPress={() => {
+                navigation?.navigate('FilterService');
+              }}
             />
           </View>
         </View>

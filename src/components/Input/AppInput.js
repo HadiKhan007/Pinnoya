@@ -29,6 +29,7 @@ export const AppInput = ({
   rightIcon,
   rightText,
   numberofLines,
+  onPressIn,
 }) => {
   return (
     <View style={styles.container}>
@@ -53,7 +54,10 @@ export const AppInput = ({
         activeOutlineColor={colors.p1}
         theme={{roundness: 10}}
         dense={true}
-        right={rightIcon && <TextInput.Icon name={rightIcon} />}
+        onPressIn={onPressIn}
+        right={
+          rightIcon && <TextInput.Icon onPressIn={onPressIn} name={rightIcon} />
+        }
       />
       {touched && error && (
         <View>

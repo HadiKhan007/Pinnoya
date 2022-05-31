@@ -29,6 +29,8 @@ export const appIcons = {
   fillbookmark: require('../../assets/icons/fillbookmark.png'),
   zoom: require('../../assets/icons/zoom.png'),
   star: require('../../assets/icons/star.png'),
+  tackLine: require('../../assets/icons/trackLine.png'),
+  circle: require('../../assets/icons/circle.png'),
 };
 
 export const appSvgs = {

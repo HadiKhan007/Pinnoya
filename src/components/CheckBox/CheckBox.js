@@ -7,21 +7,19 @@ import {colors, family, size} from '../../shared/exporter';
 export const Checkbox = ({
   toggleCheckBox,
   setToggleCheckBox,
-  checkIcon,
-  uncheckIcon,
-  CheckImagestyle,
-  UnCheckImagestyle,
+  title,
+  checkSize,
 }) => {
   return (
     <CheckBox
-      title={'If child with special needs or PWD Person With Disability '}
+      title={title}
       hitSlop={styles.hitSlop}
       containerStyle={styles.containerStyle}
       checked={toggleCheckBox}
       checkedIcon="dot-circle-o"
       uncheckedIcon="circle-o"
       onPress={setToggleCheckBox}
-      size={14}
+      size={checkSize}
       checkedColor={colors.p1}
       uncheckedColor={colors.p1}
       textStyle={styles.textStyle}
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
   },
   containerStyle: {
     padding: 0,
-    backgroundColor: colors.white,
+    backgroundColor: 'transparent',
     borderWidth: 0,
   },
 });
