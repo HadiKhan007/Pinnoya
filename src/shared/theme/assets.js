@@ -31,6 +31,7 @@ export const appIcons = {
   star: require('../../assets/icons/star.png'),
   tackLine: require('../../assets/icons/trackLine.png'),
   circle: require('../../assets/icons/circle.png'),
+  pencil: require('../../assets/icons/pencil.png'),
 };
 
 export const appSvgs = {

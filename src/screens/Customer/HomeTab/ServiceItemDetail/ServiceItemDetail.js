@@ -36,9 +36,7 @@ const ServiceItemDetail = ({navigation}) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <PrimaryCard
               status={'Available'}
-              desc={`Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet
-            ligula. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-            dui.`}
+              desc={`Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.`}
               onlineStatus={'Online'}
               rightIcon={true}
             />

@@ -234,7 +234,8 @@ const work_exp = [
 ];
 
 const stripe_publishableKey = '';
-const profile_uri = '';
+const profile_uri =
+  'https://www.shareicon.net/data/512x512/2017/01/06/868320_people_512x512.png';
 export {
   ANDROID,
   IOS,
@@ -242,7 +243,6 @@ export {
   web_client_id,
   swipe_config,
   image_options,
-  profile_uri,
   stripe_publishableKey,
   tabArray,
   serviceList,
@@ -251,4 +251,5 @@ export {
   cities,
   work_exp,
   filterServiceList,
+  profile_uri,
 };

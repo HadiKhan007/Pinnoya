@@ -1,5 +1,5 @@
 import {Platform, StyleSheet} from 'react-native';
-import {colors} from '../../../../shared/exporter';
+import {colors, family, size, WP} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,16 +8,12 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: WP('4'),
+    backgroundColor: colors.white,
   },
   btnCon: {
-    position: 'absolute',
-    bottom: 30,
     alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    zIndex: 9999,
+    paddingVertical: 10,
   },
 });
 

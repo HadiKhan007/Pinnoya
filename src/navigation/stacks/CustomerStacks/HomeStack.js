@@ -8,6 +8,7 @@ import BookingDetail from '../../../screens/Customer/HomeTab/BookingDetail/Booki
 import ScheduleNow from '../../../screens/Customer/HomeTab/ScheduleNow/ScheduleNow';
 import FilterService from '../../../screens/Customer/HomeTab/FilterService';
 import TrackingDetail from '../../../screens/Customer/HomeTab/TrackingDetail/TrackingDetail';
+import AvailServiceDetail from '../../../screens/Customer/HomeTab/AvailServiceDetail';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ function HomeStack(props) {
       <Stack.Screen name="ScheduleNow" component={ScheduleNow} />
       <Stack.Screen name="FilterService" component={FilterService} />
       <Stack.Screen name="TrackingDetail" component={TrackingDetail} />
+      <Stack.Screen name="AvailServiceDetail" component={AvailServiceDetail} />
     </Stack.Navigator>
   );
 }
