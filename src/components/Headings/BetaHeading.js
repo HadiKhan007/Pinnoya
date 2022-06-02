@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: size.xsmall,
-    color: colors.g1,
+    color: colors.b1,
     fontFamily: family.Ubuntu_Bold,
   },
 });

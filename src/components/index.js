@@ -6,6 +6,7 @@ export * from './Header/MapHeader';
 
 //Button
 export * from './Button/Button';
+export * from './Button/ArrowButton';
 export * from './Button/SmallButton';
 export * from './Button/PrimaryButton';
 
@@ -29,6 +30,7 @@ export * from './Box/BgImageBox';
 export * from './Box/UserInfoBox';
 export * from './Box/DescriptionBox';
 export * from './Box/ServiceFeeBox';
+export * from './Box/ProfileBox';
 
 //Tabs
 export * from './Tabs/BottomTab';
@@ -38,6 +40,7 @@ export * from './Tabs/FourSegment';
 
 // Bar
 export * from './IntroSlider/IntroSlider';
+export * from './Bar/SearchBar';
 
 //Cards
 export * from './Cards/ServiceCard/ServiceCard';
@@ -76,3 +79,10 @@ export * from './IntroSlider/MultiSliderComp';
 // Maps
 export * from './MapComponent/MapComponent';
 export * from './MapComponent/SmallMapCard';
+
+//CustomComponents
+export * from './CustomComponents/OngoingComp';
+export * from './CustomComponents/CompleteComp';
+
+//Fields
+export * from './Field/ProfileField';

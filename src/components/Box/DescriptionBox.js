@@ -18,7 +18,7 @@ export const DescriptionBox = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: '99%',
     backgroundColor: colors.white,
     shadowColor: colors.box_shadow,
     marginVertical: WP('5'),

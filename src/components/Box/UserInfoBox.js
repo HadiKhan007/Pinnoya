@@ -33,7 +33,7 @@ export const UserInfoBox = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: '99%',
     flexDirection: 'row',
     backgroundColor: colors.white,
     paddingVertical: 10,

@@ -38,7 +38,10 @@ const MyBooking = ({navigation}) => {
                 data={[1, 2, 3, 4, 5]}
                 renderItem={({item}) => {
                   return (
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation?.navigate('BookedServiceDetail');
+                      }}>
                       <ServiceDetailCard />
                     </TouchableOpacity>
                   );

@@ -1,6 +1,6 @@
 import NetInfo from '@react-native-community/netinfo';
 import {createContext, useContext, useEffect} from 'react';
-import {appIcons, WP} from '../exporter';
+import {appIcons, colors, WP} from '../exporter';
 import moment from 'moment';
 
 export const checkConnected = () => {
@@ -152,3 +152,21 @@ export function setDigitSize(num) {
     return WP('16');
   }
 }
+
+export const booked_status_color = status => {
+  if (status == 'On going') {
+    return colors.y2;
+  }
+  if (status == 'ongoing') {
+    return colors.gr2;
+  }
+};
+
+export const booked_status_text_color = status => {
+  if (status == 'On going') {
+    return colors.b1;
+  }
+  if (status == 'ongoing') {
+    return colors.white;
+  }
+};

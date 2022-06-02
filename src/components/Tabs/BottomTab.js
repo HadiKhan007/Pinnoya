@@ -130,6 +130,7 @@ export const BottomTab = ({state, descriptors, navigation}) => {
         onPressClose={() => {
           tabref?.current?.close();
         }}
+        navigation={navigation}
       />
     </View>
   );
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
     right: -25,
   },
   profileImageStyle: {
-    height: 18,
+    height: 17,
     width: 18,
     resizeMode: 'contain',
   },

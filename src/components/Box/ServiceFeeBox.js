@@ -7,7 +7,6 @@ import {colors, family, size, WP} from '../../shared/exporter';
 export const ServiceFeeBox = ({onPressBtn}) => {
   return (
     <View>
-      <TitleHeading title={'Payment'} />
       <BetaHeading title={'Service fee'} subtitle={'15%'} />
       <BetaHeading title={'Transportation fee'} subtitle={'₱00.00'} />
       <BetaHeading title={'VAT'} subtitle={'₱00.00'} />
@@ -16,27 +15,32 @@ export const ServiceFeeBox = ({onPressBtn}) => {
         <Text style={styles.smTitle}>Proin eget tortor risus</Text>
         <Text style={styles.title}>₱00.00</Text>
       </View>
-      <Button
-        onPressBtn={onPressBtn}
-        bgColor={colors.b_gradient}
-        btnText={'Service Detail'}
-        textColor={colors.white}
-      />
+      {onPressBtn && (
+        <View style={styles.aiCenter}>
+          <Button
+            onPressBtn={onPressBtn}
+            bgColor={colors.b_gradient}
+            btnText={'Service Detail'}
+            textColor={colors.white}
+            width={'99%'}
+          />
+        </View>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   boxContainer: {
-    width: '100%',
-    backgroundColor: colors.white,
+    width: '99%',
+    backgroundColor: colors.white2,
     shadowColor: colors.box_shadow,
     margin: WP('5'),
     shadowOffset: {
-      width: 0,
+      width: 5,
       height: 0,
     },
-    shadowOpacity: 0.34,
+    shadowOpacity: 0.5,
     shadowRadius: 6.27,
     elevation: 10,
     borderRadius: 10,
@@ -62,5 +66,8 @@ const styles = StyleSheet.create({
     color: colors.b1,
     fontFamily: family.Ubuntu_Bold,
     fontSize: size.xxtitle,
+  },
+  aiCenter: {
+    justifyContent: 'center',
   },
 });

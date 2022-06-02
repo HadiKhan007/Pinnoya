@@ -35,14 +35,18 @@ export const colors = {
   g4: '#C8C8C8',
   g5: '#F7F7F7',
   g6: '#E9E9E9',
+  g7: '#D7D7D7',
+  g8: '#C8C8C8',
 
   // Blue
   bl1: '#0066FF',
   // Yellow
   y1: '#F2AD50',
+  y2: '#FFD600',
 
   //Green Color
   gr1: '#00A41A',
+  gr2: '#00A41A',
   //White colors
   white: '#ffffff',
   white2: '#FAFAFA',

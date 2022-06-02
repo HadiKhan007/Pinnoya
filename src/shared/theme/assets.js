@@ -32,6 +32,16 @@ export const appIcons = {
   tackLine: require('../../assets/icons/trackLine.png'),
   circle: require('../../assets/icons/circle.png'),
   pencil: require('../../assets/icons/pencil.png'),
+  user2: require('../../assets/icons/user2.png'),
+  family: require('../../assets/icons/family.png'),
+  book: require('../../assets/icons/book.png'),
+  privacy: require('../../assets/icons/privacy.png'),
+  terms: require('../../assets/icons/terms.png'),
+  paymentcard: require('../../assets/icons/paymentcard.png'),
+  oval: require('../../assets/icons/oval.png'),
+  cardHome: require('../../assets/icons/cardHome.png'),
+  simpleCard: require('../../assets/icons/simpleCard.png'),
+  emptyStar: require('../../assets/icons/emptyStar.png'),
 };
 
 export const appSvgs = {

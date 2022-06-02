@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {DescriptionBox, ServiceFeeBox, UserInfoBox} from '..';
+import {DescriptionBox, ServiceFeeBox, TitleHeading, UserInfoBox} from '..';
 import {colors, spacing, WP} from '../../shared/exporter';
 
 export const UserInfoModal = ({modalRef, height, onPressBtn}) => {
@@ -28,6 +28,7 @@ export const UserInfoModal = ({modalRef, height, onPressBtn}) => {
           <UserInfoBox />
           <DescriptionBox />
           <View style={spacing.my4}>
+            <TitleHeading title={'Payment'} />
             <ServiceFeeBox onPressBtn={onPressBtn} />
           </View>
         </ScrollView>

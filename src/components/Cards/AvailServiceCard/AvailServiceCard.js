@@ -2,6 +2,8 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {
   appImages,
+  booked_status_color,
+  booked_status_text_color,
   colors,
   family,
   profile_uri,
@@ -11,7 +13,7 @@ import {
 import TickIcon from 'react-native-vector-icons/Feather';
 import StarIcon from 'react-native-vector-icons/Ionicons';
 
-export const AvailServiceCard = () => {
+export const AvailServiceCard = ({status}) => {
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
@@ -26,6 +28,21 @@ export const AvailServiceCard = () => {
             <TickIcon name="check" size={6} color={colors.white} />
           </View>
         </View>
+        {status && (
+          <View
+            style={[
+              styles.statusStyle,
+              {backgroundColor: booked_status_color(status)},
+            ]}>
+            <Text
+              style={[
+                styles.textStyle,
+                {color: booked_status_text_color(status)},
+              ]}>
+              {status}
+            </Text>
+          </View>
+        )}
         <Text style={styles.smallTxt}>
           Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus.
         </Text>
@@ -98,5 +115,17 @@ const styles = StyleSheet.create({
     color: colors.p1,
     fontFamily: family.Ubuntu_Bold,
     paddingRight: 5,
+  },
+  statusStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '35%',
+    borderRadius: 6,
+    height: 18,
+  },
+  textStyle: {
+    fontSize: size.xxxtiny,
+    fontFamily: family.Ubuntu_Regular,
+    color: colors.white,
   },
 });
