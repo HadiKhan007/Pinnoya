@@ -9,10 +9,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: WP('5'),
-  },
-  flex1: {
-    flex: 1,
+    paddingHorizontal: WP('4'),
   },
 });
 

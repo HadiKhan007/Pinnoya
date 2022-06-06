@@ -46,7 +46,8 @@ const Dashboard = ({navigation}) => {
             />
             <Button
               onPressBtn={() => {
-                setopenModal(true);
+                // setopenModal(true);
+                navigation?.navigate('Chat');
               }}
               bgColor={colors.b_gradient}
               btnText={'Full Time Services'}

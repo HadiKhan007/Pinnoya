@@ -42,6 +42,10 @@ export const appIcons = {
   cardHome: require('../../assets/icons/cardHome.png'),
   simpleCard: require('../../assets/icons/simpleCard.png'),
   emptyStar: require('../../assets/icons/emptyStar.png'),
+  sms: require('../../assets/icons/sms.png'),
+  send: require('../../assets/icons/send.png'),
+  vol: require('../../assets/icons/vol.png'),
+  mic: require('../../assets/icons/mic.png'),
 };
 
 export const appSvgs = {

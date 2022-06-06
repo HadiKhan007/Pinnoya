@@ -40,6 +40,7 @@ export const colors = {
 
   // Blue
   bl1: '#0066FF',
+  bl2: '#74ABFF',
   // Yellow
   y1: '#F2AD50',
   y2: '#FFD600',
@@ -47,6 +48,7 @@ export const colors = {
   //Green Color
   gr1: '#00A41A',
   gr2: '#00A41A',
+  gr3: '#41CF0F',
   //White colors
   white: '#ffffff',
   white2: '#FAFAFA',
@@ -79,4 +81,5 @@ export const colors = {
   red: 'red',
   r1: '#CB0005',
   default_color: '#E5E5E5',
+  mb_gradient: ['#E8E8E8', '#E8E8E8'],
 };

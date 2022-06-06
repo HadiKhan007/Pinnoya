@@ -8,8 +8,10 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: colors.white2,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 10,
   },
 });
 

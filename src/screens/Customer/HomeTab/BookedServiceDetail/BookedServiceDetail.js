@@ -13,6 +13,7 @@ import {
 } from '../../../../components';
 import styles from './styles';
 import {appIcons, colors, spacing} from '../../../../shared/exporter';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const BookedServiceDetail = ({navigation}) => {
   const [rating, setRating] = useState(0);
@@ -27,17 +28,18 @@ const BookedServiceDetail = ({navigation}) => {
       />
       <View style={styles.container}>
         <View style={styles.contentContainer}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
             <AvailServiceCard status={'On going'} />
             <View style={spacing.my4}>
-              <CompleteComp
+              {/* <CompleteComp
                 rating={rating}
                 setRating={rat => {
                   setRating(rat);
                 }}
-              />
+              /> */}
+              <OngoingComp />
             </View>
-          </ScrollView>
+          </KeyboardAwareScrollView>
         </View>
       </View>
     </>

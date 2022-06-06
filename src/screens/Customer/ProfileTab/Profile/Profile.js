@@ -3,7 +3,7 @@ import React from 'react';
 import {AppHeader, ProfileBox, ProfileField} from '../../../../components';
 import styles from './styles';
 import {appIcons, edit_list, spacing} from '../../../../shared/exporter';
-const Profile = () => {
+const Profile = ({navigation}) => {
   return (
     <>
       <AppHeader title={'Profile'} />
@@ -17,7 +17,10 @@ const Profile = () => {
                 data={edit_list}
                 renderItem={({item}) => {
                   return (
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation?.navigate(item?.route);
+                      }}>
                       <ProfileField
                         title={item.title}
                         img={item.img}

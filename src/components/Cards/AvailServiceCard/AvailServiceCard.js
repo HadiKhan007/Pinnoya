@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     width: '35%',
     borderRadius: 6,
     height: 18,
+    marginTop: 5,
   },
   textStyle: {
     fontSize: size.xxxtiny,

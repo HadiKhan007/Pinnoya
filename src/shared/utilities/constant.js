@@ -276,19 +276,19 @@ const edit_list = [
     id: 7,
     title: 'About Us',
     img: appIcons.oval,
-    route: '',
+    route: 'AboutUs',
   },
   {
     id: 8,
     title: 'Terms and Condition',
     img: appIcons.terms,
-    route: '',
+    route: 'Terms',
   },
   {
     id: 9,
     title: 'Privacy Policy',
     img: appIcons.privacy,
-    route: '',
+    route: 'PrivacyPolicy',
   },
   {
     id: 10,
