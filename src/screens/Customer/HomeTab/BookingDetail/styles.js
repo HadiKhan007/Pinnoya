@@ -15,6 +15,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
   },
+  inputStyle: {
+    fontSize: size.tiny,
+    color: colors.g2,
+    paddingHorizontal: WP('3'),
+    backgroundColor: colors.white,
+    justifyContent: 'center',
+    paddingVertical: 5,
+    marginVertical: WP('2'),
+    height: 150,
+  },
 });
 
 export default styles;

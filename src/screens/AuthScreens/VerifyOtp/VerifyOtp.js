@@ -55,7 +55,7 @@ const VerifyOtp = ({navigation}) => {
                     key={index}
                     style={[
                       styles.cell,
-                      {borderColor: isFocused ? colors.p1 : colors.g8},
+                      {borderColor: isFocused ? colors.p1 : colors.g7},
                     ]}
                     onLayout={getCellOnLayoutHandler(index)}>
                     <Text style={styles.txtStyle}>{symbol}</Text>

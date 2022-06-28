@@ -19,7 +19,7 @@ import {
 } from '../../shared/exporter';
 import CrossIcon from 'react-native-vector-icons/Entypo';
 import LinearGradient from 'react-native-linear-gradient';
-export const HomeTabModal = ({tabRef, title, subtitle, img, onPressClose}) => {
+export const HomeTabModal = ({tabRef, onPressClose, navigation}) => {
   return (
     <RBSheet
       ref={tabRef}
@@ -43,7 +43,12 @@ export const HomeTabModal = ({tabRef, title, subtitle, img, onPressClose}) => {
             data={tabArray}
             renderItem={({item}) => {
               return (
-                <TouchableOpacity style={styles.textContainer}>
+                <TouchableOpacity
+                  style={styles.textContainer}
+                  onPress={() => {
+                    navigation?.navigate(item?.route);
+                    tabRef?.current?.close();
+                  }}>
                   <Text style={styles.titleStyle}>{item.title}</Text>
                 </TouchableOpacity>
               );

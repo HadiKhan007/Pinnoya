@@ -1,14 +1,12 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const MyBooking = () => {
+const EditProfile = () => {
   return (
     <View>
-      <Text>MyBooking</Text>
+      <Text>EditProfile</Text>
     </View>
   );
 };
 
-export default MyBooking;
-
-const styles = StyleSheet.create({});
+export default EditProfile;

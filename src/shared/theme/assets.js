@@ -29,6 +29,23 @@ export const appIcons = {
   fillbookmark: require('../../assets/icons/fillbookmark.png'),
   zoom: require('../../assets/icons/zoom.png'),
   star: require('../../assets/icons/star.png'),
+  tackLine: require('../../assets/icons/trackLine.png'),
+  circle: require('../../assets/icons/circle.png'),
+  pencil: require('../../assets/icons/pencil.png'),
+  user2: require('../../assets/icons/user2.png'),
+  family: require('../../assets/icons/family.png'),
+  book: require('../../assets/icons/book.png'),
+  privacy: require('../../assets/icons/privacy.png'),
+  terms: require('../../assets/icons/terms.png'),
+  paymentcard: require('../../assets/icons/paymentcard.png'),
+  oval: require('../../assets/icons/oval.png'),
+  cardHome: require('../../assets/icons/cardHome.png'),
+  simpleCard: require('../../assets/icons/simpleCard.png'),
+  emptyStar: require('../../assets/icons/emptyStar.png'),
+  sms: require('../../assets/icons/sms.png'),
+  send: require('../../assets/icons/send.png'),
+  vol: require('../../assets/icons/vol.png'),
+  mic: require('../../assets/icons/mic.png'),
 };
 
 export const appSvgs = {

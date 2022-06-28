@@ -1,17 +1,16 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import MyBooking from '../../../screens/Customer/MyBookingTab/MyBookings';
-
+import Favourite from '../../../screens/Customer/FavouriteTab/Favourite';
 const Stack = createStackNavigator();
 
-function MyBookingStack(props) {
+function FavouriteStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="BookingStack"
+      initialRouteName="FavouriteStack"
       screenOptions={{headerShown: false}}>
-      <Stack.Screen name="MyBooking" component={MyBooking} />
+      <Stack.Screen name="Favourite" component={Favourite} />
     </Stack.Navigator>
   );
 }
 
-export default MyBookingStack;
+export default FavouriteStack;

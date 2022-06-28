@@ -10,7 +10,7 @@ import {
   WP,
 } from '../../shared/exporter';
 import BackArrow from 'react-native-vector-icons/AntDesign';
-export const AppHeader = ({backIcon, onPressBack, title}) => {
+export const AppHeader = ({backIcon, onPressBack, title, rightArea}) => {
   return (
     <>
       <MyStatusBar backgroundColor={colors.white} />
@@ -26,6 +26,13 @@ export const AppHeader = ({backIcon, onPressBack, title}) => {
             )}
             <Text style={styles.titleStyle}>{title}</Text>
           </View>
+          {rightArea && (
+            <View style={styles.rightCon}>
+              <TouchableOpacity style={styles.rightBtnCon}>
+                <Text style={styles.textStyle}>Reviewed all</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </View>
     </>
@@ -57,5 +64,19 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     paddingRight: 20,
+  },
+  rightCon: {},
+  rightBtnCon: {
+    backgroundColor: colors.p1,
+    height: 30,
+    paddingHorizontal: 15,
+    borderRadius: 7,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textStyle: {
+    color: colors.white,
+    fontSize: size.xsmall,
+    fontFamily: family.Ubuntu_Medium,
   },
 });

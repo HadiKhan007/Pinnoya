@@ -11,6 +11,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  btnCon: {
+    position: 'absolute',
+    bottom: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    zIndex: 9999,
+  },
 });
 
 export default styles;

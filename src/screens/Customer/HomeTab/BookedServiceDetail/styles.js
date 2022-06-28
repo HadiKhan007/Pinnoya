@@ -1,5 +1,5 @@
 import {Platform, StyleSheet} from 'react-native';
-import {colors} from '../../../../shared/exporter';
+import {colors, WP} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,8 +8,9 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: colors.white,
+    paddingHorizontal: WP('4'),
+    paddingBottom: WP('4'),
   },
 });
 

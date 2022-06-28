@@ -5,16 +5,41 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
+  Platform,
+  Keyboard,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {appIcons, colors, family, HP, size, WP} from '../../shared/exporter';
 import {HomeTabModal} from '../../components';
 
 import LinearGradient from 'react-native-linear-gradient';
 export const BottomTab = ({state, descriptors, navigation}) => {
   const tabref = useRef(null);
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    let keyboardEventListeners;
+    if (Platform.OS === 'android') {
+      keyboardEventListeners = [
+        Keyboard.addListener('keyboardDidShow', () => setVisible(false)),
+        Keyboard.addListener('keyboardDidHide', () => setVisible(true)),
+      ];
+    }
+    return () => {
+      if (Platform.OS === 'android') {
+        keyboardEventListeners &&
+          keyboardEventListeners.forEach(eventListener =>
+            eventListener.remove(),
+          );
+      }
+    };
+  }, []);
+
   return (
-    <View style={{backgroundColor: colors.white2}}>
+    <View
+      style={{
+        backgroundColor: colors.white2,
+        display: visible ? 'flex' : 'none',
+      }}>
       <View style={styles.container}>
         <LinearGradient
           colors={colors.b_gradient}
@@ -105,6 +130,7 @@ export const BottomTab = ({state, descriptors, navigation}) => {
         onPressClose={() => {
           tabref?.current?.close();
         }}
+        navigation={navigation}
       />
     </View>
   );
@@ -147,7 +173,7 @@ const styles = StyleSheet.create({
     right: -25,
   },
   profileImageStyle: {
-    height: 18,
+    height: 17,
     width: 18,
     resizeMode: 'contain',
   },
