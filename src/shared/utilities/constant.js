@@ -1,4 +1,4 @@
-import {appIcons} from '../exporter';
+import {appIcons, appImages} from '../exporter';
 
 const ANDROID = Platform.OS === 'android';
 const IOS = Platform.OS === 'ios';
@@ -17,8 +17,289 @@ let image_options = {
     path: 'images',
   },
 };
+const tabArray = [
+  {
+    id: 1,
+    title: 'My Bookings',
+    route: 'MyBooking',
+  },
+  {
+    id: 2,
+    title: 'My Reviews',
+    route: 'MyReviews',
+  },
+];
+
+const serviceList = [
+  {
+    id: 1,
+    title: 'Babysitter',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    img: appImages.dogWalking,
+  },
+  {
+    id: 2,
+    title: 'Housekeeper',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    img: appImages.housekeeper,
+  },
+  {
+    id: 3,
+    title: 'Senior Caregiver',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    img: appImages.findBaby,
+  },
+  {
+    id: 4,
+    title: 'Tutor',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    img: appImages.workingMom,
+  },
+];
+
+const filterServiceList = [
+  {
+    id: 0,
+    title: 'For Babysitter',
+  },
+  {
+    id: 1,
+    title: 'Housekeeper',
+  },
+  {
+    id: 2,
+    title: 'For Pets',
+  },
+  {
+    id: 3,
+    title: 'Senior Caregiver',
+  },
+  {
+    id: 4,
+    title: 'Tutor',
+  },
+];
+
+export const job_list = [
+  {
+    id: 1,
+    title: 'Lorem ipsum dolor',
+    body: 'Pellentesque in ipsum id orci porta dapibus.',
+    expanded: false,
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum dolor',
+    body: 'Pellentesque in ipsum id orci porta dapibus.',
+    expanded: false,
+  },
+  {
+    id: 3,
+    title: 'Lorem ipsum dolor',
+    body: 'Pellentesque in ipsum id orci porta dapibus.',
+    expanded: false,
+  },
+  {
+    id: 4,
+    title: 'Lorem ipsum dolor',
+    body: 'Pellentesque in ipsum id orci porta dapibus.',
+    expanded: false,
+  },
+];
+
+const kids = [
+  {
+    id: 1,
+    text: 1,
+  },
+  {
+    id: 2,
+    text: 2,
+  },
+  {
+    id: 3,
+    text: 3,
+  },
+  {
+    id: 4,
+    text: 4,
+  },
+  {
+    id: 5,
+    text: 5,
+  },
+  {
+    id: 6,
+    text: 6,
+  },
+  {
+    id: 7,
+    text: 7,
+  },
+  {
+    id: 8,
+    text: 8,
+  },
+];
+
+const cities = [
+  {
+    id: 1,
+    text: 'Lahore',
+  },
+  {
+    id: 2,
+    text: 'Karachi',
+  },
+  {
+    id: 3,
+    text: 'Peshawer',
+  },
+  {
+    id: 4,
+    text: 'Quetta',
+  },
+  {
+    id: 5,
+    text: 'Multan',
+  },
+];
+
+const pets = [
+  {
+    id: 1,
+    text: 1,
+  },
+  {
+    id: 2,
+    text: 2,
+  },
+  {
+    id: 3,
+    text: 3,
+  },
+  {
+    id: 4,
+    text: 4,
+  },
+  {
+    id: 5,
+    text: 5,
+  },
+  {
+    id: 6,
+    text: 6,
+  },
+  {
+    id: 7,
+    text: 7,
+  },
+  {
+    id: 8,
+    text: 8,
+  },
+];
+
+const work_exp = [
+  {
+    id: 1,
+    text: '1-2 years',
+  },
+  {
+    id: 2,
+    text: '2-3 years',
+  },
+  {
+    id: 3,
+    text: '3-4 years',
+  },
+  {
+    id: 4,
+    text: '4-5 years',
+  },
+  {
+    id: 5,
+    text: '5-6 years',
+  },
+  {
+    id: 6,
+    text: '6-7 years',
+  },
+  {
+    id: 7,
+    text: '8-9 years',
+  },
+  {
+    id: 8,
+    text: '9-10 years',
+  },
+];
+
+const edit_list = [
+  {
+    id: 1,
+    title: 'Edit Profile',
+    img: appIcons.user2,
+    route: '',
+  },
+  {
+    id: 2,
+    title: 'Payment Information',
+    img: appIcons.paymentcard,
+    route: '',
+  },
+  {
+    id: 3,
+    title: 'App Credit',
+    img: appIcons.simpleCard,
+    route: '',
+  },
+  {
+    id: 4,
+    title: 'My Family',
+    img: appIcons.family,
+    route: '',
+  },
+  {
+    id: 5,
+    title: 'My Addresses',
+    img: appIcons.cardHome,
+    route: '',
+  },
+  {
+    id: 6,
+    title: 'Help Center',
+    img: appIcons.book,
+    route: '',
+  },
+  {
+    id: 7,
+    title: 'About Us',
+    img: appIcons.oval,
+    route: 'AboutUs',
+  },
+  {
+    id: 8,
+    title: 'Terms and Condition',
+    img: appIcons.terms,
+    route: 'Terms',
+  },
+  {
+    id: 9,
+    title: 'Privacy Policy',
+    img: appIcons.privacy,
+    route: 'PrivacyPolicy',
+  },
+  {
+    id: 10,
+    title: 'Version',
+    route: '',
+    text: '00.00.00',
+  },
+];
 const stripe_publishableKey = '';
-const profile_uri = '';
+const profile_uri =
+  'https://www.shareicon.net/data/512x512/2017/01/06/868320_people_512x512.png';
 export {
   ANDROID,
   IOS,
@@ -26,6 +307,14 @@ export {
   web_client_id,
   swipe_config,
   image_options,
-  profile_uri,
   stripe_publishableKey,
+  tabArray,
+  serviceList,
+  kids,
+  pets,
+  cities,
+  work_exp,
+  filterServiceList,
+  profile_uri,
+  edit_list,
 };

@@ -2,7 +2,7 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import React, {useRef, useState} from 'react';
 import styles from './styles';
 import {AuthHeader, Button, ImageBox, IntroSlider} from '../../components';
-import {appImages, scrWidth} from '../../shared/exporter';
+import {appImages, colors, scrWidth, spacing} from '../../shared/exporter';
 import CarouselView from 'react-native-snap-carousel';
 
 const slides = [
@@ -19,17 +19,16 @@ const slides = [
     title: 'Vivamus suscipit tortor eget felis porttitor',
     title2:
       'Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus.',
-    image: appImages.welcome1,
+    image: appImages.pana,
   },
 ];
-const Walkthrough = () => {
-  const [index, setIndex] = useState(0);
+const Walkthrough = ({navigation}) => {
   const _carousel1 = useRef(null);
   //Welcome Cards
-  const welcomeCards = ({item}) => {
+  const welcomeCards = ({item, index}) => {
     return (
       <View style={{flex: 1}}>
-        <IntroSlider item={item} />
+        <IntroSlider item={item} index={index} />
       </View>
     );
   };
@@ -46,11 +45,24 @@ const Walkthrough = () => {
             renderItem={welcomeCards}
             sliderWidth={scrWidth}
             itemWidth={scrWidth}
-            onSnapToItem={i => setIndex(i)}
           />
-          <View style={{flex: 0.3}}>
-            <Button />
-          </View>
+        </View>
+        <View style={styles.secondContainer}>
+          <Button
+            bgColor={colors.b_gradient}
+            btnText={'Find a Nanny'}
+            textColor={colors.white}
+            onPressBtn={() => {
+              navigation?.navigate('Auth');
+            }}
+          />
+          <Button
+            onPressBtn={() => {
+              navigation?.navigate('Auth');
+            }}
+            textColor={colors.p1}
+            btnText={'Sign Up as a Nanny'}
+          />
         </View>
       </View>
     </>

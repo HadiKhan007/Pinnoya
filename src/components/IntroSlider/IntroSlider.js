@@ -1,12 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {ImageBox} from '..';
 import {colors, family, size, WP} from '../../shared/exporter';
 
-export const IntroSlider = ({item}) => {
+export const IntroSlider = ({item, index}) => {
   return (
     <View>
-      <ImageBox logo={item?.image} />
+      <ImageBox logo={item?.image} id={index} />
       <View style={styles.container}>
         <Text style={styles.h1}>{item?.title}</Text>
         <Text style={styles.h2}>{item?.title2}</Text>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     fontSize: size.h5,
     color: colors.b1,
     textAlign: 'center',
-    // fontFamily: family.Ubuntu_Medium,
+    fontFamily: family.Ubuntu_Medium,
   },
   h2: {
     marginVertical: 10,
@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: size.xsmall,
     lineHeight: 22,
-    // fontFamily: family.Ubuntu_Light,
+    fontFamily: family.Ubuntu_Light,
   },
 });

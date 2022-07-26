@@ -1,7 +1,7 @@
 export const colors = {
   // Primary Color
-  p1: '#01BAFF',
-  p2: '#01BAFFCC',
+  p1: '#941C6B',
+  p2: '#F0E4EC',
   p3: '#01BAFF99',
   p4: '#01BAFF66',
   p5: '#01BAFF33',
@@ -9,7 +9,7 @@ export const colors = {
   p7: '#CCF1FF',
 
   // Secondary Color
-  s1: '#EF9924',
+  s1: '#FFA873',
   s2: '#EF9924CC',
   s3: '#EF992499',
   s4: '#EF992466',
@@ -30,27 +30,29 @@ export const colors = {
 
   //Gray Color
   g1: '#808080',
-  g2: '#ADA4A5',
-  g3: '#626262',
-  g4: '#2F2E2E',
-  g5: '#7B6F72',
-  g6: '#747471',
-  g7: '#747688',
-  g8: '#DDDADA',
-  g8: '#E1E1E1',
-  g9: '#626262',
-  g10: '#E6E6E6',
-  g11: '#C4C4C4',
-  g12: '#F7F8F8',
-  g13: '#DA840D',
+  g2: '#D7D7D7',
+  g3: '#E8E8E8',
+  g4: '#C8C8C8',
+  g5: '#F7F7F7',
+  g6: '#E9E9E9',
+  g7: '#D7D7D7',
+  g8: '#C8C8C8',
 
+  // Blue
+  bl1: '#0066FF',
+  bl2: '#74ABFF',
   // Yellow
   y1: '#F2AD50',
+  y2: '#FFD600',
 
   //Green Color
-  gr1: '#24D18F',
+  gr1: '#00A41A',
+  gr2: '#00A41A',
+  gr3: '#41CF0F',
   //White colors
   white: '#ffffff',
+  white2: '#FAFAFA',
+  white3: '#E7E7E7',
 
   //******************- Gradients -*******************/
 
@@ -59,12 +61,25 @@ export const colors = {
   //Secondary Gradient
   s_gradient: ['#E79069', '#E7BB69'],
   t_gradient: ['#01BAFF', '#01BAFF'],
+  b_gradient: [
+    '#D390A6',
+    '#CF89A2',
+    '#C57699',
+    '#B45689',
+    '#9C2B72',
+    '#941C6B',
+    '#941C6B',
+    '#941C6B',
+  ],
+  db_gradient: ['#FFFFFF', '#FFFFFF'],
   shadowColor: 'rgba(1, 186, 255, 0.2)',
-  box_shadow: 'rgba(0, 0, 0, 0.18)',
+  half_white_gradient: ['#FAFAFA', '#FAFAFA'],
+  box_shadow: 'rgba(0, 0, 0, 0.15)',
   introSliderColor: '#34C8FF',
   light_shadow: '#979797',
   // red
   red: 'red',
   r1: '#CB0005',
   default_color: '#E5E5E5',
+  mb_gradient: ['#E8E8E8', '#E8E8E8'],
 };
