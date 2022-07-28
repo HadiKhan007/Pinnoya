@@ -297,6 +297,47 @@ const edit_list = [
     text: '00.00.00',
   },
 ];
+const location_list = [
+  {
+    id: 1,
+    title: 'Home',
+  },
+  {
+    id: 1,
+    title: 'Work',
+  },
+  {
+    id: 1,
+    title: 'Friends and Family',
+  },
+  {
+    id: 1,
+    title: 'Railway Station',
+  },
+];
+const Service_List = [
+  {
+    id: 1,
+    title: 'For Babysitters'
+  },
+  {
+    id: 2,
+    title: 'HouseKeepers'
+  },
+  {
+    id: 3,
+    title: 'For pets'
+  },
+  {
+    id: 4,
+    title: 'Senior Caregiver'
+  },
+  {
+    id: 5,
+    title: 'Tutor'
+  },
+];
+
 const stripe_publishableKey = '';
 const profile_uri =
   'https://www.shareicon.net/data/512x512/2017/01/06/868320_people_512x512.png';
@@ -317,4 +358,6 @@ export {
   filterServiceList,
   profile_uri,
   edit_list,
+  location_list,
+  Service_List,
 };

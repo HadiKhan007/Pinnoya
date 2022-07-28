@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Modal from 'react-native-modal';
-import {Button} from '..';
+import {Button} from '../../components';
 import {colors, family, size, WP} from '../../shared/exporter';
 
 export const HomeModal = ({onPressHide, show, onPressBack}) => {

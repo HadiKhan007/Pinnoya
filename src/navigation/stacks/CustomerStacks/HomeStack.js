@@ -14,6 +14,7 @@ import MyBookings from '../../../screens/Customer/HomeTab/MyBookings';
 import BookedServiceDetail from '../../../screens/Customer/HomeTab/BookedServiceDetail';
 import CallNow from '../../../screens/Customer/HomeTab/CallNow/CallNow';
 import Chat from '../../../screens/Customer/HomeTab/Chat/Chat';
+import FullTimeService from '../../../screens/Customer/HomeTab/FullTimeServices/FullTimeService';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,10 @@ function HomeStack(props) {
       <Stack.Screen
         name="BookedServiceDetail"
         component={BookedServiceDetail}
+      />
+      <Stack.Screen
+        name="FullTimeService"
+        component={FullTimeService}
       />
     </Stack.Navigator>
   );

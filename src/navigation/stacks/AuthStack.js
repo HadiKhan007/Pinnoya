@@ -20,20 +20,18 @@ const Stack = createStackNavigator();
 function AuthStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="ResetPassword"
+      initialRouteName="Login"
       screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="AddPersonalInfo" component={AddPersonalInfo} />
       <Stack.Screen name="SetLocation" component={SetLocation} />
-      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="CSignUp" component={CSignUp} />
       <Stack.Screen name="CSignUp2" component={CSignUp2} />
-
       <Stack.Screen name="SPSignUp" component={SPSignUp} />
       <Stack.Screen name="SPSignUp2" component={SPSignUp2} />
       <Stack.Screen name="UploadDoc" component={UploadDoc} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-
       <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
       <Stack.Screen
         name="ResetPasswordSuccess"

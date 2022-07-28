@@ -1,5 +1,5 @@
 import {FlatList, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   AppHeader,
   ServiceCard,
@@ -8,6 +8,7 @@ import {
 import styles from './styles';
 import {appIcons, spacing} from '../../../../shared/exporter';
 const ServiceDetail = ({navigation}) => {
+  const tabRef = useRef(null);
   return (
     <>
       <AppHeader
@@ -25,14 +26,16 @@ const ServiceDetail = ({navigation}) => {
                 id: 1,
                 title: 'Babysitter',
                 subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
-                img: appIcons.filter,
+                img: appIcons.settings,
               }}
               imgStyle={styles.imageStyle}
+              tabRef={tabRef}
               onPress={() => {
-                navigation?.navigate('FilterService');
+                tabRef.current.open();
               }}
             />
           </View>
+
         </View>
         <View style={styles.secondContentContainer}>
           <FlatList
