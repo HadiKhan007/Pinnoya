@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.white,
     padding: 20,
-    shadowColor: colors.box_shadow,
+    shadowColor: colors.b1,
     shadowOffset: {
-      width: 0,
-      height: 0,
+      width: 0.01,
+      height: 0.01,
     },
-    shadowOpacity: 0.5,
-    shadowRadius: 6.27,
+    // shadowOpacity: 1,
+    // shadowRadius: 0.5,
     elevation: 8,
   },
 });

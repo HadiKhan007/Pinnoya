@@ -53,9 +53,18 @@ export const ServiceDetailCard = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: 120,
+    height: 130,
     marginVertical: 10,
     flexDirection: 'row',
+    elevation: 5,
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
   },
   leftCon: {
     backgroundColor: colors.g3,
@@ -129,8 +138,8 @@ const styles = StyleSheet.create({
     fontFamily: family.Ubuntu_Medium,
   },
   aiRowFlex: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    // flexDirection: 'row',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
   },
   smbtnCon: {
@@ -140,6 +149,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 7,
+    marginTop: WP(1),
   },
   smText: {
     fontSize: size.tiny,

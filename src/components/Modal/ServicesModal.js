@@ -1,32 +1,57 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import RBSheet from 'react-native-raw-bottom-sheet';
-const ServiceModal = ({tabRef}) => {
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import Modal from 'react-native-modal';
+import {Button} from '../../components';
+import {colors, family, size, WP} from '../../shared/exporter';
+
+export const ServiceModal = ({onPressHide, show, onPressBack, img, maxHeight}) => {
   return (
-    <RBSheet
-    ref={tabRef}
-      height={scrHeight / 1.2}
-      openDuration={250}
-      customStyles={{
-        container: styles.container1,
-        wrapper: {
-          backgroundColor: 'transparent',
-        },
-      }}>
-        <View>
-            <Text>hma</Text>
+    <View>
+      <Modal onBackdropPress={onPressHide} isVisible={show}>
+        <View style={[styles.modalContainer]}>
+          <Image source={img} style={styles.img} />
+          <Text style={[styles.titleStyle, {maxHeight: maxHeight}]}>
+            your service successfully submitting
+          </Text>
+          <Text style={styles.subtitleStyle}>
+            We will contact you within 24h for the service.
+          </Text>
+          <Button
+            onPressBtn={onPressBack}
+            btnText={'Ok'}
+            bgColor={colors.b_gradient}
+            width={WP('80')}
+            textColor={colors.white}
+          />
         </View>
-      </RBSheet>
+      </Modal>
+    </View>
   );
 };
-export default ServiceModal;
+
 const styles = StyleSheet.create({
-  container1: {
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    // backgroundColor: colors.white,
-    height: WP(115),
-    width: WP(100),
-    overflow: 'hidden',
+  modalContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    paddingVertical: WP('7'),
+    borderRadius: 30,
+  },
+  titleStyle: {
+    fontSize: size.large,
+    color: colors.p1,
+    fontFamily: family.Ubuntu_Medium,
+  },
+  subtitleStyle: {
+    fontSize: size.xsmall,
+    color: colors.b1,
+    marginVertical: WP('5'),
+    marginHorizontal: WP('10'),
+    textAlign: 'center',
+    lineHeight: 21,
+  },
+  img: {
+    height: 50,
+    width: 50,
   },
 });

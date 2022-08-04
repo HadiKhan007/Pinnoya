@@ -6,7 +6,6 @@ import {colors, WP} from '../../../../shared/exporter';
 import styles from './styles';
 
 const SetLocation = ({navigation}) => {
-  const tabref = useRef(null);
   return (
     <>
       <View style={styles.container}>
@@ -14,10 +13,8 @@ const SetLocation = ({navigation}) => {
         <MapLocation
           title={'Set Location'}
           backIcon={true}
-          tabRef={tabref}
           onPressBack={() => {
-            // navigation.goBack();
-            tabref.current.open();
+            navigation.goBack();
           }}
         />
       </View>

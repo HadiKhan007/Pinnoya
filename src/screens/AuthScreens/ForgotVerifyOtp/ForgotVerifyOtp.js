@@ -9,7 +9,7 @@ import {
 import {colors, WP, spacing} from '../../../shared/exporter';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import CountDown from 'react-native-countdown-component';
-const VerifyOtp = ({navigation}) => {
+const ForgotVerifyOtp = ({navigation}) => {
   const [resend, setResend] = useState(false);
   const [value, setValue] = useState('');
   const [timerCount, setTimer] = useState(60);
@@ -42,7 +42,7 @@ const VerifyOtp = ({navigation}) => {
         <View style={styles.contentContainer}>
           <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
             <AuthHeading
-              title={'Verify Otp'}
+              title={'Verify Phone'}
               subtitle={'Pellentesque in ipsum id orci porta dapibus.'}
             />
             <View>
@@ -115,7 +115,7 @@ const VerifyOtp = ({navigation}) => {
               )}
               <Button
                 onPressBtn={() => {
-                  navigation?.navigate('ResetPassword');
+                  navigation?.navigate('AddPersonalInfo');
                 }}
                 bgColor={colors.b_gradient}
                 textColor={colors.white}
@@ -129,4 +129,4 @@ const VerifyOtp = ({navigation}) => {
   );
 };
 
-export default VerifyOtp;
+export default ForgotVerifyOtp;

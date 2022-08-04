@@ -21,7 +21,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 const ResetPassword = ({navigation}) => {
- 
   const auth = useSelector(state => state?.auth);
   const dispatch = useDispatch();
   const onSubmitReset = () => {
@@ -40,7 +39,7 @@ const ResetPassword = ({navigation}) => {
         },
       ),
     );
-    navigation?.navigate('Login');
+    navigation?.navigate('ResetPasswordSuccess');
   };
   return (
     <>

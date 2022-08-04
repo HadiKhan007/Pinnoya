@@ -155,26 +155,26 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   firstImageStyle: {
-    height: 25,
-    width: 25,
+    height: 20,
+    width: 23,
     resizeMode: 'contain',
   },
 
   secondImageStyle: {
-    height: 25,
-    width: 25,
+    height: 22,
+    width:22,
     resizeMode: 'contain',
     left: -25,
   },
   thirdImageStyle: {
-    height: 25,
-    width: 25,
+    height: 22,
+    width: 22,
     resizeMode: 'contain',
     right: -25,
   },
   profileImageStyle: {
-    height:20,
-    width: 20,
+    height:18,
+    width: 18,
     resizeMode: 'contain',
   },
 

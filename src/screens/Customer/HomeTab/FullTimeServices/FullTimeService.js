@@ -1,10 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {View, Text} from 'react-native';
-import {
-  HomeHeader,
-  AppInput,
-  Button,
-} from '../../../../components';
+import {HomeHeader, AppInput, Button, HomeModal} from '../../../../components';
 import {
   appIcons,
   spacing,
@@ -15,8 +11,8 @@ import {
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import {Formik} from 'formik';
+import {ServiceModal} from '../../../../components/Modal/ServicesModal';
 const FullTimeService = ({navigation}) => {
-  const tabref = useRef(null);
   const [openModal, setopenModal] = useState(false);
   return (
     <>
@@ -141,9 +137,8 @@ const FullTimeService = ({navigation}) => {
                 />
                 <View style={styles.buttonContainer}>
                   <Button
-                    tabRef={tabref}
                     onPressBtn={() => {
-                      tabref.current.open();
+                      setopenModal(true);
                     }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
@@ -155,6 +150,13 @@ const FullTimeService = ({navigation}) => {
           </Formik>
         </View>
       </View>
+      <ServiceModal
+        show={openModal}
+        img={appIcons.tik}
+        onPressBack={() => {
+          navigation?.navigate('Schedule');
+        }}
+      />
     </>
   );
 };

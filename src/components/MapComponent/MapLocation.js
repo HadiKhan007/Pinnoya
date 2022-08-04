@@ -4,19 +4,29 @@ import {
   View,
   TouchableOpacity,
   Image,
-  TextInput,
   FlatList,
 } from 'react-native';
-import React, {useState} from 'react';
-import {colors, size, WP, scrHeight, appIcons} from '../../shared/exporter';
-import RBSheet from 'react-native-raw-bottom-sheet';
+import React, {useEffect, useState} from 'react';
+import LinearGradient from 'react-native-linear-gradient';
+import {colors, size, WP, appIcons} from '../../shared/exporter';
 import BackArrow from 'react-native-vector-icons/AntDesign';
 import {location_list} from '../../shared/utilities/constant';
-import LinearGradient from 'react-native-linear-gradient';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {AppInput, Button} from '../../components';
-export const MapLocation = ({backIcon, onPressBack, tabRef, title}) => {
-  const [isActive, setActive] = useState(null);
+import {TextInput} from 'react-native-paper';
+export const MapLocation = ({
+  backIcon,
+  onPressBack,
+  tabRef,
+  title,
+  onBlur,
+  blurOnSubmit,
+}) => {
+  const [data, setData] = useState(location_list);
+
+  useEffect(() => {
+    console.log('data ', data);
+  }, [data]);
   return (
     <>
       <View style={styles.container}>
@@ -27,67 +37,66 @@ export const MapLocation = ({backIcon, onPressBack, tabRef, title}) => {
         )}
         <Text style={styles.textStyle}>{title}</Text>
       </View>
-      <RBSheet
-        ref={tabRef}
-        height={scrHeight / 1.2}
-        openDuration={250}
-        customStyles={{
-          container: styles.container1,
-          wrapper: {
-            backgroundColor: 'transparent',
-          },
-        }}>
+      <View style={styles.secondContentContainer}>
         <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.headerStyle}>
             <Image source={appIcons.location} style={styles.imageStyle} />
-            <Text style={[styles.title, {marginTop: WP(8)}]}>
-              Lorem Ispum is simply dummy
-            </Text>
+            <Text style={[styles.title]}>Lorem Ispum is simply dummy</Text>
           </View>
           <Text style={styles.subTitle}>
             B-374 Lorem Ispum is simply dummy text of the printing and
             typesetting industry
           </Text>
-          <Text style={[styles.title, {marginTop: WP(3)}, {marginLeft: WP(6)}]}>
+          <Text style={[styles.title, {marginTop: WP(2)}, {marginLeft: WP(6)}]}>
             Save this address as
           </Text>
 
           {/* list */}
-          <View style={styles.Liststyle}>
-            <FlatList
-              // showsVerticalScrollIndicator={false}
-              numColumns={4}
-              data={location_list}
-              renderItem={({item, index}) => {
-                return (
-                  <TouchableOpacity
-                    onPress={() => {
-                      setActive(index);
-                    }}
+          <FlatList
+            // showsVerticalScrollIndicator={false}
+            numColumns={4}
+            data={data}
+            renderItem={({item, index}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    setData(
+                      data.map(obj =>
+                        obj.id == item?.id
+                          ? {...obj, selected: true}
+                          : {...obj, selected: false},
+                      ),
+                    );
+                  }}>
+                  <LinearGradient
+                    colors={
+                      item?.selected ? colors.b_gradient : colors.db_gradient
+                    }
+                    start={{x: 0, y: 1}}
+                    end={{x: 0, y: 0}}
                     style={[
                       styles.Button,
-                      {borderColor: index === isActive ? 'white' : 'black'},
+                      {
+                        borderColor: item?.selected ? colors.g9 : colors.g4,
+                      },
+                      {borderWidth: item?.selected ? null : 1},
                     ]}>
-                    <LinearGradient
-                      colors={colors.b_gradient}
-                      style={styles.gradientStyle}
-                      start={{x: 0, y: 1}}
-                      end={{x: 0, y: 0}}>
-                      <Text
-                        style={{
-                          color: index === isActive ? 'white' : 'black',
-                        }}>
-                        {item.title}
-                      </Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                );
-              }}
-            />
-          </View>
+                    <Text
+                      style={{
+                        color: item?.selected ? colors.white : colors.g9,
+                      }}>
+                      {item?.title}
+                    </Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+              );
+            }}
+          />
 
           {/* Add Address */}
-          <Text style={[styles.title, {marginLeft: WP(6)}]}>Add Address</Text>
+          <Text style={[styles.title, {marginLeft: WP(6)}, {marginTop: WP(1)}]}>
+            Add Address
+          </Text>
 
           {/* Card */}
 
@@ -114,17 +123,17 @@ export const MapLocation = ({backIcon, onPressBack, tabRef, title}) => {
               dense={true}
               multiline={true}
             />
-            <Button
-              // onPressBtn={() => {
-              //   navigation?.navigate('TrackingDetail');
-              // }}
-              bgColor={colors.b_gradient}
-              textColor={colors.white}
-              btnText={'Submit'}
-            />
           </View>
+          <Button
+            onPressBtn={() => {
+              navigation?.navigate('Dashboard');
+            }}
+            bgColor={colors.b_gradient}
+            textColor={colors.white}
+            btnText={'Submit'}
+          />
         </KeyboardAwareScrollView>
-      </RBSheet>
+      </View>
     </>
   );
 };
@@ -136,18 +145,17 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flexDirection: 'row',
   },
-  contentContainer: {
-    paddingVertical: WP('3'),
-    paddingHorizontal: WP('4'),
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+  secondContentContainer: {
+    flex: 1,
+    backgroundColor: colors.white2,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: WP('4'),
   },
   imageStyle: {
-    height: 36,
     resizeMode: 'contain',
-    width: WP('19'),
-    marginTop: WP(7),
+    width: WP('10'),
+    // marginTop: WP(8),
   },
   headerStyle: {
     flexDirection: 'row',
@@ -156,7 +164,6 @@ const styles = StyleSheet.create({
     fontSize: size.large,
     color: colors.b1,
     fontWeight: 'bold',
-    marginRight: WP(10),
   },
   textStyle: {
     position: 'absolute',
@@ -171,53 +178,32 @@ const styles = StyleSheet.create({
     marginLeft: WP(6),
     marginTop: WP(1),
   },
-  container1: {
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    // backgroundColor: colors.white,
-    height: WP(115),
-    width: WP(100),
-    overflow: 'hidden',
-  },
   arrowStyle: {
     top: 60,
     left: 15,
   },
-  gradientStyle: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: WP('-4'),
-  },
   Button: {
-    height: WP(10),
+    height: WP('10'),
     width: WP(22),
-    borderRadius: 30,
-    elevation: 5,
-    // borderWidth: 0.5,
-    shadowOpacity: 0.7,
+    borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: WP(2.5),
-    marginTop: WP(2),
+    marginLeft: WP(1),
     overflow: 'hidden',
   },
   Liststyle: {
-    height: WP(15),
     width: WP(100),
     flexDirection: 'row',
-    // backgroundColor: 'red',
   },
   boxContainer: {
-    marginVertical: 10,
+    paddingVertical: WP('4'),
     borderRadius: 10,
     backgroundColor: colors.white,
     padding: 20,
     shadowColor: colors.box_shadow,
     shadowOffset: {
-      width: 0,
-      height: 0,
+      width: 1,
+      height: 1,
     },
     shadowOpacity: 0.5,
     shadowRadius: 6.27,
@@ -233,6 +219,5 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     marginVertical: WP('2'),
     height: 150,
-    borderRadius: 10,
   },
 });

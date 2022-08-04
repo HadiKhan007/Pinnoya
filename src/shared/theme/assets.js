@@ -12,6 +12,7 @@ export const appImages = {
   findBaby: require('../../assets/images/findBaby.png'),
   housekeeper: require('../../assets/images/housekeeper.png'),
   workingMom: require('../../assets/images/workingMom.png'),
+  user: require('../../assets/images/user.png'),
 };
 
 export const appIcons = {
@@ -50,6 +51,9 @@ export const appIcons = {
   mic: require('../../assets/icons/mic.png'),
   checked: require('../../assets/icons/checked.png'),
   unChecked: require('../../assets/icons/unChecked.png'),
+  tik: require('../../assets/icons/tik.png'),
+  arrowIcon: require('../../assets/icons/arrowIcon.png'),
+  droparrow: require('../../assets/icons/dropArrow.png'),
 };
 
 export const appSvgs = {

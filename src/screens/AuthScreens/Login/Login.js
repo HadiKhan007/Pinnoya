@@ -40,7 +40,7 @@ const Login = ({navigation}) => {
         },
       ),
     );
-    // navigation?.navigate('App');
+    navigation?.navigate('App');
   };
   return (
     <>

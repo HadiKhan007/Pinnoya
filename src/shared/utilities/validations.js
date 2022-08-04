@@ -57,7 +57,7 @@ export const codeFormFields = {
 export const LoginVS = yup.object().shape({
   email: yup
     .string()
-    .required('Email Required')
+    .required('Email address or phone number is required')
     .email('Please provide a valid email address'),
   password: yup
     .string()

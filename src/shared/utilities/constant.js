@@ -301,42 +301,74 @@ const location_list = [
   {
     id: 1,
     title: 'Home',
+    selected: false,
   },
   {
-    id: 1,
+    id: 2,
     title: 'Work',
+    selected: false,
   },
   {
-    id: 1,
-    title: 'Friends and Family',
+    id: 3,
+    title: 'Friends',
+    selected: false,
   },
   {
-    id: 1,
+    id: 4,
     title: 'Railway Station',
+    selected: false,
   },
 ];
 const Service_List = [
   {
     id: 1,
-    title: 'For Babysitters'
+    title: 'For Babysitters',
   },
   {
     id: 2,
-    title: 'HouseKeepers'
+    title: 'HouseKeepers',
   },
   {
     id: 3,
-    title: 'For pets'
+    title: 'For pets',
   },
   {
     id: 4,
-    title: 'Senior Caregiver'
+    title: 'Senior Caregiver',
   },
   {
     id: 5,
-    title: 'Tutor'
+    title: 'Tutor',
   },
 ];
+
+const Schedule_List = [
+  {
+    id: 1,
+    title: 'Baby 1',
+    subtitle: 'Lorem ipsum dolor sit amet,consectetur adipiscing',
+    expanded: false,
+  },
+  {
+    id: 2,
+    title: 'Baby 2',
+    subtitle: 'Lorem ipsum dolor sit amet,consectetur adipiscing',
+    expanded: false,
+  },
+  {
+    id: 3,
+    title: 'Baby 3',
+    subtitle: 'Lorem ipsum dolor sit amet,consectetur adipiscing',
+    expanded: false,
+  },
+  {
+    id: 4,
+    title: 'German Shepherd',
+    subtitle: 'Lorem ipsum dolor sit amet,consectetur adipiscing',
+    expanded: false,
+  },
+];
+const Add_kid = [];
 
 const stripe_publishableKey = '';
 const profile_uri =
@@ -360,4 +392,6 @@ export {
   edit_list,
   location_list,
   Service_List,
+  Schedule_List,
+  Add_kid,
 };

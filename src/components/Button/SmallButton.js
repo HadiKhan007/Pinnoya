@@ -4,7 +4,7 @@ import PlusIcon from 'react-native-vector-icons/Entypo';
 import {colors, family, size, WP} from '../../shared/exporter';
 export const SmallButton = ({title, onPress}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <PlusIcon name={'plus'} size={10} color={colors.white} />
       <Text style={styles.textStyle}>{title}</Text>
     </TouchableOpacity>
