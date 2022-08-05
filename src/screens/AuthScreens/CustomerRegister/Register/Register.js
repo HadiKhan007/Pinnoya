@@ -32,7 +32,8 @@ const Register = ({navigation}) => {
         }}
         headerIcon={true}
         rightArea={true}
-        subTitle={'1 of 3'}
+        subTitle={'1'}
+        text={'of 3'}
       />
       <View style={styles.container}>
         {/* Signup Inputs */}

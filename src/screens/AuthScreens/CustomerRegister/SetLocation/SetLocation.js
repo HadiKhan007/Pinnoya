@@ -10,14 +10,14 @@ const SetLocation = ({navigation}) => {
     <>
       <View style={styles.container}>
         <MapComponent />
-        <MapLocation
-          title={'Set Location'}
-          backIcon={true}
-          onPressBack={() => {
-            navigation.goBack();
-          }}
-        />
       </View>
+      <MapLocation
+        title={'Set Location'}
+        backIcon={true}
+        onPressBack={() => {
+          navigation.goBack();
+        }}
+      />
     </>
   );
 };

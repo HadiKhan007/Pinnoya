@@ -14,21 +14,14 @@ import {location_list} from '../../shared/utilities/constant';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {AppInput, Button} from '../../components';
 import {TextInput} from 'react-native-paper';
-export const MapLocation = ({
-  backIcon,
-  onPressBack,
-  tabRef,
-  title,
-  onBlur,
-  blurOnSubmit,
-}) => {
+export const MapLocation = ({backIcon, onPressBack, title}) => {
   const [data, setData] = useState(location_list);
-
   useEffect(() => {
     console.log('data ', data);
   }, [data]);
   return (
     <>
+      {/* Header */}
       <View style={styles.container}>
         {backIcon && (
           <TouchableOpacity onPress={onPressBack} style={styles.arrowStyle}>
@@ -37,6 +30,8 @@ export const MapLocation = ({
         )}
         <Text style={styles.textStyle}>{title}</Text>
       </View>
+
+      {/* contentContainer */}
       <View style={styles.secondContentContainer}>
         <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.headerStyle}>
@@ -47,13 +42,18 @@ export const MapLocation = ({
             B-374 Lorem Ispum is simply dummy text of the printing and
             typesetting industry
           </Text>
-          <Text style={[styles.title, {marginTop: WP(2)}, {marginLeft: WP(6)}]}>
+          <Text
+            style={[
+              styles.title,
+              {marginTop: WP(2)},
+              {marginLeft: WP(6)},
+              {marginBottom: WP(2)},
+            ]}>
             Save this address as
           </Text>
 
           {/* list */}
           <FlatList
-            // showsVerticalScrollIndicator={false}
             numColumns={4}
             data={data}
             renderItem={({item, index}) => {
@@ -94,7 +94,13 @@ export const MapLocation = ({
           />
 
           {/* Add Address */}
-          <Text style={[styles.title, {marginLeft: WP(6)}, {marginTop: WP(1)}]}>
+          <Text
+            style={[
+              styles.title,
+              {marginLeft: WP(5)},
+              {marginTop: WP(1)},
+              {marginBottom: WP(3)},
+            ]}>
             Add Address
           </Text>
 
@@ -124,14 +130,19 @@ export const MapLocation = ({
               multiline={true}
             />
           </View>
-          <Button
-            onPressBtn={() => {
-              navigation?.navigate('Dashboard');
-            }}
-            bgColor={colors.b_gradient}
-            textColor={colors.white}
-            btnText={'Submit'}
-          />
+
+          {/* Button */}
+
+          <View style={{marginLeft: WP(1)}}>
+            <Button
+              onPressBtn={() => {
+                navigation?.navigate('Dashboard');
+              }}
+              bgColor={colors.b_gradient}
+              textColor={colors.white}
+              btnText={'Submit'}
+            />
+          </View>
         </KeyboardAwareScrollView>
       </View>
     </>
@@ -147,15 +158,15 @@ const styles = StyleSheet.create({
   },
   secondContentContainer: {
     flex: 1,
-    backgroundColor: colors.white2,
+    backgroundColor: colors.white,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     padding: WP('4'),
   },
   imageStyle: {
     resizeMode: 'contain',
-    width: WP('10'),
-    // marginTop: WP(8),
+    width: 25,
+    height: 25,
   },
   headerStyle: {
     flexDirection: 'row',
@@ -177,6 +188,7 @@ const styles = StyleSheet.create({
     maxWidth: WP(80),
     marginLeft: WP(6),
     marginTop: WP(1),
+    color: colors.g1,
   },
   arrowStyle: {
     top: 60,
@@ -184,7 +196,7 @@ const styles = StyleSheet.create({
   },
   Button: {
     height: WP('10'),
-    width: WP(22),
+    width: WP(21.5),
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
@@ -196,11 +208,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   boxContainer: {
+    width: WP(87),
     paddingVertical: WP('4'),
     borderRadius: 10,
     backgroundColor: colors.white,
     padding: 20,
-    shadowColor: colors.box_shadow,
+    shadowColor: colors.b1,
     shadowOffset: {
       width: 1,
       height: 1,
@@ -209,6 +222,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6.27,
     elevation: 8,
     overflow: 'hidden',
+    marginLeft: WP(2.5),
   },
   inputStyle: {
     fontSize: size.tiny,

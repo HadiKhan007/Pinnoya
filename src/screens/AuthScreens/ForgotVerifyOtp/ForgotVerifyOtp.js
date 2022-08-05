@@ -36,7 +36,8 @@ const ForgotVerifyOtp = ({navigation}) => {
         backIcon={true}
         headerIcon={true}
         rightArea={true}
-        subTitle={'3 of 3'}
+        subTitle={'3'}
+        text={'of 3'}
       />
       <View style={styles.container}>
         <View style={styles.contentContainer}>

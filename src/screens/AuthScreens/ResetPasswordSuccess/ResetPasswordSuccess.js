@@ -16,7 +16,7 @@ const ResetPasswordSuccess = ({navigation}) => {
       <View style={styles.container}>
         <View style={styles.contentContainer}>
           <AuthHeading
-            title={'Your password was changed successfully'}
+            title={'Your password was changed successfully.'}
             subtitle={'Please visit our login page to sign in.'}
             maxWidth={300}
           />

@@ -36,7 +36,6 @@ const VerifyOtp = ({navigation}) => {
         backIcon={true}
         headerIcon={true}
         rightArea={true}
-        subTitle={'3 of 3'}
       />
       <View style={styles.container}>
         <View style={styles.contentContainer}>
