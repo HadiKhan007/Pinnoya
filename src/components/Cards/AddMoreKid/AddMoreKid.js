@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Platform} from 'react-native';
 import {AppInput, Checkbox} from '../../../components';
 import {colors, family, size, WP} from '../../../shared/exporter';
 const AddMoreKid = ({title, subtitle, onChangeText}) => {
@@ -35,11 +35,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.white,
     padding: 20,
-    shadowColor: 'black',
+    shadowColor: Platform.OS == 'ios' ? '#00000080' : '#000000',
+    shadowOpacity: 0.4,
     shadowOffset: {
-      width: 0,
-      height: 0,
+      width: 1,
+      height: 1,
     },
-    elevation: 5,
+    shadowRadius: Platform.OS == 'ios' ? 8 : 24,
+    elevation: Platform.OS == 'ios' ? 0 : 12,
   },
 });

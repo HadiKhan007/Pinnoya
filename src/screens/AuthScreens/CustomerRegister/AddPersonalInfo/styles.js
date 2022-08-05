@@ -31,14 +31,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.white,
     padding: 20,
-    shadowColor: colors.b1,
+    shadowColor: Platform.OS == 'ios' ? '#00000080' : '#000000',
+    shadowOpacity: 0.4,
     shadowOffset: {
-      width: 0.01,
-      height: 0.01,
+      width: 1,
+      height: 1,
     },
-    // shadowOpacity: 1,
-    // shadowRadius: 0.5,
-    elevation: 8,
+    shadowRadius: Platform.OS == 'ios' ? 8 : 24,
+    elevation: Platform.OS == 'ios' ? 0 : 12,
   },
 });
 

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {colors, size, WP, appIcons} from '../../shared/exporter';
+import {colors, size, WP, appIcons, family} from '../../shared/exporter';
 import BackArrow from 'react-native-vector-icons/AntDesign';
 import {location_list} from '../../shared/utilities/constant';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -21,7 +21,6 @@ export const MapLocation = ({backIcon, onPressBack, title}) => {
   }, [data]);
   return (
     <>
-      {/* Header */}
       <View style={styles.container}>
         {backIcon && (
           <TouchableOpacity onPress={onPressBack} style={styles.arrowStyle}>
@@ -31,31 +30,22 @@ export const MapLocation = ({backIcon, onPressBack, title}) => {
         <Text style={styles.textStyle}>{title}</Text>
       </View>
 
-      {/* contentContainer */}
       <View style={styles.secondContentContainer}>
         <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.headerStyle}>
             <Image source={appIcons.location} style={styles.imageStyle} />
-            <Text style={[styles.title]}>Lorem Ispum is simply dummy</Text>
+            <Text style={styles.title}>Lorem Ispum is simply dummy</Text>
           </View>
           <Text style={styles.subTitle}>
             B-374 Lorem Ispum is simply dummy text of the printing and
             typesetting industry
           </Text>
-          <Text
-            style={[
-              styles.title,
-              {marginTop: WP(2)},
-              {marginLeft: WP(6)},
-              {marginBottom: WP(2)},
-            ]}>
-            Save this address as
-          </Text>
+          <Text style={styles.heading}>Save this address as</Text>
 
-          {/* list */}
           <FlatList
             numColumns={4}
             data={data}
+            contentContainerStyle={{paddingHorizontal: WP('2')}}
             renderItem={({item, index}) => {
               return (
                 <TouchableOpacity
@@ -93,18 +83,7 @@ export const MapLocation = ({backIcon, onPressBack, title}) => {
             }}
           />
 
-          {/* Add Address */}
-          <Text
-            style={[
-              styles.title,
-              {marginLeft: WP(5)},
-              {marginTop: WP(1)},
-              {marginBottom: WP(3)},
-            ]}>
-            Add Address
-          </Text>
-
-          {/* Card */}
+          <Text style={styles.heading}>Add Address</Text>
 
           <View style={styles.boxContainer}>
             <AppInput
@@ -131,16 +110,14 @@ export const MapLocation = ({backIcon, onPressBack, title}) => {
             />
           </View>
 
-          {/* Button */}
-
-          <View style={{marginLeft: WP(1)}}>
+          <View style={styles.buttonView}>
             <Button
               onPressBtn={() => {
                 navigation?.navigate('Dashboard');
               }}
               bgColor={colors.b_gradient}
               textColor={colors.white}
-              btnText={'Submit'}
+              btnText={'Confirm Location'}
             />
           </View>
         </KeyboardAwareScrollView>
@@ -176,18 +153,25 @@ const styles = StyleSheet.create({
     color: colors.b1,
     fontWeight: 'bold',
   },
+  heading: {
+    fontSize: size.large,
+    color: colors.b1,
+    marginVertical: WP('2'),
+    marginLeft: WP('3'),
+    fontFamily: family.Poppins_Medium,
+  },
   textStyle: {
     position: 'absolute',
     left: 70,
     top: 57,
     fontSize: size.large,
     color: colors.b1,
-    fontWeight: 'bold',
+    fontFamily: family.Poppins_Medium,
   },
   subTitle: {
     maxWidth: WP(80),
-    marginLeft: WP(6),
-    marginTop: WP(1),
+    marginLeft: WP('3'),
+    marginTop: WP('1'),
     color: colors.g1,
   },
   arrowStyle: {
@@ -196,11 +180,11 @@ const styles = StyleSheet.create({
   },
   Button: {
     height: WP('10'),
-    width: WP(21.5),
+    width: WP('21.5'),
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: WP(1),
+    marginLeft: WP('1'),
     overflow: 'hidden',
   },
   Liststyle: {
@@ -213,15 +197,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.white,
     padding: 20,
-    shadowColor: colors.b1,
+    shadowColor: Platform.OS == 'ios' ? '#00000080' : '#000000',
+    shadowOpacity: 0.4,
     shadowOffset: {
       width: 1,
-      height: 1,
+      height: 0,
     },
-    shadowOpacity: 0.5,
-    shadowRadius: 6.27,
-    elevation: 8,
-    overflow: 'hidden',
+    shadowRadius: Platform.OS == 'ios' ? 8 : 24,
+    elevation: Platform.OS == 'ios' ? 0 : 12,
     marginLeft: WP(2.5),
   },
   inputStyle: {
@@ -233,5 +216,9 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     marginVertical: WP('2'),
     height: 150,
+  },
+  buttonView: {
+    alignItems: 'center',
+    marginVertical: WP('4'),
   },
 });
