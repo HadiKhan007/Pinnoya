@@ -79,8 +79,10 @@ const ForgotVerifyOtp = ({navigation}) => {
                 <TouchableOpacity
                   style={[
                     spacing.my4,
-                    {flexDirection: 'row'},
-                    {justifyContent: 'center'},
+                    {
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                    },
                   ]}>
                   <Text style={styles.resTxt}>Resend code in </Text>
 
@@ -107,8 +109,10 @@ const ForgotVerifyOtp = ({navigation}) => {
                 <Text
                   style={[
                     styles.resTxt,
-                    {paddingHorizontal: WP('34')},
-                    {paddingTop: WP('5')},
+                    {
+                      paddingHorizontal: WP('34'),
+                      paddingVertical: WP('5'),
+                    },
                   ]}
                   onPress={() => setResend(true)}>
                   Resend code

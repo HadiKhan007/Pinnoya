@@ -1,4 +1,10 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import React, {useRef, useState, useEffect} from 'react';
 import {AuthHeader, AuthHeading, Button} from '../../../components';
 import styles from './styles';
@@ -28,7 +34,7 @@ const VerifyOtp = ({navigation}) => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <AuthHeader
         onPressBack={() => {
           navigation?.goBack();
@@ -77,8 +83,7 @@ const VerifyOtp = ({navigation}) => {
                 <TouchableOpacity
                   style={[
                     spacing.my4,
-                    {flexDirection: 'row'},
-                    {justifyContent: 'center'},
+                    {flexDirection: 'row', justifyContent: 'center'},
                   ]}>
                   <Text style={styles.resTxt}>Resend code in </Text>
 
@@ -105,8 +110,10 @@ const VerifyOtp = ({navigation}) => {
                 <Text
                   style={[
                     styles.resTxt,
-                    {paddingHorizontal: WP('34')},
-                    {paddingTop: WP('5')},
+                    {
+                      paddingHorizontal: WP('34'),
+                      paddingVertical: WP('5'),
+                    },
                   ]}
                   onPress={() => setResend(true)}>
                   Resend code
@@ -124,7 +131,7 @@ const VerifyOtp = ({navigation}) => {
           </KeyboardAwareScrollView>
         </View>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 
