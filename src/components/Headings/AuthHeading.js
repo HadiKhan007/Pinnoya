@@ -2,10 +2,13 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, family, size, WP} from '../../shared/exporter';
 
-export const AuthHeading = ({title, subtitle}) => {
+export const AuthHeading = ({title, subtitle, maxWidth, marginLeft}) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+    <View style={[styles.container]}>
+      <Text
+        style={[styles.title, {maxWidth: maxWidth}, {marginLeft: marginLeft}]}>
+        {title}
+      </Text>
       <Text style={styles.subtitle}>{subtitle}</Text>
     </View>
   );

@@ -14,6 +14,9 @@ import MyBookings from '../../../screens/Customer/HomeTab/MyBookings';
 import BookedServiceDetail from '../../../screens/Customer/HomeTab/BookedServiceDetail';
 import CallNow from '../../../screens/Customer/HomeTab/CallNow/CallNow';
 import Chat from '../../../screens/Customer/HomeTab/Chat/Chat';
+import FullTimeService from '../../../screens/Customer/HomeTab/FullTimeServices/FullTimeService';
+import Schedule from '../../../screens/Customer/HomeTab/Schedule/Schedule';
+import DateTimePicker from '../../../screens/Customer/HomeTab/DateTimePicker/DateTimePicker';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +41,9 @@ function HomeStack(props) {
         name="BookedServiceDetail"
         component={BookedServiceDetail}
       />
+      <Stack.Screen name="FullTimeService" component={FullTimeService} />
+      <Stack.Screen name="Schedule" component={Schedule} />
+      <Stack.Screen name="DateTimePicker" component={DateTimePicker} />
     </Stack.Navigator>
   );
 }

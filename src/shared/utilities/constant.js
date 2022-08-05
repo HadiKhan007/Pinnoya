@@ -297,6 +297,79 @@ const edit_list = [
     text: '00.00.00',
   },
 ];
+const location_list = [
+  {
+    id: 1,
+    title: 'Home',
+    selected: false,
+  },
+  {
+    id: 2,
+    title: 'Work',
+    selected: false,
+  },
+  {
+    id: 3,
+    title: 'Friends',
+    selected: false,
+  },
+  {
+    id: 4,
+    title: 'Railway Station',
+    selected: false,
+  },
+];
+const Service_List = [
+  {
+    id: 1,
+    title: 'For Babysitters',
+  },
+  {
+    id: 2,
+    title: 'HouseKeepers',
+  },
+  {
+    id: 3,
+    title: 'For pets',
+  },
+  {
+    id: 4,
+    title: 'Senior Caregiver',
+  },
+  {
+    id: 5,
+    title: 'Tutor',
+  },
+];
+
+const Schedule_List = [
+  {
+    id: 1,
+    title: 'Baby 1',
+    subtitle: 'Lorem ipsum dolor sit amet,consectetur adipiscing',
+    expanded: false,
+  },
+  {
+    id: 2,
+    title: 'Baby 2',
+    subtitle: 'Lorem ipsum dolor sit amet,consectetur adipiscing',
+    expanded: false,
+  },
+  {
+    id: 3,
+    title: 'Baby 3',
+    subtitle: 'Lorem ipsum dolor sit amet,consectetur adipiscing',
+    expanded: false,
+  },
+  {
+    id: 4,
+    title: 'German Shepherd',
+    subtitle: 'Lorem ipsum dolor sit amet,consectetur adipiscing',
+    expanded: false,
+  },
+];
+const Add_kid = [];
+
 const stripe_publishableKey = '';
 const profile_uri =
   'https://www.shareicon.net/data/512x512/2017/01/06/868320_people_512x512.png';
@@ -317,4 +390,8 @@ export {
   filterServiceList,
   profile_uri,
   edit_list,
+  location_list,
+  Service_List,
+  Schedule_List,
+  Add_kid,
 };

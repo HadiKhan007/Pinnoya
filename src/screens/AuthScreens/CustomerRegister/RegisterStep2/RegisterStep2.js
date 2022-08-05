@@ -26,7 +26,8 @@ const RegisterStep2 = ({navigation}) => {
         }}
         headerIcon={true}
         rightArea={true}
-        subTitle={'2 of 3'}
+        subTitle={'2'}
+        text={'of 3'}
       />
       <View style={styles.container}>
         {/* Signup Inputs */}
@@ -128,7 +129,7 @@ const RegisterStep2 = ({navigation}) => {
                 <View style={styles.buttonContainer}>
                   <Button
                     onPressBtn={() => {
-                      navigation?.navigate('VerifyOtp');
+                      navigation?.navigate('ForgotVerifyOtp');
                     }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}

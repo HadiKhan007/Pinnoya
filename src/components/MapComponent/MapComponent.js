@@ -12,7 +12,7 @@ export const MapComponent = ({modalRef}) => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-        style={{flex: 1}}></MapView>
+        style={{flex: 1, overflow: 'hidden'}}></MapView>
     </View>
   );
 };

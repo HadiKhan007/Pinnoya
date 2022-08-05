@@ -7,9 +7,16 @@ import {
   HomeModal,
   ServiceCard,
 } from '../../../../components';
-import {colors, serviceList, spacing} from '../../../../shared/exporter';
+import {
+  colors,
+  HP,
+  serviceList,
+  spacing,
+  WP,
+} from '../../../../shared/exporter';
 const Dashboard = ({navigation}) => {
   const [openModal, setopenModal] = useState(false);
+  // const isLandscape = WP > HP;
   return (
     <>
       <HomeHeader
@@ -27,6 +34,8 @@ const Dashboard = ({navigation}) => {
           <View style={styles.listContainer}>
             <FlatList
               showsVerticalScrollIndicator={false}
+              // numColumns={Number(isLandscape) + 1}
+              // key={Number(isLandscape)}
               data={serviceList}
               renderItem={({item}) => {
                 return (
@@ -44,10 +53,20 @@ const Dashboard = ({navigation}) => {
                 );
               }}
             />
+
             <Button
               onPressBtn={() => {
                 // setopenModal(true);
                 navigation?.navigate('Chat');
+              }}
+              bgColor={colors.b_gradient}
+              btnText={'Instant services'}
+              textColor={colors.white}
+            />
+            <Button
+              onPressBtn={() => {
+                // setopenModal(true);
+                navigation?.navigate('FullTimeService');
               }}
               bgColor={colors.b_gradient}
               btnText={'Full Time Services'}

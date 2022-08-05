@@ -16,6 +16,7 @@ export const AuthHeader = ({
   headerIcon,
   rightArea,
   subTitle,
+  text,
 }) => {
   return (
     <>
@@ -37,11 +38,12 @@ export const AuthHeader = ({
           </View>
 
           <View>
-            {rightArea && (
-              <View>
-                <Text style={styles.subText}>{subTitle}</Text>
-              </View>
-            )}
+            {rightArea && <Text style={styles.subText}>{subTitle}</Text>}
+          </View>
+          <View>
+            <View>
+              <Text style={styles.Text}>{text}</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -72,6 +74,12 @@ const styles = StyleSheet.create({
     fontSize: size.tiny,
     fontFamily: family.Ubuntu_Regular,
     color: colors.p1,
+    left: 15,
+  },
+  Text: {
+    fontSize: size.tiny,
+    fontFamily: family.Ubuntu_Regular,
+    color: colors.b1,
     right: 5,
   },
 });

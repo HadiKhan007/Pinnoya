@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {
   colors,
   CustomerRegisterStep1Fields,
@@ -17,8 +17,9 @@ import {
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
+import AddMoreKid from '../../../../components/Cards/AddMoreKid/AddMoreKid';
+import {Add_kid} from '../../../../shared/utilities/constant';
 const AddPersonalInfo = ({navigation}) => {
-  const [checked, setchecked] = useState(false);
   return (
     <>
       <AuthHeader
@@ -53,26 +54,7 @@ const AddPersonalInfo = ({navigation}) => {
                 <View style={styles.aiFlexEnd}>
                   <SmallButton title={'Add More Kid'} />
                 </View>
-                <View style={styles.boxContainer}>
-                  <AppInput
-                    placeholder={'Kid Name'}
-                    placeholderTextColor={colors.g2}
-                  />
-                  <AppInput
-                    placeholder={'Kid Age'}
-                    placeholderTextColor={colors.g2}
-                  />
-                  <Checkbox
-                    checkSize={14}
-                    toggleCheckBox={checked}
-                    setToggleCheckBox={() => {
-                      setchecked(!checked);
-                    }}
-                    title={
-                      'If child with special needs or PWD Person With Disability'
-                    }
-                  />
-                </View>
+                <AddMoreKid title={'Kid Name'} subtitle={'Kid Age'} />
                 <View style={styles.aiFlexEnd}>
                   <SmallButton title={'Add More Pet'} />
                 </View>
@@ -85,7 +67,7 @@ const AddPersonalInfo = ({navigation}) => {
                 <View style={styles.buttonContainer}>
                   <Button
                     onPressBtn={() => {
-                      navigation?.navigate('App');
+                      navigation?.navigate('SetLocation');
                     }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}

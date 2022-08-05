@@ -29,6 +29,11 @@ const styles = StyleSheet.create({
     fontSize: size.xxtiny,
     paddingTop: WP('5'),
   },
+  resTxt: {
+    fontWeight: 'bold',
+    color: colors.p1,
+
+  },
 });
 
 export default styles;

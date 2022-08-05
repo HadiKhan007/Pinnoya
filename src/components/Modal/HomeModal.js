@@ -1,21 +1,24 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import Modal from 'react-native-modal';
-import {Button} from '..';
+import {Button} from '../../components';
 import {colors, family, size, WP} from '../../shared/exporter';
 
-export const HomeModal = ({onPressHide, show, onPressBack}) => {
+export const HomeModal = ({onPressHide, show, onPressBack, img, maxHeight}) => {
   return (
     <View>
       <Modal onBackdropPress={onPressHide} isVisible={show}>
-        <View style={styles.modalContainer}>
-          <Text style={styles.titleStyle}>Thank you for submitting</Text>
+        <View style={[styles.modalContainer]}>
+          <Image source={img} style={styles.img} />
+          <Text style={[styles.titleStyle, {maxHeight: maxHeight}]}>
+            your service successfully submitting
+          </Text>
           <Text style={styles.subtitleStyle}>
             We will contact you within 24h for the service.
           </Text>
           <Button
             onPressBtn={onPressBack}
-            btnText={'Back'}
+            btnText={'Ok'}
             bgColor={colors.b_gradient}
             width={WP('80')}
             textColor={colors.white}
@@ -46,5 +49,9 @@ const styles = StyleSheet.create({
     marginHorizontal: WP('10'),
     textAlign: 'center',
     lineHeight: 21,
+  },
+  img: {
+    height: 50,
+    width: 50,
   },
 });

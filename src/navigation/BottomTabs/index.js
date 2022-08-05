@@ -15,8 +15,8 @@ const MainFlow = () => {
       tabBar={props => <BottomTab {...props} />}>
       <Tab.Screen component={HomeStack} name={'Home'} />
       <Tab.Screen component={FavouriteStack} name={'Favourite'} />
-      <Tab.Screen component={NotificationStack} name={'Notification'} />
       <Tab.Screen component={ProfileStack} name={'Profile'} />
+      <Tab.Screen component={NotificationStack} name={'Notification'} />
     </Tab.Navigator>
   );
 };

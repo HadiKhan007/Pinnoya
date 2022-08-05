@@ -12,6 +12,7 @@ export const appImages = {
   findBaby: require('../../assets/images/findBaby.png'),
   housekeeper: require('../../assets/images/housekeeper.png'),
   workingMom: require('../../assets/images/workingMom.png'),
+  user: require('../../assets/images/user.png'),
 };
 
 export const appIcons = {
@@ -24,7 +25,9 @@ export const appIcons = {
   notification: require('../../assets/icons/notification.png'),
   tabIcon: require('../../assets/icons/tabIcon.png'),
   filter: require('../../assets/icons/filter.png'),
+  settings: require('../../assets/icons/settings.png'),
   photo: require('../../assets/icons/photo.png'),
+  location: require('../../assets/icons/location.png'),
   bookmark: require('../../assets/icons/bookmark.png'),
   fillbookmark: require('../../assets/icons/fillbookmark.png'),
   zoom: require('../../assets/icons/zoom.png'),
@@ -46,6 +49,11 @@ export const appIcons = {
   send: require('../../assets/icons/send.png'),
   vol: require('../../assets/icons/vol.png'),
   mic: require('../../assets/icons/mic.png'),
+  checked: require('../../assets/icons/checked.png'),
+  unChecked: require('../../assets/icons/unChecked.png'),
+  tik: require('../../assets/icons/tik.png'),
+  arrowIcon: require('../../assets/icons/arrowIcon.png'),
+  droparrow: require('../../assets/icons/dropArrow.png'),
 };
 
 export const appSvgs = {

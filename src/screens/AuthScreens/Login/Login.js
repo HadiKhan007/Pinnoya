@@ -40,7 +40,7 @@ const Login = ({navigation}) => {
         },
       ),
     );
-    // navigation?.navigate('App');
+    navigation?.navigate('App');
   };
   return (
     <>
@@ -116,7 +116,7 @@ const Login = ({navigation}) => {
                     bgColor={colors.half_white_gradient}
                     width={WP('45')}
                     textColor={colors.p1}
-                    btnText={'Forgot Password'}
+                    btnText={'Forgot Password?'}
                   />
                 </View>
               </View>

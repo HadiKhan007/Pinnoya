@@ -99,9 +99,9 @@ export const BottomTab = ({state, descriptors, navigation}) => {
                         : index == 1
                         ? appIcons.myBooking
                         : index == 2
-                        ? appIcons.notification
-                        : index == 3
                         ? appIcons.user
+                        : index == 3
+                        ? appIcons.notification
                         : null
                     }
                     style={[
@@ -155,32 +155,32 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   firstImageStyle: {
-    height: 18,
-    width: 20,
+    height: 20,
+    width: 23,
     resizeMode: 'contain',
   },
 
   secondImageStyle: {
-    height: 15,
-    width: 19,
+    height: 22,
+    width:22,
     resizeMode: 'contain',
     left: -25,
   },
   thirdImageStyle: {
-    height: 17,
-    width: 18,
+    height: 22,
+    width: 22,
     resizeMode: 'contain',
     right: -25,
   },
   profileImageStyle: {
-    height: 17,
+    height:18,
     width: 18,
     resizeMode: 'contain',
   },
 
   tabImageStyle: {
-    height: 12,
-    width: 18,
+    height: 25,
+    width: 25,
     resizeMode: 'contain',
   },
 
@@ -192,7 +192,6 @@ const styles = StyleSheet.create({
   },
   gradientStyle: {
     position: 'absolute',
-    bottom: 55,
     borderRadius: 50,
     height: 50,
     width: 50,

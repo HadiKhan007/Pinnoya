@@ -12,6 +12,9 @@ import ResetPassword from '../../screens/AuthScreens/ResetPassword';
 import VerifyOtp from '../../screens/AuthScreens/VerifyOtp';
 import AddPersonalInfo from '../../screens/AuthScreens/CustomerRegister/AddPersonalInfo';
 import UploadDoc from '../../screens/AuthScreens/SPRegister/UploadDoc';
+import ResetPasswordSuccess from '../../screens/AuthScreens/ResetPasswordSuccess/ResetPasswordSuccess';
+import SetLocation from '../../screens/AuthScreens/CustomerRegister/SetLocation/SetLocation';
+import ForgotVerifyOtp from '../../screens/AuthScreens/ForgotVerifyOtp';
 
 const Stack = createStackNavigator();
 
@@ -21,15 +24,21 @@ function AuthStack(props) {
       initialRouteName="Login"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
+      <Stack.Screen name="AddPersonalInfo" component={AddPersonalInfo} />
+      <Stack.Screen name="SetLocation" component={SetLocation} />
       <Stack.Screen name="CSignUp" component={CSignUp} />
       <Stack.Screen name="CSignUp2" component={CSignUp2} />
-      <Stack.Screen name="AddPersonalInfo" component={AddPersonalInfo} />
       <Stack.Screen name="SPSignUp" component={SPSignUp} />
       <Stack.Screen name="SPSignUp2" component={SPSignUp2} />
       <Stack.Screen name="UploadDoc" component={UploadDoc} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-      <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
+      <Stack.Screen name="ForgotVerifyOtp" component={ForgotVerifyOtp} />
+      <Stack.Screen
+        name="ResetPasswordSuccess"
+        component={ResetPasswordSuccess}
+      />
     </Stack.Navigator>
   );
 }

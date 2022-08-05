@@ -32,7 +32,8 @@ const Register = ({navigation}) => {
         }}
         headerIcon={true}
         rightArea={true}
-        subTitle={'1 of 3'}
+        subTitle={'1'}
+        text={'of 3'}
       />
       <View style={styles.container}>
         {/* Signup Inputs */}
@@ -147,7 +148,7 @@ const Register = ({navigation}) => {
                 <View style={styles.buttonContainer}>
                   <Button
                     onPressBtn={() => {
-                      onRegisterStep1Hanlder();
+                      navigation?.navigate('CSignUp2');
                     }}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
@@ -166,16 +167,6 @@ const Register = ({navigation}) => {
           )}
         </Formik>
       </View>
-      <LocationModal
-        locationRef={locationBSheetRef}
-        img={appImages.locationImg}
-        title={'Where are you?'}
-        subtitle={'Set your location so we can offer you the best specialists'}
-        onPress={() => {
-          locationBSheetRef?.current?.close();
-          navigation?.navigate('CSignUp2');
-        }}
-      />
     </>
   );
 };

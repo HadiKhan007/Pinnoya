@@ -37,6 +37,7 @@ export const colors = {
   g6: '#E9E9E9',
   g7: '#D7D7D7',
   g8: '#C8C8C8',
+  g9: '#BFBFBF',
 
   // Blue
   bl1: '#0066FF',
