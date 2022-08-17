@@ -64,7 +64,6 @@ function* updateProfileRequest(params) {
     });
     params?.cbSuccess();
   } catch (error) {
-    console.log(error);
     params?.cbFailure();
   }
 }
@@ -104,17 +103,11 @@ function* getTermsCondition(params) {
   try {
     const response = yield getTermsConditions();
     if (response.data) {
-      console.log('====================================');
-      console.log('response of edit', response?.data);
-      console.log('====================================');
 
       yield put({
         type: types.GET_TERMS_CONDITION_SUCCESS,
         payload: response?.data,
       });
-      console.log('====================================');
-      console.log('response of edit', response?.data);
-      console.log('====================================');
       params?.cbSuccess(response?.data);
     } else {
       yield put({
@@ -141,9 +134,6 @@ function* getPrivacyPolicyRequest(params) {
         type: types.GET_PRIVACY_POLICY_SUCCESS,
         payload: response?.data,
       });
-      console.log('====================================');
-      console.log('response of DATA', response?.data);
-      console.log('====================================');
       params?.cbSuccess(response?.data);
     } else {
       yield put({

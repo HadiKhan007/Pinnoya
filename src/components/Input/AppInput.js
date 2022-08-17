@@ -30,11 +30,12 @@ export const AppInput = ({
   rightText,
   numberofLines,
   onPressIn,
+  width,
 }) => {
   return (
     <View style={styles.container}>
       <TextInput
-        style={[styles.inputStyle]}
+        style={[styles.inputStyle, {width: width ? width : null}]}
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}
         secureTextEntry={secureTextEntry}
@@ -52,7 +53,7 @@ export const AppInput = ({
         mode={'outlined'}
         outlineColor={colors.g2}
         activeOutlineColor={colors.p1}
-        theme={{roundness: 10}}
+        theme={{roundness: 10, colors: {text: 'black'}}}
         dense={true}
         onPressIn={onPressIn}
         right={
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
 
   inputStyle: {
     fontSize: size.tiny,
-    color: colors.g2,
+    color: '#000000',
     paddingHorizontal: WP('3'),
     backgroundColor: colors.white,
     justifyContent: 'center',

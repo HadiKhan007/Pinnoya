@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Platform} from 'react-native';
+import {View,StyleSheet, Platform} from 'react-native';
 import {AppInput, Checkbox} from '../../../components';
-import {colors, family, size, WP} from '../../../shared/exporter';
-const AddMoreKid = ({title, subtitle, onChangeText}) => {
+import {colors} from '../../../shared/exporter';
+export const AddMoreKid = ({title, subtitle, onChangeText}) => {
   const [checked, setchecked] = useState(false);
   return (
     <View style={styles.boxContainer}>
@@ -27,7 +27,6 @@ const AddMoreKid = ({title, subtitle, onChangeText}) => {
     </View>
   );
 };
-export default AddMoreKid;
 
 const styles = StyleSheet.create({
   boxContainer: {

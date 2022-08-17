@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {View, Text, Image, FlatList} from 'react-native';
 import {appImages, colors, appIcons} from '../../../../shared/exporter';
-import {AppHeader} from '../../../../components';
+import {AppHeader, ReviewModal, ScheduleListCard} from '../../../../components';
 import styles from './styles';
-import StarIcon from 'react-native-vector-icons/Ionicons';
 import {Schedule_List} from '../../../../shared/utilities/constant';
 import {TouchableOpacity} from 'react-native';
 import TickIcon from 'react-native-vector-icons/Feather';
-import {ScheduleListCard} from '../../../../components/Cards/ScheduleListCard/ScheduleListCard';
-
+import StarRating from 'react-native-star-rating';
 const Schedule = ({navigation}) => {
   const [data, setData] = useState(Schedule_List);
+  const [rating, setRating] = useState(0);
+  const modalRef = useRef(null);
   return (
     <>
       <AppHeader
@@ -30,36 +30,42 @@ const Schedule = ({navigation}) => {
                 <TickIcon name="check" size={8} color={colors.white} />
               </TouchableOpacity>
             </View>
-            <View style={styles.rightIcon}>
-              <StarIcon name={'star'} color={colors.s1} />
-              <StarIcon name={'star'} color={colors.s1} />
-              <StarIcon name={'star'} color={colors.s1} />
-              <StarIcon name={'star'} color={colors.s1} />
-              <StarIcon name={'star'} color={colors.s1} />
+            <TouchableOpacity
+              style={styles.rightIcon}
+              onPress={() => {
+                modalRef.current.open();
+              }}>
+              <StarRating
+                disabled={false}
+                maxStars={5}
+                rating={rating}
+                selectedStar={rat => {
+                  setRating(rat);
+                }}
+                fullStar={appIcons.star}
+                emptyStar={appIcons.emptyStar}
+                starSize={18}
+              />
               <Text style={styles.text}>5.0</Text>
-            </View>
+            </TouchableOpacity>
           </View>
           <FlatList
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            contentContainerStyle={styles.contentContainer3}
             data={data}
             renderItem={({item, index}) => {
               return (
                 <ScheduleListCard
-                onPressable={()=>{
-                  navigation.navigate('DateTimePicker',{
-                    title: item.title
-                  })
-                }}
+                  onPressable={() => {
+                    navigation.navigate('DateTimePicker', {
+                      title: item.title,
+                    });
+                  }}
                   title={item.title}
                   subtitle={item.subtitle}
-                  img={item?.expanded ? null : appIcons.arrowIcon}
+                  backIcon={item?.expanded ? false : true}
                   isExpanded={item?.expanded}
                   onPressExpanded={() => {
-                    console.log('item', item);
                     setData(
                       data.map(obj =>
                         obj.id == item?.id
@@ -74,6 +80,12 @@ const Schedule = ({navigation}) => {
           />
         </View>
       </View>
+      <ReviewModal
+        modalRef={modalRef}
+        onPressClose={() => {
+          modalRef.current.close();
+        }}
+      />
     </>
   );
 };

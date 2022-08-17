@@ -8,7 +8,7 @@ import {
 } from '..';
 import {colors} from '../../shared/exporter';
 
-export const OngoingComp = () => {
+export const OngoingComp = ({navigation,onPress}) => {
   return (
     <View>
       <TitleAlphaHeading
@@ -19,6 +19,7 @@ export const OngoingComp = () => {
       />
       <View style={styles.btnCon}>
         <PrimaryButton
+          onPressBtn={onPress}
           bgColor={colors.b_gradient}
           btnText1={'Mon'}
           btnText2={'20'}

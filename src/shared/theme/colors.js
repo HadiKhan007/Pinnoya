@@ -27,6 +27,7 @@ export const colors = {
   b8: '#1A2F36',
   b9: '#141414',
   b10: '#120D26',
+  b11: '#808080',
 
   //Gray Color
   g1: '#808080',
@@ -38,6 +39,8 @@ export const colors = {
   g7: '#D7D7D7',
   g8: '#C8C8C8',
   g9: '#BFBFBF',
+  g10: '#F5F5F5',
+  g11: '#D0D0D0',
 
   // Blue
   bl1: '#0066FF',
@@ -45,6 +48,7 @@ export const colors = {
   // Yellow
   y1: '#F2AD50',
   y2: '#FFD600',
+  y3: '#E8E500',
 
   //Green Color
   gr1: '#00A41A',
@@ -83,4 +87,5 @@ export const colors = {
   r1: '#CB0005',
   default_color: '#E5E5E5',
   mb_gradient: ['#E8E8E8', '#E8E8E8'],
+  gb_grandient: ['#808080', '#808080'],
 };

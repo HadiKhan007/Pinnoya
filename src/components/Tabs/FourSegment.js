@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {colors, family, size} from '../../shared/exporter';
+import {colors, family, size, WP} from '../../shared/exporter';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const FourSegment = ({
@@ -8,6 +8,10 @@ export const FourSegment = ({
   title2,
   title3,
   title4,
+  subtitle1,
+  subtitle2,
+  subtitle3,
+  subtitle4,
   index,
   setIndex,
 }) => {
@@ -18,6 +22,18 @@ export const FourSegment = ({
         onPress={() => {
           setIndex(0);
         }}>
+        <Text
+          numberOfLines={1}
+          style={[
+            styles.textStyle,
+            {
+              color: index == 0 ? colors.p1 : colors.g1,
+              fontFamily:
+                index == 0 ? family.Ubuntu_Bold : family.Ubuntu_Regular,
+            },
+          ]}>
+          {title1}
+        </Text>
         <LinearGradient
           colors={index == 0 ? colors.b_gradient : colors.half_white_gradient}
           start={{x: 0, y: 1}}
@@ -32,7 +48,7 @@ export const FourSegment = ({
                   index == 0 ? family.Ubuntu_Bold : family.Ubuntu_Regular,
               },
             ]}>
-            {title1}
+            {subtitle1}
           </Text>
         </LinearGradient>
       </TouchableOpacity>
@@ -41,6 +57,18 @@ export const FourSegment = ({
         onPress={() => {
           setIndex(1);
         }}>
+        <Text
+          numberOfLines={2}
+          style={[
+            styles.textStyle,
+            {
+              color: index == 1 ? colors.p1 : colors.g1,
+              fontFamily:
+                index == 1 ? family.Ubuntu_Bold : family.Ubuntu_Regular,
+            },
+          ]}>
+          {title2}
+        </Text>
         <LinearGradient
           colors={index == 1 ? colors.b_gradient : colors.half_white_gradient}
           start={{x: 0, y: 1}}
@@ -55,7 +83,7 @@ export const FourSegment = ({
                   index == 1 ? family.Ubuntu_Bold : family.Ubuntu_Regular,
               },
             ]}>
-            {title2}
+            {subtitle2}
           </Text>
         </LinearGradient>
       </TouchableOpacity>
@@ -64,6 +92,18 @@ export const FourSegment = ({
         onPress={() => {
           setIndex(2);
         }}>
+        <Text
+          numberOfLines={1}
+          style={[
+            styles.textStyle,
+            {
+              color: index == 2 ? colors.p1 : colors.g1,
+              fontFamily:
+                index == 2 ? family.Ubuntu_Bold : family.Ubuntu_Regular,
+            },
+          ]}>
+          {title3}
+        </Text>
         <LinearGradient
           colors={index == 2 ? colors.b_gradient : colors.half_white_gradient}
           start={{x: 0, y: 1}}
@@ -78,7 +118,7 @@ export const FourSegment = ({
                   index == 2 ? family.Ubuntu_Bold : family.Ubuntu_Regular,
               },
             ]}>
-            {title3}
+            {subtitle3}
           </Text>
         </LinearGradient>
       </TouchableOpacity>
@@ -87,6 +127,18 @@ export const FourSegment = ({
           setIndex(3);
         }}
         style={styles.tab3}>
+        <Text
+          numberOfLines={1}
+          style={[
+            styles.textStyle,
+            {
+              color: index == 3 ? colors.p1 : colors.g1,
+              fontFamily:
+                index == 3 ? family.Ubuntu_Bold : family.Ubuntu_Regular,
+            },
+          ]}>
+          {title4}
+        </Text>
         <LinearGradient
           colors={index == 3 ? colors.b_gradient : colors.half_white_gradient}
           start={{x: 0, y: 1}}
@@ -102,7 +154,7 @@ export const FourSegment = ({
                   index == 3 ? family.Ubuntu_Bold : family.Ubuntu_Regular,
               },
             ]}>
-            {title4}
+            {subtitle4}
           </Text>
         </LinearGradient>
       </TouchableOpacity>
@@ -112,32 +164,26 @@ export const FourSegment = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: 30,
+    height: 40,
     width: '100%',
     flexDirection: 'row',
-    marginVertical: 10,
+    justifyContent: 'space-evenly',
+    marginVertical: 15,
   },
   tab1: {
-    width: '25%',
-    height: '100%',
+    width: WP('20'),
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
   },
   tab2: {
-    width: '25%',
-    height: '100%',
+    width: WP('20'),
     alignItems: 'center',
     justifyContent: 'center',
   },
   tab3: {
-    width: '25%',
-    height: '100%',
+    width: WP('20'),
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
   },
   textStyle: {
     color: colors.g1,
@@ -145,25 +191,24 @@ const styles = StyleSheet.create({
     fontFamily: family.Ubuntu_Regular,
   },
   g_tab1: {
-    height: '100%',
-    width: '100%',
+    width: 30,
+    height: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
+    borderRadius: 30,
   },
   g_tab2: {
-    width: '100%',
-    height: '100%',
+    width: 30,
+    height: 30,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 30,
   },
   g_tab3: {
-    height: '100%',
-    width: '100%',
+    width: 30,
+    height: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
+    borderRadius: 30,
   },
 });

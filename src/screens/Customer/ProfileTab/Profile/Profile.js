@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList,TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {AppHeader, ProfileBox, ProfileField} from '../../../../components';
 import styles from './styles';

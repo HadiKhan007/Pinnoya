@@ -1,12 +1,42 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-
-const EditProfile = () => {
+import {SafeAreaView, View, Text, FlatList} from 'react-native';
+import {AdressesCard, AppHeader} from '../../../../components';
+import styles from './styles';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {
+  Addresses_list,
+  EditProfile_List,
+} from '../../../../shared/utilities/constant';
+const EditProfile = ({navigation}) => {
   return (
-    <View>
-      <Text>EditProfile</Text>
-    </View>
+    <SafeAreaView style={styles.safeView}>
+      <AppHeader
+        backIcon={true}
+        title={'Edit Profile'}
+        onPressBack={() => {
+          navigation?.goBack();
+        }}
+      />
+      <View style={styles.container}>
+        <View style={styles.contentContainer}>
+          <Text style={styles.titleText}>Lorem ipsum dolor</Text>
+          <Text style={styles.subTitleText}>
+            Pellentesque in ipsum id orci porta dapibus.
+          </Text>
+        </View>
+        <View style={styles.secondContainer}>
+          <KeyboardAwareScrollView
+            showsVerticalScrollIndicator={false}>
+            <FlatList
+              data={EditProfile_List}
+              renderItem={({item}) => {
+                return <AdressesCard item={item} />;
+              }}
+            />
+          </KeyboardAwareScrollView>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };
-
 export default EditProfile;

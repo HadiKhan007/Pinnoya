@@ -1,19 +1,48 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {colors, family, size, WP} from '../../shared/exporter';
+import {appIcons, colors, family, size, WP} from '../../shared/exporter';
 
-export const AuthHeading = ({title, subtitle, maxWidth, marginLeft}) => {
+export const AuthHeading = ({
+  title,
+  subtitle,
+  maxWidth,
+  marginLeft,
+  width,
+  margin,
+  numberOfLines,
+  flexDirection,
+  icon,
+}) => {
   return (
-    <View style={[styles.container]}>
+    <View
+      style={[
+        styles.container,
+        {flexDirection: flexDirection ? 'row' : 'column'},
+      ]}>
+      {icon && (
+        <TouchableOpacity>
+          <Image
+            source={appIcons.plus}
+            style={{
+              height: 14,
+              width: 14,
+              marginVertical: WP('1'),
+            }}
+          />
+        </TouchableOpacity>
+      )}
       <Text
         style={[styles.title, {maxWidth: maxWidth}, {marginLeft: marginLeft}]}>
         {title}
       </Text>
-      <Text style={styles.subtitle}>{subtitle}</Text>
+      <Text
+        numberOfLines={numberOfLines}
+        style={[styles.subtitle, {maxWidth: width}, {marginLeft: margin}]}>
+        {subtitle}
+      </Text>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     paddingVertical: WP('5'),

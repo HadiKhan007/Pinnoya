@@ -36,12 +36,8 @@ function* login(params) {
     //     payload: null,
     //   });
     //   params?.cbFailure(res?.data);
-    //   console.log('==============login failed======================');
-    //   console.log(res?.data);
-    //   console.log('====================================');
     // }
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.LOGIN_REQUEST_FAILURE,
       payload: null,
@@ -72,7 +68,6 @@ function* socialLoginUser(params) {
       params?.cbFailure(res?.data);
     }
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.SOCIAL_LOGIN_REQUEST_FAILURE,
       payload: null,
@@ -91,7 +86,6 @@ function* signUp(params) {
   try {
     registerUser(params?.params)
       .then(res => {
-        console.log(res?.data);
         params?.cbSuccess(res.data);
       })
       .catch(error => {
@@ -125,7 +119,6 @@ function* forgot(params) {
       params?.cbFailure(res?.data);
     }
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.FORGOT_PASSWORD_FAILURE,
       payload: null,
@@ -220,6 +213,5 @@ function* logout(params) {
       payload: params,
     });
   } catch (error) {
-    console.log(error);
   }
 }

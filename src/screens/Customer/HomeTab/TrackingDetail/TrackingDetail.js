@@ -1,8 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useRef} from 'react';
+import {View} from 'react-native';
+import React, {useRef} from 'react';
 import styles from './styles';
 import {
-  AppHeader,
   Button,
   MapComponent,
   MapHeader,
@@ -39,7 +38,7 @@ const TrackingDetail = ({navigation}) => {
         height={WP('160')}
         onPressBtn={() => {
           modalRef?.current?.close();
-          navigation?.navigate('AvailServiceDetail');
+          navigation?.navigate('BookingDetail');
         }}
       />
     </>

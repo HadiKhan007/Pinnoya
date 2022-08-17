@@ -1,9 +1,7 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import {
-  Dimensions,
   FlatList,
   StyleSheet,
-  View,
   TouchableOpacity,
   Text,
 } from 'react-native';

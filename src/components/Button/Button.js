@@ -10,6 +10,7 @@ export const Button = ({
   onPressBtn,
   width,
   img,
+  marginLeft,
 }) => {
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPressBtn}>
@@ -17,7 +18,13 @@ export const Button = ({
         colors={bgColor ? bgColor : colors.db_gradient}
         start={{x: 0, y: 1}}
         end={{x: 0, y: 0}}
-        style={[styles.btnContainer, {width: width ? width : WP('90')}]}>
+        style={[
+          styles.btnContainer,
+          {
+            width: width ? width : WP('90'),
+            marginLeft: marginLeft ? marginLeft : 0,
+          },
+        ]}>
         {img && <Image source={img} style={styles.imageStyle} />}
         <Text
           style={[styles.btnText, {color: textColor ? textColor : colors.b1}]}>
@@ -42,8 +49,8 @@ const styles = StyleSheet.create({
       height: 5,
     },
     shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    elevation: 10,
+    shadowRadius: 4,
+    elevation: 6,
   },
   imageStyle: {
     height: 23,

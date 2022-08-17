@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
   textContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: WP('2'),
     width: '100%',
   },
   listContainer: {

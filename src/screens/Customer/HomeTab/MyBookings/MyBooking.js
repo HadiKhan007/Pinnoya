@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, TouchableOpacity, View, Text, Image} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
 import {
@@ -6,9 +6,21 @@ import {
   FourSegment,
   ServiceDetailCard,
 } from '../../../../components';
-import {spacing} from '../../../../shared/exporter';
+import {appIcons, spacing} from '../../../../shared/exporter';
+import {Menu, MenuItem} from 'react-native-material-menu';
 const MyBooking = ({navigation}) => {
   const [tabIndex, settabIndex] = useState(0);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const hideItemClick = () => {
+    setShowMenu(false);
+  };
+  const seeAllItemClick = () => {
+    setShowMenu(false);
+    setTimeout(() => {
+      setShowModal(true);
+    }, 500);
+  };
   return (
     <>
       <AppHeader
@@ -22,18 +34,48 @@ const MyBooking = ({navigation}) => {
         <View style={styles.contentContainer}>
           <View style={{flex: 1}}>
             <FourSegment
-              title1={'Cancelled'}
-              title2={'Completed'}
-              title3={'On going'}
-              title4={'Pending'}
+              title1={'Pending'}
+              title2={'On going'}
+              title3={'Completed'}
+              title4={'Cancelled'}
+              subtitle1={'1'}
+              subtitle2={'2'}
+              subtitle3={'3'}
+              subtitle4={'4'}
               index={tabIndex}
               setIndex={i => {
                 settabIndex(i);
               }}
             />
-            <View style={{flex: 1}}>
+            <View style={styles.secondContentContainer}>
+              <View style={styles.textContainer}>
+                <Text style={styles.sortTxt}>Sort by :</Text>
+                <Text style={styles.alltxt}>All</Text>
+                <TouchableOpacity onPress={() => setShowMenu(true)}>
+                  <Image source={appIcons.droparrow} style={styles.dropImg} />
+                  <View style={styles.menuContainer}>
+                    <Menu
+                      visible={showMenu}
+                      style={styles.menuStyle}
+                      onRequestClose={() => setShowMenu(false)}>
+                      <MenuItem
+                        style={styles.menuItemStyle}
+                        textStyle={styles.menuTxtStyle}
+                        onPress={() => hideItemClick()}>
+                        Hide this ad
+                      </MenuItem>
+                      <MenuItem
+                        style={styles.menuItemStyle}
+                        textStyle={styles.menuTxtStyle}
+                        onPress={() => seeAllItemClick()}>
+                        See All
+                      </MenuItem>
+                    </Menu>
+                  </View>
+                </TouchableOpacity>
+              </View>
               <FlatList
-                style={spacing.mt10}
+                style={spacing.mt2}
                 showsVerticalScrollIndicator={false}
                 data={[1, 2, 3, 4, 5]}
                 renderItem={({item}) => {
@@ -42,7 +84,7 @@ const MyBooking = ({navigation}) => {
                       onPress={() => {
                         navigation?.navigate('BookedServiceDetail');
                       }}>
-                      <ServiceDetailCard />
+                      <ServiceDetailCard title={'Cancelled'} />
                     </TouchableOpacity>
                   );
                 }}

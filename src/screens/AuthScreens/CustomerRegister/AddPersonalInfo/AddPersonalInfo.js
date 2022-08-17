@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
 import {
   colors,
   CustomerRegisterStep1Fields,
@@ -8,17 +8,14 @@ import {
 import styles from './styles';
 import {
   AppInput,
-  AuthFooter,
   AuthHeader,
   AuthHeading,
   Button,
-  Checkbox,
   SmallButton,
+  AddMoreKid,
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
-import AddMoreKid from '../../../../components/Cards/AddMoreKid/AddMoreKid';
-import {Add_kid} from '../../../../shared/utilities/constant';
 const AddPersonalInfo = ({navigation}) => {
   return (
     <>

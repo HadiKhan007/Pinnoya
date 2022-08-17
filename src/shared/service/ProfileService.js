@@ -7,7 +7,6 @@
 // };
 
 // export const updateUserData = (id, params) => {
-//   // console.log(id, params);
 //   return HTTP_CLIENT.put(`${ENDPOINTS.PROFILE}/${id}`, params);
 // };
 

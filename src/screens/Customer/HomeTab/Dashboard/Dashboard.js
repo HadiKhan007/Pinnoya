@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
 import {
@@ -7,16 +7,9 @@ import {
   HomeModal,
   ServiceCard,
 } from '../../../../components';
-import {
-  colors,
-  HP,
-  serviceList,
-  spacing,
-  WP,
-} from '../../../../shared/exporter';
+import {colors, serviceList, spacing} from '../../../../shared/exporter';
 const Dashboard = ({navigation}) => {
   const [openModal, setopenModal] = useState(false);
-  // const isLandscape = WP > HP;
   return (
     <>
       <HomeHeader
@@ -34,8 +27,6 @@ const Dashboard = ({navigation}) => {
           <View style={styles.listContainer}>
             <FlatList
               showsVerticalScrollIndicator={false}
-              // numColumns={Number(isLandscape) + 1}
-              // key={Number(isLandscape)}
               data={serviceList}
               renderItem={({item}) => {
                 return (

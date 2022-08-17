@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6.27,
     elevation: 8,
     marginVertical: 8,
+
   },
   h1: {
     color: colors.b1,

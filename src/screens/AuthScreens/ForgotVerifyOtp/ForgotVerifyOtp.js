@@ -1,4 +1,10 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import React, {useRef, useState, useEffect} from 'react';
 import {AuthHeader, AuthHeading, Button} from '../../../components';
 import styles from './styles';
@@ -28,7 +34,7 @@ const ForgotVerifyOtp = ({navigation}) => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <AuthHeader
         onPressBack={() => {
           navigation?.goBack();
@@ -79,10 +85,7 @@ const ForgotVerifyOtp = ({navigation}) => {
                 <TouchableOpacity
                   style={[
                     spacing.my4,
-                    {
-                      flexDirection: 'row',
-                      justifyContent: 'center',
-                    },
+                    {flexDirection: 'row', justifyContent: 'center'},
                   ]}>
                   <Text style={styles.resTxt}>Resend code in </Text>
 
@@ -93,7 +96,7 @@ const ForgotVerifyOtp = ({navigation}) => {
                     }}
                     until={timerCount}
                     digitStyle={{
-                      marginVertical: WP(-2),
+                      marginVertical: WP(-3),
                     }}
                     digitTxtStyle={{color: colors.p1}}
                     timeToShow={['S']}
@@ -130,7 +133,7 @@ const ForgotVerifyOtp = ({navigation}) => {
           </KeyboardAwareScrollView>
         </View>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 

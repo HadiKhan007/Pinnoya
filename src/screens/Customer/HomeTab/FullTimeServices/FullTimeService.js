@@ -1,9 +1,13 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import {View, Text} from 'react-native';
-import {HomeHeader, AppInput, Button, HomeModal} from '../../../../components';
+import {
+  HomeHeader,
+  AppInput,
+  Button,
+  ServiceModal,
+} from '../../../../components';
 import {
   appIcons,
-  spacing,
   colors,
   CustomerRegisterStep1Fields,
   CustomerRegisterStep1VS,
@@ -11,7 +15,6 @@ import {
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import {Formik} from 'formik';
-import {ServiceModal} from '../../../../components/Modal/ServicesModal';
 const FullTimeService = ({navigation}) => {
   const [openModal, setopenModal] = useState(false);
   return (
@@ -151,11 +154,14 @@ const FullTimeService = ({navigation}) => {
         </View>
       </View>
       <ServiceModal
+        title={true}
+        image={true}
         show={openModal}
         img={appIcons.tik}
         onPressBack={() => {
-          navigation?.navigate('Schedule');
+          navigation?.navigate('ServiceItemDetail');
         }}
+        backBtn={true}
       />
     </>
   );

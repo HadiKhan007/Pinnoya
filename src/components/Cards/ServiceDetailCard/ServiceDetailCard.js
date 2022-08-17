@@ -6,23 +6,26 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {appIcons, colors, family, size, WP} from '../../../shared/exporter';
 import StarIcon from 'react-native-vector-icons/Ionicons';
 import TickIcon from 'react-native-vector-icons/Feather';
 
-export const ServiceDetailCard = ({
-  title,
-  subtitle,
-  rating,
-  hourly_rate,
-  img,
-}) => {
+export const ServiceDetailCard = ({title, space}) => {
+  const [isActive, setActive] = useState(false);
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.leftCon}>
-        <TouchableOpacity style={styles.btnContainer} hitSlop={styles.hitSlop}>
-          <Image style={styles.smIcon} source={appIcons.fillbookmark} />
+        <TouchableOpacity
+          style={styles.btnContainer}
+          hitSlop={styles.hitSlop}
+          onPress={() => {
+            setActive(!isActive);
+          }}>
+          <Image
+            style={styles.smIcon}
+            source={isActive ? appIcons.fillbookmark : appIcons.unfillbookmark}
+          />
         </TouchableOpacity>
         <Image style={styles.imageStyle} source={appIcons.photo} />
       </ImageBackground>
@@ -40,10 +43,14 @@ export const ServiceDetailCard = ({
           <Text style={styles.normal}>5.0</Text>
           <StarIcon name={'star'} color={colors.s1} />
         </View>
-        <View style={styles.aiRowFlex}>
-          <Text style={styles.h4}>₱5 / Hour</Text>
+        <Text style={styles.h4}>₱5 / Hour</Text>
+        <View
+          style={[
+            styles.aiRowFlex,
+            {alignItems: space ? 'flex-end' : 'flex-start'},
+          ]}>
           <TouchableOpacity style={styles.smbtnCon}>
-            <Text style={styles.smText}>Hire</Text>
+            <Text style={styles.smText}>{title}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -56,15 +63,16 @@ const styles = StyleSheet.create({
     height: 130,
     marginVertical: 10,
     flexDirection: 'row',
-    elevation: 5,
     backgroundColor: colors.white,
     borderRadius: 10,
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
+    shadowColor: Platform.OS == 'ios' ? '#00000080' : '#00000050',
+    shadowOpacity: 0.4,
     shadowOffset: {
-      width: 0,
-      height: 5,
+      width: 1,
+      height: 1,
     },
+    shadowRadius: Platform.OS == 'ios' ? 8 : 10,
+    elevation: Platform.OS == 'ios' ? 0 : 5,
   },
   leftCon: {
     backgroundColor: colors.g3,
@@ -138,8 +146,7 @@ const styles = StyleSheet.create({
     fontFamily: family.Ubuntu_Medium,
   },
   aiRowFlex: {
-    // flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'flex-end',
     justifyContent: 'space-between',
   },
   smbtnCon: {
