@@ -93,7 +93,7 @@ export const PaymentCard = ({
                 <Button
                   onPressBtn={onPressBtn}
                   bgColor={colors.b_gradient}
-                  btnText={'Payment'}
+                  btnText={'Pay'}
                   textColor={colors.white}
                   width={'90%'}
                 />
@@ -172,7 +172,7 @@ export const PaymentCard = ({
                 <Button
                   onPressBtn={onPressBtn}
                   bgColor={colors.b_gradient}
-                  btnText={'Payment'}
+                  btnText={'Pay'}
                   textColor={colors.white}
                   width={'90%'}
                 />
@@ -202,7 +202,7 @@ export const PaymentCard = ({
             <Button
               onPressBtn={onPayPress}
               bgColor={colors.b_gradient}
-              btnText={'Payment'}
+              btnText={'Pay'}
               textColor={colors.white}
               width={'100%'}
             />
