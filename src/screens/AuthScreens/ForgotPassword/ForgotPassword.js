@@ -47,7 +47,6 @@ const ForgotPassword = ({navigation}) => {
         <Formik
           initialValues={forgotFormFields}
           onSubmit={values => {
-            console.log(values);
             onPressLogin(values);
           }}
           validationSchema={ForgotPasswordVS}>
@@ -89,15 +88,11 @@ const ForgotPassword = ({navigation}) => {
                       {justifyContent: 'center'},
                     ]}>
                     <Text style={styles.resTxt}>Resend code in </Text>
-
                     <CountDown
-                      style={{
-                        width: WP(5),
-                        flexDirection: 'row',
-                      }}
+                      style={styles.count}
                       until={timerCount}
                       digitStyle={{
-                        marginVertical: WP(-2),
+                        marginVertical: WP(-3),
                       }}
                       digitTxtStyle={{color: colors.p1}}
                       timeToShow={['S']}

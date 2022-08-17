@@ -1,24 +1,35 @@
 import {
   FlatList,
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
   Image,
+  SafeAreaView,
 } from 'react-native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
-  AppHeader,
   HomeHeader,
   ServiceCard,
   ServiceDetailCard,
 } from '../../../../components';
 import styles from './styles';
-import {appIcons, colors, size, spacing, WP} from '../../../../shared/exporter';
+import {appIcons} from '../../../../shared/exporter';
+import {Menu, MenuItem} from 'react-native-material-menu';
 const ServiceDetail = ({navigation}) => {
+  const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const tabRef = useRef(null);
+  const hideItemClick = () => {
+    setShowMenu(false);
+  };
+  const seeAllItemClick = () => {
+    setShowMenu(false);
+    setTimeout(() => {
+      setShowModal(true);
+    }, 500);
+  };
   return (
-    <>
+    <SafeAreaView style={styles.safeView}>
       <HomeHeader
         title={'Hello Alice,'}
         subtitle={'What service do you need?'}
@@ -30,15 +41,7 @@ const ServiceDetail = ({navigation}) => {
           </Text>
         </View>
         <View style={styles.contentContainer}>
-          <Text
-            style={{
-              fontSize: size.large,
-              color: colors.b1,
-              fontWeight: 'bold',
-              // marginTop: WP(3),
-            }}>
-            Service
-          </Text>
+          <Text style={styles.SerText}>Service</Text>
           <View style={styles.firstCardContainer}>
             <ServiceCard
               item={{
@@ -62,8 +65,28 @@ const ServiceDetail = ({navigation}) => {
             <View style={styles.textContanier}>
               <Text style={styles.srtxt}>Sort by:</Text>
               <Text style={styles.rewTxt}>Review</Text>
-              <Image source={appIcons.droparrow} style={styles.dropImg} />
-
+              <TouchableOpacity onPress={() => setShowMenu(true)}>
+                <Image source={appIcons.droparrow} style={styles.dropImg} />
+                <View style={styles.menuContainer}>
+                  <Menu
+                    visible={showMenu}
+                    style={styles.menuStyle}
+                    onRequestClose={() => setShowMenu(false)}>
+                    <MenuItem
+                      style={styles.menuItemStyle}
+                      textStyle={styles.menuTxtStyle}
+                      onPress={() => hideItemClick()}>
+                      Hide this ad
+                    </MenuItem>
+                    <MenuItem
+                      style={styles.menuItemStyle}
+                      textStyle={styles.menuTxtStyle}
+                      onPress={() => seeAllItemClick()}>
+                      See All
+                    </MenuItem>
+                  </Menu>
+                </View>
+              </TouchableOpacity>
               <TouchableOpacity style={styles.smbtnCon}>
                 <Text style={styles.smText}>Price</Text>
               </TouchableOpacity>
@@ -71,23 +94,22 @@ const ServiceDetail = ({navigation}) => {
           </View>
 
           <FlatList
-            // style={spacing.mt10}
             showsVerticalScrollIndicator={false}
             data={[1, 2, 3, 4, 5]}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    navigation?.navigate('ServiceItemDetail');
+                    navigation?.navigate('AvailServiceDetail');
                   }}>
-                  <ServiceDetailCard />
+                  <ServiceDetailCard title={'Hire'} />
                 </TouchableOpacity>
               );
             }}
           />
         </View>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 

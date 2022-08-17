@@ -35,5 +35,11 @@ const styles = StyleSheet.create({
     marginRight: WP(70),
     marginBottom: WP(5),
   },
+  renderHeader: {
+    width: '80%',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
 export default styles;

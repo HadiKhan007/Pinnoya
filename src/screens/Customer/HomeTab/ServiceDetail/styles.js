@@ -1,7 +1,8 @@
 import {Platform, StyleSheet} from 'react-native';
-import {colors, family, size, WP} from '../../../../shared/exporter';
+import {colors, family, size, WP, scrWidth} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
+  safeView: {flex: 1},
   container: {
     flex: 1,
     backgroundColor: colors.white,
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 7,
     marginTop: WP(2),
-    marginLeft: WP(35),
+    marginLeft: WP(39),
     elevation: 5,
   },
   smText: {
@@ -68,7 +69,6 @@ const styles = StyleSheet.create({
   },
   textContanier: {
     flexDirection: 'row',
-    // marginTop: WP(10),
   },
   insTxt: {
     fontSize: size.large,
@@ -77,9 +77,31 @@ const styles = StyleSheet.create({
     color: colors.b1,
   },
   thirdContentContainer: {
-    // backgroundColor: 'red',
     width: WP(80),
-    // height: WP(10),
+  },
+  SerText: {
+    fontSize: size.large,
+    color: colors.b1,
+    fontWeight: 'bold',
+  },
+  menuContainer: {
+    width: '100%',
+    position: 'relative',
+  },
+  menuStyle: {
+    marginLeft: 12,
+    borderRadius: 8,
+    height: WP('20'),
+    width: scrWidth / 3.7,
+  },
+  menuItemStyle: {
+    height: WP('8'),
+  },
+  menuTxtStyle: {
+    left: -2,
+    color: colors.b1,
+    marginTop: WP('3.5'),
+    fontSize: size.xsmall,
   },
 });
 

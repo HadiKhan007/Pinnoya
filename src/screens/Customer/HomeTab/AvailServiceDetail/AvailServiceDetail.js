@@ -53,6 +53,9 @@ const AvailServiceDetail = ({navigation}) => {
               />
               <SmallMapCard />
               <TitleAlphaHeading
+                onPress={() => {
+                  navigation.navigate('PaymentMethod');
+                }}
                 title={'Payment Details'}
                 img={appIcons.pencil}
                 subtitle={

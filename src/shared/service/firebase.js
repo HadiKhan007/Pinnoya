@@ -17,7 +17,6 @@
 //   }
 
 //   signup(params) {
-//     // console.log(params);
 //     return firebase
 //       .auth()
 //       .createUserWithEmailAndPassword(params.email, params.password);

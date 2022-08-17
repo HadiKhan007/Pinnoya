@@ -14,7 +14,10 @@ import AddPersonalInfo from '../../screens/AuthScreens/CustomerRegister/AddPerso
 import UploadDoc from '../../screens/AuthScreens/SPRegister/UploadDoc';
 import ResetPasswordSuccess from '../../screens/AuthScreens/ResetPasswordSuccess/ResetPasswordSuccess';
 import SetLocation from '../../screens/AuthScreens/CustomerRegister/SetLocation/SetLocation';
-import ForgotVerifyOtp from '../../screens/AuthScreens/ForgotVerifyOtp';
+import ForgotVerifyOtp from '../../screens/AuthScreens/ForgotVerifyOtp/ForgotVerifyOtp';
+import LocationFinder from '../../screens/AuthScreens/CustomerRegister/LocationFinder/LocationFinder';
+import TrackingDetail from '../../screens/Customer/HomeTab/TrackingDetail/TrackingDetail';
+import SPVerifyOtp from '../../screens/AuthScreens/SPRegister/SPVerifyOtp/SPVerifyOtp';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +30,8 @@ function AuthStack(props) {
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="AddPersonalInfo" component={AddPersonalInfo} />
       <Stack.Screen name="SetLocation" component={SetLocation} />
+      <Stack.Screen name="LocationFinder" component={LocationFinder} />
+      <Stack.Screen name="TrackingDetail" component={TrackingDetail} />
       <Stack.Screen name="CSignUp" component={CSignUp} />
       <Stack.Screen name="CSignUp2" component={CSignUp2} />
       <Stack.Screen name="SPSignUp" component={SPSignUp} />
@@ -34,6 +39,7 @@ function AuthStack(props) {
       <Stack.Screen name="UploadDoc" component={UploadDoc} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
+      <Stack.Screen name="SPVerifyOtp" component={SPVerifyOtp} />
       <Stack.Screen name="ForgotVerifyOtp" component={ForgotVerifyOtp} />
       <Stack.Screen
         name="ResetPasswordSuccess"

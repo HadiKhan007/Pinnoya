@@ -1,13 +1,11 @@
 import {
   Image,
   StyleSheet,
-  Text,
-  View,
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
 import React from 'react';
-import {appIcons, colors, family, size, WP} from '../../../shared/exporter';
+import {appIcons, colors} from '../../../shared/exporter';
 
 export const UploadPicCard = ({width}) => {
   return (

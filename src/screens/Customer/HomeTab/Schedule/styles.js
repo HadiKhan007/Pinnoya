@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    // alignItems: 'center',
     overflow: 'hidden',
   },
   contentContainer: {
@@ -25,11 +24,9 @@ const styles = StyleSheet.create({
     padding: WP('4'),
   },
   imgBg: {
-    height: WP(70),
-    width: WP(65),
-    marginHorizontal: WP(16),
-    // marginBottom: WP(5),
-    // marginVertical: WP(-2),
+    height: WP('70'),
+    width: WP('65'),
+    marginHorizontal: WP('16'),
   },
   h1: {
     fontSize: size.xxlarge,
@@ -44,56 +41,58 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginVertical: 10,
+    marginVertical: WP(3),
   },
   rightIcon: {
-    width: WP(20),
+    width: WP('20'),
     alignItems: 'center',
-    // justifyContent: 'center',
     flexDirection: 'row',
+    marginHorizontal: WP('10'),
   },
   text: {
     fontWeight: 'bold',
     color: colors.b1,
+    marginLeft: WP('2'),
   },
-
   title: {
     fontWeight: 'bold',
     color: colors.b1,
     fontSize: size.large,
-    marginLeft: WP(3),
-    marginTop: WP(2),
+    marginLeft: WP('3'),
+    marginTop: WP('2'),
   },
   subtitle: {
     color: colors.g1,
     maxWidth: 250,
-    marginLeft: WP(3),
-    marginTop: WP(1),
+    marginLeft: WP('3'),
+    marginTop: WP('1'),
   },
   iconContainer: {
-    width: WP(20),
+    width: WP('20'),
     alignItems: 'center',
     justifyContent: 'center',
   },
   contentContainer2: {
-    width: WP(76),
+    width: WP('76'),
   },
   sheetContainer: {
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    // backgroundColor: colors.white,
-    height: WP(115),
-    width: WP(100),
+    height: WP('115'),
+    width: WP('100'),
     overflow: 'hidden',
   },
   btnCon: {
     backgroundColor: colors.bl1,
-    height: 12,
-    width: 12,
+    height: 15,
+    width: 15,
     borderRadius: 12,
-    marginHorizontal: 10,
+    marginHorizontal: WP('2'),
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  contentContainer3: {
+    alignItems: 'center',
   },
 });
 export default styles;

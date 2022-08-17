@@ -1,10 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import {
-  appIcons,
-  colors,
-  family,
   WP,
+  colors,
   resetFormFields,
   ResetPasswordVS,
 } from '../../../shared/exporter';
@@ -28,17 +26,7 @@ const ResetPassword = ({navigation}) => {
       password: '',
       confirmPassword: '',
     };
-    dispatch(
-      resetPassRequest(
-        body,
-        () => {
-          console.log('Success');
-        },
-        () => {
-          console.log('Failed');
-        },
-      ),
-    );
+    dispatch(resetPassRequest(body));
     navigation?.navigate('ResetPasswordSuccess');
   };
   return (

@@ -29,17 +29,7 @@ const Login = ({navigation}) => {
       email: 'umer@gmail.com',
       password: '123456',
     };
-    dispatch(
-      loginRequest(
-        body,
-        () => {
-          console.log('Success');
-        },
-        () => {
-          console.log('Failed');
-        },
-      ),
-    );
+    dispatch(loginRequest(body));
     navigation?.navigate('App');
   };
   return (

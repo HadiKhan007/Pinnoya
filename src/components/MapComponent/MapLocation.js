@@ -14,13 +14,18 @@ import {location_list} from '../../shared/utilities/constant';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {AppInput, Button} from '../../components';
 import {TextInput} from 'react-native-paper';
-export const MapLocation = ({backIcon, onPressBack, title}) => {
+
+export const MapLocation = ({
+  backIcon,
+  onPressBack,
+  title,
+  onPress,
+  text,
+}) => {
   const [data, setData] = useState(location_list);
-  useEffect(() => {
-    console.log('data ', data);
-  }, [data]);
+  useEffect(() => {}, [data]);
   return (
-    <>
+    <View style={styles.mainContainer}>
       <View style={styles.container}>
         {backIcon && (
           <TouchableOpacity onPress={onPressBack} style={styles.arrowStyle}>
@@ -98,9 +103,7 @@ export const MapLocation = ({backIcon, onPressBack, title}) => {
               style={[styles.inputStyle]}
               placeholder={'Direction to reach'}
               placeholderTextColor={colors.g2}
-              onChangeText={text => {
-                console.log(text);
-              }}
+              onChangeText={text => {}}
               mode={'outlined'}
               outlineColor={colors.g2}
               activeOutlineColor={colors.p1}
@@ -112,9 +115,7 @@ export const MapLocation = ({backIcon, onPressBack, title}) => {
 
           <View style={styles.buttonView}>
             <Button
-              onPressBtn={() => {
-                navigation?.navigate('Dashboard');
-              }}
+              onPressBtn={onPress}
               bgColor={colors.b_gradient}
               textColor={colors.white}
               btnText={'Confirm Location'}
@@ -122,11 +123,12 @@ export const MapLocation = ({backIcon, onPressBack, title}) => {
           </View>
         </KeyboardAwareScrollView>
       </View>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {flex: 1.5},
   container: {
     height: WP('18'),
     justifyContent: 'flex-end',
@@ -162,8 +164,8 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     position: 'absolute',
-    left: 70,
-    top: 57,
+    left: 60,
+    top: -220,
     fontSize: size.large,
     color: colors.b1,
     fontFamily: family.Poppins_Medium,
@@ -175,7 +177,7 @@ const styles = StyleSheet.create({
     color: colors.g1,
   },
   arrowStyle: {
-    top: 60,
+    top: -218,
     left: 15,
   },
   Button: {

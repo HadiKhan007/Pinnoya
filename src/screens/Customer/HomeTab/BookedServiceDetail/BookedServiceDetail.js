@@ -1,18 +1,8 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import React, {useState} from 'react';
-import {
-  AppHeader,
-  AvailServiceCard,
-  PrimaryButton,
-  SmallMapCard,
-  TitleAlphaHeading,
-  Button,
-  ServiceFeeBox,
-  OngoingComp,
-  CompleteComp,
-} from '../../../../components';
+import {AppHeader, AvailServiceCard, OngoingComp} from '../../../../components';
 import styles from './styles';
-import {appIcons, colors, spacing} from '../../../../shared/exporter';
+import {spacing} from '../../../../shared/exporter';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const BookedServiceDetail = ({navigation}) => {
@@ -31,13 +21,11 @@ const BookedServiceDetail = ({navigation}) => {
           <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
             <AvailServiceCard status={'On going'} />
             <View style={spacing.my4}>
-              {/* <CompleteComp
-                rating={rating}
-                setRating={rat => {
-                  setRating(rat);
+              <OngoingComp
+                onPress={() => {
+                  navigation?.navigate('ServiceDetailCompleted');
                 }}
-              /> */}
-              <OngoingComp />
+              />
             </View>
           </KeyboardAwareScrollView>
         </View>

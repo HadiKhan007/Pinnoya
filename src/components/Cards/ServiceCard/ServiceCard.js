@@ -16,8 +16,6 @@ import {
   appIcons,
 } from '../../../shared/exporter';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {AppHeader} from '../../Header/AppHeader';
-import {AuthHeader} from '../../Header/AuthHeader';
 import {AuthHeading} from '../../Headings/AuthHeading';
 import {Service_List} from '../../../shared/utilities/constant';
 export const ServiceCard = ({

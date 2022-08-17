@@ -25,6 +25,11 @@ const tabArray = [
   },
   {
     id: 2,
+    title: 'My Vouchers',
+    route: 'MyVouchers',
+  },
+  {
+    id: 2,
     title: 'My Reviews',
     route: 'MyReviews',
   },
@@ -240,13 +245,13 @@ const edit_list = [
     id: 1,
     title: 'Edit Profile',
     img: appIcons.user2,
-    route: '',
+    route: 'EditProfile',
   },
   {
     id: 2,
     title: 'Payment Information',
     img: appIcons.paymentcard,
-    route: '',
+    route: 'PaymentInfo',
   },
   {
     id: 3,
@@ -264,13 +269,13 @@ const edit_list = [
     id: 5,
     title: 'My Addresses',
     img: appIcons.cardHome,
-    route: '',
+    route: 'MyAddresses',
   },
   {
     id: 6,
     title: 'Help Center',
     img: appIcons.book,
-    route: '',
+    route: 'HelpCenter',
   },
   {
     id: 7,
@@ -369,7 +374,87 @@ const Schedule_List = [
   },
 ];
 const Add_kid = [];
-
+const Payment_List = [
+  {
+    id: 1,
+    title: 'Credit Card',
+  },
+  {
+    id: 2,
+    title: 'Bank Transfer',
+  },
+  {
+    id: 3,
+    title: 'Debit Card',
+  },
+];
+const Addresses_list = [
+  {
+    id: 1,
+    title: 'Home',
+    subtitle:
+      'B-374 Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+  },
+  {
+    id: 2,
+    title: 'Office',
+    subtitle:
+      'B-374 Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+  },
+  {
+    id: 3,
+    title: 'Other',
+    subtitle:
+      'B-374 Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+  },
+  {
+    id: 4,
+    title: 'Work',
+    subtitle:
+      'B-374 Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+  },
+];
+const EditProfile_List = [
+  {
+    id: 1,
+    title: 'Name',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+  {
+    id: 2,
+    title: 'My information',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+  {
+    id: 3,
+    title: 'Email',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+  {
+    id: 4,
+    title: 'Password',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+  {
+    id: 5,
+    title: 'Phone',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+];
+const Help_List = [
+  {
+    id: 1,
+    title: 'FAQ',
+  },
+  {
+    id: 2,
+    title: 'Orders',
+  },
+  {
+    id: 3,
+    title: 'Support requests',
+  },
+];
 const stripe_publishableKey = '';
 const profile_uri =
   'https://www.shareicon.net/data/512x512/2017/01/06/868320_people_512x512.png';
@@ -394,4 +479,8 @@ export {
   Service_List,
   Schedule_List,
   Add_kid,
+  Payment_List,
+  Addresses_list,
+  EditProfile_List,
+  Help_List,
 };

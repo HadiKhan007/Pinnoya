@@ -1,11 +1,9 @@
 import {
   FlatList,
-  Image,
-  ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
+  Platform,
 } from 'react-native';
 import React from 'react';
 import RBSheet from 'react-native-raw-bottom-sheet';
@@ -33,7 +31,10 @@ export const JobModal = ({modalRef, onPressClose, expanded, onPressAccord}) => {
         renderItem={({item, index}) => {
           return (
             <View style={styles.cardContainer}>
-              <List.Section>
+              <List.Section style={{
+                overflow :'hidden',
+                borderRadius: 10,
+              }} >
                 <List.Accordion
                   expanded={expanded}
                   onPress={onPressAccord}
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     width: '100%',
+    // backgroundColor: 'red',
   },
   titleStyle: {
     fontSize: size.normal,
@@ -87,16 +89,7 @@ const styles = StyleSheet.create({
     color: colors.g1,
   },
   accorStyle: {
-    borderRadius: 10,
     backgroundColor: colors.white,
-    shadowColor: colors.box_shadow,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 6.27,
-    elevation: 8,
   },
   bodyStyle: {
     borderRadius: 5,

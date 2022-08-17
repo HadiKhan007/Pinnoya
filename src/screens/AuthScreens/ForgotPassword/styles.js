@@ -32,7 +32,10 @@ const styles = StyleSheet.create({
   resTxt: {
     fontWeight: 'bold',
     color: colors.p1,
-
+  },
+  count:{
+    width: WP(5),
+    flexDirection: 'row',
   },
 });
 

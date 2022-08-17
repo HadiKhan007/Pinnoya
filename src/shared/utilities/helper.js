@@ -74,9 +74,7 @@ export const checkBrand = name => {
   }
 };
 
-export const checkExerciseItemOrder = item => {
-  console.log(item);
-};
+export const checkExerciseItemOrder = item => {};
 
 export const calculateDateDiff = date => {
   const diff_date = moment(date).diff(moment(new Date()), 'days');
@@ -157,7 +155,7 @@ export const booked_status_color = status => {
   if (status == 'On going') {
     return colors.y2;
   }
-  if (status == 'ongoing') {
+  if (status == 'Completed') {
     return colors.gr2;
   }
 };
@@ -166,7 +164,7 @@ export const booked_status_text_color = status => {
   if (status == 'On going') {
     return colors.b1;
   }
-  if (status == 'ongoing') {
+  if (status == 'Completed') {
     return colors.white;
   }
 };

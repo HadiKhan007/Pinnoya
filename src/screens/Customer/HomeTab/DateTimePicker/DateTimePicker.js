@@ -1,38 +1,31 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
-import {AppHeader, Button, FourSegment} from '../../../../components';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
-import {colors, size, WP} from '../../../../shared/exporter';
-import RBSheet from 'react-native-raw-bottom-sheet';
+import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {AppHeader, Button, TimeCard} from '../../../../components';
+import {Calendar} from 'react-native-calendars';
+import {colors, WP} from '../../../../shared/exporter';
 import styles from './styles';
-import moment from 'moment';
-import {TimeCard} from '../../../../components/Cards/TimeCard/TimeCard';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-const DateTimePicker = ({navigation, route}) => {
+import moment from 'moment';
+const DateTimePicker = ({navigation, route, date}) => {
   const {title} = route.params;
-  const [selectedStartDate, setSelectedStartDate] = useState('');
-  const [markedDates, setmarkedDates] = useState({});
-  const getSelectedDayEvents =  day=> {
-
-    console.log(markedDates);
+  const [state, setState] = useState({selectedDate: '', markedDates: {}});
+  const [day, setDay] = useState({
+    addmonth: moment(date).add(1, 'M').format('MMM'),
+    currentMonth: moment(date).format('MMM'),
+    subMonth: moment(date).subtract(1, 'M').format('MMM'),
+  });
+  const getSelectedDayEvents = day => {
+    let markedDates = {};
     markedDates[day] = {
-      ...markedDates,
       selected: true,
-      selectedColor: 'red',
-      dotColor: colors.white,
-      marked: true,
-      customStyles: {
-        container: {
-          borderRadius: 0,
-          backgroundColor: colors.b1,
-          elevation: 2,
-        },
-        text: {
-          color: colors.white,
-          fontWeight: 'bold',
-        },
-      },
+      selectedColor: colors.p1,
     };
+    let serviceDate = moment(day);
+    serviceDate = serviceDate.format('DD.MM.YYYY');
+    setState({
+      serviceDate,
+      markedDates,
+    });
   };
   return (
     <>
@@ -46,11 +39,21 @@ const DateTimePicker = ({navigation, route}) => {
       <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Calendar
+            onMonthChange={month => {
+              setDay(month.month);
+            }}
+            // renderHeader={date => {
+            //   return (
+            //     <View style={styles.renderHeader}>
+            //       <Text style={{color: 'black'}}>{day.addmonth}</Text>
+            //       <Text style={{color: 'black'}}>{day.subMonth}</Text>
+            //       <Text style={{color: 'black'}}>{day.currentMonth}</Text>
+            //     </View>
+            //   );
+            // }}
             markingType="custom"
-            markedDates={markedDates}
-            // onDayPress={selectedStartDate}
+            markedDates={state.markedDates}
             onDayPress={day => {
-          
               getSelectedDayEvents(day.dateString);
             }}
             disabledDaysIndexes={[0, 6]}
@@ -58,7 +61,6 @@ const DateTimePicker = ({navigation, route}) => {
           {/* Time */}
           <View style={styles.secondContentContainer}>
             <Text style={styles.txt}>Enter Time</Text>
-
             <View style={styles.cardContainer}>
               <TimeCard
                 Header={'Start Time'}
@@ -72,12 +74,18 @@ const DateTimePicker = ({navigation, route}) => {
               />
               <View style={styles.Btn}>
                 <Button
+                  onPressBtn={() => {
+                    navigation?.goBack();
+                  }}
                   bgColor={colors.mb_gradient}
                   textColor={colors.b1}
                   btnText={'Cancel'}
                   width={WP(35)}
                 />
                 <Button
+                  onPressBtn={() => {
+                    navigation?.navigate('TrackingDetail');
+                  }}
                   bgColor={colors.b_gradient}
                   textColor={colors.white}
                   btnText={'Save'}

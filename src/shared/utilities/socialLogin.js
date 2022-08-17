@@ -118,7 +118,6 @@
 //     await AsyncStorage.setItem('isRemember', isRemember?.toString());
 //     navigation?.replace('App');
 //     setloading(false);
-//     // console.log('Social Login Success', res);
 //   } else {
 //     Alert.alert('Error', res?.message);
 //   }
@@ -126,6 +125,5 @@
 // //On Social Login Failed
 // const onSocialLoginFailed = (res, setloading) => {
 //   setloading(false);
-//   console.log('Social Login Failed');
 //   Alert.alert('Error', res);
 // };

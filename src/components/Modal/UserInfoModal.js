@@ -1,15 +1,13 @@
 import React, {useRef} from 'react';
-import {
-  Dimensions,
-  FlatList,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Text,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, View, ScrollView} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {DescriptionBox, ServiceFeeBox, TitleHeading, UserInfoBox} from '..';
+import {
+  DescriptionBox,
+  ServiceFeeBox,
+  TitleHeading,
+  UserInfoBox,
+  AuthHeading,
+} from '..';
 import {colors, spacing, WP} from '../../shared/exporter';
 
 export const UserInfoModal = ({modalRef, height, onPressBtn}) => {
@@ -29,6 +27,12 @@ export const UserInfoModal = ({modalRef, height, onPressBtn}) => {
           <DescriptionBox />
           <View style={spacing.my4}>
             <TitleHeading title={'Payment'} />
+            <AuthHeading
+              title={'Add a voucher'}
+              flexDirection={true}
+              icon={true}
+              marginLeft={WP('3')}
+            />
             <ServiceFeeBox onPressBtn={onPressBtn} />
           </View>
         </ScrollView>

@@ -1,8 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet,View} from 'react-native';
 import React from 'react';
 import MapView from 'react-native-maps';
-import {WP} from '../../shared/exporter';
-export const MapComponent = ({modalRef}) => {
+export const MapComponent = () => {
   return (
     <View style={{flex: 1}}>
       <MapView
@@ -12,7 +11,8 @@ export const MapComponent = ({modalRef}) => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-        style={{flex: 1, overflow: 'hidden'}}></MapView>
+        style={{flex: 1}}
+      />
     </View>
   );
 };

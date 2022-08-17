@@ -1,16 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {colors, size, WP} from '../../../shared/exporter';
+import {TextInput} from 'react-native-paper';
 export const TimeCard = ({Header, title, subtitle}) => {
   const [index, setIndex] = useState(0);
-  const [isActive, setActive] = useState(false);
-  console.log('res---', isActive, index);
   return (
     <>
       <Text style={style.header}>{Header}</Text>
@@ -18,24 +11,18 @@ export const TimeCard = ({Header, title, subtitle}) => {
       <View style={style.container}>
         {/* HOUR */}
         <View style={style.contentContainer}>
-          <View
-            style={[
-              style.inputCOntainer,
-              // {borderColor: isActive ? 'purple' : 'gary'},
-            ]}>
-            <TextInput
-              placeholder="00"
-              placeholderTextColor={colors.g1}
-              // onBlur={() => setActive(true)}
-              // onFocus={() => setActive(false)}
-              outlineColor={colors.g2}
-              activeOutlineColor={colors.p1}
-              maxLength={24}
-              style={{
-                marginLeft: WP(1.5),
-              }}
-            />
-          </View>
+          <TextInput
+            style={[style.inputStyle, {marginHorizontal: WP('13')}]}
+            placeholder={'00'}
+            placeholderTextColor={colors.g2}
+            onChangeText={text => {}}
+            mode={'outlined'}
+            outlineColor={colors.g2}
+            activeOutlineColor={colors.p1}
+            theme={{roundness: 10, colors: {text: 'black'}}}
+            dense={true}
+            multiline={true}
+          />
           <Text style={style.title}>{title}</Text>
         </View>
         {/* : */}
@@ -43,25 +30,18 @@ export const TimeCard = ({Header, title, subtitle}) => {
 
         {/* MINUTE */}
         <View style={style.secondContentContainer}>
-          <View
-            style={[
-              style.inputContainer2,
-              // {borderColor: isActive ? 'gary' : 'purple'},
-            ]}>
-            <TextInput
-              placeholder="00"
-              placeholderTextColor={colors.g1}
-              // onBlur={() => setActive(true)}
-              // onFocus={() => setActive(false)}
-              outlineColor={colors.g2}
-              activeOutlineColor={colors.p1}
-              blurOnSubmit={false}
-              maxLength={60}
-              style={{
-                marginLeft: WP(1.5),
-              }}
-            />
-          </View>
+          <TextInput
+            style={[style.inputStyle]}
+            placeholder={'00'}
+            placeholderTextColor={colors.g2}
+            onChangeText={text => {}}
+            mode={'outlined'}
+            outlineColor={colors.g2}
+            activeOutlineColor={colors.p1}
+            theme={{roundness: 10, colors: {text: 'black'}}}
+            dense={true}
+            multiline={true}
+          />
           <Text style={style.subtitle}>{subtitle}</Text>
         </View>
 
@@ -119,16 +99,17 @@ const style = StyleSheet.create({
   contentContainer: {
     width: WP(35),
   },
-  inputCOntainer: {
-    width: WP(10),
-    borderWidth: 1,
+  inputStyle: {
+    fontSize: size.tiny,
+    color: colors.b1,
+    paddingHorizontal: WP('1'),
     backgroundColor: colors.white,
-    elevation: 5,
-    marginHorizontal: WP(15),
-    marginTop: WP(3),
-    borderRadius: 10,
-    alignItems: 'center',
     justifyContent: 'center',
+    paddingVertical: 5,
+    marginVertical: WP('2'),
+    marginHorizontal: WP('9'),
+    width: 50,
+    height: 40,
   },
   title: {
     color: colors.g1,
@@ -142,18 +123,6 @@ const style = StyleSheet.create({
   },
   secondContentContainer: {
     width: WP(30),
-    //   backgroundColor: 'red',
-  },
-  inputContainer2: {
-    width: WP(10),
-    borderWidth: 1,
-    marginHorizontal: WP(10),
-    backgroundColor: colors.white,
-    elevation: 5,
-    marginTop: WP(3),
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   subtitle: {
     color: colors.g1,

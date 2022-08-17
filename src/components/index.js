@@ -35,6 +35,7 @@ export * from './Box/DescriptionBox';
 export * from './Box/ServiceFeeBox';
 export * from './Box/ProfileBox';
 export * from './Box/ChatBox';
+export * from './Box/ServiceInfoBox';
 
 //Tabs
 export * from './Tabs/BottomTab';
@@ -59,6 +60,14 @@ export * from './Cards/DatePickerCard/DatePickerCard';
 export * from './Cards/TimePickerCard/TimePickerCard';
 export * from './Cards/AvailServiceCard/AvailServiceCard';
 export * from './Cards/NotificationCard/NotificationCard';
+export * from './Cards/TimeCard/TimeCard';
+export * from './Cards/AddMoreKid/AddMoreKid';
+export * from './Cards/ScheduleListCard/ScheduleListCard';
+export * from './Cards/VoucherCard/VoucherCard';
+export * from './Cards/FavouriteCard/FavouriteCard';
+export * from './Cards/PaymentCard/PaymentCard';
+export * from './Cards/AddressesCard/AddressesCard';
+export * from './Cards/HelpCard/HelpCard';
 
 //Modals
 export * from './Modal/LocationModal';
@@ -71,6 +80,11 @@ export * from './Modal/JobModal';
 export * from './Modal/FilterModal/ServiceListModal';
 export * from './Modal/FilterModal/ServiceListModal';
 export * from './Modal/FilterModal/BabySitterModal';
+export * from './Modal/ListModal';
+export * from './Modal/LocationModal';
+export * from './Modal/ServicesModal';
+export * from './Modal/DeleteModal';
+export * from './Modal/ServiceInfoModal';
 
 //Headings
 export * from './Headings/AuthHeading';
@@ -80,10 +94,12 @@ export * from './Headings/BetaHeading';
 
 //Slider
 export * from './IntroSlider/MultiSliderComp';
+export * from './IntroSlider/ServiceSlider';
 
 // Maps
 export * from './MapComponent/MapComponent';
 export * from './MapComponent/SmallMapCard';
+export * from './MapComponent/MapLocation';
 
 //CustomComponents
 export * from './CustomComponents/OngoingComp';

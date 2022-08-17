@@ -1,4 +1,4 @@
-import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import React, {useRef, useState} from 'react';
 import {
   AppHeader,
@@ -94,7 +94,7 @@ const ServiceItemDetail = ({navigation}) => {
             <View style={styles.aiCenter}>
               <Button
                 onPressBtn={() => {
-                  navigation?.navigate('ScheduleNow');
+                  navigation?.navigate('Schedule');
                 }}
                 bgColor={colors.b_gradient}
                 btnText={'Schedule Now'}

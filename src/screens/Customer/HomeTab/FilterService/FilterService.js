@@ -108,7 +108,6 @@ const FilterService = ({navigation}) => {
                 <MultiSliderComp
                   value={[18, 65]}
                   onValuesChange={val => {
-                    // console.log(val);
                   }}
                   h1={'18'}
                   h2={'65'}
@@ -119,7 +118,6 @@ const FilterService = ({navigation}) => {
                 <MultiSliderComp
                   value={[2, 50]}
                   onValuesChange={val => {
-                    // console.log(val);
                   }}
                   h1={'₱2'}
                   h2={'₱50'}

@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     height: 12,
     width: 9,
     resizeMode: 'contain',
+    tintColor: colors.y3,
   },
   h1: {
     fontSize: size.xxlarge,

@@ -1,21 +1,22 @@
-import React, {useRef} from 'react';
-import {View, Text} from 'react-native';
-import {MapComponent, AuthHeader, SmallMapCard} from '../../../../components';
-import {MapLocation} from '../../../../components/MapComponent/MapLocation';
-import {colors, WP} from '../../../../shared/exporter';
-import styles from './styles';
+import React, {useEffect, useState} from 'react';
+import {MapComponent, MapLocation} from '../../../../components';
 
-const SetLocation = ({navigation}) => {
+const SetLocation = ({navigation, route}) => {
+  const [name, setName] = useState();
+  useEffect(() => {
+    setName(route.params);
+  }, [name]);
   return (
     <>
-      <View style={styles.container}>
-        <MapComponent />
-      </View>
+      <MapComponent />
       <MapLocation
-        title={'Set Location'}
+        title={route.params === undefined ? 'Set location' : route.params.name}
         backIcon={true}
         onPressBack={() => {
           navigation.goBack();
+        }}
+        onPress={() => {
+          navigation.navigate('TrackingDetail');
         }}
       />
     </>

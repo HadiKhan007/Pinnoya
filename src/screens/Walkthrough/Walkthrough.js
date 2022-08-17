@@ -1,8 +1,8 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
-import React, {useRef, useState} from 'react';
+import {View} from 'react-native';
+import React, {useRef} from 'react';
 import styles from './styles';
-import {AuthHeader, Button, ImageBox, IntroSlider} from '../../components';
-import {appImages, colors, scrWidth, spacing} from '../../shared/exporter';
+import {AuthHeader, Button, IntroSlider} from '../../components';
+import {appImages, colors, scrWidth} from '../../shared/exporter';
 import CarouselView from 'react-native-snap-carousel';
 
 const slides = [

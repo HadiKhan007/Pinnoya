@@ -1,19 +1,27 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React, {useRef} from 'react';
+import {View, TouchableOpacity} from 'react-native';
+import React, {useRef, useState} from 'react';
 import {
   AppHeader,
   AppInput,
   AuthHeading,
   Button,
   ListModal,
+  ServiceModal,
 } from '../../../../components';
 import styles from './styles';
-import {colors, kids, pets, spacing, WP} from '../../../../shared/exporter';
+import {
+  colors,
+  kids,
+  pets,
+  spacing,
+  WP,
+} from '../../../../shared/exporter';
 import DownArrow from 'react-native-vector-icons/AntDesign';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {TextInput} from 'react-native-paper';
 
 const BookingDetail = ({navigation}) => {
+  const [openModal, setopenModal] = useState(false);
   const kidlistRef = useRef(null);
   const petlistRef = useRef(null);
 
@@ -70,9 +78,7 @@ const BookingDetail = ({navigation}) => {
                 style={[styles.inputStyle]}
                 placeholder={'Alergies or Special Needs (Optional)'}
                 placeholderTextColor={colors.g2}
-                onChangeText={text => {
-                  console.log(text);
-                }}
+                onChangeText={text => {}}
                 mode={'outlined'}
                 outlineColor={colors.g2}
                 activeOutlineColor={colors.p1}
@@ -84,7 +90,7 @@ const BookingDetail = ({navigation}) => {
             <View style={styles.aiCenter}>
               <Button
                 onPressBtn={() => {
-                  navigation?.navigate('TrackingDetail');
+                  setopenModal(true);
                 }}
                 bgColor={colors.b_gradient}
                 textColor={colors.white}
@@ -99,17 +105,19 @@ const BookingDetail = ({navigation}) => {
         list={kids}
         height={WP('120')}
         title={'Select Number of Kids'}
-        getValue={val => {
-          console.log(val);
-        }}
+        getValue={val => {}}
       />
       <ListModal
         listRef={petlistRef}
         list={pets}
         height={WP('120')}
         title={'Select Number of Pets'}
-        getValue={val => {
-          console.log(val);
+        getValue={val => {}}
+      />
+      <ServiceModal
+        show={openModal}
+        onPressBack={() => {
+          setopenModal(false);
         }}
       />
     </>

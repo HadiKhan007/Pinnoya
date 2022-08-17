@@ -1,7 +1,14 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {List, TextInput} from 'react-native-paper';
-import {appIcons, colors, family, size, WP} from '../../shared/exporter';
+import {
+  appIcons,
+  colors,
+  family,
+  size,
+  WP,
+  appImages,
+} from '../../shared/exporter';
 import StarRating from 'react-native-star-rating';
 import {Button} from '..';
 
@@ -37,9 +44,7 @@ export const CompleteComp = ({rating, setRating, onPressBack}) => {
         style={[styles.inputStyle]}
         placeholder={'Type Something'}
         placeholderTextColor={colors.g2}
-        onChangeText={text => {
-          console.log(text);
-        }}
+        onChangeText={text => {}}
         mode={'outlined'}
         outlineColor={colors.white2}
         activeOutlineColor={colors.p1}
@@ -47,12 +52,34 @@ export const CompleteComp = ({rating, setRating, onPressBack}) => {
         dense={true}
         multiline={true}
       />
+      <View style={styles.emjView}>
+        <TouchableOpacity>
+          <Image source={appImages.emoji} style={styles.emojiIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={appImages.emoji2} style={styles.emojiIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={appImages.emoji3} style={styles.emojiIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={appImages.emoji4} style={styles.emojiIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={appImages.emoji5} style={styles.emojiIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={appImages.emoji6} style={styles.emojiIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={appIcons.attach} style={styles.attachIcon} />
+        </TouchableOpacity>
+      </View>
       <View style={styles.aiCenter}>
         <Button
           onPressBtn={onPressBack}
           btnText={'Send'}
           bgColor={colors.b_gradient}
-          F
           textColor={colors.white}
         />
       </View>
@@ -105,5 +132,17 @@ const styles = StyleSheet.create({
   },
   aiCenter: {
     alignItems: 'center',
+  },
+  emjView: {flexDirection: 'row', justifyContent: 'space-evenly'},
+  attachIcon: {
+    height: 19,
+    width: 19,
+    marginLeft: 45,
+    marginHorizontal: WP(-5),
+    marginBottom: WP(4),
+  },
+  emojiIcon: {
+    height: 19,
+    width: 19,
   },
 });
