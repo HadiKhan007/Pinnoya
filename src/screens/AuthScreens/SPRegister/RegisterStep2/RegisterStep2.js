@@ -26,7 +26,8 @@ const RegisterStep2 = ({navigation}) => {
         }}
         headerIcon={true}
         rightArea={true}
-        subTitle={'2 of 4'}
+        subTitle={'2'}
+        text={'of 4'}
       />
       <View style={styles.container}>
         {/* Signup Inputs */}

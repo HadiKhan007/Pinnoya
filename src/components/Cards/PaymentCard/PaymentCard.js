@@ -194,7 +194,7 @@ export const PaymentCard = ({
           <Text
             style={[
               styles.text,
-              {paddingHorizontal: WP('31'), paddingBottom: WP(5)},
+              {paddingHorizontal: WP('29'), paddingBottom: WP(5)},
             ]}>
             ₱00.00
           </Text>
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
   footer2: {
     width: WP('90'),
     justifyContent: 'flex-end',
-    paddingTop: WP(70),
+    paddingTop: WP('65'),
   },
   title: {
     color: colors.b1,

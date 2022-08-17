@@ -17,6 +17,7 @@ import SetLocation from '../../screens/AuthScreens/CustomerRegister/SetLocation/
 import ForgotVerifyOtp from '../../screens/AuthScreens/ForgotVerifyOtp/ForgotVerifyOtp';
 import LocationFinder from '../../screens/AuthScreens/CustomerRegister/LocationFinder/LocationFinder';
 import TrackingDetail from '../../screens/Customer/HomeTab/TrackingDetail/TrackingDetail';
+import SPVerifyOtp from '../../screens/AuthScreens/SPRegister/SPVerifyOtp/SPVerifyOtp';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,7 @@ function AuthStack(props) {
       <Stack.Screen name="UploadDoc" component={UploadDoc} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
+      <Stack.Screen name="SPVerifyOtp" component={SPVerifyOtp} />
       <Stack.Screen name="ForgotVerifyOtp" component={ForgotVerifyOtp} />
       <Stack.Screen
         name="ResetPasswordSuccess"

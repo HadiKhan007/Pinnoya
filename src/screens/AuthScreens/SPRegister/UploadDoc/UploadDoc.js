@@ -26,13 +26,15 @@ const UploadDoc = ({navigation}) => {
         }}
         headerIcon={true}
         rightArea={true}
+        subTitle={'3'}
+        text={'of 4'}
       />
       <View style={styles.container}>
         {/* Signup Inputs */}
         <Formik
           initialValues={SPRegisterStep3Fields}
           onSubmit={values => {
-            navigation?.navigate('App');
+            navigation?.navigate('SPVerifyOtp');
           }}
           validationSchema={SPRegisterStep3VS}>
           {({

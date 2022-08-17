@@ -42,15 +42,15 @@ const DateTimePicker = ({navigation, route, date}) => {
             onMonthChange={month => {
               setDay(month.month);
             }}
-            renderHeader={date => {
-              return (
-                <View style={styles.renderHeader}>
-                  <Text>{day.addmonth}</Text>
-                  <Text>{day.subMonth}</Text>
-                  <Text>{day.currentMonth}</Text>
-                </View>
-              );
-            }}
+            // renderHeader={date => {
+            //   return (
+            //     <View style={styles.renderHeader}>
+            //       <Text style={{color: 'black'}}>{day.addmonth}</Text>
+            //       <Text style={{color: 'black'}}>{day.subMonth}</Text>
+            //       <Text style={{color: 'black'}}>{day.currentMonth}</Text>
+            //     </View>
+            //   );
+            // }}
             markingType="custom"
             markedDates={state.markedDates}
             onDayPress={day => {
