@@ -113,6 +113,9 @@ const Login = ({navigation}) => {
 
               <View style={styles.secondContainer}>
                 <Button
+                  onPressBtn={() => {
+                    navigation.navigate('SPSignUp');
+                  }}
                   bgColor={colors.db_gradient}
                   textColor={colors.b1}
                   btnText={'Login via Google'}

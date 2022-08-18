@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Text, View} from 'react-native';
 import styles from './styles';
-import MyStatusBar from '../../components/Bar/MyStatusBar';
+import {MyStatusBar} from '../../components';
 import {colors} from '../../shared/exporter';
 
 const Splash = ({navigation}) => {
@@ -11,8 +11,9 @@ const Splash = ({navigation}) => {
 
   const handleAppEntry = async () => {
     setTimeout(() => {
-      navigation.replace('Auth');
+      // navigation.replace('Auth');
       // navigation.navigate('Walkthrough');
+      navigation.navigate('App');
     }, 1500);
   };
 

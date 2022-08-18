@@ -27,7 +27,7 @@ export const LocationModal = ({
           container: styles.container,
           wrapper: styles.wapper,
         }}>
-        <View style={styles.txtContainer}>
+        <View>
           <Text style={styles.titleStyle}>{title}</Text>
           <Text style={styles.milenoTxt}>{subtitle}</Text>
           <Text style={styles.miletxt}>{mile}</Text>
@@ -37,10 +37,10 @@ export const LocationModal = ({
           <Text style={styles.milenoTxt}>{subtitle2}</Text>
           <Text style={styles.miletxt}>{hour}</Text>
         </View>
-        <View style={[styles.txtContainer]}>
+        <View>
           <Text style={[styles.titleStyle]}>{title3}</Text>
           <Text style={styles.milenoTxt}>{subtitle3}</Text>
-          <Text style={styles.miletxt}>{price}</Text>
+          <Text style={[styles.miletxt, {left: 55}]}>{price}</Text>
         </View>
       </RBSheet>
       <TouchableOpacity onPress={onPress} style={styles.markerStyle}>
@@ -64,28 +64,23 @@ const styles = StyleSheet.create({
     width: WP('100'),
   },
   titleStyle: {
-    marginHorizontal: WP('4'),
+    marginHorizontal: WP('3.5'),
     color: colors.b11,
     fontSize: size.tiny,
     fontFamily: family.Poppins_Regular,
-    top: 5,
   },
   subTitleStyle: {
     textAlign: 'center',
-    paddingHorizontal: WP('5'),
-    lineHeight: 21,
     color: colors.g1,
     fontFamily: family.Ubuntu_Regular,
   },
   wapper: {
     backgroundColor: 'transparent',
   },
-  txtContainer: {
-    width: WP('33'),
-  },
   miletxt: {
-    left: 65,
-    bottom: 18,
+    position: 'absolute',
+    left: 60,
+    top: 25,
     color: colors.b1,
     fontSize: size.small,
   },
@@ -101,8 +96,8 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     position: 'absolute',
-    left: 335,
-    bottom: 92,
+    left: 270,
+    bottom: 40,
     backgroundColor: colors.p1,
     borderRadius: 35,
     alignItems: 'center',

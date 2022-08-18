@@ -75,6 +75,7 @@ export const appIcons = {
   added: require('../../assets/icons/added.png'),
   share: require('../../assets/icons/share.png'),
   plus: require('../../assets/icons/plus.png'),
+  alertIcon: require('../../assets/icons/alert.png'),
 };
 
 export const appSvgs = {

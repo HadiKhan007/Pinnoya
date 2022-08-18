@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-import {colors, family, profile_uri, size, WP} from '../../shared/exporter';
-import MyStatusBar from '../Bar/MyStatusBar';
+import {colors, family, size, WP} from '../../shared/exporter';
+import {MyStatusBar} from '../../components';
 import BackArrow from 'react-native-vector-icons/AntDesign';
 export const CustomHeader = ({
   onPressCall,

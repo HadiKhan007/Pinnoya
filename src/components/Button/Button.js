@@ -11,6 +11,7 @@ export const Button = ({
   width,
   img,
   marginLeft,
+  height,
 }) => {
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPressBtn}>
@@ -21,6 +22,7 @@ export const Button = ({
         style={[
           styles.btnContainer,
           {
+            height: height ? height : WP('14'),
             width: width ? width : WP('90'),
             marginLeft: marginLeft ? marginLeft : 0,
           },

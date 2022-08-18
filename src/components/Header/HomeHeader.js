@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {appIcons, colors, family, size, WP} from '../../shared/exporter';
-import MyStatusBar from '../Bar/MyStatusBar';
+import {MyStatusBar} from '../../components';
 
 export const HomeHeader = ({title, subtitle}) => {
   return (

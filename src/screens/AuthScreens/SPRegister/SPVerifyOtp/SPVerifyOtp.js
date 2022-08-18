@@ -122,9 +122,9 @@ const SPVerifyOtp = ({navigation}) => {
                 </Text>
               )}
               <Button
-                // onPressBtn={() => {
-                //   navigation?.navigate('AddPersonalInfo');
-                // }}
+                onPressBtn={() => {
+                  navigation?.navigate('SPDashboard');
+                }}
                 bgColor={colors.b_gradient}
                 textColor={colors.white}
                 btnText={'Confirm'}
