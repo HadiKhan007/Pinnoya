@@ -29,25 +29,9 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 5,
   },
-  listContainer2: {
-    flex: 2,
-    marginHorizontal: 5,
-  },
-  imageStyle: {
-    height: 90,
-    width: 90,
-    resizeMode: 'contain',
-  },
   allStyle:{
-    // position: 'absolute',
     left: 320,
     top: -35,
-    color: colors.p1,
-  },
-  allStyle2:{
-    position: 'absolute',
-    left: 335,
-    top: 25,
     color: colors.p1,
   },
 });

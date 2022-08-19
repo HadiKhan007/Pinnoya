@@ -39,7 +39,6 @@ export const Button = ({
 
 const styles = StyleSheet.create({
   btnContainer: {
-    height: WP('14'),
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
       height: 5,
     },
     shadowOpacity: 0.34,
-    shadowRadius: 4,
+    shadowRadius: 7,
     elevation: 6,
   },
   imageStyle: {

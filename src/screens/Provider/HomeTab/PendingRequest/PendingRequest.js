@@ -7,43 +7,35 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {
-  Button,
-  DocumentCard,
-  HomeHeader,
-  ServiceDetailCard,
-} from '../../../../components';
+import {Button, HomeHeader, ServiceDetailCard} from '../../../../components';
 import {colors, serviceList, WP, spacing} from '../../../../shared/exporter';
 import styles from './styles';
-const SPDashboard = ({navigation}) => {
+const PendingRequest = ({navigation}) => {
   return (
     <SafeAreaView style={styles.safeView}>
-      <HomeHeader title={'Hello Alice,'} subtitle={'What job do you need?'} />
+      <HomeHeader title={'Hello Alice,'} subtitle={'Jobs'} />
       <View style={styles.btnContainer}>
         <Button
           bgColor={colors.b_gradient}
           width={WP(45)}
-          height={WP(12)}
-          btnText={'Wallet'}
+          height={WP(10)}
+          btnText={'Pending Request'}
           textColor={colors.white}
+          onPressBtn={() => {
+            navigation.navigate('SPJobs');
+          }}
         />
         <Button
-          bgColor={colors.b_gradient}
           width={WP(45)}
-          height={WP(12)}
-          btnText={'History'}
-          textColor={colors.white}
+          height={WP(10)}
+          btnText={'Complete Request'}
+          textColor={colors.b1}
         />
       </View>
-      <DocumentCard
-        onPress={() => {
-          navigation.navigate('VerifyProfile');
-        }}
-      />
       <View style={styles.mainContainer}>
         <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.secondContentContainer}>
-            <Text style={styles.subtitle}>New Pending Jobs </Text>
+            <Text style={styles.subtitle}>Pending requests </Text>
             <TouchableOpacity>
               <Text style={[styles.allStyle, {top: -30}]}>View all</Text>
             </TouchableOpacity>
@@ -58,29 +50,7 @@ const SPDashboard = ({navigation}) => {
                       onPress={() => {
                         navigation?.navigate('ServiceDetail');
                       }}>
-                      <ServiceDetailCard title={'Approve'} space />
-                    </TouchableOpacity>
-                  );
-                }}
-              />
-            </View>
-
-            <Text style={styles.subtitle}>Schedule Paid Jobs </Text>
-            <TouchableOpacity>
-              <Text style={styles.allStyle}>View all</Text>
-            </TouchableOpacity>
-            <View style={styles.listContainer}>
-              <FlatList
-                showsVerticalScrollIndicator={false}
-                data={serviceList}
-                renderItem={({item}) => {
-                  return (
-                    <TouchableOpacity
-                      style={spacing.mx1}
-                      onPress={() => {
-                        navigation?.navigate('ServiceDetail');
-                      }}>
-                      <ServiceDetailCard title={'Approve'} space />
+                      <ServiceDetailCard title={'Hire'} space={true} />
                     </TouchableOpacity>
                   );
                 }}
@@ -92,4 +62,4 @@ const SPDashboard = ({navigation}) => {
     </SafeAreaView>
   );
 };
-export default SPDashboard;
+export default PendingRequest;

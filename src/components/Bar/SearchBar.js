@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Platform,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors, family, size, WP} from '../../shared/exporter';
 import {TextInput} from 'react-native-paper';
 export const SerachBar = ({

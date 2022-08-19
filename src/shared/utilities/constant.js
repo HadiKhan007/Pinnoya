@@ -441,6 +441,23 @@ const EditProfile_List = [
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
   },
 ];
+const VerifyProfile_List = [
+  {
+    id: 1,
+    title: 'Experience',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+  {
+    id: 2,
+    title: 'Preference',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+  {
+    id: 3,
+    title: 'Description',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+];
 const Help_List = [
   {
     id: 1,
@@ -483,4 +500,5 @@ export {
   Addresses_list,
   EditProfile_List,
   Help_List,
+  VerifyProfile_List,
 };

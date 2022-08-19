@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {colors, WP, family, size, appIcons} from '../../../shared/exporter';
-export const DocumentCard = () => {
+export const DocumentCard = ({onPress}) => {
   return (
     <View style={styles.container}>
       <View style={styles.btnContainer}>
@@ -9,7 +9,7 @@ export const DocumentCard = () => {
         <Text style={[styles.btnText, {width: '65%', left: 10}]}>
           Document Verification is pending.
         </Text>
-        <TouchableOpacity style={styles.touchable}>
+        <TouchableOpacity style={styles.touchable} onPress={onPress}>
           <Text style={[styles.btnText, {color: colors.r2}]}>VerifyNow</Text>
         </TouchableOpacity>
       </View>

@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
     fontFamily: family.Ubuntu_Medium,
   },
   aiRowFlex: {
-    alignItems: 'flex-end',
     justifyContent: 'space-between',
   },
   smbtnCon: {
