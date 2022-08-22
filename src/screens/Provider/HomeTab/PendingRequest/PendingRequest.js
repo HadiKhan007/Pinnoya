@@ -37,7 +37,7 @@ const PendingRequest = ({navigation}) => {
           <View style={styles.secondContentContainer}>
             <Text style={styles.subtitle}>Pending requests </Text>
             <TouchableOpacity>
-              <Text style={[styles.allStyle, {top: -30}]}>View all</Text>
+              <Text style={[styles.allStyle]}>View all</Text>
             </TouchableOpacity>
             <View style={styles.listContainer}>
               <FlatList

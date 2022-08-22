@@ -6,7 +6,7 @@ import {TitleHeading} from '../..';
 
 export const TimePickerCard = ({onDateChange, minTime, dateValue, title}) => {
   return (
-    <View style={styles.container}>
+    <View>
       <TitleHeading title={title} />
 
       <DatePicker

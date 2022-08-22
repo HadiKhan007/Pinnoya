@@ -3,13 +3,13 @@ import React from 'react';
 import {colors, family, size} from '../../shared/exporter';
 import DownArrow from 'react-native-vector-icons/AntDesign';
 
-export const DropDownInput = ({title, onPress, width}) => {
+export const DropDownInput = ({title, onPress, width, icon}) => {
   return (
     <TouchableOpacity
       style={[styles.container, {width: width}]}
       onPress={onPress}>
       <Text style={styles.textStyle}>{title}</Text>
-      <DownArrow name={'down'} size={14} color={colors.b1} />
+      {icon ? null : <DownArrow name={'down'} size={14} color={colors.b1} />}
     </TouchableOpacity>
   );
 };

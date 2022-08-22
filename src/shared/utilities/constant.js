@@ -472,6 +472,26 @@ const Help_List = [
     title: 'Support requests',
   },
 ];
+const SpecialNeed_list = [
+  {
+    id: 1,
+    text: 'Yes',
+  },
+  {
+    id: 2,
+    text: 'No',
+  },
+];
+const History_List = [
+  {
+    id: 1,
+    text: 'Complete',
+  },
+  {
+    id: 2,
+    text: 'In-Progress',
+  },
+];
 const stripe_publishableKey = '';
 const profile_uri =
   'https://www.shareicon.net/data/512x512/2017/01/06/868320_people_512x512.png';
@@ -501,4 +521,6 @@ export {
   EditProfile_List,
   Help_List,
   VerifyProfile_List,
+  SpecialNeed_list,
+  History_List,
 };

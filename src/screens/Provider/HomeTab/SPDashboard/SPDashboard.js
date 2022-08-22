@@ -26,6 +26,9 @@ const SPDashboard = ({navigation}) => {
           height={WP(12)}
           btnText={'Wallet'}
           textColor={colors.white}
+          onPressBtn={() => {
+            navigation.navigate('PaymentMethod');
+          }}
         />
         <Button
           bgColor={colors.b_gradient}
@@ -33,6 +36,9 @@ const SPDashboard = ({navigation}) => {
           height={WP(12)}
           btnText={'History'}
           textColor={colors.white}
+          onPressBtn={() => {
+            navigation.navigate('History');
+          }}
         />
       </View>
       <DocumentCard
@@ -45,7 +51,7 @@ const SPDashboard = ({navigation}) => {
           <View style={styles.secondContentContainer}>
             <Text style={styles.subtitle}>New Pending Jobs </Text>
             <TouchableOpacity>
-              <Text style={[styles.allStyle, {top: -30}]}>View all</Text>
+              <Text style={[styles.allStyle, {top: -25}]}>View all</Text>
             </TouchableOpacity>
             <View style={styles.listContainer}>
               <FlatList
@@ -67,7 +73,7 @@ const SPDashboard = ({navigation}) => {
 
             <Text style={styles.subtitle}>Schedule Paid Jobs </Text>
             <TouchableOpacity>
-              <Text style={styles.allStyle}>View all</Text>
+              <Text style={[styles.allStyle, {top: -25}]}>View all</Text>
             </TouchableOpacity>
             <View style={styles.listContainer}>
               <FlatList

@@ -1,30 +1,34 @@
-import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 import React, {useRef, useState} from 'react';
 import {
-  AppHeader,
   Button,
   Checkbox,
   DropDownInput,
   ListModal,
   MultiSliderComp,
-  ServiceListModal,
   TitleHeading,
-} from '../../../../components';
-import styles from './styles';
+} from '../../../components';
 import {
   cities,
   colors,
   spacing,
   WP,
   scrHeight,
-} from '../../../../shared/exporter';
+  family,
+  size,
+} from '../../../shared/exporter';
 import DelIcon from 'react-native-vector-icons/AntDesign';
 import CrossIcon from 'react-native-vector-icons/Entypo';
 import {Divider} from 'react-native-elements/dist/divider/Divider';
-import {SpecialNeed_list} from '../../../../shared/utilities/constant';
+import {SpecialNeed_list} from '../../../shared/utilities/constant';
 import RBSheet from 'react-native-raw-bottom-sheet';
-
-const FilterService = ({navigation, tabRef}) => {
+export const FilterServiceModal = ({navigation, tabRef, onPressCross}) => {
   //References
   const servicelistRef = useRef(null);
   const citylistRef = useRef(null);
@@ -40,19 +44,13 @@ const FilterService = ({navigation, tabRef}) => {
 
   return (
     <>
-      {/* <AppHeader
-        backIcon={true}
-        title={'Filter'}
-        onPressBack={() => {
-          navigation?.goBack();
-        }}
-      /> */}
       <RBSheet
         ref={tabRef}
         height={scrHeight / 1.2}
         openDuration={250}
         customStyles={{
           container: styles.iconContainer,
+          wrapper: styles.wrapper,
         }}>
         <View style={styles.container}>
           <View style={styles.firstContainer}></View>
@@ -62,20 +60,10 @@ const FilterService = ({navigation, tabRef}) => {
                 <TouchableOpacity>
                   <DelIcon name={'delete'} size={20} color={colors.b1} />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={onPressCross}>
                   <CrossIcon name={'cross'} size={20} color={colors.b1} />
                 </TouchableOpacity>
               </View>
-              {/* <View style={styles.aiRow}>
-              <Text style={styles.h1Style}>Services </Text>
-              <DropDownInput
-                title={selectService?.title || selectService}
-                width={'70%'}
-                onPress={() => {
-                  servicelistRef?.current?.open();
-                }}
-              />
-            </View> */}
               <View style={styles.aiRow}>
                 <Text style={styles.h1Style}>City</Text>
                 <DropDownInput
@@ -122,16 +110,6 @@ const FilterService = ({navigation, tabRef}) => {
                     max={50}
                     min={2}
                   />
-                  {/* <View style={styles.aiRow}>
-                  <Text style={styles.h1Style}>Work Experience</Text>
-                  <DropDownInput
-                    width={'50%'}
-                    title={experience}
-                    onPress={() => {
-                      explisttRef?.current?.open();
-                    }}
-                  />
-                </View> */}
                   <View style={styles.aiRow}>
                     <Text style={styles.h1Style}>Special Needs</Text>
                     <DropDownInput
@@ -226,24 +204,60 @@ const FilterService = ({navigation, tabRef}) => {
             explisttRef?.current?.close();
           }}
         />
-        {/* <ServiceListModal
-        listRef={servicelistRef}
-        list={filterServiceList}
-        height={WP('110')}
-        title={'Select Services'}
-        getValue={val => {
-          setSelectedService(val);
-          servicelistRef?.current?.close();
-        }}
-        setToggleCheckBox={item => {
-          setSelectedService(item);
-          servicelistRef?.current?.close();
-        }}
-        selectedService={selectService}
-      /> */}
       </RBSheet>
     </>
   );
 };
 
-export default FilterService;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
+  },
+  wrapper: {backgroundColor: 'transparent'},
+  iconContainer: {
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    backgroundColor: colors.white,
+    height: WP(160),
+    width: WP(100),
+    overflow: 'hidden',
+  },
+  firstContainer: {
+    flex: 0.02,
+    paddingHorizontal: WP('4'),
+    backgroundColor: colors.white,
+  },
+  secondContainer: {
+    flex: 1,
+    backgroundColor: colors.white2,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: WP('5'),
+  },
+  aiRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  h1Style: {
+    fontSize: size.normal,
+    color: colors.b1,
+    fontFamily: family.Ubuntu_Medium,
+  },
+  headText: {
+    marginVertical: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  checkStyle: {
+    color: colors.g1,
+    fontSize: size.tiny,
+    fontFamily: family.Ubuntu_Regular,
+  },
+  aiCenter: {
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+});

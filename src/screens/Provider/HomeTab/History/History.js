@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   SafeAreaView,
@@ -8,25 +8,14 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import {
-  AppHeader,
-  FilterServiceModal,
-  SerachBar,
-  ServiceDetailCard,
-} from '../../../../components';
+import {AppHeader, HistoryCard, SerachBar} from '../../../../components';
 import SearchBarIcon from 'react-native-vector-icons/Ionicons';
-
+import {colors, appIcons, spacing} from '../../../../shared/exporter';
 import {Menu, MenuItem} from 'react-native-material-menu';
-import {
-  colors,
-  serviceList,
-  appIcons,
-  spacing,
-} from '../../../../shared/exporter';
 import styles from './styles';
-const SPJobs = ({navigation}) => {
+import {History_List} from '../../../../shared/utilities/constant';
+const History = ({navigation}) => {
   const [showMenu, setShowMenu] = useState(false);
-  const filterRef = useRef(null);
   const hideItemClick = () => {
     setShowMenu(false);
   };
@@ -37,7 +26,7 @@ const SPJobs = ({navigation}) => {
     <SafeAreaView style={styles.safeView}>
       <AppHeader
         backIcon={true}
-        title={'New Jobs'}
+        title={'History'}
         onPressBack={() => {
           navigation?.goBack();
         }}
@@ -47,7 +36,6 @@ const SPJobs = ({navigation}) => {
           <View>
             <SerachBar
               placeholder={'Search'}
-              rightIcon={true}
               placeholderTextColor={colors.g8}
               leftIcon={() => (
                 <SearchBarIcon
@@ -56,9 +44,6 @@ const SPJobs = ({navigation}) => {
                   color={colors.g8}
                 />
               )}
-              onPress={() => {
-                filterRef.current.open();
-              }}
             />
           </View>
         </View>
@@ -66,7 +51,7 @@ const SPJobs = ({navigation}) => {
         <View style={styles.secondContentContainer}>
           <View style={styles.textContainer}>
             <Text style={styles.sortTxt}>Sort by :</Text>
-            <Text style={styles.alltxt}>All</Text>
+            <Text style={styles.alltxt}>Review</Text>
             <TouchableOpacity onPress={() => setShowMenu(true)}>
               <Image source={appIcons.droparrow} style={styles.dropImg} />
               <View style={styles.menuContainer}>
@@ -92,30 +77,19 @@ const SPJobs = ({navigation}) => {
           </View>
           <ScrollView showsVerticalScrollIndicator={false}>
             <FlatList
-              showsVerticalScrollIndicator={false}
-              data={serviceList}
+              data={History_List}
               renderItem={({item}) => {
                 return (
-                  <TouchableOpacity
-                    style={spacing.mx1}
-                    onPress={() => {
-                      navigation?.navigate('ServiceDetail');
-                    }}>
-                    <ServiceDetailCard title={'Approve'} space />
-                  </TouchableOpacity>
+                  <View style={spacing.mx1}>
+                    <HistoryCard status={item.text} />
+                  </View>
                 );
               }}
             />
           </ScrollView>
         </View>
       </View>
-      <FilterServiceModal
-        tabRef={filterRef}
-        onPressCross={() => {
-          filterRef.current.close();
-        }}
-      />
     </SafeAreaView>
   );
 };
-export default SPJobs;
+export default History;

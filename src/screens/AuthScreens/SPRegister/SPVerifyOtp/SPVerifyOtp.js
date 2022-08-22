@@ -123,7 +123,7 @@ const SPVerifyOtp = ({navigation}) => {
               )}
               <Button
                 onPressBtn={() => {
-                  navigation?.navigate('SPDashboard');
+                  navigation?.navigate('App');
                 }}
                 bgColor={colors.b_gradient}
                 textColor={colors.white}

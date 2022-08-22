@@ -9,6 +9,7 @@ export const appImages = {
   pana: require('../../assets/images/pana.png'),
   pana2: require('../../assets/images/pana2.png'),
   pana3: require('../../assets/images/pana3.png'),
+  pana4: require('../../assets/images/pana4.png'),
   locationImg: require('../../assets/images/locationImg.png'),
   dogWalking: require('../../assets/images/dogWalking.png'),
   findBaby: require('../../assets/images/findBaby.png'),
@@ -76,6 +77,8 @@ export const appIcons = {
   share: require('../../assets/icons/share.png'),
   plus: require('../../assets/icons/plus.png'),
   alertIcon: require('../../assets/icons/alert.png'),
+  message: require('../../assets/icons/message.png'),
+  call: require('../../assets/icons/call.png'),
 };
 
 export const appSvgs = {

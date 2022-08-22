@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, View, Text, FlatList} from 'react-native';
-import {AdressesCard, AppHeader, Button} from '../../../../components';
+import {AddressesCard, AppHeader, Button} from '../../../../components';
 import styles from './styles';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {VerifyProfile_List} from '../../../../shared/utilities/constant';
 import {colors} from '../../../../shared/exporter';
 const VerifyProfile = ({navigation}) => {
+  const [edit, setEdit] = useState(null);
   return (
     <SafeAreaView style={styles.safeView}>
       <AppHeader
@@ -20,8 +21,16 @@ const VerifyProfile = ({navigation}) => {
           <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
             <FlatList
               data={VerifyProfile_List}
-              renderItem={({item}) => {
-                return <AdressesCard item={item} />;
+              renderItem={({item, index}) => {
+                return (
+                  <AddressesCard
+                    item={item}
+                    editable={index === edit}
+                    onPress={() => {
+                      setEdit(index);
+                    }}
+                  />
+                );
               }}
             />
           </KeyboardAwareScrollView>

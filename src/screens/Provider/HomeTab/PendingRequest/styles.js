@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 5,
   },
-  allStyle:{
-    left: 320,
-    top: -35,
+  allStyle: {
+    left: 295,
+    top: -25,
     color: colors.p1,
   },
 });

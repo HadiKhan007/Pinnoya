@@ -158,6 +158,12 @@ export const booked_status_color = status => {
   if (status == 'Completed') {
     return colors.gr2;
   }
+  if (status == 'In-Progress') {
+    return colors.y2;
+  }
+  if (status == 'Complete') {
+    return colors.gr2;
+  }
 };
 
 export const booked_status_text_color = status => {
@@ -165,6 +171,12 @@ export const booked_status_text_color = status => {
     return colors.b1;
   }
   if (status == 'Completed') {
+    return colors.white;
+  }
+  if (status == 'In-Progress') {
+    return colors.b1;
+  }
+  if (status == 'Complete') {
     return colors.white;
   }
 };

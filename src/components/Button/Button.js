@@ -54,10 +54,11 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   imageStyle: {
-    height: 23,
-    width: 23,
+    height: 25,
+    width: 25,
     resizeMode: 'contain',
     right: 10,
+    left: 3,
   },
   btnText: {
     color: colors.white,

@@ -38,13 +38,11 @@ const styles = StyleSheet.create({
     width: 90,
     resizeMode: 'contain',
   },
-  allStyle:{
-    // position: 'absolute',
-    left: 320,
-    top: -35,
+  allStyle: {
+    left: 290,
     color: colors.p1,
   },
-  allStyle2:{
+  allStyle2: {
     position: 'absolute',
     left: 335,
     top: 25,

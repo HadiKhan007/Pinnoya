@@ -8,12 +8,26 @@ import {
 } from 'react-native';
 import React from 'react';
 import {colors, family, size, WP, appIcons} from '../../../shared/exporter';
-export const AdressesCard = ({item, width, icon}) => {
+import {TextInput} from 'react-native-paper';
+export const AddressesCard = ({item, width, icon, editable, onPress}) => {
   return (
     <View style={[styles.container, {width: width ? WP(30) : width}]}>
       <View style={styles.leftContainer}>
         <Text style={styles.titleStyle}>{item?.title}</Text>
-        <Text style={styles.subTitle}>{item?.subtitle}</Text>
+        <TextInput
+          style={[styles.inputStyle]}
+          placeholder={'Pellentesque in ipsum id orci porta dapibus.'}
+          placeholderTextColor={colors.g1}
+          onChangeText={text => {}}
+          mode={'flat'}
+          outlineColor={colors.g2}
+          activeOutlineColor={colors.p1}
+          theme={{roundness: 10, colors: {text: 'black'}}}
+          dense={true}
+          multiline={true}
+          editable={editable}
+          activeUnderlineColor={colors.p1}
+        />
       </View>
       {icon ? (
         <View style={styles.rightContainer}>
@@ -29,7 +43,8 @@ export const AdressesCard = ({item, width, icon}) => {
         </View>
       ) : (
         <TouchableOpacity
-          style={[styles.rightContainer, {paddingHorizontal: WP('3')}]}>
+          style={[styles.rightContainer, {paddingHorizontal: WP('3')}]}
+          onPress={onPress}>
           <Image source={appIcons.added} style={styles.addCon2} />
         </TouchableOpacity>
       )}
@@ -96,5 +111,12 @@ const styles = StyleSheet.create({
     height: 15,
     width: 15,
     left: 20,
+  },
+  inputStyle: {
+    fontSize: size.tiny,
+    color: colors.g2,
+    backgroundColor: colors.white,
+    paddingHorizontal: WP('-3'),
+    height: 20,
   },
 });
