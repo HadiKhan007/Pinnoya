@@ -114,6 +114,9 @@ const SPJobs = ({navigation}) => {
         onPressCross={() => {
           filterRef.current.close();
         }}
+        onPressBtn={() => {
+          navigation.navigate('ServiceItemDetail');
+        }}
       />
     </SafeAreaView>
   );

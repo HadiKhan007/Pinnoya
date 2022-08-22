@@ -4,10 +4,9 @@ import SPDashboard from '../../../screens/Provider/HomeTab/SPDashboard/SPDashboa
 import VerifyProfile from '../../../screens/Provider/HomeTab/VerifyProfile';
 import PendingRequest from '../../../screens/Provider/HomeTab/PendingRequest';
 import SPJobs from '../../../screens/Provider/HomeTab/SPJobs';
-import FilterService from '../../../screens/Customer/HomeTab/FilterService/FilterService';
-import ServiceItemDetail from '../../../screens/Provider/HomeTab/ServiceItemDetail';
 import CallNow from '../../../screens/Customer/HomeTab/CallNow/CallNow';
 import Chat from '../../../screens/Customer/HomeTab/Chat/Chat';
+import ServiceItemDetail from '../../../screens/Provider/HomeTab/ServiceItemDetail';
 import TrackingDetail from '../../../screens/Provider/HomeTab/TrackingDetail';
 import OfferSuccess from '../../../screens/Provider/HomeTab/OfferSuccess';
 import History from '../../../screens/Provider/HomeTab/History';
@@ -27,7 +26,6 @@ function SPHomeStack(props) {
       <Stack.Screen name="VerifyProfile" component={VerifyProfile} />
       <Stack.Screen name="PendingRequest" component={PendingRequest} />
       <Stack.Screen name="SPJobs" component={SPJobs} />
-      <Stack.Screen name="FilterService" component={FilterService} />
       <Stack.Screen name="ServiceItemDetail" component={ServiceItemDetail} />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="CallNow" component={CallNow} />

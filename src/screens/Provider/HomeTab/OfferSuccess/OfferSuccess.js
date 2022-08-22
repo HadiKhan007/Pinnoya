@@ -23,7 +23,7 @@ const OfferSuccess = ({navigation}) => {
             textColor={colors.white}
             btnText={'Open jobs'}
             onPressBtn={() => {
-              navigation?.replace('History');
+              navigation?.navigate('History');
             }}
           />
           <Button

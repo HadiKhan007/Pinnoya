@@ -28,7 +28,7 @@ import CrossIcon from 'react-native-vector-icons/Entypo';
 import {Divider} from 'react-native-elements/dist/divider/Divider';
 import {SpecialNeed_list} from '../../../shared/utilities/constant';
 import RBSheet from 'react-native-raw-bottom-sheet';
-export const FilterServiceModal = ({navigation, tabRef, onPressCross}) => {
+export const FilterServiceModal = ({navigation, tabRef, onPressCross,onPressBtn}) => {
   //References
   const servicelistRef = useRef(null);
   const citylistRef = useRef(null);
@@ -173,9 +173,7 @@ export const FilterServiceModal = ({navigation, tabRef, onPressCross}) => {
               )}
               <View style={styles.aiCenter}>
                 <Button
-                  onPressBtn={() => {
-                    navigation.navigate('ServiceItemDetail');
-                  }}
+                  onPressBtn={onPressBtn}
                   bgColor={colors.b_gradient}
                   textColor={colors.white}
                   btnText={'Apply'}
