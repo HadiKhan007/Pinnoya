@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  SafeAreaView,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import {
@@ -22,13 +23,14 @@ import {
   scrHeight,
   family,
   size,
+  SpecialNeed_list,
 } from '../../../shared/exporter';
 import DelIcon from 'react-native-vector-icons/AntDesign';
 import CrossIcon from 'react-native-vector-icons/Entypo';
 import {Divider} from 'react-native-elements/dist/divider/Divider';
-import {SpecialNeed_list} from '../../../shared/utilities/constant';
 import RBSheet from 'react-native-raw-bottom-sheet';
-export const FilterServiceModal = ({navigation, tabRef, onPressCross,onPressBtn}) => {
+
+export const FilterServiceModal = ({tabRef, onPressCross, onPressBtn}) => {
   //References
   const servicelistRef = useRef(null);
   const citylistRef = useRef(null);
@@ -43,7 +45,7 @@ export const FilterServiceModal = ({navigation, tabRef, onPressCross,onPressBtn}
   const [selectService, setSelectedService] = useState('Select Service');
 
   return (
-    <>
+    <SafeAreaView>
       <RBSheet
         ref={tabRef}
         height={scrHeight / 1.2}
@@ -203,7 +205,7 @@ export const FilterServiceModal = ({navigation, tabRef, onPressCross,onPressBtn}
           }}
         />
       </RBSheet>
-    </>
+    </SafeAreaView>
   );
 };
 

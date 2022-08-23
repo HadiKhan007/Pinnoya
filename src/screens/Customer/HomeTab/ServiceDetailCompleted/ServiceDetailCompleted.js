@@ -19,23 +19,21 @@ const ServiceDetailCompleted = ({navigation}) => {
           navigation?.goBack();
         }}
       />
-      <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
-            <AvailServiceCard status={'Completed'} />
-            <View style={spacing.my4}>
-              <CompleteComp
-                rating={rating}
-                setRating={rat => {
-                  setRating(rat);
-                }}
-                onPressBack={() => {
-                  navigation?.navigate('LocationFinder');
-                }}
-              />
-            </View>
-          </KeyboardAwareScrollView>
-        </View>
+      <View style={styles.contentContainer}>
+        <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+          <AvailServiceCard status={'Completed'} />
+          <View style={spacing.my4}>
+            <CompleteComp
+              rating={rating}
+              setRating={rat => {
+                setRating(rat);
+              }}
+              onPressBack={() => {
+                navigation?.navigate('LocationFinder');
+              }}
+            />
+          </View>
+        </KeyboardAwareScrollView>
       </View>
     </SafeAreaView>
   );

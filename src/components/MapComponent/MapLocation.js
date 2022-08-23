@@ -8,9 +8,15 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {colors, size, WP, appIcons, family} from '../../shared/exporter';
+import {
+  colors,
+  size,
+  WP,
+  appIcons,
+  family,
+  location_list,
+} from '../../shared/exporter';
 import BackArrow from 'react-native-vector-icons/AntDesign';
-import {location_list} from '../../shared/utilities/constant';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {AppInput, Button} from '../../components';
 import {TextInput} from 'react-native-paper';

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Profile from '../../../screens/Customer/ProfileTab/Profile/Profile';
-import PrivacyPolicy from '../../../screens/Customer/ProfileTab/PrivacyPolicy/PrivacyPolicy';
-import AboutUs from '../../../screens/Customer/ProfileTab/AboutUs/AboutUs';
-import Terms from '../../../screens/Customer/ProfileTab/Terms/Terms';
-import MyAddresses from '../../../screens/Customer/ProfileTab/MyAddresses/MyAddresses';
-import EditProfile from '../../../screens/Customer/ProfileTab/EditProfile/EditProfile';
+import Profile from '../../../screens/Customer/ProfileTab/Profile';
+import PrivacyPolicy from '../../../screens/Customer/ProfileTab/PrivacyPolicy';
+import AboutUs from '../../../screens/Customer/ProfileTab/AboutUs';
+import Terms from '../../../screens/Customer/ProfileTab/Terms';
+import MyAddresses from '../../../screens/Customer/ProfileTab/MyAddresses';
+import EditProfile from '../../../screens/Customer/ProfileTab/EditProfile';
 import PaymentInfo from '../../../screens/Customer/ProfileTab/PaymentInfo';
 import HelpCenter from '../../../screens/Customer/ProfileTab/HelpCenter';
 

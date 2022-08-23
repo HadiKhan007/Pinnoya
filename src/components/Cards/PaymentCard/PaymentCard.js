@@ -191,13 +191,7 @@ export const PaymentCard = ({
         }}>
         <View style={styles.borderStyle} />
         <View style={styles.footer2}>
-          <Text
-            style={[
-              styles.text,
-              {paddingHorizontal: WP('29'), paddingBottom: WP(5)},
-            ]}>
-            ₱00.00
-          </Text>
+          <Text style={[styles.text2]}>₱00.00</Text>
           {onPressBtn && (
             <Button
               onPressBtn={onPayPress}
@@ -300,6 +294,14 @@ const styles = StyleSheet.create({
     color: colors.b1,
     fontFamily: family.Ubuntu_Bold,
     fontSize: size.xxtitle,
+  },
+  text2: {
+    color: colors.b1,
+    fontFamily: family.Ubuntu_Bold,
+    fontSize: size.xxtitle,
+    width: '100%',
+    paddingHorizontal: WP('27'),
+    paddingBottom: WP(5),
   },
   aiCenter: {
     width: WP('100'),

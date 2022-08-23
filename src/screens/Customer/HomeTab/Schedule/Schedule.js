@@ -1,9 +1,13 @@
 import React, {useState, useRef} from 'react';
 import {View, Text, Image, FlatList} from 'react-native';
-import {appImages, colors, appIcons} from '../../../../shared/exporter';
+import {
+  appImages,
+  colors,
+  appIcons,
+  Schedule_List,
+} from '../../../../shared/exporter';
 import {AppHeader, ReviewModal, ScheduleListCard} from '../../../../components';
 import styles from './styles';
-import {Schedule_List} from '../../../../shared/utilities/constant';
 import {TouchableOpacity} from 'react-native';
 import TickIcon from 'react-native-vector-icons/Feather';
 import StarRating from 'react-native-star-rating';

@@ -36,7 +36,7 @@ const Favourite = ({navigation}) => {
         }}
       />
       <FavouriteCard />
-      <View style={styles.thirdContentContainer}>
+      <View style={styles.secondContentContainer}>
         <View style={styles.textContanier}>
           <Text style={styles.srtxt}>Sort by:</Text>
           <Text style={styles.rewTxt}>Review</Text>
@@ -64,25 +64,24 @@ const Favourite = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <View style={{flex: 1}}>
-            <FlatList
-              style={spacing.mt10}
-              showsVerticalScrollIndicator={false}
-              data={[1, 2, 3, 4, 5]}
-              renderItem={({item}) => {
-                return (
-                  <TouchableOpacity
-                    onPress={() => {
-                      navigation?.navigate('BookedServiceDetail');
-                    }}>
-                    <ServiceDetailCard title={'Hire'} space={true} />
-                  </TouchableOpacity>
-                );
-              }}
-            />
-          </View>
+      <View style={styles.contentContainer}>
+        <View style={{flex: 1}}>
+          <FlatList
+            style={spacing.mt10}
+            keyExtractor={(item, index) => item.key}
+            showsVerticalScrollIndicator={false}
+            data={[1, 2, 3, 4, 5]}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation?.navigate('BookedServiceDetail');
+                  }}>
+                  <ServiceDetailCard title={'Hire'} space={true} />
+                </TouchableOpacity>
+              );
+            }}
+          />
         </View>
       </View>
     </SafeAreaView>

@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
 
   secondImageStyle: {
     height: 22,
-    width:22,
+    width: 22,
     resizeMode: 'contain',
     left: -25,
   },
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     right: -25,
   },
   profileImageStyle: {
-    height:18,
+    height: 18,
     width: 18,
     resizeMode: 'contain',
   },

@@ -1,6 +1,7 @@
 import {Platform, StatusBar, StyleSheet} from 'react-native';
 import {colors, family, HP, size, WP} from '../../../shared/exporter';
 const styles = StyleSheet.create({
+  safeView: {flex: 1, backgroundColor: colors.white},
   container: {
     flex: 1,
     backgroundColor: colors.white,

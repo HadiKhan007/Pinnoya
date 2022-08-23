@@ -34,63 +34,61 @@ const MyReviews = ({navigation}) => {
           navigation?.goBack();
         }}
       />
-      <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <View>
-            <SerachBar
-              placeholder={'Search'}
-              placeholderTextColor={colors.g8}
-              leftIcon={() => (
-                <SearchBarIcon
-                  name={'md-search-outline'}
-                  size={25}
-                  color={colors.g8}
-                />
-              )}
-            />
-          </View>
+      <View style={styles.contentContainer}>
+        <View>
+          <SerachBar
+            placeholder={'Search'}
+            placeholderTextColor={colors.g8}
+            leftIcon={() => (
+              <SearchBarIcon
+                name={'md-search-outline'}
+                size={25}
+                color={colors.g8}
+              />
+            )}
+          />
         </View>
+      </View>
 
-        <View style={styles.secondContentContainer}>
-          <View style={styles.textContainer}>
-            <Text style={styles.sortTxt}>Sort by :</Text>
-            <Text style={styles.alltxt}>All</Text>
-            <TouchableOpacity onPress={() => setShowMenu(true)}>
-              <Image source={appIcons.droparrow} style={styles.dropImg} />
-              <View style={styles.menuContainer}>
-                <Menu
-                  visible={showMenu}
-                  style={styles.menuStyle}
-                  onRequestClose={() => setShowMenu(false)}>
-                  <MenuItem
-                    style={styles.menuItemStyle}
-                    textStyle={styles.menuTxtStyle}
-                    onPress={() => hideItemClick()}>
-                    Hide this ad
-                  </MenuItem>
-                  <MenuItem
-                    style={styles.menuItemStyle}
-                    textStyle={styles.menuTxtStyle}
-                    onPress={() => seeAllItemClick()}>
-                    See All
-                  </MenuItem>
-                </Menu>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <FlatList
-              data={[1, 2, 3, 4, 5]}
-              renderItem={({item}) => {
-                return (
-                  <View>
-                    <ReviewCard />
-                  </View>
-                );
-              }}
-            />
-          </ScrollView>
+      <View style={styles.secondContentContainer}>
+        <View style={styles.textContainer}>
+          <Text style={styles.sortTxt}>Sort by :</Text>
+          <Text style={styles.alltxt}>All</Text>
+          <TouchableOpacity onPress={() => setShowMenu(true)}>
+            <Image source={appIcons.droparrow} style={styles.dropImg} />
+            <View style={styles.menuContainer}>
+              <Menu
+                visible={showMenu}
+                style={styles.menuStyle}
+                onRequestClose={() => setShowMenu(false)}>
+                <MenuItem
+                  style={styles.menuItemStyle}
+                  textStyle={styles.menuTxtStyle}
+                  onPress={() => hideItemClick()}>
+                  Hide this ad
+                </MenuItem>
+                <MenuItem
+                  style={styles.menuItemStyle}
+                  textStyle={styles.menuTxtStyle}
+                  onPress={() => seeAllItemClick()}>
+                  See All
+                </MenuItem>
+              </Menu>
+            </View>
+          </TouchableOpacity>
         </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <FlatList
+            data={[1, 2, 3, 4, 5]}
+            renderItem={({item}) => {
+              return (
+                <View>
+                  <ReviewCard />
+                </View>
+              );
+            }}
+          />
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

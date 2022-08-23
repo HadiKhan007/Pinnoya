@@ -28,13 +28,11 @@ export const JobModal = ({modalRef, onPressClose, expanded, onPressAccord}) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={job_list}
+        keyExtractor={(item, index) => item.key}
         renderItem={({item, index}) => {
           return (
             <View style={styles.cardContainer}>
-              <List.Section style={{
-                overflow :'hidden',
-                borderRadius: 10,
-              }} >
+              <List.Section style={styles.sectionStyle}>
                 <List.Accordion
                   expanded={expanded}
                   onPress={onPressAccord}
@@ -75,7 +73,6 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     width: '100%',
-    // backgroundColor: 'red',
   },
   titleStyle: {
     fontSize: size.normal,
@@ -103,5 +100,9 @@ const styles = StyleSheet.create({
     shadowRadius: 6.27,
     elevation: 8,
     marginVertical: 5,
+  },
+  sectionStyle: {
+    overflow: 'hidden',
+    borderRadius: 10,
   },
 });

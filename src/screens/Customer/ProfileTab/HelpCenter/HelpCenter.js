@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, FlatList, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import {AppHeader, HelpCard} from '../../../../components';
-import {Help_List} from '../../../../shared/utilities/constant';
+import {Help_List} from '../../../../shared/exporter';
 const HelpCenter = ({navigation}) => {
   return (
     <SafeAreaView style={styles.safeView}>
@@ -13,18 +13,16 @@ const HelpCenter = ({navigation}) => {
           navigation?.goBack();
         }}
       />
-      <View style={styles.container}>
-        <FlatList
-          data={Help_List}
-          renderItem={({item}) => {
-            return (
-              <View>
-                <HelpCard title={item.title} />
-              </View>
-            );
-          }}
-        />
-      </View>
+      <FlatList
+        data={Help_List}
+        renderItem={({item}) => {
+          return (
+            <View>
+              <HelpCard title={item.title} />
+            </View>
+          );
+        }}
+      />
     </SafeAreaView>
   );
 };

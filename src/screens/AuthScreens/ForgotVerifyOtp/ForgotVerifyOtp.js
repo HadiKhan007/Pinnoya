@@ -1,5 +1,4 @@
 import {
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
@@ -34,7 +33,7 @@ const ForgotVerifyOtp = ({navigation}) => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.safeView}>
       <AuthHeader
         onPressBack={() => {
           navigation?.goBack();
@@ -45,93 +44,91 @@ const ForgotVerifyOtp = ({navigation}) => {
         subTitle={'3'}
         text={'of 3'}
       />
-      <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
-            <AuthHeading
-              title={'Verify Phone'}
-              subtitle={'Pellentesque in ipsum id orci porta dapibus.'}
-            />
-            <View>
-              <CodeField
-                ref={ref}
-                {...codeFieldProps}
-                value={value}
-                onChangeText={val => {
-                  setValue(val);
-                  if (val.length == 6) {
-                  }
-                }}
-                cellCount={6}
-                onSubmitEditing={() => {}}
-                rootStyle={styles.otpInputBox}
-                keyboardType="number-pad"
-                textContentType="oneTimeCode"
-                renderCell={({index, symbol, isFocused}) => (
-                  <View
-                    key={index}
-                    style={[
-                      styles.cell,
-                      {borderColor: isFocused ? colors.p1 : colors.g7},
-                    ]}
-                    onLayout={getCellOnLayoutHandler(index)}>
-                    <Text style={styles.txtStyle}>{symbol}</Text>
-                  </View>
-                )}
-              />
-            </View>
-            <View>
-              {resend ? (
-                <TouchableOpacity
+      <View style={styles.contentContainer}>
+        <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+          <AuthHeading
+            title={'Verify Phone'}
+            subtitle={'Pellentesque in ipsum id orci porta dapibus.'}
+          />
+          <View>
+            <CodeField
+              ref={ref}
+              {...codeFieldProps}
+              value={value}
+              onChangeText={val => {
+                setValue(val);
+                if (val.length == 6) {
+                }
+              }}
+              cellCount={6}
+              onSubmitEditing={() => {}}
+              rootStyle={styles.otpInputBox}
+              keyboardType="number-pad"
+              textContentType="oneTimeCode"
+              renderCell={({index, symbol, isFocused}) => (
+                <View
+                  key={index}
                   style={[
-                    spacing.my4,
-                    {flexDirection: 'row', justifyContent: 'center'},
-                  ]}>
-                  <Text style={styles.resTxt}>Resend code in </Text>
-
-                  <CountDown
-                    style={{
-                      width: WP(5),
-                      flexDirection: 'row',
-                    }}
-                    until={timerCount}
-                    digitStyle={{
-                      marginVertical: WP(-3),
-                    }}
-                    digitTxtStyle={{color: colors.p1}}
-                    timeToShow={['S']}
-                    timeLabels={{s: null}}
-                    size={13}
-                    showSeparator={false}
-                    onFinish={() => setResend(false)}
-                  />
-
-                  <Text style={styles.resTxt}>sec...</Text>
-                </TouchableOpacity>
-              ) : (
-                <Text
-                  style={[
-                    styles.resTxt,
-                    {
-                      paddingHorizontal: WP('34'),
-                      paddingVertical: WP('5'),
-                    },
+                    styles.cell,
+                    {borderColor: isFocused ? colors.p1 : colors.g7},
                   ]}
-                  onPress={() => setResend(true)}>
-                  Resend code
-                </Text>
+                  onLayout={getCellOnLayoutHandler(index)}>
+                  <Text style={styles.txtStyle}>{symbol}</Text>
+                </View>
               )}
-              <Button
-                onPressBtn={() => {
-                  navigation?.navigate('AddPersonalInfo');
-                }}
-                bgColor={colors.b_gradient}
-                textColor={colors.white}
-                btnText={'Confirm'}
-              />
-            </View>
-          </KeyboardAwareScrollView>
-        </View>
+            />
+          </View>
+          <View>
+            {resend ? (
+              <TouchableOpacity
+                style={[
+                  spacing.my4,
+                  {flexDirection: 'row', justifyContent: 'center'},
+                ]}>
+                <Text style={styles.resTxt}>Resend code in </Text>
+
+                <CountDown
+                  style={{
+                    width: WP(5),
+                    flexDirection: 'row',
+                  }}
+                  until={timerCount}
+                  digitStyle={{
+                    marginVertical: WP(-3),
+                  }}
+                  digitTxtStyle={{color: colors.p1}}
+                  timeToShow={['S']}
+                  timeLabels={{s: null}}
+                  size={13}
+                  showSeparator={false}
+                  onFinish={() => setResend(false)}
+                />
+
+                <Text style={styles.resTxt}>sec...</Text>
+              </TouchableOpacity>
+            ) : (
+              <Text
+                style={[
+                  styles.resTxt,
+                  {
+                    paddingHorizontal: WP('34'),
+                    paddingVertical: WP('5'),
+                  },
+                ]}
+                onPress={() => setResend(true)}>
+                Resend code
+              </Text>
+            )}
+            <Button
+              onPressBtn={() => {
+                navigation?.navigate('AddPersonalInfo');
+              }}
+              bgColor={colors.b_gradient}
+              textColor={colors.white}
+              btnText={'Confirm'}
+            />
+          </View>
+        </KeyboardAwareScrollView>
       </View>
     </SafeAreaView>
   );

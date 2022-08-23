@@ -43,7 +43,7 @@ export const HistoryCard = ({status}) => {
 const styles = StyleSheet.create({
   mainContainer: {
     height: 120,
-    marginVertical: 15,
+    marginVertical: WP('3'),
     flexDirection: 'row',
     backgroundColor: colors.white,
     borderRadius: 10,
@@ -88,10 +88,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '30%',
-    borderRadius: 10,
+    borderRadius: WP('30'),
     height: 25,
-    marginTop: 6,
-    marginHorizontal: 5,
+    marginVertical: WP('2'),
   },
   textStyle: {
     fontSize: size.xxxtiny,

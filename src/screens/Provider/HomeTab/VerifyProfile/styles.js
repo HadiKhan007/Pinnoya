@@ -1,8 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {colors, WP, family, size} from '../../../../shared/exporter';
 const styles = StyleSheet.create({
-  safeView: {flex: 1},
-  container: {
+  safeView: {
     flex: 1,
     backgroundColor: colors.white,
   },
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     width: WP('95'),
     marginVertical: WP('5'),
   },
-  btnCon:{
+  btnCon: {
     width: WP('100'),
     paddingHorizontal: WP('3'),
     marginLeft: WP('2'),

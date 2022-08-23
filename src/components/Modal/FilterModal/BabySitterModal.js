@@ -1,26 +1,9 @@
-import React, {useEffect, useRef} from 'react';
-import {
-  Dimensions,
-  FlatList,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
-import {Divider} from 'react-native-elements/dist/divider/Divider';
+import React from 'react';
+import {StyleSheet, View, Text} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {Checkbox} from '../..';
-import {colors, family, size, spacing, WP} from '../../../shared/exporter';
+import {colors, family, size} from '../../../shared/exporter';
 
-export const BabySitterModal = ({
-  listRef,
-  list,
-  getValue,
-  height,
-  title,
-  setToggleCheckBox,
-  selectedService,
-}) => {
+export const BabySitterModal = ({listRef, getValue, height, title}) => {
   const StoreList = item => {
     if (getValue) {
       getValue(item);

@@ -8,7 +8,11 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     paddingHorizontal: WP('4'),
-    paddingVertical: WP('7'),
+    paddingVertical: WP('10'),
+  },
+  imgStyle: {
+    height: 320,
+    width: 330,
   },
 });
 

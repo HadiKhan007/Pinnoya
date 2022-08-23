@@ -27,6 +27,7 @@ export const ReviewModal = ({modalRef, onPressClose}) => {
         <CrossIcon name={'cross'} size={20} color={colors.b1} />
       </TouchableOpacity>
       <FlatList
+      keyExtractor={(item, index) => item.key}
         style={styles.listStyle}
         data={[1, 2, 3, 4, 5]}
         renderItem={() => {

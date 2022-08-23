@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {colors, WP, family, size} from '../../../../shared/exporter';
 const styles = StyleSheet.create({
-  safeView: {flex: 1},
+  safeView: {flex: 1,},
   container: {
     flex: 1,
     backgroundColor: colors.white,
