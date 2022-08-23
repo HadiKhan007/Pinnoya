@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import MyStatusBar from '../Bar/MyStatusBar';
+import {MyStatusBar} from '../../components';
 import {
   appImages,
   appLogos,

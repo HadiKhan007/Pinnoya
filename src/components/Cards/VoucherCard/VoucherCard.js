@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     shadowRadius: Platform.OS == 'ios' ? 8 : 10,
     elevation: Platform.OS == 'ios' ? 0 : 5,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   title: {
     fontSize: size.large,
@@ -39,5 +39,10 @@ const styles = StyleSheet.create({
   subTitle: {
     color: colors.g1,
     fontSize: size.small,
+  },
+  imageStyle: {
+    height: 25,
+    width: 25,
+    resizeMode: 'contain',
   },
 });

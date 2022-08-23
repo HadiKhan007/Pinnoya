@@ -6,6 +6,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
   },
+  iconContainer: {
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    backgroundColor: colors.white,
+    height: WP(80),
+    width: WP(100),
+    overflow: 'hidden',
+  },
   firstContainer: {
     flex: 0.02,
     paddingHorizontal: WP('4'),

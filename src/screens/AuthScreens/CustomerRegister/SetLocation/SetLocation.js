@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {MapComponent, MapLocation} from '../../../../components';
+import {MapComponent, MapLocation, MyStatusBar} from '../../../../components';
 
 const SetLocation = ({navigation, route}) => {
   const [name, setName] = useState();
   useEffect(() => {
     setName(route.params);
-  }, [name]);
+  }, [navigation]);
   return (
     <>
+      <MyStatusBar backgroundColor={'transparent'} />
       <MapComponent />
       <MapLocation
         title={route.params === undefined ? 'Set location' : route.params.name}

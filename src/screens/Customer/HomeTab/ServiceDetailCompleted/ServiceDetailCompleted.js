@@ -29,9 +29,9 @@ const ServiceDetailCompleted = ({navigation}) => {
                 setRating={rat => {
                   setRating(rat);
                 }}
-                // onPressBack={() => {
-                //   navigation?.navigate('PaymentMethod');
-                // }}
+                onPressBack={() => {
+                  navigation?.navigate('LocationFinder');
+                }}
               />
             </View>
           </KeyboardAwareScrollView>

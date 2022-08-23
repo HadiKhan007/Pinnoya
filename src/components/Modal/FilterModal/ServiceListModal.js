@@ -64,7 +64,6 @@ export const ServiceListModal = ({
           onPressBtn={onPress}
           btnText={'Next'}
           bgColor={colors.b_gradient}
-          textColor={'Next'}
           textColor={colors.white}
         />
       </View>

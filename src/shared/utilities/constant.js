@@ -441,6 +441,23 @@ const EditProfile_List = [
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
   },
 ];
+const VerifyProfile_List = [
+  {
+    id: 1,
+    title: 'Experience',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+  {
+    id: 2,
+    title: 'Preference',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+  {
+    id: 3,
+    title: 'Description',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+  },
+];
 const Help_List = [
   {
     id: 1,
@@ -453,6 +470,26 @@ const Help_List = [
   {
     id: 3,
     title: 'Support requests',
+  },
+];
+const SpecialNeed_list = [
+  {
+    id: 1,
+    text: 'Yes',
+  },
+  {
+    id: 2,
+    text: 'No',
+  },
+];
+const History_List = [
+  {
+    id: 1,
+    text: 'Complete',
+  },
+  {
+    id: 2,
+    text: 'In-Progress',
   },
 ];
 const stripe_publishableKey = '';
@@ -483,4 +520,7 @@ export {
   Addresses_list,
   EditProfile_List,
   Help_List,
+  VerifyProfile_List,
+  SpecialNeed_list,
+  History_List,
 };

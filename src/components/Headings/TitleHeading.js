@@ -1,12 +1,23 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {colors, family, size, WP} from '../../shared/exporter';
-
-export const TitleHeading = ({title, subtitle}) => {
+import DownArrow from 'react-native-vector-icons/AntDesign';
+export const TitleHeading = ({title, subtitle, icon, onPress}) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {
+          flexDirection: icon ? 'row' : 'column',
+          justifyContent: icon ? 'space-between' : null,
+          alignItems: icon ? 'center' : null,
+        },
+      ]}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subtitle}>{subtitle}</Text>
+      <TouchableOpacity onPress={onPress}>
+        {icon && <DownArrow name={'down'} size={14} color={colors.b1} />}
+      </TouchableOpacity>
     </View>
   );
 };

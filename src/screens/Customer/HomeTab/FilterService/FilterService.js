@@ -1,16 +1,7 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import React, {useRef, useState} from 'react';
 import {
   AppHeader,
-  AppInput,
-  AuthHeading,
-  BabySitterModal,
   Button,
   Checkbox,
   DropDownInput,
@@ -23,16 +14,17 @@ import styles from './styles';
 import {
   cities,
   colors,
-  filterServiceList,
   spacing,
-  work_exp,
   WP,
+  scrHeight,
 } from '../../../../shared/exporter';
 import DelIcon from 'react-native-vector-icons/AntDesign';
 import CrossIcon from 'react-native-vector-icons/Entypo';
 import {Divider} from 'react-native-elements/dist/divider/Divider';
+import {SpecialNeed_list} from '../../../../shared/utilities/constant';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
-const FilterService = ({navigation}) => {
+const FilterService = ({navigation, tabRef}) => {
   //References
   const servicelistRef = useRef(null);
   const citylistRef = useRef(null);
@@ -40,33 +32,41 @@ const FilterService = ({navigation}) => {
 
   //States
   const [checked, setchecked] = useState(false);
-  const [experience, setexperience] = useState('1-5 years');
+  const [isActive, setActive] = useState(false);
+  const [experience, setexperience] = useState('Yes');
   const [city, setCity] = useState('Select City');
   const [accomodation, setAccomodation] = useState(false);
   const [selectService, setSelectedService] = useState('Select Service');
 
   return (
     <>
-      <AppHeader
+      {/* <AppHeader
         backIcon={true}
         title={'Filter'}
         onPressBack={() => {
           navigation?.goBack();
         }}
-      />
-      <View style={styles.container}>
-        <View style={styles.firstContainer}></View>
-        <View style={styles.secondContainer}>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.aiRow}>
-              <TouchableOpacity>
-                <DelIcon name={'delete'} size={20} color={colors.b1} />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <CrossIcon name={'cross'} size={20} color={colors.b1} />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.aiRow}>
+      /> */}
+      <RBSheet
+        ref={tabRef}
+        height={scrHeight / 1.2}
+        openDuration={250}
+        customStyles={{
+          container: styles.iconContainer,
+        }}>
+        <View style={styles.container}>
+          <View style={styles.firstContainer}></View>
+          <View style={styles.secondContainer}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <View style={styles.aiRow}>
+                <TouchableOpacity>
+                  <DelIcon name={'delete'} size={20} color={colors.b1} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <CrossIcon name={'cross'} size={20} color={colors.b1} />
+                </TouchableOpacity>
+              </View>
+              {/* <View style={styles.aiRow}>
               <Text style={styles.h1Style}>Services </Text>
               <DropDownInput
                 title={selectService?.title || selectService}
@@ -75,56 +75,54 @@ const FilterService = ({navigation}) => {
                   servicelistRef?.current?.open();
                 }}
               />
-            </View>
-            <View style={styles.aiRow}>
-              <Text style={styles.h1Style}>City</Text>
-              <DropDownInput
-                title={city}
-                width={'80%'}
+            </View> */}
+              <View style={styles.aiRow}>
+                <Text style={styles.h1Style}>City</Text>
+                <DropDownInput
+                  title={city}
+                  width={'80%'}
+                  onPress={() => {
+                    citylistRef?.current?.open();
+                  }}
+                />
+              </View>
+              <TouchableOpacity
                 onPress={() => {
-                  citylistRef?.current?.open();
-                }}
-              />
-            </View>
-            <TouchableOpacity
-              onPress={() => {
-                setchecked(!checked);
-              }}
-              style={styles.headText}>
-              <Text style={styles.checkStyle}>Show next to me</Text>
-              <Checkbox
-                checkSize={18}
-                toggleCheckBox={checked}
-                setToggleCheckBox={() => {
                   setchecked(!checked);
                 }}
-              />
-            </TouchableOpacity>
-            <Divider color={colors.white3} style={spacing.mt5} />
+                style={styles.headText}>
+                <Text style={styles.checkStyle}>Show next to me</Text>
+                <Checkbox
+                  checkSize={18}
+                  toggleCheckBox={checked}
+                  setToggleCheckBox={() => {
+                    setchecked(!checked);
+                  }}
+                />
+              </TouchableOpacity>
+              <Divider color={colors.white3} style={spacing.mt5} />
 
-            {checked && (
-              <View>
-                <TitleHeading title={'Age'} />
-                <MultiSliderComp
-                  value={[18, 65]}
-                  onValuesChange={val => {
-                  }}
-                  h1={'18'}
-                  h2={'65'}
-                  max={65}
-                  min={18}
-                />
-                <TitleHeading title={'Price Per Hour'} />
-                <MultiSliderComp
-                  value={[2, 50]}
-                  onValuesChange={val => {
-                  }}
-                  h1={'₱2'}
-                  h2={'₱50'}
-                  max={50}
-                  min={2}
-                />
-                <View style={styles.aiRow}>
+              {checked && (
+                <View>
+                  <TitleHeading title={'Childern Age'} />
+                  <MultiSliderComp
+                    value={[18, 65]}
+                    onValuesChange={val => {}}
+                    h1={'18'}
+                    h2={'65'}
+                    max={65}
+                    min={18}
+                  />
+                  <TitleHeading title={'Price Rate'} />
+                  <MultiSliderComp
+                    value={[2, 50]}
+                    onValuesChange={val => {}}
+                    h1={'₱2'}
+                    h2={'₱50'}
+                    max={50}
+                    min={2}
+                  />
+                  {/* <View style={styles.aiRow}>
                   <Text style={styles.h1Style}>Work Experience</Text>
                   <DropDownInput
                     width={'50%'}
@@ -133,71 +131,102 @@ const FilterService = ({navigation}) => {
                       explisttRef?.current?.open();
                     }}
                   />
-                </View>
-                <View style={styles.aiRow}>
-                  <Text style={styles.h1Style}>Lorem Epsom</Text>
-                  <DropDownInput
-                    width={'50%'}
-                    title={'Lorem Epsum'}
+                </View> */}
+                  <View style={styles.aiRow}>
+                    <Text style={styles.h1Style}>Special Needs</Text>
+                    <DropDownInput
+                      width={'50%'}
+                      title={experience}
+                      onPress={() => {
+                        explisttRef?.current?.open();
+                      }}
+                    />
+                  </View>
+                  <View style={styles.aiRow}>
+                    <Text style={styles.h1Style}>Lorem Epsom</Text>
+                    <DropDownInput
+                      width={'50%'}
+                      title={'Lorem Epsum'}
+                      onPress={() => {
+                        // explisttRef?.current?.open();
+                      }}
+                    />
+                  </View>
+                  <View style={styles.aiRow}>
+                    <Text style={styles.h1Style}>Lorem Epsom</Text>
+                    <DropDownInput
+                      width={'40%'}
+                      title={'Lorem Epsum'}
+                      icon={true}
+                      onPress={() => {
+                        // explisttRef?.current?.open();
+                      }}
+                    />
+                  </View>
+                  <Divider color={colors.white3} style={spacing.mt5} />
+                  <TitleHeading
+                    title={'Additional information'}
+                    icon={true}
                     onPress={() => {
-                      // explisttRef?.current?.open();
+                      setActive(!isActive);
                     }}
                   />
+                  {isActive && (
+                    <View style={styles.aiRow}>
+                      <Checkbox
+                        checkSize={14}
+                        toggleCheckBox={accomodation}
+                        setToggleCheckBox={() => {
+                          setAccomodation(!accomodation);
+                        }}
+                        title={'With accommodation'}
+                      />
+                      <Checkbox
+                        checkSize={14}
+                        toggleCheckBox={!accomodation}
+                        setToggleCheckBox={() => {
+                          setAccomodation(!accomodation);
+                        }}
+                        title={'With accommodation'}
+                      />
+                    </View>
+                  )}
                 </View>
-                <Divider color={colors.white3} style={spacing.mt5} />
-                <TitleHeading title={'Accomodation'} />
-                <View style={styles.aiRow}>
-                  <Checkbox
-                    checkSize={14}
-                    toggleCheckBox={accomodation}
-                    setToggleCheckBox={() => {
-                      setAccomodation(!accomodation);
-                    }}
-                    title={'With accommodation'}
-                  />
-                  <Checkbox
-                    checkSize={14}
-                    toggleCheckBox={!accomodation}
-                    setToggleCheckBox={() => {
-                      setAccomodation(!accomodation);
-                    }}
-                    title={'With accommodation'}
-                  />
-                </View>
+              )}
+              <View style={styles.aiCenter}>
+                <Button
+                  onPressBtn={() => {
+                    navigation.navigate('ServiceItemDetail');
+                  }}
+                  bgColor={colors.b_gradient}
+                  textColor={colors.white}
+                  btnText={'Apply'}
+                />
               </View>
-            )}
-            <View style={styles.aiCenter}>
-              <Button
-                onPressBtn={() => {}}
-                bgColor={colors.b_gradient}
-                textColor={colors.white}
-                btnText={'Apply'}
-              />
-            </View>
-          </ScrollView>
+            </ScrollView>
+          </View>
         </View>
-      </View>
-      <ListModal
-        listRef={citylistRef}
-        list={cities}
-        height={WP('80')}
-        title={'Select Cities'}
-        getValue={val => {
-          setCity(val?.text);
-          citylistRef?.current?.close();
-        }}
-      />
-      <ListModal
-        listRef={explisttRef}
-        list={work_exp}
-        height={WP('120')}
-        title={'Select years of experience'}
-        getValue={val => {
-          setexperience(val?.text);
-          explisttRef?.current?.close();
-        }}
-      />
-      <ServiceListModal
+        <ListModal
+          listRef={citylistRef}
+          list={cities}
+          height={WP('80')}
+          title={'Select Cities'}
+          getValue={val => {
+            setCity(val?.text);
+            citylistRef?.current?.close();
+          }}
+        />
+        <ListModal
+          listRef={explisttRef}
+          list={SpecialNeed_list}
+          height={WP('50')}
+          title={'Select Options'}
+          getValue={val => {
+            setexperience(val?.text);
+            explisttRef?.current?.close();
+          }}
+        />
+        {/* <ServiceListModal
         listRef={servicelistRef}
         list={filterServiceList}
         height={WP('110')}
@@ -211,7 +240,8 @@ const FilterService = ({navigation}) => {
           servicelistRef?.current?.close();
         }}
         selectedService={selectService}
-      />
+      /> */}
+      </RBSheet>
     </>
   );
 };

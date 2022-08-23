@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Platform,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors, family, size, WP} from '../../shared/exporter';
 import {TextInput} from 'react-native-paper';
+import SearchBarSlider from 'react-native-vector-icons/Feather';
 export const SerachBar = ({
   placeholder,
   placeholderTextColor,
@@ -30,6 +24,7 @@ export const SerachBar = ({
   rightText,
   numberofLines,
   onPressIn,
+  onPress,
   leftIcon,
 }) => {
   return (
@@ -56,13 +51,24 @@ export const SerachBar = ({
         theme={{roundness: 10}}
         dense={true}
         onPressIn={onPressIn}
-        right={
-          rightIcon && <TextInput.Icon onPressIn={onPressIn} name={rightIcon} />
-        }
         left={
-          leftIcon && <TextInput.Icon onPressIn={onPressIn} name={leftIcon} />
+          leftIcon && <TextInput.Icon name={leftIcon} onPress={onPressIn} />
         }
       />
+      {rightIcon && (
+        <TouchableOpacity onPress={onPress}>
+          <SearchBarSlider
+            name={'sliders'}
+            size={25}
+            color={colors.p1}
+            style={{
+              position: 'absolute',
+              left: 290,
+              top: -38,
+            }}
+          />
+        </TouchableOpacity>
+      )}
       {touched && error && (
         <View>
           <Text style={styles.errorStyle}>{error}</Text>

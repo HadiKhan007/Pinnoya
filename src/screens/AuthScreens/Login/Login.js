@@ -22,6 +22,8 @@ import {loginRequest} from '../../../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
 const Login = ({navigation}) => {
   const auth = useSelector(state => state?.auth);
+  const {userType} = useSelector(state => state.auth);
+  console.log('asdasd', userType);
   const dispatch = useDispatch();
   //On Submit Request
   const onSubmitLogin = () => {
@@ -113,6 +115,9 @@ const Login = ({navigation}) => {
 
               <View style={styles.secondContainer}>
                 <Button
+                  onPressBtn={() => {
+                    navigation.navigate('SPSignUp');
+                  }}
                   bgColor={colors.db_gradient}
                   textColor={colors.b1}
                   btnText={'Login via Google'}
@@ -132,7 +137,9 @@ const Login = ({navigation}) => {
                 />
                 <AuthFooter
                   onPress={() => {
-                    navigation?.navigate('CSignUp');
+                    userType == 'Provider'
+                      ? navigation?.navigate('SPSignUp')
+                      : navigation.navigate('CSignUp');
                   }}
                   title={'Not yet on Pinoyaya? '}
                   subtitle={'Register'}

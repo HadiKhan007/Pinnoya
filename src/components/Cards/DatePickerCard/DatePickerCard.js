@@ -5,16 +5,16 @@ import {TitleHeading} from '../..';
 import CalendarStrip from 'react-native-calendar-strip';
 export const DatePickerCard = ({datesBlacklistFunc}) => {
   return (
-    <View style={styles.container}>
-      <TitleHeading title={'Set Your Date'} />
+    <View>
+      {/* <TitleHeading title={'Set Your Date'} /> */}
       <CalendarStrip
         startingDate={new Date()}
         datesBlacklist={datesBlacklistFunc}
-        numDaysInWeek={6}
+        numDaysInWeek={3}
         style={styles.calenderContainer}
         scrollable={true}
         calendarHeaderFormat={'MMMM'}
-        showMonth={true}
+        showMonth={false}
         daySelectionAnimation={styles.selectDateStyle}
         highlightDateNameStyle={{color: colors.white}}
         highlightDateNumberStyle={{color: colors.white}}
@@ -40,12 +40,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   calenderContainer: {
-    height: WP('30'),
-    paddingBottom: 10,
+    height: WP('20'),
   },
   container: {
-    padding: 10,
-    backgroundColor: colors.white,
+    padding: 8,
+    // backgroundColor: colors.white,
     shadowColor: colors.box_shadow,
     borderRadius: 10,
     shadowOffset: {
@@ -55,6 +54,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 6.27,
     elevation: 10,
-    marginVertical: 8,
+    marginVertical: 5,
   },
 });

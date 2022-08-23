@@ -15,13 +15,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {AppInput, Button} from '../../components';
 import {TextInput} from 'react-native-paper';
 
-export const MapLocation = ({
-  backIcon,
-  onPressBack,
-  title,
-  onPress,
-  text,
-}) => {
+export const MapLocation = ({backIcon, onPressBack, title, onPress}) => {
   const [data, setData] = useState(location_list);
   useEffect(() => {}, [data]);
   return (
@@ -128,10 +122,9 @@ export const MapLocation = ({
 };
 
 const styles = StyleSheet.create({
+  safeView: {flex: 1},
   mainContainer: {flex: 1.5},
   container: {
-    height: WP('18'),
-    justifyContent: 'flex-end',
     position: 'absolute',
     flexDirection: 'row',
   },

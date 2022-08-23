@@ -39,7 +39,7 @@ const PaymentSuccess = ({navigation}) => {
             textColor={colors.white}
             btnText={'Bookings'}
             onPressBtn={() => {
-              navigation?.replace('Login');
+              navigation?.replace('TransactionHistory');
             }}
           />
           <Button
