@@ -9,7 +9,6 @@ const initialState = {
   forgotPassRes: null,
   resetPassRes: null,
   otp_verify: null,
-  userType: 'Provider',
 };
 const authReducer = (state = initialState, actions) => {
   const {type, payload} = actions;

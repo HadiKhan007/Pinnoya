@@ -15,7 +15,6 @@ import PaymentMethod from '../../../screens/Customer/HomeTab/PaymentMethod';
 import Payment from '../../../screens/Customer/HomeTab/Payment';
 import PaymentVerfication from '../../../screens/Customer/HomeTab/PaymentVerification';
 import PaymentSuccess from '../../../screens/Customer/HomeTab/PaymentSuccess';
-
 const Stack = createStackNavigator();
 
 function SPHomeStack(props) {

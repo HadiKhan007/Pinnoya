@@ -1,3 +1,7 @@
+// //Types for getting user type
+export const USER_TYPE_REQUEST = 'USER_TYPE_REQUEST';
+export const USER_TYPE_LIST = 'USER_TYPE_LIST';
+
 //Types for Login
 export const LOGIN_REQUEST_REQUEST = 'LOGIN_REQUEST_REQUEST';
 export const LOGIN_REQUEST_SUCCESS = 'LOGIN_REQUEST_SUCCESS';

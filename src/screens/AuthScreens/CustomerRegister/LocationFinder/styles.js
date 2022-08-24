@@ -7,14 +7,15 @@ const styles = StyleSheet.create({
   },
   arrowStyle: {
     position: 'absolute',
-    top: 25,
+    top: 45,
     left: 15,
   },
   contentContainer: {
     width: WP('90'),
     backgroundColor: colors.white,
     position: 'absolute',
-    top: 60,
+    // top: 60,
+    marginVertical: WP('25'),
     padding: WP('10'),
     marginHorizontal: WP('5'),
     borderRadius: 10,

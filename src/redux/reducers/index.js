@@ -2,12 +2,14 @@ import {combineReducers} from 'redux';
 
 import authReducer from './auth-reducers/auth-reducer';
 import profileReducer from './profile-reducers/profile-reducer';
+import userTypeReducer from './userType-reducers/userType-reducers';
 import * as types from '../actions/types';
 
 const appReducer = combineReducers({
   /* your app’s top-level reducers */
   auth: authReducer,
   profile: profileReducer,
+  userType: userTypeReducer,
 });
 
 const rootReducer = (state, action) => {

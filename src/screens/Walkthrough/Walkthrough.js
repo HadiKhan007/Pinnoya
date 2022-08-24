@@ -4,7 +4,7 @@ import styles from './styles';
 import {AuthHeader, Button, IntroSlider} from '../../components';
 import {appImages, colors, scrWidth} from '../../shared/exporter';
 import CarouselView from 'react-native-snap-carousel';
-
+import {useDispatch, useSelector} from 'react-redux';
 const slides = [
   {
     key: 1,
@@ -23,7 +23,18 @@ const slides = [
   },
 ];
 const Walkthrough = ({navigation}) => {
+  const {userType} = useSelector(state => state.userType);
+  const dispatch = useDispatch(null);
   const _carousel1 = useRef(null);
+
+  const onSubmit = () => {
+    dispatch({type: 'USER_TYPE_REQUEST', params: 'Customer'});
+    navigation.navigate('Auth');
+  };
+  const onSubmitSignUp = () => {
+    dispatch({type: 'USER_TYPE_REQUEST', params: 'Provider'});
+    navigation.navigate('Auth');
+  };
   //Welcome Cards
   const welcomeCards = ({item, index}) => {
     return (
@@ -52,14 +63,10 @@ const Walkthrough = ({navigation}) => {
             bgColor={colors.b_gradient}
             btnText={'Find a Nanny'}
             textColor={colors.white}
-            onPressBtn={() => {
-              navigation?.navigate('Auth');
-            }}
+            onPressBtn={() => onSubmit()}
           />
           <Button
-            onPressBtn={() => {
-              navigation?.navigate('Auth');
-            }}
+            onPressBtn={() => onSubmitSignUp()}
             textColor={colors.p1}
             btnText={'Sign Up as a Nanny'}
           />

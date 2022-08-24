@@ -12,7 +12,7 @@ import {TextInput} from 'react-native-paper';
 export const AddressesCard = ({item, width, icon, editable, onPress}) => {
   return (
     <View style={[styles.container, {width: width ? WP(30) : width}]}>
-      <View style={styles.leftContainer}>
+      <View style={[styles.leftContainer, {padding: icon ? WP('7') : 0}]}>
         <Text style={styles.titleStyle}>{item?.title}</Text>
         <TextInput
           style={[styles.inputStyle]}

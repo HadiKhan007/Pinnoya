@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, View, Text, FlatList} from 'react-native';
-import {AdressesCard, AppHeader} from '../../../../components';
+import {AddressesCard, AppHeader} from '../../../../components';
 import styles from './styles';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Addresses_list} from '../../../../shared/exporter';
@@ -24,13 +24,11 @@ const MyAddresses = ({navigation}) => {
         <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <FlatList
             data={Addresses_list}
-            renderItem={({item}) => {
-              return (
-                <View>
-                  <AdressesCard item={item} icon={true} />
-                </View>
-              );
-            }}
+            renderItem={({item, index}) => (
+              <View>
+                <AddressesCard icon={true} item={item} />
+              </View>
+            )}
           />
         </KeyboardAwareScrollView>
       </View>
