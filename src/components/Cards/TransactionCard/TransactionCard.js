@@ -23,9 +23,8 @@ export const TransactionCard = () => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    height: 70,
     backgroundColor: colors.white,
-    padding: WP('3'),
+    padding: WP('2'),
     borderRadius: 10,
     marginHorizontal: WP('2'),
     flexDirection: 'row',

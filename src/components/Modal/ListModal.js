@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import {FlatList, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {colors, family, size, WP} from '../../shared/exporter';
@@ -32,6 +27,7 @@ export const ListModal = ({listRef, list, getValue, height, title}) => {
         <Text style={styles.h1}>{title}</Text>
         <FlatList
           data={list}
+          keyExtractor={(item, index) => item.key}
           renderItem={({item, index}) => {
             return (
               <TouchableOpacity

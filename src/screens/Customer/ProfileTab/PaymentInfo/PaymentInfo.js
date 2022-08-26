@@ -14,23 +14,21 @@ const PaymentInfo = ({navigation}) => {
           navigation?.goBack();
         }}
       />
-      <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <View style={styles.secondContainer}>
-            <Text style={styles.titleText}>Lorem ipsum dolor</Text>
-            <TouchableOpacity>
-              <Image source={appIcons.added} style={styles.iconStyle} />
-            </TouchableOpacity>
-          </View>
+      <View style={styles.contentContainer}>
+        <View style={styles.secondContainer}>
+          <Text style={styles.titleText}>Lorem ipsum dolor</Text>
+          <TouchableOpacity>
+            <Image source={appIcons.added} style={styles.iconStyle} />
+          </TouchableOpacity>
+        </View>
 
-          <Text style={styles.subTitleText}>
-            Pellentesque in ipsum id orci porta dapibus.
-          </Text>
-        </View>
-        <View style={styles.cardContainer}>
-          <Image source={appImages.card} style={styles.card} />
-          <Image source={appImages.card2} style={styles.card} />
-        </View>
+        <Text style={styles.subTitleText}>
+          Pellentesque in ipsum id orci porta dapibus.
+        </Text>
+      </View>
+      <View style={styles.cardContainer}>
+        <Image source={appImages.card} style={styles.card} />
+        <Image source={appImages.card2} style={styles.card} />
       </View>
     </SafeAreaView>
   );

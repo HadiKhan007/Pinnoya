@@ -1,11 +1,8 @@
 import {
-  DatePickerIOSBase,
   ScrollView,
-  StyleSheet,
-  Text,
   View,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {
   AppHeader,
   BgImageBox,
@@ -13,7 +10,6 @@ import {
   DatePickerCard,
   PrimaryCard,
   TimePickerCard,
-  TitleHeading,
 } from '../../../../components';
 import styles from './styles';
 import {appImages, colors} from '../../../../shared/exporter';

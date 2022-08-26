@@ -2,11 +2,7 @@ import {Platform, StyleSheet} from 'react-native';
 import {colors, WP, size, scrWidth} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
-  safeView: {flex: 1},
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-  },
+  safeView: {flex: 1, backgroundColor: colors.white},
   contentContainer: {
     flex: 0.2,
     backgroundColor: colors.white,

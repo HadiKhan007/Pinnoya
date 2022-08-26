@@ -41,6 +41,7 @@ export const HomeTabModal = ({tabRef, onPressClose, navigation}) => {
         <View style={styles.listContainer}>
           <FlatList
             data={tabArray}
+            keyExtractor={(item, index) => item.key}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity

@@ -3,10 +3,6 @@ import {colors, WP, size, family, scrWidth} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
   safeView: {flex: 1, backgroundColor: colors.white},
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-  },
   contentContainer: {
     flex: 1,
     backgroundColor: colors.white,
@@ -33,7 +29,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
-  thirdContentContainer: {
+  secondContentContainer: {
     width: WP(95),
   },
   menuContainer: {

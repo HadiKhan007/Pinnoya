@@ -39,8 +39,11 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   allStyle: {
-    left: 290,
+    // position: 'absolute',
+    
+    textAlign: 'right',
     color: colors.p1,
+    fontSize: size.tiny,
   },
   allStyle2: {
     position: 'absolute',

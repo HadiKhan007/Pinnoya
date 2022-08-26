@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   pana:{
     height: 320,
     width: 330,
-    left: 30,
     top: 5,
   },
 });

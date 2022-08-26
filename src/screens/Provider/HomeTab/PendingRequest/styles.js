@@ -30,9 +30,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   allStyle: {
-    left: 295,
-    top: -25,
+    // left: 285,
+    marginVertical: -28,
+    textAlign: 'right',
     color: colors.p1,
+    fontSize: size.tiny,
   },
 });
 export default styles;

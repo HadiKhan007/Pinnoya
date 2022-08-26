@@ -12,13 +12,12 @@ import ResetPassword from '../../screens/AuthScreens/ResetPassword';
 import VerifyOtp from '../../screens/AuthScreens/VerifyOtp';
 import AddPersonalInfo from '../../screens/AuthScreens/CustomerRegister/AddPersonalInfo';
 import UploadDoc from '../../screens/AuthScreens/SPRegister/UploadDoc';
-import ResetPasswordSuccess from '../../screens/AuthScreens/ResetPasswordSuccess/ResetPasswordSuccess';
-import SetLocation from '../../screens/AuthScreens/CustomerRegister/SetLocation/SetLocation';
-import ForgotVerifyOtp from '../../screens/AuthScreens/ForgotVerifyOtp/ForgotVerifyOtp';
-import LocationFinder from '../../screens/AuthScreens/CustomerRegister/LocationFinder/LocationFinder';
-import TrackingDetail from '../../screens/Customer/HomeTab/TrackingDetail/TrackingDetail';
-import SPVerifyOtp from '../../screens/AuthScreens/SPRegister/SPVerifyOtp/SPVerifyOtp';
-
+import SPVerifyOtp from '../../screens/AuthScreens/SPRegister/SPVerifyOtp';
+import SetLocation from '../../screens/AuthScreens/CustomerRegister/SetLocation';
+import LocationFinder from '../../screens/AuthScreens/CustomerRegister/LocationFinder';
+import ResetPasswordSuccess from '../../screens/AuthScreens/ResetPasswordSuccess';
+import ForgotVerifyOtp from '../../screens/AuthScreens/ForgotVerifyOtp';
+import TrackingDetail from '../../screens/Customer/HomeTab/TrackingDetail';
 const Stack = createStackNavigator();
 
 function AuthStack(props) {

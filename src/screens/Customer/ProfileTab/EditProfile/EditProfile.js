@@ -1,12 +1,9 @@
 import React from 'react';
 import {SafeAreaView, View, Text, FlatList} from 'react-native';
-import {AdressesCard, AppHeader} from '../../../../components';
+import {AddressesCard, AppHeader} from '../../../../components';
 import styles from './styles';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {
-  Addresses_list,
-  EditProfile_List,
-} from '../../../../shared/utilities/constant';
+import {EditProfile_List} from '../../../../shared/exporter';
 const EditProfile = ({navigation}) => {
   return (
     <SafeAreaView style={styles.safeView}>
@@ -17,24 +14,19 @@ const EditProfile = ({navigation}) => {
           navigation?.goBack();
         }}
       />
-      <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <Text style={styles.titleText}>Lorem ipsum dolor</Text>
-          <Text style={styles.subTitleText}>
-            Pellentesque in ipsum id orci porta dapibus.
-          </Text>
-        </View>
-        <View style={styles.secondContainer}>
-          <KeyboardAwareScrollView
-            showsVerticalScrollIndicator={false}>
-            <FlatList
-              data={EditProfile_List}
-              renderItem={({item}) => {
-                return <AdressesCard item={item} />;
-              }}
-            />
-          </KeyboardAwareScrollView>
-        </View>
+      <View style={styles.contentContainer}>
+        <Text style={styles.titleText}>Lorem ipsum dolor</Text>
+        <Text style={styles.subTitleText}>
+          Pellentesque in ipsum id orci porta dapibus.
+        </Text>
+      </View>
+      <View style={styles.secondContainer}>
+        <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+          <FlatList
+            data={EditProfile_List}
+            renderItem={({item, index}) => <AddressesCard item={item} />}
+          />
+        </KeyboardAwareScrollView>
       </View>
     </SafeAreaView>
   );

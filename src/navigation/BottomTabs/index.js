@@ -10,15 +10,13 @@ import {useDispatch, useSelector} from 'react-redux';
 const Tab = createBottomTabNavigator();
 
 const MainFlow = () => {
-  const dispatch = useDispatch();
-  const {userType} = useSelector(state => state.auth);
-  console.log('res--------', userType);
+  const {userType} = useSelector(state => state.userType);
   return (
     <Tab.Navigator
       screenOptions={{headerShown: false}}
       tabBar={props => <BottomTab {...props} />}>
       <Tab.Screen
-        component={userType === 'customer' ? HomeStack : SPHomeStack}
+        component={userType == 'Customer' ? HomeStack : SPHomeStack}
         name={'Home'}
       />
       <Tab.Screen component={FavouriteStack} name={'Favourite'} />

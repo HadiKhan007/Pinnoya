@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {colors, family, size} from '../../../shared/exporter';
+import {colors, family, size, WP} from '../../../shared/exporter';
 
 export const ServiceTimeCard = ({width, subtitle, onPress, title}) => {
   return (
@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-evenly',
     marginVertical: 2,
-    paddingHorizontal: 10,
-    marginHorizontal: 12,
+    paddingHorizontal: WP('2'),
+    marginHorizontal: WP('2'),
   },
 
   h2: {

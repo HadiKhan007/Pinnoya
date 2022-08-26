@@ -14,10 +14,10 @@ import {
   WP,
   scrHeight,
   appIcons,
+  Service_List,
 } from '../../../shared/exporter';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {AuthHeading} from '../../Headings/AuthHeading';
-import {Service_List} from '../../../shared/utilities/constant';
 export const ServiceCard = ({
   item,
   imgStyle,
@@ -53,6 +53,7 @@ export const ServiceCard = ({
           <FlatList
             showsVerticalScrollIndicator={false}
             data={Service_List}
+            keyExtractor={(item, index) => item.key}
             renderItem={({index, item}) => {
               return (
                 <TouchableOpacity

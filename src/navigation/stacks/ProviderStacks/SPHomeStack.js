@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import SPDashboard from '../../../screens/Provider/HomeTab/SPDashboard/SPDashboard';
+import SPDashboard from '../../../screens/Provider/HomeTab/SPDashboard';
 import VerifyProfile from '../../../screens/Provider/HomeTab/VerifyProfile';
 import PendingRequest from '../../../screens/Provider/HomeTab/PendingRequest';
 import SPJobs from '../../../screens/Provider/HomeTab/SPJobs';
-import CallNow from '../../../screens/Customer/HomeTab/CallNow/CallNow';
-import Chat from '../../../screens/Customer/HomeTab/Chat/Chat';
+import CallNow from '../../../screens/Customer/HomeTab/CallNow';
+import Chat from '../../../screens/Customer/HomeTab/Chat';
 import ServiceItemDetail from '../../../screens/Provider/HomeTab/ServiceItemDetail';
 import TrackingDetail from '../../../screens/Provider/HomeTab/TrackingDetail';
 import OfferSuccess from '../../../screens/Provider/HomeTab/OfferSuccess';
 import History from '../../../screens/Provider/HomeTab/History';
 import TransactionHistory from '../../../screens/Provider/HomeTab/TransactionHistory';
-import PaymentMethod from '../../../screens/Customer/HomeTab/PaymentMethod/PaymentMethod';
-import Payment from '../../../screens/Customer/HomeTab/Payment/Payment';
-import PaymentVerfication from '../../../screens/Customer/HomeTab/PaymentVerification/PaymentVerification';
-import PaymentSuccess from '../../../screens/Customer/HomeTab/PaymentSuccess/PaymentSuccess';
+import PaymentMethod from '../../../screens/Customer/HomeTab/PaymentMethod';
+import Payment from '../../../screens/Customer/HomeTab/Payment';
+import PaymentVerfication from '../../../screens/Customer/HomeTab/PaymentVerification';
+import PaymentSuccess from '../../../screens/Customer/HomeTab/PaymentSuccess';
 const Stack = createStackNavigator();
 
 function SPHomeStack(props) {

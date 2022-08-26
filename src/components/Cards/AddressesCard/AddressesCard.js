@@ -12,21 +12,18 @@ import {TextInput} from 'react-native-paper';
 export const AddressesCard = ({item, width, icon, editable, onPress}) => {
   return (
     <View style={[styles.container, {width: width ? WP(30) : width}]}>
-      <View style={styles.leftContainer}>
+      <View style={[styles.leftContainer, {padding: icon ? WP('7') : 0}]}>
         <Text style={styles.titleStyle}>{item?.title}</Text>
         <TextInput
           style={[styles.inputStyle]}
           placeholder={'Pellentesque in ipsum id orci porta dapibus.'}
           placeholderTextColor={colors.g1}
           onChangeText={text => {}}
-          mode={'flat'}
-          outlineColor={colors.g2}
-          activeOutlineColor={colors.p1}
-          theme={{roundness: 10, colors: {text: 'black'}}}
+          theme={{colors: {text: 'black', primary: colors}}}
           dense={true}
           multiline={true}
           editable={editable}
-          activeUnderlineColor={colors.p1}
+          underlineColor="transparent"
         />
       </View>
       {icon ? (
@@ -42,9 +39,7 @@ export const AddressesCard = ({item, width, icon, editable, onPress}) => {
           </TouchableOpacity>
         </View>
       ) : (
-        <TouchableOpacity
-          style={[styles.rightContainer, {paddingHorizontal: WP('3')}]}
-          onPress={onPress}>
+        <TouchableOpacity style={[styles.rightContainer2]} onPress={onPress}>
           <Image source={appIcons.added} style={styles.addCon2} />
         </TouchableOpacity>
       )}
@@ -56,7 +51,7 @@ const styles = StyleSheet.create({
   container: {
     height: WP('20'),
     backgroundColor: colors.white,
-    paddingHorizontal: WP('4'),
+    // paddingHorizontal: WP('4'),
     justifyContent: 'center',
     borderRadius: 10,
     shadowColor: Platform.OS == 'ios' ? '#00000080' : '#00000050',
@@ -65,27 +60,30 @@ const styles = StyleSheet.create({
       width: 1,
       height: 1,
     },
-    shadowRadius: Platform.OS == 'ios' ? 8 : 3,
-    elevation: Platform.OS == 'ios' ? 0 : 3,
-    margin: 5,
+    shadowRadius: Platform.OS == 'ios' ? 8 : 8,
+    elevation: Platform.OS == 'ios' ? 0 : 5,
+    margin: 6,
     flexDirection: 'row',
+    overflow: 'hidden',
   },
   leftContainer: {
     justifyContent: 'center',
     width: '80%',
-    height: '100%',
-    paddingHorizontal: WP('2'),
   },
   rightContainer: {
     width: '30%',
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
+  rightContainer2: {
+    width: '10%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   titleStyle: {
     fontSize: size.large,
     color: colors.b1,
     fontFamily: family.Ubuntu_Medium,
-    marginBottom: 5,
   },
   subTitle: {
     fontSize: size.xxxtiny,
@@ -110,13 +108,12 @@ const styles = StyleSheet.create({
   addCon2: {
     height: 15,
     width: 15,
-    left: 20,
   },
   inputStyle: {
     fontSize: size.tiny,
     color: colors.g2,
     backgroundColor: colors.white,
-    paddingHorizontal: WP('-3'),
-    height: 20,
+    paddingHorizontal: WP('-1'),
+    width: WP('80'),
   },
 });

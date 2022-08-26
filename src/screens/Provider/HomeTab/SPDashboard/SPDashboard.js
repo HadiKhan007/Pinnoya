@@ -51,7 +51,9 @@ const SPDashboard = ({navigation}) => {
           <View style={styles.secondContentContainer}>
             <Text style={styles.subtitle}>New Pending Jobs </Text>
             <TouchableOpacity>
-              <Text style={[styles.allStyle, {top: -25}]}>View all</Text>
+              <Text style={[styles.allStyle, {marginVertical: -30}]}>
+                View all
+              </Text>
             </TouchableOpacity>
             <View style={styles.listContainer}>
               <FlatList
@@ -73,7 +75,9 @@ const SPDashboard = ({navigation}) => {
 
             <Text style={styles.subtitle}>Schedule Paid Jobs </Text>
             <TouchableOpacity>
-              <Text style={[styles.allStyle, {top: -25}]}>View all</Text>
+              <Text style={[styles.allStyle, {marginVertical: -29}]}>
+                View all
+              </Text>
             </TouchableOpacity>
             <View style={styles.listContainer}>
               <FlatList

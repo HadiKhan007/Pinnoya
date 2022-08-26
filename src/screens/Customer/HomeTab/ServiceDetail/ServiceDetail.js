@@ -34,7 +34,6 @@ const ServiceDetail = ({navigation}) => {
         title={'Hello Alice,'}
         subtitle={'What service do you need?'}
       />
-      <View style={styles.container}>
         <View style={styles.headerContainer}>
           <Text style={styles.headerText}>
             Choose part-time or full-services
@@ -108,7 +107,6 @@ const ServiceDetail = ({navigation}) => {
             }}
           />
         </View>
-      </View>
     </SafeAreaView>
   );
 };

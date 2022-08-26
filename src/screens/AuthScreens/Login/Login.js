@@ -22,8 +22,7 @@ import {loginRequest} from '../../../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
 const Login = ({navigation}) => {
   const auth = useSelector(state => state?.auth);
-  const {userType} = useSelector(state => state.auth);
-  console.log('asdasd', userType);
+  const {userType} = useSelector(state => state.userType);
   const dispatch = useDispatch();
   //On Submit Request
   const onSubmitLogin = () => {
