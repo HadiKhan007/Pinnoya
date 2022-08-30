@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: WP('4'),
   },
   dropImg: {
-    height: 20,
-    width: 10,
+    height: 13,
+    width: 6,
     marginTop: WP(4),
     marginLeft: WP(2),
   },

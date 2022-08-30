@@ -162,9 +162,10 @@ const styles = StyleSheet.create({
     fontFamily: family.Poppins_Medium,
   },
   textStyle: {
+    textAlign: 'right',
     position: 'absolute',
-    left: 60,
-    top: -220,
+    marginHorizontal: WP('15'),
+    marginTop: WP('-61'),
     fontSize: size.large,
     color: colors.b1,
     fontFamily: family.Poppins_Medium,
@@ -176,8 +177,9 @@ const styles = StyleSheet.create({
     color: colors.g1,
   },
   arrowStyle: {
-    top: -218,
-    left: 15,
+    position: 'absolute',
+    marginHorizontal: WP('4'),
+    marginTop: WP('-60'),
   },
   Button: {
     height: WP('10'),

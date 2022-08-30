@@ -34,9 +34,7 @@ export const NotificationCard = ({item, navigation}) => {
     <SafeAreaView style={styles.safeView}>
       <View style={styles.container}>
         <View style={styles.leftCon}>
-          <View style={styles.imageCon}>
-            <Image style={styles.imageStyle} source={{uri: profile_uri}} />
-          </View>
+          <Image style={styles.imageStyle} source={{uri: profile_uri}} />
         </View>
         <View style={styles.centerCon}>
           <Text style={styles.h1}>Lorem ipsum</Text>
@@ -52,10 +50,7 @@ export const NotificationCard = ({item, navigation}) => {
             name={'dots-three-vertical'}
             size={16}
             color={colors.b1}
-            style={{
-              marginLeft: WP('15'),
-              marginTop: WP('3'),
-            }}
+            style={styles.icon}
           />
         </TouchableOpacity>
       </View>
@@ -95,6 +90,8 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     height: 70,
+    paddingHorizontal: WP('1'),
+    paddingVertical: WP('2'),
     marginVertical: 10,
     borderRadius: 10,
     backgroundColor: colors.white,
@@ -116,8 +113,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   imageStyle: {
-    height: '100%',
-    width: '100%',
+    height: '90%',
+    width: '90%',
     resizeMode: 'contain',
   },
   imageCon: {
@@ -173,5 +170,9 @@ const styles = StyleSheet.create({
     color: colors.b1,
     marginTop: WP('3.5'),
     fontSize: size.xsmall,
+  },
+  icon: {
+    marginLeft: WP('15'),
+    marginTop: WP('1'),
   },
 });

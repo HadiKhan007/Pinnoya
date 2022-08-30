@@ -1,14 +1,18 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 
-import {WP, colors, size} from '../../../shared/exporter';
-export const TransactionCard = () => {
+import {WP, colors, size, family} from '../../../shared/exporter';
+export const TransactionCard = ({backgroundColor}) => {
   return (
     <>
-      <View style={styles.mainContainer}>
+      <View
+        style={[
+          styles.mainContainer,
+          {backgroundColor: backgroundColor ? backgroundColor : colors.white},
+        ]}>
         <View style={styles.contentContanier}>
           <Text style={styles.title}>Job Name</Text>
-          <Text style={styles.subTitle}>
+          <Text numberOfLines={2} style={styles.subTitle}>
             Pellentesque in ipsum id orci porta dapibus.
           </Text>
         </View>
@@ -35,12 +39,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: size.large,
     color: colors.b1,
-    fontWeight: 'bold',
+    fontFamily: family.Ubuntu_Bold,
   },
   subTitle: {
     color: colors.g1,
     fontSize: size.small,
     width: '100%',
+    fontFamily: family.Ubuntu_Regular,
   },
   imageStyle: {
     height: 25,

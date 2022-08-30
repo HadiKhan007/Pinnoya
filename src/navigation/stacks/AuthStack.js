@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import Walkthrough from '../../screens/Walkthrough';
 import Login from '../../screens/AuthScreens/Login';
 import CSignUp from '../../screens/AuthScreens/CustomerRegister/Register';
 import CSignUp2 from '../../screens/AuthScreens/CustomerRegister/RegisterStep2';
@@ -23,8 +24,9 @@ const Stack = createStackNavigator();
 function AuthStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="Walkthrough"
       screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Walkthrough" component={Walkthrough} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="AddPersonalInfo" component={AddPersonalInfo} />

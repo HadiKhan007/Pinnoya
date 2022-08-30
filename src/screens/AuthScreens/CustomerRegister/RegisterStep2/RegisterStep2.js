@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {
   colors,
   CustomerRegisterStep2Fields,
@@ -15,6 +15,7 @@ import {
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
+import UploadIcon from 'react-native-vector-icons/AntDesign';
 
 const RegisterStep2 = ({navigation}) => {
   return (
@@ -103,7 +104,7 @@ const RegisterStep2 = ({navigation}) => {
                 />
 
                 <AppInput
-                  placeholder={'Your National ID'}
+                  placeholder={'Upload Your National ID'}
                   placeholderTextColor={colors.g2}
                   onChangeText={handleChange('govtID')}
                   value={values.govtID}
@@ -113,6 +114,9 @@ const RegisterStep2 = ({navigation}) => {
                   autoCapitalize="none"
                   touched={touched.govtID}
                   error={errors.govtID}
+                  rightIcon={() => (
+                    <UploadIcon name={'upload'} size={20} color={colors.g2} />
+                  )}
                 />
                 <AppInput
                   placeholder={'Password'}

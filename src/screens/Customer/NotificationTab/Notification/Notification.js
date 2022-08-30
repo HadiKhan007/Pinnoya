@@ -1,31 +1,48 @@
 import {FlatList, TouchableOpacity, View} from 'react-native';
-import React from 'react';
-import {AppHeader, NotificationCard} from '../../../../components';
+import React, {useRef} from 'react';
+import {
+  AppHeader,
+  NotificationCard,
+  ProviderNotificationCard,
+  SearchModal,
+} from '../../../../components';
 import styles from './styles';
-import {WP} from '../../../../shared/exporter';
+import {useDispatch, useSelector} from 'react-redux';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 const Notification = ({navigation}) => {
+  const SearchRef = useRef(null);
+  const {userType} = useSelector(state => state.userType);
+  const dispatch = useDispatch();
   return (
     <>
       <AppHeader title={'Notification'} rightArea={true} />
       <View style={styles.container}>
         <View style={styles.contentContainer}>
-          <View style={{flex: 1, padding: WP('5')}}>
+          <View style={styles.contentContainer2}>
             <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
               <FlatList
                 data={[1, 2, 3, 4, 5]}
-                renderItem={({item}) => {
-                  return (
+                renderItem={({item}) =>
+                  userType == 'Provider' ? (
+                    <ProviderNotificationCard
+                      status={'Searching'}
+                      onPress={() => {
+                        SearchRef.current.open();
+                      }}
+                    />
+                  ) : (
                     <TouchableOpacity>
-                      <NotificationCard item={item} />
+                      <NotificationCard />
                     </TouchableOpacity>
-                  );
-                }}
+                  )
+                }
               />
             </KeyboardAwareScrollView>
           </View>
         </View>
       </View>
+
+      <SearchModal SearchRef={SearchRef} />
     </>
   );
 };

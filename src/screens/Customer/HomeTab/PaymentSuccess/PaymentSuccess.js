@@ -9,7 +9,11 @@ import {
 } from '../../../../shared/exporter';
 import {AuthHeading, Button} from '../../../../components';
 import styles from './styles';
+import {useDispatch, useSelector} from 'react-redux';
+
 const PaymentSuccess = ({navigation}) => {
+  const {userType} = useSelector(state => state.userType);
+
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
@@ -39,7 +43,9 @@ const PaymentSuccess = ({navigation}) => {
           textColor={colors.p1}
           btnText={'Back to Home'}
           onPressBtn={() => {
-            navigation?.replace('Dashboard');
+            navigation?.replace(
+              userType === 'Provider' ? 'SPDashboard' : 'Dashboard',
+            );
           }}
         />
       </View>

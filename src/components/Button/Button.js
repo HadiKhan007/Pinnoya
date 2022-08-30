@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     width: 25,
     resizeMode: 'contain',
     right: 10,
-    left: 3,
   },
   btnText: {
     color: colors.white,

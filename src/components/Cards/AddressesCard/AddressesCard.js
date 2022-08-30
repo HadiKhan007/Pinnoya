@@ -9,20 +9,30 @@ import {
 import React from 'react';
 import {colors, family, size, WP, appIcons} from '../../../shared/exporter';
 import {TextInput} from 'react-native-paper';
-export const AddressesCard = ({item, width, icon, editable, onPress}) => {
+export const AddressesCard = ({
+  item,
+  width,
+  icon,
+  editable,
+  onPress,
+  value,
+  onChangeText,
+  placeholder,
+}) => {
   return (
-    <View style={[styles.container, {width: width ? WP(30) : width}]}>
+    <View style={[styles.container, {width: width ? WP(28) : width}]}>
       <View style={[styles.leftContainer, {padding: icon ? WP('7') : 0}]}>
         <Text style={styles.titleStyle}>{item?.title}</Text>
         <TextInput
           style={[styles.inputStyle]}
-          placeholder={'Pellentesque in ipsum id orci porta dapibus.'}
+          placeholder={placeholder}
           placeholderTextColor={colors.g1}
-          onChangeText={text => {}}
+          onChangeText={onChangeText}
           theme={{colors: {text: 'black', primary: colors}}}
           dense={true}
           multiline={true}
           editable={editable}
+          value={value}
           underlineColor="transparent"
         />
       </View>
@@ -49,9 +59,8 @@ export const AddressesCard = ({item, width, icon, editable, onPress}) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: WP('20'),
+    padding: WP('1'),
     backgroundColor: colors.white,
-    // paddingHorizontal: WP('4'),
     justifyContent: 'center',
     borderRadius: 10,
     shadowColor: Platform.OS == 'ios' ? '#00000080' : '#00000050',
@@ -67,7 +76,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   leftContainer: {
-    justifyContent: 'center',
     width: '80%',
   },
   rightContainer: {
@@ -84,6 +92,7 @@ const styles = StyleSheet.create({
     fontSize: size.large,
     color: colors.b1,
     fontFamily: family.Ubuntu_Medium,
+    marginVertical: WP('0.6'),
   },
   subTitle: {
     fontSize: size.xxxtiny,
@@ -114,6 +123,8 @@ const styles = StyleSheet.create({
     color: colors.g2,
     backgroundColor: colors.white,
     paddingHorizontal: WP('-1'),
+    paddingVertical: WP('1'),
     width: WP('80'),
+    height: 0,
   },
 });

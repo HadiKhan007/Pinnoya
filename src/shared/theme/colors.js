@@ -7,6 +7,7 @@ export const colors = {
   p5: '#01BAFF33',
   p6: '#01BAFF1A',
   p7: '#CCF1FF',
+  p8: 'rgba(148, 28, 107, 0.06)',
 
   // Secondary Color
   s1: '#FFA873',
@@ -83,10 +84,12 @@ export const colors = {
   box_shadow: 'rgba(0, 0, 0, 0.15)',
   introSliderColor: '#34C8FF',
   light_shadow: '#979797',
+
   // red
   red: 'red',
   r1: '#CB0005',
   r2: '#C71300',
+  r3: '#DA4646',
   default_color: '#E5E5E5',
   mb_gradient: ['#E8E8E8', '#E8E8E8'],
   gb_grandient: ['#808080', '#808080'],

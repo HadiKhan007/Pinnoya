@@ -9,11 +9,13 @@ import {
   profile_uri,
   size,
   WP,
+  appIcons,
 } from '../../../shared/exporter';
 import TickIcon from 'react-native-vector-icons/Feather';
 import StarIcon from 'react-native-vector-icons/Ionicons';
+import {Button} from '../../Button/Button';
 
-export const AvailServiceCard = ({status}) => {
+export const AvailServiceCard = ({status, isBtn, onPressChat, onPressCall}) => {
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
@@ -46,6 +48,26 @@ export const AvailServiceCard = ({status}) => {
         <Text style={styles.smallTxt}>
           Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus.
         </Text>
+        {isBtn && (
+          <View style={styles.btnContanier}>
+            <Button
+              bgColor={colors.b_gradient}
+              width={WP('25')}
+              height={WP('10')}
+              img={appIcons.message}
+              textColor={colors.white}
+              onPressBtn={onPressChat}
+            />
+            <Button
+              bgColor={colors.b_gradient}
+              width={WP('25')}
+              height={WP('10')}
+              img={appIcons.call}
+              textColor={colors.white}
+              onPressBtn={onPressCall}
+            />
+          </View>
+        )}
         <View style={styles.aiRow}>
           <Text style={styles.normal}>5.0</Text>
           <StarIcon name={'star'} color={colors.s1} size={14} />
@@ -58,7 +80,7 @@ export const AvailServiceCard = ({status}) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: WP('32'),
+    // height: WP('32'),
     flexDirection: 'row',
     paddingVertical: 10,
     alignItems: 'center',
@@ -128,5 +150,10 @@ const styles = StyleSheet.create({
     fontSize: size.xxxtiny,
     fontFamily: family.Ubuntu_Regular,
     color: colors.white,
+  },
+  btnContanier: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

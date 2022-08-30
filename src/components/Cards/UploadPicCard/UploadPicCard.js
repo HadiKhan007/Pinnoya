@@ -6,12 +6,17 @@ import {
 } from 'react-native';
 import React from 'react';
 import {appIcons, colors} from '../../../shared/exporter';
+import TickIcon from 'react-native-vector-icons/Feather';
 
-export const UploadPicCard = ({width}) => {
+export const UploadPicCard = ({width, isActive = false}) => {
   return (
     <ImageBackground style={[styles.leftCon, {width: width ? width : '100%'}]}>
       <TouchableOpacity style={styles.btnContainer} hitSlop={styles.hitSlop}>
-        <Image style={styles.smIcon} source={appIcons.zoom} />
+        {isActive ? (
+          <TickIcon name="check" size={20} color={colors.gr1} />
+        ) : (
+          <Image style={styles.smIcon} source={appIcons.zoom} />
+        )}
       </TouchableOpacity>
       <Image style={styles.imageStyle} source={appIcons.photo} />
     </ImageBackground>
