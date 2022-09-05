@@ -1,13 +1,15 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {appIcons, colors, family, size, WP} from '../../shared/exporter';
+import {Button} from '../Button/Button';
 
-export const TitleAlphaHeading = ({title, img, subtitle, onPress}) => {
+export const TitleAlphaHeading = ({title, img, subtitle, onPress, isBtn}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.aiRow} onPress={onPress}>
         <Text style={styles.title}>{title}</Text>
         {img && <Image style={styles.imageStyle} source={img} />}
+
       </TouchableOpacity>
       {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
     </View>

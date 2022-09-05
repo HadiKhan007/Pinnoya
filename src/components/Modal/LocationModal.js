@@ -27,20 +27,24 @@ export const LocationModal = ({
           container: styles.container,
           wrapper: styles.wapper,
         }}>
-        <View>
+        <View style={{paddingHorizontal: WP('3')}}>
           <Text style={styles.titleStyle}>{title}</Text>
-          <Text style={styles.milenoTxt}>{subtitle}</Text>
-          <Text style={styles.miletxt}>{mile}</Text>
+          <Text style={styles.milenoTxt}>
+            {subtitle} <Text style={styles.miletxt}>{mile}</Text>
+          </Text>
         </View>
         <View>
           <Text style={[styles.titleStyle]}>{title2}</Text>
-          <Text style={styles.milenoTxt}>{subtitle2}</Text>
-          <Text style={styles.miletxt}>{hour}</Text>
+          <Text style={styles.milenoTxt}>
+            {subtitle2} <Text style={styles.miletxt}>{hour}</Text>
+          </Text>
         </View>
         <View>
           <Text style={[styles.titleStyle]}>{title3}</Text>
-          <Text style={styles.milenoTxt}>{subtitle3}</Text>
-          <Text style={[styles.miletxt, {left: 55}]}>{price}</Text>
+          <Text style={styles.milenoTxt}>
+            {subtitle3}
+            <Text style={[styles.miletxt, {left: WP('1')}]}>{price}</Text>
+          </Text>
         </View>
       </RBSheet>
       <TouchableOpacity onPress={onPress} style={styles.markerStyle}>
@@ -78,9 +82,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   miletxt: {
-    position: 'absolute',
-    left: 60,
-    top: 25,
     color: colors.b1,
     fontSize: size.small,
   },

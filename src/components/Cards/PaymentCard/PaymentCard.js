@@ -294,17 +294,18 @@ const styles = StyleSheet.create({
     color: colors.b1,
     fontFamily: family.Ubuntu_Bold,
     fontSize: size.xxtitle,
+    textAlign: 'center',
   },
   text2: {
     color: colors.b1,
     fontFamily: family.Ubuntu_Bold,
     fontSize: size.xxtitle,
     width: '100%',
-    paddingHorizontal: WP('27'),
-    paddingBottom: WP(5),
+    marginHorizontal: WP('27'),
+    marginBottom: WP('5'),
   },
   aiCenter: {
     width: WP('100'),
-    marginVertical: WP(5),
+    marginVertical: WP('5'),
   },
 });

@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     fontFamily: family.Ubuntu_Medium,
   },
   dropImg: {
-    height: 20,
-    width: 10,
+    height: 13,
+    width: 6,
     marginTop: WP(4),
     marginLeft: WP(2),
   },

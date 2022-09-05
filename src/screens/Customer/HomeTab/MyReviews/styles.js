@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
     padding: WP('4'),
   },
   dropImg: {
-    height: 20,
-    width: 10,
-    marginLeft: WP(3),
+    height: 13,
+    width: 6,
+    marginHorizontal: WP('3'),
   },
   textContainer: {
-    width: WP(30),
-    marginHorizontal: WP(65),
+    width: WP('30'),
+    marginHorizontal: WP('70'),
     flexDirection: 'row',
   },
   alltxt: {
@@ -39,16 +39,18 @@ const styles = StyleSheet.create({
   },
   menuStyle: {
     borderRadius: 8,
-    height: WP('20'),
-    width: scrWidth / 3.7,
+    height: WP('18'),
+    width: scrWidth / 4.5,
+    marginHorizontal: WP('-4'),
+    marginVertical: WP('2'),
   },
   menuItemStyle: {
     height: WP('8'),
+    alignItems: 'flex-end',
   },
   menuTxtStyle: {
-    left: -2,
+    left: -50,
     color: colors.b1,
-    marginTop: WP('3.5'),
     fontSize: size.xsmall,
   },
 });

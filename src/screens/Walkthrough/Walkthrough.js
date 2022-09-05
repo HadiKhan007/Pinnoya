@@ -29,11 +29,11 @@ const Walkthrough = ({navigation}) => {
 
   const onSubmit = () => {
     dispatch({type: 'USER_TYPE_REQUEST', params: 'Customer'});
-    navigation.navigate('Auth');
+    navigation.navigate('Login');
   };
   const onSubmitSignUp = () => {
     dispatch({type: 'USER_TYPE_REQUEST', params: 'Provider'});
-    navigation.navigate('Auth');
+    navigation.navigate('Login');
   };
   //Welcome Cards
   const welcomeCards = ({item, index}) => {

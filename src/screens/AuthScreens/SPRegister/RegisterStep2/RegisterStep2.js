@@ -16,6 +16,7 @@ import {
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 
+
 const RegisterStep2 = ({navigation}) => {
   return (
     <>
@@ -51,7 +52,6 @@ const RegisterStep2 = ({navigation}) => {
                   title={'Create an account'}
                   subtitle={'Pellentesque in ipsum id orci porta dapibus.'}
                 />
-
                 <AppInput
                   placeholder={'First Nmae'}
                   placeholderTextColor={colors.g2}
@@ -88,7 +88,18 @@ const RegisterStep2 = ({navigation}) => {
                   touched={touched.email}
                   error={errors.email}
                 />
-
+                <AppInput
+                  placeholder={'Gov ID'}
+                  placeholderTextColor={colors.g2}
+                  onChangeText={handleChange('govtID')}
+                  value={values.govtID}
+                  onBlur={() => setFieldTouched('govtID')}
+                  blurOnSubmit={false}
+                  disableFullscreenUI={true}
+                  autoCapitalize="none"
+                  touched={touched.govtID}
+                  error={errors.govtID}
+                />
                 <AppInput
                   placeholder={'Phone Number'}
                   placeholderTextColor={colors.g2}
@@ -100,19 +111,7 @@ const RegisterStep2 = ({navigation}) => {
                   autoCapitalize="none"
                   touched={touched.phone}
                   error={errors.phone}
-                />
 
-                <AppInput
-                  placeholder={'Your National ID'}
-                  placeholderTextColor={colors.g2}
-                  onChangeText={handleChange('govtID')}
-                  value={values.govtID}
-                  onBlur={() => setFieldTouched('govtID')}
-                  blurOnSubmit={false}
-                  disableFullscreenUI={true}
-                  autoCapitalize="none"
-                  touched={touched.govtID}
-                  error={errors.govtID}
                 />
                 <AppInput
                   placeholder={'Password'}

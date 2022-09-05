@@ -8,6 +8,8 @@ import MyAddresses from '../../../screens/Customer/ProfileTab/MyAddresses';
 import EditProfile from '../../../screens/Customer/ProfileTab/EditProfile';
 import PaymentInfo from '../../../screens/Customer/ProfileTab/PaymentInfo';
 import HelpCenter from '../../../screens/Customer/ProfileTab/HelpCenter';
+import MyDocument from '../../../screens/Customer/ProfileTab/MyDocument';
+import Wallet from '../../../screens/Provider/HomeTab/Wallet';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +24,8 @@ function ProfileStack(props) {
       <Stack.Screen name="PaymentInfo" component={PaymentInfo} />
       <Stack.Screen name="HelpCenter" component={HelpCenter} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      <Stack.Screen name="MyDocument" component={MyDocument} />
+      <Stack.Screen name="Wallet" component={Wallet} />
       <Stack.Screen name="AboutUs" component={AboutUs} />
       <Stack.Screen name="Terms" component={Terms} />
     </Stack.Navigator>

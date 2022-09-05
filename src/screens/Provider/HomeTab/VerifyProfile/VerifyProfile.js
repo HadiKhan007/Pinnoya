@@ -5,7 +5,19 @@ import styles from './styles';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {colors, VerifyProfile_List} from '../../../../shared/exporter';
 const VerifyProfile = ({navigation}) => {
-  const [edit, setEdit] = useState(null);
+  const [text, setText] = useState([]);
+  const [isEditing, setEdit] = useState(VerifyProfile_List);
+
+  const editHandler = item => {
+    console.log('res', item);
+    setEdit(
+      isEditing.map(obj =>
+        obj.id == item?.id
+          ? {...obj, editable: !obj.editable}
+          : {...obj, editable: false},
+      ),
+    );
+  };
   return (
     <SafeAreaView style={styles.safeView}>
       <AppHeader
@@ -18,15 +30,18 @@ const VerifyProfile = ({navigation}) => {
       <View style={styles.secondContainer}>
         <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <FlatList
-            data={VerifyProfile_List}
+            data={isEditing}
             renderItem={({item, index}) => {
               return (
                 <AddressesCard
                   item={item}
-                  editable={index === edit}
                   onPress={() => {
-                    setEdit(index);
+                    editHandler(item);
                   }}
+                  editable={item.editable}
+                  placeholder={'Pellentesque in ipsum id orci porta dapibus.'}
+                  value={text}
+                  onChangeText={value => setText(value)}
                 />
               );
             }}

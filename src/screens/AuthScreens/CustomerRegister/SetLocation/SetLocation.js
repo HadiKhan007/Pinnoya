@@ -8,7 +8,6 @@ const SetLocation = ({navigation, route}) => {
   }, [navigation]);
   return (
     <>
-      <MyStatusBar backgroundColor={'transparent'} />
       <MapComponent />
       <MapLocation
         title={route.params === undefined ? 'Set location' : route.params.name}

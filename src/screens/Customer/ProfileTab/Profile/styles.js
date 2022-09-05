@@ -1,5 +1,5 @@
 import {Platform, StyleSheet} from 'react-native';
-import {colors, WP} from '../../../../shared/exporter';
+import {colors, family, size, WP} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +13,13 @@ const styles = StyleSheet.create({
   },
   flex1: {
     flex: 1,
+  },
+  logStyle: {
+    fontFamily: family.Poppins_Bold,
+    fontSize: size.xxlarge,
+    color: colors.p1,
+    marginVertical: WP('3'),
+    marginVertical: WP('2'),
   },
 });
 
