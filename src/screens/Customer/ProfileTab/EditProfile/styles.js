@@ -6,15 +6,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   contentContainer: {
-    flex: 0.08,
     paddingHorizontal: WP('5'),
     paddingVertical: WP('5'),
     backgroundColor: colors.white,
   },
   secondContainer: {
     flex: 1,
-    // padding: WP('6'),
-    marginHorizontal: WP('6'),
+    marginHorizontal: WP('1'),
     marginVertical: WP(3),
   },
   titleText: {

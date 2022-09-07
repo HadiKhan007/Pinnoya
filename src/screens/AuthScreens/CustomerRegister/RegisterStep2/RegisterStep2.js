@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {
   colors,
   CustomerRegisterStep2Fields,
@@ -134,7 +134,7 @@ dispatch(signUpRequest(data, cbSuccess, cbFailure))
                 />
 
                 <AppInput
-                  placeholder={'Your National ID'}
+                  placeholder={'Upload Your National ID'}
                   placeholderTextColor={colors.g2}
                   onChangeText={handleChange('govtID')}
                   value={values.govtID}
@@ -144,7 +144,9 @@ dispatch(signUpRequest(data, cbSuccess, cbFailure))
                   autoCapitalize="none"
                   touched={touched.govtID}
                   error={errors.govtID}
-                  // rightIcon={}
+                  rightIcon={() => (
+                    <UploadIcon name={'upload'} size={20} color={colors.g2} />
+                  )}
                 />
                 <AppInput
                   placeholder={'Password'}

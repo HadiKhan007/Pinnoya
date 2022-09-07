@@ -75,7 +75,9 @@ const Favourite = ({navigation}) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
-                    navigation?.navigate('BookedServiceDetail');
+                    navigation?.navigate('Home', {
+                      screen: 'BookedServiceDetail',
+                    });
                   }}>
                   <ServiceDetailCard title={'Hire'} space={true} />
                 </TouchableOpacity>

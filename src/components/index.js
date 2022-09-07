@@ -42,6 +42,7 @@ export * from './Box/ServiceInfoBox';
 //Tabs
 export * from './Tabs/BottomTab';
 export * from './Tabs/FourSegment';
+export * from './Tabs/FourSegment2';
 
 //Circle
 
@@ -75,6 +76,9 @@ export * from './Cards/DocumentCard/DocumentCard';
 export * from './Cards/ServiceTimeCard/ServiceTimeCard';
 export * from './Cards/HistoryCard/HistoryCard';
 export * from './Cards/TransactionCard/TransactionCard';
+export * from './Cards/PaymentDrawCard/PaymentDrawCard';
+export * from './Cards/ProviderNotificationCard/ProviderNotificationCard';
+export * from './Cards/WalletCard/WalletCard';
 
 //Modals
 export * from './Modal/LocationModal';
@@ -93,6 +97,7 @@ export * from './Modal/LocationModal';
 export * from './Modal/ServicesModal';
 export * from './Modal/DeleteModal';
 export * from './Modal/ServiceInfoModal';
+export * from './Modal/SearchModal';
 
 //Headings
 export * from './Headings/AuthHeading';
@@ -112,6 +117,7 @@ export * from './MapComponent/MapLocation';
 //CustomComponents
 export * from './CustomComponents/OngoingComp';
 export * from './CustomComponents/CompleteComp';
+export * from './CustomComponents/ProviderOngoing';
 
 //Fields
 export * from './Field/ProfileField';

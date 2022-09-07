@@ -8,7 +8,6 @@ const LocationFinder = ({navigation}) => {
   const locationRef = useRef(null);
   return (
     <SafeAreaView style={styles.container}>
-      <MyStatusBar backgroundColor={'transparent'} />
       <MapComponent />
       <TouchableOpacity
         style={styles.arrowStyle}

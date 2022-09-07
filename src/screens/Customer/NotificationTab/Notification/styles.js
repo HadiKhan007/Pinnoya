@@ -1,5 +1,5 @@
 import {Platform, StyleSheet} from 'react-native';
-import {colors} from '../../../../shared/exporter';
+import {colors, WP} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,6 +12,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     padding: 10,
+  },
+  contentContainer2: {
+    flex: 1,
+    padding: WP('5'),
   },
 });
 

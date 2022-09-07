@@ -64,9 +64,9 @@ const SPDashboard = ({navigation}) => {
                     <TouchableOpacity
                       style={spacing.mx1}
                       onPress={() => {
-                        navigation?.navigate('ServiceDetail');
+                        navigation.navigate('CustomerDetail');
                       }}>
-                      <ServiceDetailCard title={'Approve'} space />
+                      <ServiceDetailCard title={'Approve'} space={true} />
                     </TouchableOpacity>
                   );
                 }}
@@ -88,7 +88,7 @@ const SPDashboard = ({navigation}) => {
                     <TouchableOpacity
                       style={spacing.mx1}
                       onPress={() => {
-                        navigation?.navigate('ServiceDetail');
+                        navigation?.navigate('CustomerDetail');
                       }}>
                       <ServiceDetailCard title={'Approve'} space />
                     </TouchableOpacity>

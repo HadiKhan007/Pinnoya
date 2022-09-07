@@ -164,6 +164,12 @@ export const booked_status_color = status => {
   if (status == 'Complete') {
     return colors.gr2;
   }
+  if (status == 'Closed') {
+    return colors.r3;
+  }
+  if (status == 'Searching') {
+    return colors.gr2;
+  }
 };
 
 export const booked_status_text_color = status => {
@@ -177,6 +183,12 @@ export const booked_status_text_color = status => {
     return colors.b1;
   }
   if (status == 'Complete') {
+    return colors.white;
+  }
+  if (status == 'Closed') {
+    return colors.white;
+  }
+  if (status == 'Searching') {
     return colors.white;
   }
 };

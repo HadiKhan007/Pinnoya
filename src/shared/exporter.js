@@ -48,6 +48,7 @@ export {
   stripe_publishableKey,
   video_url,
   tabArray,
+  tabArray2,
   serviceList,
   job_list,
   kids,
@@ -62,10 +63,12 @@ export {
   Payment_List,
   Addresses_list,
   EditProfile_List,
+  EditProfile_List2,
   VerifyProfile_List,
   Help_List,
   SpecialNeed_list,
   History_List,
+  Wallet_List,
   loginUser,
 } from './utilities/constant';
 export {header, authHeader} from './utilities/headers';

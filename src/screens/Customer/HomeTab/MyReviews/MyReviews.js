@@ -65,13 +65,13 @@ const MyReviews = ({navigation}) => {
                   style={styles.menuItemStyle}
                   textStyle={styles.menuTxtStyle}
                   onPress={() => hideItemClick()}>
-                  Hide this ad
+                  Received
                 </MenuItem>
                 <MenuItem
                   style={styles.menuItemStyle}
                   textStyle={styles.menuTxtStyle}
                   onPress={() => seeAllItemClick()}>
-                  See All
+                  Sent
                 </MenuItem>
               </Menu>
             </View>

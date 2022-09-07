@@ -1,4 +1,4 @@
-import {FlatList, TouchableOpacity, View} from 'react-native';
+import {FlatList, TouchableOpacity, View, Text} from 'react-native';
 import React from 'react';
 import {AppHeader, ProfileBox, ProfileField} from '../../../../components';
 import styles from './styles';
@@ -19,17 +19,21 @@ const Profile = ({navigation}) => {
                   return (
                     <TouchableOpacity
                       onPress={() => {
-                        navigation?.navigate(item?.route);
+                        item.id === 11
+                          ? navigation.replace(item?.route)
+                          : navigation?.navigate(item?.route);
                       }}>
                       <ProfileField
                         title={item.title}
                         img={item.img}
                         text={item?.text}
+                        iscolor={item.color}
                       />
                     </TouchableOpacity>
                   );
                 }}
               />
+              <TouchableOpacity></TouchableOpacity>
             </View>
           </View>
         </View>

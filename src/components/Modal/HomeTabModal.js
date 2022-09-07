@@ -15,11 +15,14 @@ import {
   size,
   spacing,
   tabArray,
+  tabArray2,
   WP,
 } from '../../shared/exporter';
 import CrossIcon from 'react-native-vector-icons/Entypo';
 import LinearGradient from 'react-native-linear-gradient';
+import {useDispatch, useSelector} from 'react-redux';
 export const HomeTabModal = ({tabRef, onPressClose, navigation}) => {
+  const {userType} = useSelector(state => state.userType);
   return (
     <RBSheet
       ref={tabRef}
@@ -40,7 +43,7 @@ export const HomeTabModal = ({tabRef, onPressClose, navigation}) => {
         </View>
         <View style={styles.listContainer}>
           <FlatList
-            data={tabArray}
+            data={userType == 'Provider' ? tabArray2 : tabArray}
             keyExtractor={(item, index) => item.key}
             renderItem={({item}) => {
               return (

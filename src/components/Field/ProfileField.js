@@ -2,10 +2,12 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {colors, family, size} from '../../shared/exporter';
 
-export const ProfileField = ({img, title, text}) => {
+export const ProfileField = ({img, title, text, item, iscolor}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.titleStyle}>{title}</Text>
+      <Text style={[styles.titleStyle, {color: iscolor ? iscolor : colors.b1}]}>
+        {title}
+      </Text>
       {img && <Image source={img} style={styles.imgStyle} />}
       {text && <Text style={styles.h1Style}>{text}</Text>}
     </View>

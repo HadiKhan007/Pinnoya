@@ -15,6 +15,16 @@ import PaymentMethod from '../../../screens/Customer/HomeTab/PaymentMethod';
 import Payment from '../../../screens/Customer/HomeTab/Payment';
 import PaymentVerfication from '../../../screens/Customer/HomeTab/PaymentVerification';
 import PaymentSuccess from '../../../screens/Customer/HomeTab/PaymentSuccess';
+import PaymentWithDraw from '../../../screens/Provider/HomeTab/PaymentWithDraw';
+import PaymentPending from '../../../screens/Provider/HomeTab/PaymentPending';
+import Wallet from '../../../screens/Provider/HomeTab/Wallet';
+import CustomerDetail from '../../../screens/Provider/HomeTab/CustomerDetail';
+import BookedServiceDetail from '../../../screens/Customer/HomeTab/BookedServiceDetail';
+import MyReviews from '../../../screens/Customer/HomeTab/MyReviews';
+import MyJobs from '../../../screens/Provider/HomeTab/MyJobs';
+import SPServiceDetail from '../../../screens/Provider/HomeTab/SPServiceDetail';
+import ServiceDetailCompleted from '../../../screens/Customer/HomeTab/ServiceDetailCompleted';
+
 const Stack = createStackNavigator();
 
 function SPHomeStack(props) {
@@ -27,6 +37,7 @@ function SPHomeStack(props) {
       <Stack.Screen name="PendingRequest" component={PendingRequest} />
       <Stack.Screen name="SPJobs" component={SPJobs} />
       <Stack.Screen name="ServiceItemDetail" component={ServiceItemDetail} />
+      <Stack.Screen name="CustomerDetail" component={CustomerDetail} />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="CallNow" component={CallNow} />
       <Stack.Screen name="TrackingDetail" component={TrackingDetail} />
@@ -37,6 +48,20 @@ function SPHomeStack(props) {
       <Stack.Screen name="Payment" component={Payment} />
       <Stack.Screen name="PaymentVerification" component={PaymentVerfication} />
       <Stack.Screen name="PaymentSuccess" component={PaymentSuccess} />
+      <Stack.Screen name="PaymentWithDraw" component={PaymentWithDraw} />
+      <Stack.Screen name="PaymentPending" component={PaymentPending} />
+      <Stack.Screen name="Wallet" component={Wallet} />
+      <Stack.Screen
+        name="BookedServiceDetail"
+        component={BookedServiceDetail}
+      />
+      <Stack.Screen
+        name="ServiceDetailCompleted"
+        component={ServiceDetailCompleted}
+      />
+      <Stack.Screen name="SPServiceDetail" component={SPServiceDetail} />
+      <Stack.Screen name="MyReviews" component={MyReviews} />
+      <Stack.Screen name="MyJobs" component={MyJobs} />
     </Stack.Navigator>
   );
 }

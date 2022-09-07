@@ -1,4 +1,4 @@
-import {appIcons, appImages} from '../exporter';
+import {appIcons, appImages, colors} from '../exporter';
 
 const ANDROID = Platform.OS === 'android';
 const IOS = Platform.OS === 'ios';
@@ -27,6 +27,23 @@ const tabArray = [
     id: 2,
     title: 'My Vouchers',
     route: 'MyVouchers',
+  },
+  {
+    id: 2,
+    title: 'My Reviews',
+    route: 'MyReviews',
+  },
+];
+const tabArray2 = [
+  {
+    id: 1,
+    title: 'Dashboard',
+    route: 'MyJobs',
+  },
+  {
+    id: 2,
+    title: 'Wallet',
+    route: 'Wallet',
   },
   {
     id: 2,
@@ -257,13 +274,13 @@ const edit_list = [
     id: 3,
     title: 'App Credit',
     img: appIcons.simpleCard,
-    route: '',
+    route: 'Wallet',
   },
   {
     id: 4,
     title: 'My Family',
     img: appIcons.family,
-    route: '',
+    route: 'MyDocument',
   },
   {
     id: 5,
@@ -300,6 +317,12 @@ const edit_list = [
     title: 'Version',
     route: '',
     text: '00.00.00',
+  },
+  {
+    id: 11,
+    title: 'Log out',
+    route: 'Auth',
+    color: colors.p1,
   },
 ];
 const location_list = [
@@ -419,26 +442,63 @@ const EditProfile_List = [
     id: 1,
     title: 'Name',
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
   },
   {
     id: 2,
     title: 'My information',
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
   },
   {
     id: 3,
     title: 'Email',
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
   },
   {
     id: 4,
     title: 'Password',
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
   },
   {
     id: 5,
     title: 'Phone',
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
+  },
+];
+const EditProfile_List2 = [
+  {
+    id: 1,
+    title: 'Specify rate ',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
+  },
+  {
+    id: 2,
+    title: 'Experience',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
+  },
+  {
+    id: 3,
+    title: 'Job Skills ',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
+  },
+  {
+    id: 4,
+    title: 'Password',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
+  },
+  {
+    id: 5,
+    title: 'Phone',
+    subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
   },
 ];
 const VerifyProfile_List = [
@@ -446,16 +506,19 @@ const VerifyProfile_List = [
     id: 1,
     title: 'Experience',
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
   },
   {
     id: 2,
     title: 'Preference',
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
   },
   {
     id: 3,
     title: 'Description',
     subtitle: 'Pellentesque in ipsum id orci porta dapibus.',
+    editable: false,
   },
 ];
 const Help_List = [
@@ -492,6 +555,26 @@ const History_List = [
     text: 'In-Progress',
   },
 ];
+
+const Wallet_List = [
+  {
+    id: 1,
+    title: '₱25.00',
+    selected: true,
+  },
+  {
+    id: 2,
+    title: 'Verify your account ',
+  },
+  {
+    id: 3,
+    title: 'Transfer',
+  },
+  {
+    id: 4,
+    title: 'Transactions history',
+  },
+];
 const stripe_publishableKey = '';
 const profile_uri =
   'https://www.shareicon.net/data/512x512/2017/01/06/868320_people_512x512.png';
@@ -504,6 +587,7 @@ export {
   image_options,
   stripe_publishableKey,
   tabArray,
+  tabArray2,
   serviceList,
   kids,
   pets,
@@ -519,8 +603,10 @@ export {
   Payment_List,
   Addresses_list,
   EditProfile_List,
+  EditProfile_List2,
   Help_List,
   VerifyProfile_List,
   SpecialNeed_list,
   History_List,
+  Wallet_List,
 };
