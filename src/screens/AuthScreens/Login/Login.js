@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View,ToastAndroid } from 'react-native';
+import React, { useEffect } from 'react';
 import {
   appIcons,
   colors,
@@ -16,23 +16,71 @@ import {
   AuthHeading,
   Button,
 } from '../../../components';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {Formik} from 'formik';
-import {loginRequest} from '../../../redux/actions';
-import {useDispatch, useSelector} from 'react-redux';
-const Login = ({navigation}) => {
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Formik } from 'formik';
+import { loginRequest } from '../../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
+const Login = ({ navigation }) => {
   const auth = useSelector(state => state?.auth);
-  const {userType} = useSelector(state => state.userType);
+  const { userType } = useSelector(state => state.userType);
   const dispatch = useDispatch();
-  //On Submit Request
-  const onSubmitLogin = () => {
-    const body = {
-      email: 'umer@gmail.com',
-      password: '123456',
-    };
-    dispatch(loginRequest(body));
-    navigation?.navigate('App');
+  const showToastWithGravityAndOffsetFOrSuccess = () => {
+    ToastAndroid.showWithGravityAndOffset(
+      'Successfully Login',
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50,
+    );
   };
+  const showToastWithGravityAndOffsetFOrError = (err) => {
+    ToastAndroid.showWithGravityAndOffset(
+      err,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50,
+    );
+  };
+
+  // useEffect(()=>{
+  //   GoogleSignin.configure()
+  // },[])
+  const googlesingin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+    console.log("userinfooo",userInfo)
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      console.log("error",error)
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log("error",error)
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.log("error",error)
+      } else {
+        console.log("error",error)
+      }
+    }
+  };
+  //On Submit Request
+  const onSubmitLogin = (values) => {
+    const data = new FormData();
+    data.append('customer[email]', values.email);
+    data.append('customer[password]', values.password);
+    const cbSuccess = (res) => {
+      showToastWithGravityAndOffsetFOrSuccess();
+    }
+    const cbFailure = (err) => {
+      showToastWithGravityAndOffsetFOrError(err);
+      console.log("err+++++", err);
+    }
+    dispatch(loginRequest(data, cbSuccess, cbFailure))
+
+  };
+
   return (
     <>
       <AuthHeader
@@ -114,9 +162,7 @@ const Login = ({navigation}) => {
 
               <View style={styles.secondContainer}>
                 <Button
-                  onPressBtn={() => {
-                    navigation.navigate('SPSignUp');
-                  }}
+                 onPressBtn={googlesingin}
                   bgColor={colors.db_gradient}
                   textColor={colors.b1}
                   btnText={'Login via Google'}

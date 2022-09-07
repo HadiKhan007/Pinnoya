@@ -36,7 +36,7 @@ export {
   DimensionsWindowWidth,
 } from './theme/statusBarHeight';
 
-// export {setupAxios, HTTP_CLIENT, initialConfig} from './utilities/config';
+export {setupAxios, HTTP_CLIENT, initialConfig} from './utilities/config';
 export {BASE_URL, ENDPOINTS} from './utilities/endpoints';
 export {
   ANDROID,
@@ -66,6 +66,7 @@ export {
   Help_List,
   SpecialNeed_list,
   History_List,
+  loginUser,
 } from './utilities/constant';
 export {header, authHeader} from './utilities/headers';
 export {

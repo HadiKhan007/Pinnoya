@@ -1,12 +1,10 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-
 import Login from '../../screens/AuthScreens/Login';
 import CSignUp from '../../screens/AuthScreens/CustomerRegister/Register';
 import CSignUp2 from '../../screens/AuthScreens/CustomerRegister/RegisterStep2';
 import SPSignUp from '../../screens/AuthScreens/SPRegister/Register';
 import SPSignUp2 from '../../screens/AuthScreens/SPRegister/RegisterStep2';
-
 import ForgotPassword from '../../screens/AuthScreens/ForgotPassword';
 import ResetPassword from '../../screens/AuthScreens/ResetPassword';
 import VerifyOtp from '../../screens/AuthScreens/VerifyOtp';

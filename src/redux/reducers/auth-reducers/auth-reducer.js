@@ -1,5 +1,4 @@
 import * as TYPES from '../../actions/types';
-
 const initialState = {
   loading: false,
   isSuccess: false,
@@ -11,6 +10,7 @@ const initialState = {
   otp_verify: null,
 };
 const authReducer = (state = initialState, actions) => {
+
   const {type, payload} = actions;
   switch (type) {
     //************Login Sates*************
@@ -22,7 +22,7 @@ const authReducer = (state = initialState, actions) => {
         isFailure: false,
         userInfo: payload,
       };
-
+    
     case TYPES.LOGIN_REQUEST_FAILURE:
       return {
         ...state,

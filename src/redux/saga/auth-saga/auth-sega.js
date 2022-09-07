@@ -14,35 +14,35 @@ import * as types from '../../actions/types';
 export function* loginRequest() {
   yield takeLatest(types.LOGIN_REQUEST_REQUEST, login);
 }
+
 function* login(params) {
   try {
-    yield put({
-      type: types.LOGIN_REQUEST_SUCCESS,
-      payload: params?.params,
-    });
-    // const res = yield loginUser(params?.params);
-    // if (res.data) {
-    //   yield put({
-    //     type: types.LOGIN_REQUEST_SUCCESS,
-    //     payload: res.data,
-    //   });
-    //   yield put({
-    //     type: types.GET_PROFILE_SUCCESS,
-    //     payload: res.data?.user,
-    //   });
-    // } else {
-    //   yield put({
-    //     type: types.LOGIN_REQUEST_FAILURE,
-    //     payload: null,
-    //   });
-    //   params?.cbFailure(res?.data);
-    // }
+    const res = yield loginUser(params?.params)
+    if (res) {
+      yield put({
+        type: types.LOGIN_REQUEST_SUCCESS,
+        payload: res.data,
+      });
+      yield put({
+        type: types.GET_PROFILE_SUCCESS,
+        payload: res.data.user,
+      });
+      params?.cbSuccess(res.data)
+    } else {
+      yield put({
+        type: types.LOGIN_REQUEST_FAILURE,
+        payload: null,
+      });
+    params?.cbFailure(res?.data);
+    }
   } catch (error) {
+    console.log("Error--", error);
     yield put({
       type: types.LOGIN_REQUEST_FAILURE,
       payload: null,
     });
     let msg = responseValidator(error?.response?.status, error?.response?.data);
+    console.log("Message error---", msg);
     params?.cbFailure(msg);
   }
 }

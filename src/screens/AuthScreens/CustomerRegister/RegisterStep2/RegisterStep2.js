@@ -15,8 +15,39 @@ import {
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
+import { signUpRequest } from '../../../../redux/actions/auth-actions/auth-action';
+import { useDispatch } from 'react-redux';
+const RegisterStep2 = ({navigation,route}) => {
+  const dispatch = useDispatch();
+  const item = route?.params?.item
+  
+  // console.log("dataaaa",data)
 
-const RegisterStep2 = ({navigation}) => {
+const handleSubmit=(values)=>{
+  var data = new FormData();
+data.append('customer[email]', values.email);
+data.append('customer[password]', values.password);
+data.append('customer[password_confirmation]', '');
+data.append('customer[first_name]', values.firstName);
+data.append('customer[last_name]', values.lastName);
+data.append('customer[phone_number]', values.phone);
+data.append('customer[govt_id]', values.govtID);
+data.append('customer[address]', item.address);
+data.append('customer[street]', item.street);
+data.append('customer[post_code]', item.postCode);
+data.append('customer[province]', item.province);
+data.append('customer[barangay]', item.barangay);
+data.append('customer[city]', item.city);
+data.append('customer[country]', item.country);
+const cbSuccess = (res) => {
+ console.log("response",res)
+}
+const cbFailure = (err) => {
+  console.log("err+++++", err);
+}
+dispatch(signUpRequest(data, cbSuccess, cbFailure))
+}
+
   return (
     <>
       <AuthHeader
@@ -33,7 +64,7 @@ const RegisterStep2 = ({navigation}) => {
         {/* Signup Inputs */}
         <Formik
           initialValues={CustomerRegisterStep2Fields}
-          onSubmit={values => {}}
+          onSubmit={values=>handleSubmit(values)}
           validationSchema={CustomerRegisterStep2VS}>
           {({
             values,
@@ -113,6 +144,7 @@ const RegisterStep2 = ({navigation}) => {
                   autoCapitalize="none"
                   touched={touched.govtID}
                   error={errors.govtID}
+                  // rightIcon={}
                 />
                 <AppInput
                   placeholder={'Password'}
@@ -128,9 +160,7 @@ const RegisterStep2 = ({navigation}) => {
                 />
                 <View style={styles.buttonContainer}>
                   <Button
-                    onPressBtn={() => {
-                      navigation?.navigate('ForgotVerifyOtp');
-                    }}
+                    onPressBtn={handleSubmit}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
                     btnText={'Next'}

@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 24,
     borderTopLeftRadius: 24,
     marginTop: WP('15'),
+  
   },
   footerText: {
     textAlign: 'center',
