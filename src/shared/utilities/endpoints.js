@@ -6,7 +6,8 @@ const BASE_URL = 'https://pinoyaya.herokuapp.com/api/v1/';
 
 const ENDPOINTS = {
   REGISTER: 'customers',
-  LOGIN: 'customers/sign_in',
+  CUSTOMER_LOGIN: 'customers/sign_in',
+  PROVIDER_LOGIN:"service_providers/sign_in",
   GOOGLE_SIGN_IN: 'google_login',
   APPLE_SIGN_IN: 'apple_login',
   FORGOT_PASS: 'password/forgot',

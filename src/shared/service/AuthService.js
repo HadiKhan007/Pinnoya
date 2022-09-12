@@ -4,9 +4,13 @@ import { ENDPOINTS, HTTP_CLIENT, BASE_URL } from '../exporter';
 export const registerUser = params => {
   return HTTP_CLIENT.post(ENDPOINTS.REGISTER, params);
 };
-export const loginUser = async params => {
-  return HTTP_CLIENT.post(ENDPOINTS.LOGIN, params);
+export const loginUser = async (route,params) => {
+  return HTTP_CLIENT.post(route, params);
 };
+export const  Provider= async params => {
+  return HTTP_CLIENT.post(ENDPOINTS.Provider, params);
+};
+
 export const socialLogin = (logintype, params) => {
   return HTTP_CLIENT.post(
     `${logintype == 'google'

@@ -1,7 +1,8 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {colors, family, size, WP} from '../../shared/exporter';
+import { colors, family, size, WP } from '../../shared/exporter';
+import { AppLoader } from '../Modal/AppLoader';
 
 export const Button = ({
   btnText,
@@ -12,13 +13,15 @@ export const Button = ({
   img,
   marginLeft,
   height,
+  Loading
 }) => {
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPressBtn}>
+      {Loading && <AppLoader loading={Loading} />}
       <LinearGradient
         colors={bgColor ? bgColor : colors.db_gradient}
-        start={{x: 0, y: 1}}
-        end={{x: 0, y: 0}}
+        start={{ x: 0, y: 1 }}
+        end={{ x: 0, y: 0 }}
         style={[
           styles.btnContainer,
           {
@@ -29,7 +32,7 @@ export const Button = ({
         ]}>
         {img && <Image source={img} style={styles.imageStyle} />}
         <Text
-          style={[styles.btnText, {color: textColor ? textColor : colors.b1}]}>
+          style={[styles.btnText, { color: textColor ? textColor : colors.b1 }]}>
           {btnText}
         </Text>
       </LinearGradient>

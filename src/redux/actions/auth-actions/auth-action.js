@@ -1,9 +1,10 @@
 import * as TYPES from '../types';
 
 //Email Validation Action
-export const loginRequest = (params, cbSuccess, cbFailure) => {
+export const loginRequest = (route,params, cbSuccess, cbFailure) => {
   return {
     type: TYPES.LOGIN_REQUEST_REQUEST,
+    route,
     params,
     cbSuccess,
     cbFailure,

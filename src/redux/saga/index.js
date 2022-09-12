@@ -9,10 +9,12 @@ import {
   socialLoginRequest,
   logoutRequestSega,
   OTPVerifyRequest,
+  ProviderloginRequest,
 } from './auth-saga/auth-sega';
 import {setProfileImageRequest} from './profile-sega/profile-sega';
 export function* rootSaga() {
   yield fork(loginRequest);
+  yield fork(ProviderloginRequest)
   yield fork(signUpRequest);
   yield fork(walkthroughRequest);
   yield fork(forgotPassRequest);

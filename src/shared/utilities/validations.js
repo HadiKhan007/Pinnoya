@@ -78,7 +78,9 @@ export const CustomerRegisterStep1VS = yup.object().shape({
 export const CustomerRegisterStep2VS = yup.object().shape({
   firstName: yup.string().required('First Name Required').label('firstName'),
   lastName: yup.string().required('Last Name Required').label('lastName'),
-  email: yup.string().required('Email Address Required').label('email'),
+  email: yup.string()
+  .email('please Enter Valid Email')
+  .required('Email Address Required').label('email'),
   phone: yup.string().required('Phone Number Required').label('phone'),
   govtID: yup.string().required('Govt ID Required').label('govtID'),
   password: yup.string().required('Password Required').label('password'),

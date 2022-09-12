@@ -98,6 +98,8 @@ export * from './Modal/ServicesModal';
 export * from './Modal/DeleteModal';
 export * from './Modal/ServiceInfoModal';
 export * from './Modal/SearchModal';
+export * from './Modal/ImagePickerModal';
+export *from './Modal/AppLoader';
 
 //Headings
 export * from './Headings/AuthHeading';

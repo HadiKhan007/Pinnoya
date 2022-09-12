@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View,ToastAndroid } from 'react-native';
-import React, { useEffect } from 'react';
+import { StyleSheet, Text, View, ToastAndroid } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import {
   appIcons,
   colors,
+  ENDPOINTS,
   family,
   loginFormFields,
   LoginVS,
@@ -21,14 +22,16 @@ import { Formik } from 'formik';
 import { loginRequest } from '../../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-
+import { AppLoader } from '../../../components';
 const Login = ({ navigation }) => {
+  const [loading, setLoading] = useState(false)
   const auth = useSelector(state => state?.auth);
   const { userType } = useSelector(state => state.userType);
+  console.log("first",userType)
   const dispatch = useDispatch();
   const showToastWithGravityAndOffsetFOrSuccess = () => {
     ToastAndroid.showWithGravityAndOffset(
-      'Successfully Login',
+      'Successfully Customer Login',
       ToastAndroid.LONG,
       ToastAndroid.BOTTOM,
       25,
@@ -45,40 +48,42 @@ const Login = ({ navigation }) => {
     );
   };
 
-  // useEffect(()=>{
-  //   GoogleSignin.configure()
-  // },[])
+  useEffect(() => {
+    GoogleSignin.configure()
+  }, [])
   const googlesingin = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-    console.log("userinfooo",userInfo)
+      console.log("userinfooo", userInfo)
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-      console.log("error",error)
+        console.log("error", error)
       } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log("error",error)
+        console.log("error", error)
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        console.log("error",error)
+        console.log("error", error)
       } else {
-        console.log("error",error)
+        console.log("error", error)
       }
     }
   };
   //On Submit Request
   const onSubmitLogin = (values) => {
-    const data = new FormData();
-    data.append('customer[email]', values.email);
-    data.append('customer[password]', values.password);
-    const cbSuccess = (res) => {
-      showToastWithGravityAndOffsetFOrSuccess();
-    }
-    const cbFailure = (err) => {
-      showToastWithGravityAndOffsetFOrError(err);
-      console.log("err+++++", err);
-    }
-    dispatch(loginRequest(data, cbSuccess, cbFailure))
-
+      const data = new FormData();
+      setLoading(true)
+      data.append('customer[email]', values.email);
+      data.append('customer[password]', values.password);
+      const cbSuccess = (res) => {
+        setLoading(false)
+        showToastWithGravityAndOffsetFOrSuccess();
+      }
+      const cbFailure = (err) => {
+        setLoading(false)
+        showToastWithGravityAndOffsetFOrError(err);
+        console.log("err+++++", err);
+      }
+      dispatch(loginRequest(userType==='Customer'? ENDPOINTS.LOGIN:ENDPOINTS.PROVIDER_LOGIN,data, cbSuccess, cbFailure))
   };
 
   return (
@@ -110,6 +115,7 @@ const Login = ({ navigation }) => {
           }) => (
             <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
               <View style={styles.contentContainer}>
+
                 <AuthHeading
                   title={'Login'}
                   subtitle={'Pellentesque in ipsum id orci porta dapibus.'}
@@ -142,6 +148,7 @@ const Login = ({ navigation }) => {
                 />
                 <View style={styles.aiRow}>
                   <Button
+                    Loading={loading}
                     bgColor={colors.b_gradient}
                     width={WP('45')}
                     textColor={colors.white}
@@ -162,7 +169,7 @@ const Login = ({ navigation }) => {
 
               <View style={styles.secondContainer}>
                 <Button
-                 onPressBtn={googlesingin}
+                  onPressBtn={googlesingin}
                   bgColor={colors.db_gradient}
                   textColor={colors.b1}
                   btnText={'Login via Google'}
@@ -190,6 +197,7 @@ const Login = ({ navigation }) => {
                   subtitle={'Register'}
                 />
               </View>
+
             </KeyboardAwareScrollView>
           )}
         </Formik>

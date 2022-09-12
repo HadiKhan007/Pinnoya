@@ -7,6 +7,7 @@ import {
   resetPassword,
   socialLogin,
   OTPVerify,
+  Provider,
 } from '../../../shared/service/AuthService';
 import * as types from '../../actions/types';
 
@@ -17,10 +18,45 @@ export function* loginRequest() {
 
 function* login(params) {
   try {
-    const res = yield loginUser(params?.params)
+    const res = yield loginUser(params?.route,params?.params)
     if (res) {
       yield put({
         type: types.LOGIN_REQUEST_SUCCESS,
+        payload: res.data,
+      });
+      yield put({
+        type: types.GET_PROFILE_SUCCESS,
+        payload: res.data.user,
+      });
+      params?.cbSuccess(res.data)
+    } else {
+      yield put({
+        type: types.LOGIN_REQUEST_FAILURE,
+        payload: null,
+      });
+    params?.cbFailure(res?.data);
+    }
+  } catch (error) {
+    console.log("Error--", error);
+    yield put({
+      type: types.LOGIN_REQUEST_FAILURE,
+      payload: null,
+    });
+    let msg = responseValidator(error?.response?.status, error?.response?.data);
+    console.log("Message error---", msg);
+    params?.cbFailure(msg);
+  }
+}
+export function* ProviderloginRequest() {
+  yield takeLatest(types.LOGIN_REQUEST_REQUEST, ProviderLogin);
+}
+
+function* ProviderLogin(params) {
+  try {
+    const res = yield Provider(params?.params)
+    if (res) {
+      yield put({
+        type: types.PROVIDER_REQUEST_REQUEST,
         payload: res.data,
       });
       yield put({

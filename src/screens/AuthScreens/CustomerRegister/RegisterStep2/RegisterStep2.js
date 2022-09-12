@@ -1,9 +1,10 @@
-import React from 'react';
-import {View} from 'react-native';
+import React, { useState, useRef } from 'react';
+import { TouchableOpacity, View, ToastAndroid } from 'react-native';
 import {
   colors,
   CustomerRegisterStep2Fields,
   CustomerRegisterStep2VS,
+  image_options,
 } from '../../../../shared/exporter';
 import styles from './styles';
 import {
@@ -12,42 +13,129 @@ import {
   AuthHeader,
   AuthHeading,
   Button,
+  ImagePickerModal,
+  AppLoader
 } from '../../../../components';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {Formik} from 'formik';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Formik } from 'formik';
 import { signUpRequest } from '../../../../redux/actions/auth-actions/auth-action';
 import { useDispatch } from 'react-redux';
-const RegisterStep2 = ({navigation,route}) => {
+import UploadIcon from 'react-native-vector-icons/AntDesign';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+
+const RegisterStep2 = ({ navigation, route }) => {
+  const [loading, setLoading] = useState(false)
+  const [show, setShow] = useState(false);
+  const [openModal, setModal] = useState(false);
+  const [Image, setImage] = useState("")
+  const [Data, setData] = useState("")
   const dispatch = useDispatch();
   const item = route?.params?.item
-  
-  // console.log("dataaaa",data)
+  const formikRef = useRef();
+  const showToastWithGravityAndOffsetFOrSuccess = () => {
+    ToastAndroid.showWithGravityAndOffset(
+      'Successfully Customer Sign in',
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50,
+    );
+  };
+  const showToastWithGravityAndOffsetFOrError = (err) => {
+    ToastAndroid.showWithGravityAndOffset(
+      err,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50,
+    );
+  };
+  const handleSubmit = (values) => {
+    var data = new FormData();
+    setLoading(true)
+    data.append('customer[email]', values.email);
+    data.append('customer[password]', values.password);
+    data.append('customer[password_confirmation]', values.password);
+    data.append('customer[first_name]', values.firstName);
+    data.append('customer[last_name]', values.lastName);
+    data.append('customer[phone_number]', values.phone);
+    data.append('customer[govt_id]', {
+      name: "fileName",
+      type: "image/jpeg",
+      uri: values.govtID
+    });
+    data.append('customer[address]', item.address);
+    data.append('customer[street]', item.street);
+    data.append('customer[post_code]', item.postCode);
+    data.append('customer[province]', item.province);
+    data.append('customer[barangay]', item.barangay);
+    data.append('customer[city]', item.city);
+    data.append('customer[country]', item.country);
+    const cbSuccess = (res) => {
+      setLoading(false)
+      showToastWithGravityAndOffsetFOrSuccess();
+      navigation.navigate("Login")
+      console.log("Responeeee", res)
+    }
+    const cbFailure = (err) => {
+      setLoading(false)
+      showToastWithGravityAndOffsetFOrError(err);
+      console.log("err+++++", err);
+    }
+    dispatch(signUpRequest(data, cbSuccess, cbFailure))
+  }
 
-const handleSubmit=(values)=>{
-  var data = new FormData();
-data.append('customer[email]', values.email);
-data.append('customer[password]', values.password);
-data.append('customer[password_confirmation]', '');
-data.append('customer[first_name]', values.firstName);
-data.append('customer[last_name]', values.lastName);
-data.append('customer[phone_number]', values.phone);
-data.append('customer[govt_id]', values.govtID);
-data.append('customer[address]', item.address);
-data.append('customer[street]', item.street);
-data.append('customer[post_code]', item.postCode);
-data.append('customer[province]', item.province);
-data.append('customer[barangay]', item.barangay);
-data.append('customer[city]', item.city);
-data.append('customer[country]', item.country);
-const cbSuccess = (res) => {
- console.log("response",res)
-}
-const cbFailure = (err) => {
-  console.log("err+++++", err);
-}
-dispatch(signUpRequest(data, cbSuccess, cbFailure))
-}
+  //Handlers
+  const showGallery = () => {
+    setShow(false);
+    setTimeout(() => {
+      try {
+        launchImageLibrary(image_options, response => {
+          console.log('Response', response);
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          } else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+          } else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+          } else {
+            console.log('Response---', response.assets[0].uri);
+            formikRef?.current.setFieldValue('govtID', response.assets[0].uri);
+            setImage(response.assets[0].uri)
+          }
 
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }, 400);
+  };
+  //Open Camera
+  const showCamera = () => {
+    setShow(false);
+    setTimeout(() => {
+      try {
+        launchCamera(image_options, response => {
+          console.log('Response = ', response);
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          } else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+          } else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+          } else {
+            if (response.assets) {
+              formikRef?.current.setFieldValue('govtID', response.assets[0].uri);
+            } else {
+              alert('Unable to open Camera');
+            }
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }, 400);
+  };
   return (
     <>
       <AuthHeader
@@ -63,9 +151,11 @@ dispatch(signUpRequest(data, cbSuccess, cbFailure))
       <View style={styles.container}>
         {/* Signup Inputs */}
         <Formik
+          innerRef={formikRef}
           initialValues={CustomerRegisterStep2Fields}
-          onSubmit={values=>handleSubmit(values)}
+          onSubmit={values => handleSubmit(values)}
           validationSchema={CustomerRegisterStep2VS}>
+
           {({
             values,
             handleChange,
@@ -75,7 +165,10 @@ dispatch(signUpRequest(data, cbSuccess, cbFailure))
             isValid,
             handleSubmit,
             handleReset,
+            setFieldValue
+
           }) => (
+
             <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
               <View style={styles.contentContainer}>
                 <AuthHeading
@@ -126,34 +219,44 @@ dispatch(signUpRequest(data, cbSuccess, cbFailure))
                   onChangeText={handleChange('phone')}
                   value={values.phone}
                   onBlur={() => setFieldTouched('phone')}
+                  keyboardType="number-pad"
                   blurOnSubmit={false}
                   disableFullscreenUI={true}
                   autoCapitalize="none"
                   touched={touched.phone}
                   error={errors.phone}
                 />
+                <TouchableOpacity
+                  onPress={() => { setShow(true) }}
 
-                <AppInput
-                  placeholder={'Upload Your National ID'}
-                  placeholderTextColor={colors.g2}
-                  onChangeText={handleChange('govtID')}
-                  value={values.govtID}
-                  onBlur={() => setFieldTouched('govtID')}
-                  blurOnSubmit={false}
-                  disableFullscreenUI={true}
-                  autoCapitalize="none"
-                  touched={touched.govtID}
-                  error={errors.govtID}
-                  rightIcon={() => (
-                    <UploadIcon name={'upload'} size={20} color={colors.g2} />
-                  )}
-                />
+                >
+                  <AppInput
+                    placeholder={'Upload Your National ID'}
+                    placeholderTextColor={colors.g2}
+                    onChangeText={handleChange('govtID')}
+                    value={values.govtID}
+                    onBlur={() => setFieldValue('govtID')}
+                    blurOnSubmit={false}
+                    editable={false}
+                    disableFullscreenUI={true}
+                    autoCapitalize="none"
+                    touched={touched.govtID}
+                    error={errors.govtID}
+                    rightIcon={() => (
+                      <UploadIcon name={'upload'} size={20} color={colors.g2} />
+                    )}
+                    onPressIn={() => {
+                      setShow(true)
+                    }}
+                  />
+                </TouchableOpacity>
                 <AppInput
                   placeholder={'Password'}
                   placeholderTextColor={colors.g2}
                   onChangeText={handleChange('password')}
                   value={values.password}
                   onBlur={() => setFieldTouched('password')}
+                  secureTextEntry={true}
                   blurOnSubmit={false}
                   disableFullscreenUI={true}
                   autoCapitalize="none"
@@ -162,6 +265,7 @@ dispatch(signUpRequest(data, cbSuccess, cbFailure))
                 />
                 <View style={styles.buttonContainer}>
                   <Button
+                    Loading={loading}
                     onPressBtn={handleSubmit}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
@@ -174,11 +278,20 @@ dispatch(signUpRequest(data, cbSuccess, cbFailure))
                       navigation?.navigate('Login');
                     }}
                   />
+                  <ImagePickerModal
+                    show={show}
+                    onPressHide={() => setShow(false)}
+                    onPressCamera={() => showCamera(setFieldValue)}
+                    onPressGallery={() => showGallery(setFieldValue)}
+                  />
+                  <AppLoader />
                 </View>
               </View>
             </KeyboardAwareScrollView>
           )}
+
         </Formik>
+
       </View>
     </>
   );
