@@ -1,5 +1,6 @@
 import {ScrollView, View} from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
+import * as types from '../../../../redux/actions';
 import {
   AppHeader,
   BgImageBox,
@@ -15,11 +16,48 @@ import {
 } from '../../../../components';
 import styles from './styles';
 import {appImages, colors} from '../../../../shared/exporter';
-const ServiceItemDetail = ({navigation}) => {
+import {getServiceProviderDetailAction} from '../../../../redux/actions';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {useIsFocused} from '@react-navigation/core';
+
+const ServiceItemDetail = ({navigation, route}) => {
+  const isFocused = useIsFocused();
   const reviewModalRef = useRef(null);
   const jobModalRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const handlePress = () => setExpanded(!expanded);
+  const dispatch = useDispatch(null);
+  const {userInfo, token} = useSelector(state => state?.auth);
+
+  const {item} = route?.params;
+
+  useEffect(() => {
+    if (isFocused) {
+      getServiceProviderDetails();
+    }
+  }, [isFocused]);
+
+  const getServiceProviderDetails = () => {
+    try {
+      const cbSuccess = res => {
+        console.log('RESPONSE ', res);
+      };
+      const cbFailure = err => {
+        console.log('ERROR.. ', err);
+      };
+      dispatch(
+        getServiceProviderDetailAction(
+          item?.service_provider?.id,
+          cbSuccess,
+          cbFailure,
+        ),
+      );
+    } catch (error) {
+      console.log('ERROR ', error);
+    }
+  };
+
   return (
     <>
       <AppHeader

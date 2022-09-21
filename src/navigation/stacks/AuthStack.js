@@ -7,7 +7,6 @@ import CSignUp from '../../screens/AuthScreens/CustomerRegister/Register';
 import CSignUp2 from '../../screens/AuthScreens/CustomerRegister/RegisterStep2';
 import SPSignUp from '../../screens/AuthScreens/SPRegister/Register';
 import SPSignUp2 from '../../screens/AuthScreens/SPRegister/RegisterStep2';
-
 import ForgotPassword from '../../screens/AuthScreens/ForgotPassword';
 import ResetPassword from '../../screens/AuthScreens/ResetPassword';
 import VerifyOtp from '../../screens/AuthScreens/VerifyOtp';
@@ -19,6 +18,7 @@ import LocationFinder from '../../screens/AuthScreens/CustomerRegister/LocationF
 import ResetPasswordSuccess from '../../screens/AuthScreens/ResetPasswordSuccess';
 import ForgotVerifyOtp from '../../screens/AuthScreens/ForgotVerifyOtp';
 import TrackingDetail from '../../screens/Customer/HomeTab/TrackingDetail';
+import SignUpVerifyOtp from '../../screens/AuthScreens/SignUpVerifyOtp/SignUpVerifyOtp';
 const Stack = createStackNavigator();
 
 function AuthStack(props) {
@@ -42,6 +42,7 @@ function AuthStack(props) {
       <Stack.Screen name="VerifyOtp" component={VerifyOtp} />
       <Stack.Screen name="SPVerifyOtp" component={SPVerifyOtp} />
       <Stack.Screen name="ForgotVerifyOtp" component={ForgotVerifyOtp} />
+      <Stack.Screen name="SignUpVerifyOtp" component={SignUpVerifyOtp} />
       <Stack.Screen
         name="ResetPasswordSuccess"
         component={ResetPasswordSuccess}

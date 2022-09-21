@@ -1,7 +1,15 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ActivityIndicator,
+} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {colors, family, size, WP} from '../../shared/exporter';
+import {AppLoader} from '../Modal/AppLoader';
 
 export const Button = ({
   btnText,
@@ -12,9 +20,11 @@ export const Button = ({
   img,
   marginLeft,
   height,
+  Loading,
 }) => {
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPressBtn}>
+      {/* {Loading && <AppLoader loading={Loading} />} */}
       <LinearGradient
         colors={bgColor ? bgColor : colors.db_gradient}
         start={{x: 0, y: 1}}
@@ -28,10 +38,17 @@ export const Button = ({
           },
         ]}>
         {img && <Image source={img} style={styles.imageStyle} />}
-        <Text
-          style={[styles.btnText, {color: textColor ? textColor : colors.b1}]}>
-          {btnText}
-        </Text>
+        {Loading ? (
+          <ActivityIndicator animating color={colors.p2} />
+        ) : (
+          <Text
+            style={[
+              styles.btnText,
+              {color: textColor ? textColor : colors.b1},
+            ]}>
+            {Loading} {btnText}
+          </Text>
+        )}
       </LinearGradient>
     </TouchableOpacity>
   );
@@ -58,6 +75,7 @@ const styles = StyleSheet.create({
     width: 25,
     resizeMode: 'contain',
     right: 10,
+    // left: 1,
   },
   btnText: {
     color: colors.white,

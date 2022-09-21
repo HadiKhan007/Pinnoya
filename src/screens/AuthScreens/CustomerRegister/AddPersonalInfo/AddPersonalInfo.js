@@ -1,10 +1,6 @@
-import React from 'react';
-import {View} from 'react-native';
-import {
-  colors,
-  CustomerRegisterStep1Fields,
-  CustomerRegisterStep1VS,
-} from '../../../../shared/exporter';
+import React, {useState, useEffect, useRef} from 'react';
+import {View, Alert} from 'react-native';
+import {colors, AddKiddsVS, Addkiddsfield} from '../../../../shared/exporter';
 import styles from './styles';
 import {
   AppInput,
@@ -15,8 +11,56 @@ import {
   AddMoreKid,
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {useSelector, useDispatch} from 'react-redux';
+import {
+  addKidRequest,
+  addPetRequest,
+} from '../../../../redux/actions/auth-actions/auth-action';
+
 import {Formik} from 'formik';
-const AddPersonalInfo = ({navigation}) => {
+import {text} from 'stream/consumers';
+const AddPersonalInfo = ({navigation, route}) => {
+  const [kidName, setkidName] = useState('');
+  const [kidAge, setKidAge] = useState('');
+  const [petName, setpetName] = useState('');
+  const [petBreed, setpetBreed] = useState('');
+  const dispatch = useDispatch();
+  const [token, settoken] = useState(route?.params?.token);
+  const [loading, setLoading] = useState(false);
+  const formikRef = useRef();
+
+  useEffect(() => {
+    console.log('token', route?.params?.token);
+  }, []);
+
+  const handleSubmit = values => {
+    console.log('ONCLICK==> ', values);
+    setLoading(true);
+    try {
+      const kidData = new FormData();
+      const petData = new FormData();
+      kidData.append('kid[name]', values.kidName);
+      kidData.append('kid[age]', values.kidAge);
+      petData.append('pet[name]', petName);
+      petData.append('pet[breed]', 'TestBreed');
+
+      const cbSuccess = res => {
+        console.log('res', res);
+        setLoading(false);
+      };
+      const cbFailure = err => {
+        Alert.alert(err);
+        setLoading(false);
+      };
+      dispatch(addKidRequest(token, kidData, cbSuccess, cbFailure));
+      if (petName) {
+        dispatch(addPetRequest(token, petData, cbSuccess, cbFailure));
+      }
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <AuthHeader
@@ -29,9 +73,10 @@ const AddPersonalInfo = ({navigation}) => {
       <View style={styles.container}>
         {/* Signup Inputs */}
         <Formik
-          initialValues={CustomerRegisterStep1Fields}
-          onSubmit={values => {}}
-          validationSchema={CustomerRegisterStep1VS}>
+          innerRef={formikRef}
+          initialValues={Addkiddsfield}
+          onSubmit={values => handleSubmit(values)}
+          validationSchema={AddKiddsVS}>
           {({
             values,
             handleChange,
@@ -51,7 +96,21 @@ const AddPersonalInfo = ({navigation}) => {
                 <View style={styles.aiFlexEnd}>
                   <SmallButton title={'Add More Kid'} />
                 </View>
-                <AddMoreKid title={'Kid Name'} subtitle={'Kid Age'} />
+
+                {/* {Add kids} */}
+
+                <AddMoreKid
+                  onBlurKidAge={() => setFieldTouched('kidAge')}
+                  onBlurKidName={() => setFieldTouched('kidName')}
+                  onChangeTextKidAge={handleChange('kidAge')}
+                  onChangeTextKidname={handleChange('kidName')}
+                  kidNameValue={values.kidName}
+                  kidAgeValue={values.kidAge}
+                  touchedKidName={touched.kidName}
+                  touchedKidAge={touched.kidAge}
+                  kidAgeError={errors.kidAge}
+                  kidNameError={errors.kidName}
+                />
                 <View style={styles.aiFlexEnd}>
                   <SmallButton title={'Add More Pet'} />
                 </View>
@@ -59,16 +118,17 @@ const AddPersonalInfo = ({navigation}) => {
                   <AppInput
                     placeholder={'Pets (Optional)'}
                     placeholderTextColor={colors.g2}
+                    value={petName}
+                    onChangeText={text => setpetName(text)}
                   />
                 </View>
                 <View style={styles.buttonContainer}>
                   <Button
-                    onPressBtn={() => {
-                      navigation?.navigate('SetLocation');
-                    }}
+                    onPressBtn={handleSubmit}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
                     btnText={'Submit'}
+                    Loading={loading}
                   />
                 </View>
               </View>

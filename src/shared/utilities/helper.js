@@ -36,14 +36,14 @@ export const responseValidator = (response, errorMsg) => {
   let errorCode = response;
   if (errorCode == 401) {
     if (errorMsg?.error) {
-      const msg = errorMsg?.error[0];
+      const msg = errorMsg?.error;
       return msg;
     } else {
       return 'Something went wrong!';
     }
   } else if (errorCode == 400) {
     if (errorMsg?.error) {
-      const msg = errorMsg?.error[0];
+      const msg = errorMsg?.error;
       return msg;
     } else {
       return 'Something went wrong!';
@@ -57,12 +57,13 @@ export const responseValidator = (response, errorMsg) => {
     }
   } else if (errorCode == 500) {
     if (errorMsg?.error) {
-      const msg = errorMsg?.error[0];
+      const msg = errorMsg?.error;
       return msg;
     } else {
       return 'Internal Server Error Please Try Again!';
     }
   } else {
+    return 'Something went wrong!';
   }
 };
 

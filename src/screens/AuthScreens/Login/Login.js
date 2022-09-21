@@ -1,8 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, Text, View, ToastAndroid, Alert} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {
   appIcons,
   colors,
+  ENDPOINTS,
   family,
   loginFormFields,
   LoginVS,
@@ -18,21 +19,91 @@ import {
 } from '../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
-import {loginRequest} from '../../../redux/actions';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {AppLoader} from '../../../components';
+import * as types from '../../../redux/actions/types';
+
+// redux stuff
 import {useDispatch, useSelector} from 'react-redux';
+import {loginRequest, providerLoginRequest} from '../../../redux/actions';
+
 const Login = ({navigation}) => {
+  const [loading, setLoading] = useState(false);
+
+  // redux stuff
+  const dispatch = useDispatch();
   const auth = useSelector(state => state?.auth);
   const {userType} = useSelector(state => state.userType);
-  const dispatch = useDispatch();
-  //On Submit Request
-  const onSubmitLogin = () => {
-    const body = {
-      email: 'umer@gmail.com',
-      password: '123456',
-    };
-    dispatch(loginRequest(body));
-    navigation?.navigate('App');
+
+  useEffect(() => {
+    GoogleSignin.configure();
+  }, []);
+  const googlesingin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log('userinfooo', userInfo);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log('error', error);
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log('error', error);
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.log('error', error);
+      } else {
+        console.log('error', error);
+      }
+    }
   };
+  //On Submit Request
+  const onSubmitLogin = values => {
+    try {
+      const data = new FormData();
+      setLoading(true);
+      data.append('customer[email]', values.email);
+      data.append('customer[password]', values.password);
+
+      const cbSuccess = res => {
+        if (res) {
+          setLoading(false);
+          // alert('Login Sucessfuly');
+          dispatch({type: types.USER_TYPE_REQUEST, params: 'Customer'});
+          navigation.replace('App', {screen: 'Dashboard'});
+        }
+      };
+      const cbFailure = err => {
+        console.log('1', err);
+        alert(err);
+        setLoading(false);
+      };
+      dispatch(loginRequest(data, cbSuccess, cbFailure));
+    } catch (error) {
+      setLoading(false);
+      // Alert.alert('Something went wrong.');
+    }
+  };
+
+  const onSubmitProviderLogin = values => {
+    try {
+      const data = new FormData();
+      setLoading(true);
+      data.append('service_provider[email]', values.email);
+      data.append('service_provider[password]', values.password);
+      const cbSuccess = res => {
+        setLoading(false);
+        alert('Provider Login Sucessfuly');
+        dispatch({type: 'USER_TYPE_REQUEST', params: 'Provider'});
+      };
+      const cbFailure = err => {
+        Alert.alert('Sorry', 'Invalid Credentials.');
+        setLoading(false);
+      };
+      dispatch(providerLoginRequest(data, cbSuccess, cbFailure));
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <AuthHeader
@@ -47,7 +118,9 @@ const Login = ({navigation}) => {
         <Formik
           initialValues={loginFormFields}
           onSubmit={values => {
-            onSubmitLogin(values);
+            userType == 'Customer'
+              ? onSubmitLogin(values)
+              : onSubmitProviderLogin(values);
           }}
           validationSchema={LoginVS}>
           {({
@@ -70,6 +143,7 @@ const Login = ({navigation}) => {
                   placeholder={'Your Email'}
                   placeholderTextColor={colors.g2}
                   onChangeText={handleChange('email')}
+                  //  value={'testing12@example.com'}
                   value={values.email}
                   onBlur={() => setFieldTouched('email')}
                   blurOnSubmit={false}
@@ -83,6 +157,7 @@ const Login = ({navigation}) => {
                   placeholderTextColor={colors.g2}
                   onChangeText={handleChange('password')}
                   value={values.password}
+                  //value={'1234567899'}
                   onBlur={() => setFieldTouched('password')}
                   blurOnSubmit={false}
                   disableFullscreenUI={true}
@@ -94,6 +169,7 @@ const Login = ({navigation}) => {
                 />
                 <View style={styles.aiRow}>
                   <Button
+                    Loading={loading}
                     bgColor={colors.b_gradient}
                     width={WP('45')}
                     textColor={colors.white}
@@ -102,7 +178,9 @@ const Login = ({navigation}) => {
                   />
                   <Button
                     onPressBtn={() => {
-                      navigation?.navigate('ForgotPassword');
+                      navigation?.navigate('ForgotPassword', {
+                        userType: userType,
+                      });
                     }}
                     bgColor={colors.half_white_gradient}
                     width={WP('45')}
@@ -114,9 +192,7 @@ const Login = ({navigation}) => {
 
               <View style={styles.secondContainer}>
                 <Button
-                  onPressBtn={() => {
-                    navigation.navigate('SPSignUp');
-                  }}
+                  onPressBtn={googlesingin}
                   bgColor={colors.db_gradient}
                   textColor={colors.b1}
                   btnText={'Login via Google'}

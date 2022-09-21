@@ -1,43 +1,95 @@
 import {takeLatest, put} from 'redux-saga/effects';
-import {responseValidator} from '../../../shared/exporter';
+import {BASE_URL, ENDPOINTS, responseValidator} from '../../../shared/exporter';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
-  forgotPassword,
   loginUser,
   registerUser,
   resetPassword,
   socialLogin,
   OTPVerify,
+  Provider,
+  customerLoginService,
 } from '../../../shared/service/AuthService';
 import * as types from '../../actions/types';
+import axios from 'axios';
 
-// *************Login Sega**************
-export function* loginRequest() {
-  yield takeLatest(types.LOGIN_REQUEST_REQUEST, login);
+export function* CustomerSignup() {
+  yield takeLatest(types.CUSTOMER_SIGNUP_REQUEST, CustomerSignupRequest);
 }
-function* login(params) {
+function* CustomerSignupRequest(params) {
   try {
-    yield put({
-      type: types.LOGIN_REQUEST_SUCCESS,
-      payload: params?.params,
-    });
-    // const res = yield loginUser(params?.params);
-    // if (res.data) {
-    //   yield put({
-    //     type: types.LOGIN_REQUEST_SUCCESS,
-    //     payload: res.data,
-    //   });
-    //   yield put({
-    //     type: types.GET_PROFILE_SUCCESS,
-    //     payload: res.data?.user,
-    //   });
-    // } else {
-    //   yield put({
-    //     type: types.LOGIN_REQUEST_FAILURE,
-    //     payload: null,
-    //   });
-    //   params?.cbFailure(res?.data);
-    // }
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.REGISTER_CUSTOMER}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    if (res) {
+      yield put({
+        type: types.CUSTOMER_SIGNUP_SUCCESS,
+        payload: res,
+      });
+      params?.cbSuccess(res);
+    } else {
+      yield put({
+        type: types.CUSTOMER_SIGNUP_FAILURE,
+        payload: null,
+      });
+      params?.cbFailure(res);
+    }
   } catch (error) {
+    yield put({
+      type: types.CUSTOMER_SIGNUP_FAILURE,
+      payload: null,
+    });
+    let msg = responseValidator(error?.response?.status, error?.response?.data);
+    params?.cbFailure(msg);
+  }
+}
+// *************Login Sega**************
+
+export function* loginRequest() {
+  yield takeLatest(types.LOGIN_REQUEST_REQUEST, customerLogin);
+}
+
+function* customerLogin(params) {
+  try {
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.CUSTOMER_LOGIN}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    if (res) {
+      AsyncStorage.setItem('usertoken', res?.data?.token);
+      yield put({
+        type: types.LOGIN_REQUEST_SUCCESS,
+        payload: res,
+      });
+      yield put({
+        type: types.GET_PROFILE_SUCCESS,
+        payload: res.data,
+      });
+      params?.cbSuccess(res);
+    } else {
+      yield put({
+        type: types.LOGIN_REQUEST_FAILURE,
+        payload: null,
+      });
+      // params?.cbFailure(res);
+    }
+  } catch (error) {
+    console.log('LOGIN REs error', error);
+
     yield put({
       type: types.LOGIN_REQUEST_FAILURE,
       payload: null,
@@ -46,30 +98,72 @@ function* login(params) {
     params?.cbFailure(msg);
   }
 }
+export function* ProviderloginRequest() {
+  yield takeLatest(types.PROVIDER_LOGIN_REQUEST, providerLogin);
+}
+
+function* providerLogin(params) {
+  try {
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.PROVIDER_LOGIN}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    if (res) {
+      yield put({
+        type: types.PROVIDER_LOGIN_SUCCESS,
+        payload: res,
+      });
+      yield put({
+        type: types.GET_PROFILE_SUCCESS,
+        payload: res,
+      });
+      params?.cbSuccess(res);
+    } else {
+      yield put({
+        type: types.PROVIDER_LOGIN_FAILURE,
+        payload: null,
+      });
+      params?.cbFailure(res);
+    }
+  } catch (error) {
+    yield put({
+      type: types.PROVIDER_LOGIN_FAILURE,
+      payload: null,
+    });
+    let msg = responseValidator(error?.response?.data?.error);
+    params?.cbFailure(msg);
+  }
+}
 
 // *************Social Login Login Sega**************
 export function* socialLoginRequest() {
-  yield takeLatest(types.SOCIAL_LOGIN_REQUEST_REQUEST, socialLoginUser);
+  yield takeLatest(types.SOCIAL_LOGIN_REQUEST, socialLoginUser);
 }
 function* socialLoginUser(params) {
   try {
     const res = yield socialLogin(params?.login_type, params?.params);
     if (res.data) {
       yield put({
-        type: types.SOCIAL_LOGIN_REQUEST_SUCCESS,
+        type: types.SOCIAL_LOGIN_SUCCESS,
         payload: res.data,
       });
       params?.cbSuccess(res.data);
     } else {
       yield put({
-        type: types.SOCIAL_LOGIN_REQUEST_FAILURE,
+        type: types.SOCIAL_LOGIN_FAILURE,
         payload: null,
       });
       params?.cbFailure(res?.data);
     }
   } catch (error) {
     yield put({
-      type: types.SOCIAL_LOGIN_REQUEST_FAILURE,
+      type: types.SOCIAL_LOGIN_FAILURE,
       payload: null,
     });
     let msg = responseValidator(error?.response?.status);
@@ -78,37 +172,76 @@ function* socialLoginUser(params) {
 }
 
 // *************Sign Up Sega**************
-export function* signUpRequest() {
-  yield takeLatest(types.SIGNUP_REQUEST, signUp);
+// export function* signUpRequest() {
+//   yield takeLatest(types.SIGNUP_REQUEST, customerSignUp);
+// }
+
+// function* customerSignUp(params) {
+//   console.log('PARAMS==> saga', params);
+//   try {
+//     registerUser(params?.params)
+//       .then(res => {
+//         params?.cbSuccess(res.data);
+//       })
+//       .catch(error => {
+//         params?.cbFailure(error);
+//       });
+//   } catch (error) {
+//     let msg = responseValidator(error?.response?.status, error?.response?.data);
+//     params?.cbFailure(msg);
+//   }
+// }
+
+export function* ServiceProviderSignUpRequest() {
+  yield takeLatest(
+    types.SERVICE_PROVIDER_SIGNUP_REQUEST,
+    serviceProviderSignUp,
+  );
 }
 
-function* signUp(params) {
+function* serviceProviderSignUp(params) {
   try {
-    registerUser(params?.params)
-      .then(res => {
-        params?.cbSuccess(res.data);
-      })
-      .catch(error => {
-        params?.cbFailure(error);
-      });
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.REGISTER_SERVICE_PROVIDER}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    if (res.data) {
+      params?.cbSuccess(res.data);
+    } else {
+      params?.cbFailure(res);
+    }
   } catch (error) {
     let msg = responseValidator(error?.response?.status, error?.response?.data);
     params?.cbFailure(msg);
   }
 }
 
-// *************Forgot Sega**************
 export function* forgotPassRequest() {
-  yield takeLatest(types.FORGOT_PASSWORD_REQUEST, forgot);
+  yield takeLatest(types.FORGOT_PASSWORD_REQUEST, forgotPassword);
 }
 
-function* forgot(params) {
+function* forgotPassword(params) {
   try {
-    const res = yield forgotPassword(params?.params);
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.FORGOT_PASS}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
     if (res.data) {
       yield put({
         type: types.FORGOT_PASSWORD_SUCCESS,
-        payload: {...params?.params, ...res?.data},
+        payload: res?.data,
       });
       params?.cbSuccess(res.data);
     } else {
@@ -135,7 +268,16 @@ export function* OTPVerifyRequest() {
 
 function* verifyOTP(params) {
   try {
-    const res = yield OTPVerify(params?.params);
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.VERIFY_OTP}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
     if (res.data) {
       yield put({
         type: types.OTP_VERIFY_SUCCESS,
@@ -154,28 +296,82 @@ function* verifyOTP(params) {
       type: types.OTP_VERIFY_FAILURE,
       payload: null,
     });
-    let msg = responseValidator(error?.response?.status, error?.response?.data);
+    let msg = responseValidator(
+      error?.response?.data?.status,
+      error?.response?.data,
+    );
+    params?.cbFailure(msg);
+  }
+}
+
+export function* SignupOTPVerifyRequest() {
+  yield takeLatest(types.SIGNUP_OTP_VERIFY_REQUEST, registerVerifyOTP);
+}
+
+function* registerVerifyOTP(params) {
+  try {
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.SIGNUP_VERIFY_OTP}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    if (res.data) {
+      yield put({
+        type: types.SIGNUP_OTP_VERIFY_SUCCESS,
+        payload: res?.data,
+      });
+      params?.cbSuccess(res.data);
+    } else {
+      yield put({
+        type: types.SIGNUP_OTP_VERIFY_FAILURE,
+        payload: null,
+      });
+      params?.cbFailure(res?.data);
+    }
+  } catch (error) {
+    yield put({
+      type: types.SIGNUP_OTP_VERIFY_FAILURE,
+      payload: null,
+    });
+    let msg = responseValidator(
+      error?.response?.data?.status,
+      error?.response?.data,
+    );
     params?.cbFailure(msg);
   }
 }
 
 // *************Reset Password Sega**************
 export function* resetPassRequest() {
-  yield takeLatest(types.RESET_PASSWORD_REQUEST, resetPass);
+  yield takeLatest(types.PASSWORD_RESET_REQUEST, resetPass);
 }
 
 function* resetPass(params) {
   try {
-    const res = yield resetPassword(params?.params);
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.RESET_PASSWORD}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
     if (res.data) {
       yield put({
-        type: types.RESET_PASSWORD_SUCCESS,
+        type: types.PASSWORD_RESET_SUCCESS,
         payload: res.data,
       });
       params?.cbSuccess(res.data);
     } else {
       yield put({
-        type: types.RESET_PASSWORD_FAILURE,
+        type: types.PASSWORD_RESET_FAILURE,
         payload: null,
       });
       params?.cbFailure(res?.data);
@@ -212,6 +408,57 @@ function* logout(params) {
       type: types.LOGOUT_REQUEST_SUCCESS,
       payload: params,
     });
+  } catch (error) {}
+}
+
+export function* AddKids() {
+  yield takeLatest(types.ADD_KIDS_REQUEST, addKidsSaga);
+}
+
+function* addKidsSaga(params) {
+  const {token} = params;
+  try {
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.ADD_KIDS}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+          // 'Content-Type': `multipart/form-data boundary=${data._boundary}`,
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    params.cbSuccess(res);
   } catch (error) {
+    let msg = responseValidator(error?.response?.status, error?.response?.data);
+    params?.cbFailure(msg);
+  }
+}
+
+export function* AddPet() {
+  yield takeLatest(types.ADD_PETS_REQUEST, addPetSaga);
+}
+
+function* addPetSaga(params) {
+  const {token} = params;
+
+  try {
+    const res = yield axios.post(
+      `${BASE_URL}${ENDPOINTS.ADD_PETS}`,
+      params?.data,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    params.cbSuccess(res);
+  } catch (error) {
+    let msg = responseValidator(error?.response?.status, error?.response?.data);
+    params?.cbFailure(msg);
   }
 }

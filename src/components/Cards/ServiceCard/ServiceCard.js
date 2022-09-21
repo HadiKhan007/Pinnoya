@@ -18,28 +18,37 @@ import {
 } from '../../../shared/exporter';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {AuthHeading} from '../../Headings/AuthHeading';
+import {it} from 'node:test';
+import {url} from 'node:inspector';
 export const ServiceCard = ({
   item,
   imgStyle,
-  onPress,
-  disabled,
+  // onPress,
+  // disabled,
   width,
   tabRef,
+  title,
+  subTitle,
+  source,
 }) => {
   const [isActive, setActive] = useState(null);
   return (
     <>
       <View style={[styles.container, {width: width ? WP(40) : width}]}>
         <View style={styles.leftContainer}>
-          <Text style={styles.titleStyle}>{item?.title}</Text>
-          <Text style={styles.subTitle}>{item?.subtitle}</Text>
+          <Text style={styles.titleStyle}>{title}</Text>
+          <Text style={styles.subTitle}>{subTitle}</Text>
         </View>
-        <TouchableOpacity
+        <View
           style={styles.rightContainer}
-          onPress={onPress}
-          disabled={disabled}>
-          <Image style={imgStyle} source={item?.img} />
-        </TouchableOpacity>
+          // onPress={onPress}
+          // disabled={disabled}
+        >
+          <Image
+            style={imgStyle}
+            source={typeof source == 'string' ? {uri: source} : source}
+          />
+        </View>
       </View>
       <RBSheet
         ref={tabRef}

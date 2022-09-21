@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {
   colors,
+  family,
+  HP,
   SPRegisterStep2Fields,
   SPRegisterStep2VS,
+  WP,
 } from '../../../../shared/exporter';
 import styles from './styles';
 import {
@@ -15,9 +18,33 @@ import {
 } from '../../../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
-
+import MultiSelect from 'react-native-multiple-select';
 
 const RegisterStep2 = ({navigation}) => {
+  const items = [
+    {
+      id: 1,
+      name: 'Baby sitter',
+    },
+    {
+      id: 2,
+      name: 'Senior caregiver',
+    },
+    {
+      id: 3,
+      name: 'Tutor',
+    },
+    {
+      id: 4,
+      name: 'Housekeeper',
+    },
+  ];
+  const [selectedItems, setselectedItems] = useState([]);
+
+  const onSelectedItemsChange = selectedItems => {
+    console.log('SELECTED item ', selectedItems);
+    setselectedItems(selectedItems);
+  };
   return (
     <>
       <AuthHeader
@@ -88,7 +115,7 @@ const RegisterStep2 = ({navigation}) => {
                   touched={touched.email}
                   error={errors.email}
                 />
-                <AppInput
+                {/* <AppInput
                   placeholder={'Gov ID'}
                   placeholderTextColor={colors.g2}
                   onChangeText={handleChange('govtID')}
@@ -99,7 +126,7 @@ const RegisterStep2 = ({navigation}) => {
                   autoCapitalize="none"
                   touched={touched.govtID}
                   error={errors.govtID}
-                />
+                /> */}
                 <AppInput
                   placeholder={'Phone Number'}
                   placeholderTextColor={colors.g2}
@@ -111,7 +138,6 @@ const RegisterStep2 = ({navigation}) => {
                   autoCapitalize="none"
                   touched={touched.phone}
                   error={errors.phone}
-
                 />
                 <AppInput
                   placeholder={'Password'}
@@ -125,6 +151,46 @@ const RegisterStep2 = ({navigation}) => {
                   touched={touched.password}
                   error={errors.password}
                 />
+                <View
+                  style={{
+                    width: '100%',
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    borderColor: '#ccc',
+                    marginTop: HP('1.5'),
+                  }}>
+                  <MultiSelect
+                    // hideTags
+                    tagBorderColor={colors.p1}
+                    tagRemoveIconColor={colors.p1}
+                    tagTextColor={colors.g2}
+                    tagContainerStyle={{}}
+                    items={items}
+                    uniqueKey="id"
+                    onSelectedItemsChange={selectedItems =>
+                      onSelectedItemsChange(selectedItems)
+                    }
+                    fontFamily={family.Ubuntu_Regular}
+                    selectedItems={selectedItems}
+                    searchIcon={false}
+                    selectText={'Choose services'}
+                    searchInputPlaceholderText="Choose Services"
+                    onChangeInput={text => console.log(text)}
+                    selectedItemTextColor="#000"
+                    selectedItemIconColor={colors.p1}
+                    itemTextColor="#ccc"
+                    displayKey="name"
+                    hideSubmitButton
+                    searchInputStyle={{
+                      height: 50,
+                    }}
+                    styleMainWrapper={styles.styleMainWrapper}
+                    styleDropdownMenu={styles.styleDropdownMenu}
+                    styleDropdownMenuSubsection={{
+                      borderColor: '#fff',
+                    }}
+                  />
+                </View>
                 <View style={styles.buttonContainer}>
                   <Button
                     onPressBtn={() => {

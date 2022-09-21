@@ -3,7 +3,7 @@
 //   statusCodes,
 // } from '@react-native-google-signin/google-signin';
 // import {Alert} from 'react-native';
-// import {socialLoginRequest} from '../../redux/actions';
+// import {socialcustomerLoginRequest} from '../../redux/actions';
 // import {checkConnected} from './helper';
 // import {appleAuth} from '@invertase/react-native-apple-authentication';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -30,7 +30,7 @@
 //         token: idToken,
 //       };
 //       dispatch(
-//         socialLoginRequest(
+//         socialcustomerLoginRequest(
 //           'google',
 //           requestBody,
 //           res => onSocialLoginSuccess(res, navigation, setloading, isRemember),
@@ -76,7 +76,7 @@
 //           last_name: appleAuthRequestResponse?.fullName?.familyName,
 //         };
 //         dispatch(
-//           socialLoginRequest(
+//           socialcustomerLoginRequest(
 //             'apple',
 //             requestBody,
 //             res => {

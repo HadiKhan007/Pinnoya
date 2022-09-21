@@ -53,6 +53,10 @@ export const forgotFormFields = {
 export const codeFormFields = {
   code: '',
 };
+export const Addkiddsfield = {
+  kidAge: '',
+  kidName: '',
+};
 
 export const LoginVS = yup.object().shape({
   email: yup
@@ -78,7 +82,11 @@ export const CustomerRegisterStep1VS = yup.object().shape({
 export const CustomerRegisterStep2VS = yup.object().shape({
   firstName: yup.string().required('First Name Required').label('firstName'),
   lastName: yup.string().required('Last Name Required').label('lastName'),
-  email: yup.string().required('Email Address Required').label('email'),
+  email: yup
+    .string()
+    .email('please Enter Valid Email')
+    .required('Email Address Required')
+    .label('email'),
   phone: yup.string().required('Phone Number Required').label('phone'),
   govtID: yup.string().required('Govt ID Required').label('govtID'),
   password: yup.string().required('Password Required').label('password'),
@@ -123,4 +131,9 @@ export const ForgotPasswordVS = yup.object().shape({
     .string()
     .required('Email Required')
     .email('Please provide a valid email address'),
+});
+
+export const AddKiddsVS = yup.object().shape({
+  kidName: yup.string().required('Kid Name Required').label('kidName'),
+  kidAge: yup.string().required('Kid Age Required').label('kidAge'),
 });

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View} from 'react-native';
 import {
   appImages,
@@ -19,10 +19,20 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 
 const Register = ({navigation}) => {
+  // const [data, setdata] = useState('')
   const locationBSheetRef = useRef(null);
   const onRegisterStep1Hanlder = () => {
     locationBSheetRef.current.open();
   };
+  const handleSubmit = values => {
+    // setdata(values)
+    navigation.navigate('CSignUp2', {
+      item: values,
+    });
+    // console.log("valiuiiii",values)
+  };
+  // console.log("first+++++++===++++++++++++++++++++++++++++++++++++++++====",data)
+
   return (
     <>
       <AuthHeader
@@ -39,7 +49,7 @@ const Register = ({navigation}) => {
         {/* Signup Inputs */}
         <Formik
           initialValues={CustomerRegisterStep1Fields}
-          onSubmit={values => {}}
+          onSubmit={handleSubmit}
           validationSchema={CustomerRegisterStep1VS}>
           {({
             values,
@@ -147,9 +157,7 @@ const Register = ({navigation}) => {
                 />
                 <View style={styles.buttonContainer}>
                   <Button
-                    onPressBtn={() => {
-                      navigation?.navigate('CSignUp2');
-                    }}
+                    onPressBtn={handleSubmit}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
                     btnText={'Next'}

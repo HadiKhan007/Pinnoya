@@ -1,5 +1,5 @@
-import {View} from 'react-native';
-import React from 'react';
+import {View, Alert} from 'react-native';
+import React, {useState} from 'react';
 import {
   WP,
   colors,
@@ -14,12 +14,16 @@ import {
   Button,
   AuthFooter,
 } from '../../../components';
-import {resetPassRequest} from '../../../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
-const ResetPassword = ({navigation}) => {
+import {resetPassRequest, resetPasswordAction} from '../../../redux/actions';
+const ResetPassword = ({navigation, route}) => {
   const auth = useSelector(state => state?.auth);
+  const [userType, setuserType] = useState(route?.params?.userType);
+  const [userId, setuserId] = useState(route?.params?.userId);
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const onSubmitReset = () => {
     const body = {
@@ -29,6 +33,38 @@ const ResetPassword = ({navigation}) => {
     dispatch(resetPassRequest(body));
     navigation?.navigate('ResetPasswordSuccess');
   };
+
+  const handleResetPassword = values => {
+    setLoading(true);
+    console.log('OK. restet');
+
+    try {
+      const data = new FormData();
+      data.append(
+        'type',
+        userType == 'Customer' ? 'customer' : 'service_provider',
+      );
+      data.append('password', values.password);
+      data.append('id', userId);
+
+      const cbSuccess = res => {
+        console.log('verify resetPassword RESPONSE sc==> ', res);
+        setLoading(false);
+        navigation.replace('ResetPasswordSuccess');
+      };
+      const cbFailure = err => {
+        console.log('err cbfail', err);
+        Alert.alert(err);
+        setLoading(false);
+      };
+      console.log('[DATA]===>  ', data);
+      dispatch(resetPasswordAction(data, cbSuccess, cbFailure));
+    } catch (error) {
+      setLoading(false);
+      console.log('err catch', err);
+    }
+  };
+
   return (
     <>
       <AuthHeader
@@ -42,7 +78,7 @@ const ResetPassword = ({navigation}) => {
         <Formik
           initialValues={resetFormFields}
           onSubmit={value => {
-            onSubmitReset(value);
+            handleResetPassword(value);
           }}
           validationSchema={ResetPasswordVS}>
           {({

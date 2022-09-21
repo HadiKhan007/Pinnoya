@@ -11,12 +11,14 @@ const Tab = createBottomTabNavigator();
 
 const MainFlow = () => {
   const {userType} = useSelector(state => state.userType);
+  // console.log('USERTYPE bottom tab ', userType);
   return (
     <Tab.Navigator
       screenOptions={{headerShown: false}}
       tabBar={props => <BottomTab {...props} />}>
       <Tab.Screen
-        component={userType == 'Customer' ? HomeStack : SPHomeStack}
+        // component={HomeStack}
+        component={userType == 'Provider' ? SPHomeStack : HomeStack}
         name={'Home'}
       />
       <Tab.Screen component={FavouriteStack} name={'Favourite'} />

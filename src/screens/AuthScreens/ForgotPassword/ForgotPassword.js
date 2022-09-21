@@ -18,12 +18,19 @@ import {
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 import CountDown from 'react-native-countdown-component';
-const ForgotPassword = ({navigation}) => {
+import {forgotPasswordRequest} from '../../../redux/actions';
+import {useDispatch} from 'react-redux';
+
+const ForgotPassword = ({navigation, route}) => {
   const [resend, setResend] = useState(false);
   const [timerCount, setTimer] = useState(60);
-  const onPressLogin = e => {
-    navigation.replace('VerifyOtp');
-  };
+  const [userType, setuserType] = useState(route?.params?.userType);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  // const onPressLogin = e => {
+  //   navigation.replace('VerifyOtp', {userType: userType});
+  // };
   useEffect(() => {
     let interval = setInterval(() => {
       setTimer(lastTimerCount => {
@@ -33,6 +40,38 @@ const ForgotPassword = ({navigation}) => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleForgotPassword = values => {
+    setLoading(true);
+    try {
+      const data = new FormData();
+      data.append(
+        'type',
+        userType == 'Customer' ? 'customer' : 'service_provider',
+      );
+      data.append('email', values.email);
+
+      const cbSuccess = res => {
+        console.log('FORGOT PASSWORD ', res);
+        setLoading(false);
+        navigation.replace('VerifyOtp', {
+          userType: userType,
+          userId: res?.data?.id,
+        });
+      };
+      const cbFailure = err => {
+        console.log('err cbfail', err);
+        Alert.alert(err);
+        setLoading(false);
+      };
+      console.log('FORGOT PASSWORD ==> ', data);
+      dispatch(forgotPasswordRequest(data, cbSuccess, cbFailure));
+    } catch (error) {
+      setLoading(false);
+      console.log('err catch', err);
+    }
+  };
+
   return (
     <>
       <AuthHeader
@@ -43,11 +82,10 @@ const ForgotPassword = ({navigation}) => {
         headerIcon={true}
       />
       <View style={styles.container}>
-        {/* Login Inputs */}
         <Formik
           initialValues={forgotFormFields}
           onSubmit={values => {
-            onPressLogin(values);
+            handleForgotPassword(values);
           }}
           validationSchema={ForgotPasswordVS}>
           {({
@@ -121,6 +159,7 @@ const ForgotPassword = ({navigation}) => {
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
                     btnText={'Enter'}
+                    Loading={loading}
                   />
                 </View>
                 <AuthFooter

@@ -25,7 +25,10 @@ export const appImages = {
   emoji6: require('../../assets/images/emoji6.png'),
   card: require('../../assets/images/card.png'),
   card2: require('../../assets/images/card2.png'),
+  Camera:require('../../assets/images/Camera.png'),
+  Gallery:require('../../assets/images/gallary.png')
 };
+
 
 export const appIcons = {
   google: require('../../assets/icons/google.png'),

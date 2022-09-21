@@ -11,11 +11,21 @@ import {appIcons, colors, family, size, WP} from '../../../shared/exporter';
 import StarIcon from 'react-native-vector-icons/Ionicons';
 import TickIcon from 'react-native-vector-icons/Feather';
 
-export const ServiceDetailCard = ({title, space}) => {
+export const ServiceDetailCard = ({
+  title,
+  space,
+  onPressHire,
+  name,
+  description,
+  rate,
+  serviceProviderImage,
+  ratting,
+  isVerified,
+}) => {
   const [isActive, setActive] = useState(false);
   return (
     <View style={styles.container}>
-      <ImageBackground style={styles.leftCon}>
+      <ImageBackground source={serviceProviderImage} style={styles.leftCon}>
         <TouchableOpacity
           style={styles.btnContainer}
           hitSlop={styles.hitSlop}
@@ -31,26 +41,26 @@ export const ServiceDetailCard = ({title, space}) => {
       </ImageBackground>
       <View style={styles.rightCon}>
         <View style={styles.aiRow}>
-          <Text style={styles.titleStyle}>Lorem ipsum</Text>
-          <TouchableOpacity style={styles.btnCon}>
-            <TickIcon name="check" size={8} color={colors.white} />
-          </TouchableOpacity>
+          <Text style={styles.titleStyle}>{name}</Text>
+          {isVerified ? (
+            <TouchableOpacity style={styles.btnCon}>
+              <TickIcon name="check" size={8} color={colors.white} />
+            </TouchableOpacity>
+          ) : null}
         </View>
-        <Text style={styles.subtitle}>
-          Pellentesque in ipsum id orci porta dapibus
-        </Text>
+        <Text style={styles.subtitle}>{description}</Text>
         <View style={styles.aiRow}>
-          <Text style={styles.normal}>5.0</Text>
+          <Text style={styles.normal}>{ratting}</Text>
           <StarIcon name={'star'} color={colors.s1} />
         </View>
-        <Text style={styles.h4}>₱5 / Hour</Text>
+        <Text style={styles.h4}>₱{rate} / Hour</Text>
         <View
           style={[
             styles.aiRowFlex,
             {alignItems: space ? 'flex-end' : 'flex-start'},
           ]}>
-          <TouchableOpacity style={styles.smbtnCon}>
-            <Text style={styles.smText}>{title}</Text>
+          <TouchableOpacity style={styles.smbtnCon} onPress={onPressHire}>
+            <Text style={styles.smText}>{title} </Text>
           </TouchableOpacity>
         </View>
       </View>

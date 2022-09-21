@@ -1,5 +1,4 @@
 import * as TYPES from '../../actions/types';
-
 const initialState = {
   loading: false,
   isSuccess: false,
@@ -9,6 +8,7 @@ const initialState = {
   forgotPassRes: null,
   resetPassRes: null,
   otp_verify: null,
+  token: null,
 };
 const authReducer = (state = initialState, actions) => {
   const {type, payload} = actions;
@@ -21,9 +21,28 @@ const authReducer = (state = initialState, actions) => {
         isSuccess: true,
         isFailure: false,
         userInfo: payload,
+        token: payload?.data?.token,
       };
 
     case TYPES.LOGIN_REQUEST_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: false,
+        isFailure: true,
+        userInfo: null,
+      };
+
+    case TYPES.PROVIDER_LOGIN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: true,
+        isFailure: false,
+        userInfo: payload,
+      };
+
+    case TYPES.PROVIDER_LOGIN_FAILURE:
       return {
         ...state,
         loading: false,

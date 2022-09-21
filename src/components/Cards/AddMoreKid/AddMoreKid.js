@@ -1,20 +1,42 @@
 import React, {useState} from 'react';
-import {View,StyleSheet, Platform} from 'react-native';
+import {View, StyleSheet, Platform} from 'react-native';
 import {AppInput, Checkbox} from '../../../components';
 import {colors} from '../../../shared/exporter';
-export const AddMoreKid = ({title, subtitle, onChangeText}) => {
+export const AddMoreKid = ({
+  onChangeTextKidname,
+  onChangeTextKidAge,
+  kidAgeValue,
+  kidNameValue,
+  onBlurKidName,
+  onBlurKidAge,
+  touchedKidAge,
+  touchedKidName,
+  kidAgeError,
+  kidNamerror,
+}) => {
   const [checked, setchecked] = useState(false);
   return (
     <View style={styles.boxContainer}>
       <AppInput
-        placeholder={title}
+        placeholder={'Kid Name'}
         placeholderTextColor={colors.g2}
-        onChangeText={onChangeText}
+        onChangeText={onChangeTextKidname}
+        value={kidNameValue}
+        onBlur={onBlurKidName}
+        touched={touchedKidName}
+        error={kidAgeError}
+        blurOnSubmit={false}
+        keyboardType="decimal-pad"
       />
       <AppInput
-        placeholder={subtitle}
+        placeholder={'Kid Age'}
         placeholderTextColor={colors.g2}
-        onChangeText={onChangeText}
+        onChangeText={onChangeTextKidAge}
+        value={kidAgeValue}
+        onBlur={onBlurKidAge}
+        touched={touchedKidAge}
+        error={kidNamerror}
+        blurOnSubmit={false}
       />
       <Checkbox
         checkSize={14}

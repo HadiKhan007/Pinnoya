@@ -15,16 +15,24 @@ import {
 import {colors, WP, spacing} from '../../../shared/exporter';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import CountDown from 'react-native-countdown-component';
-const VerifyOtp = ({navigation}) => {
+import {useDispatch} from 'react-redux';
+import {verifyOTPRequest} from '../../../redux/actions';
+const VerifyOtp = ({navigation, route}) => {
   const [resend, setResend] = useState(false);
   const [value, setValue] = useState('');
   const [timerCount, setTimer] = useState(60);
+  const [loading, setLoading] = useState(false);
+  const [userType, setuserType] = useState(route?.params?.userType);
+  const [userId, setuserId] = useState(route?.params?.userId);
+
+  const dispatch = useDispatch();
   const [codeFieldProps, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
   const ref = useRef();
   useEffect(() => {
+    console.log('verifyotp userId==>', userId);
     let interval = setInterval(() => {
       setTimer(lastTimerCount => {
         lastTimerCount <= 1 && clearInterval(interval);
@@ -33,6 +41,39 @@ const VerifyOtp = ({navigation}) => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleVerifyOtp = () => {
+    setLoading(true);
+    try {
+      const data = new FormData();
+      data.append(
+        'type',
+        userType == 'Customer' ? 'customer' : 'service_provider',
+      );
+      data.append('token', value);
+
+      const cbSuccess = res => {
+        console.log('verify otp RESPONSE sc==> ', res);
+        if (res?.message) {
+          setLoading(false);
+          navigation.replace('ResetPassword', {
+            userType: userType,
+            userId: userId,
+          });
+        }
+      };
+      const cbFailure = err => {
+        console.log('err cbfail', err);
+        Alert.alert(err);
+        setLoading(false);
+      };
+      dispatch(verifyOTPRequest(data, cbSuccess, cbFailure));
+    } catch (error) {
+      setLoading(false);
+      console.log('err catch', error);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <AuthHeader
@@ -120,7 +161,8 @@ const VerifyOtp = ({navigation}) => {
             )}
             <Button
               onPressBtn={() => {
-                navigation?.navigate('ResetPassword');
+                // navigation?.navigate('ResetPassword');
+                handleVerifyOtp();
               }}
               bgColor={colors.b_gradient}
               textColor={colors.white}

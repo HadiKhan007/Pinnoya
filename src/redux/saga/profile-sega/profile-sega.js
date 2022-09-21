@@ -20,6 +20,7 @@ export function* setProfileImageRequest() {
 }
 
 function* setprofileImage(params) {
+  console.log('TESTING');
   try {
     yield put({
       type: types.SET_PROFILE_IMAGE,
@@ -103,7 +104,6 @@ function* getTermsCondition(params) {
   try {
     const response = yield getTermsConditions();
     if (response.data) {
-
       yield put({
         type: types.GET_TERMS_CONDITION_SUCCESS,
         payload: response?.data,
@@ -150,4 +150,32 @@ function* getPrivacyPolicyRequest(params) {
     let msg = responseValidator(error?.response?.status, error?.response?.data);
     params?.cbFailure(msg);
   }
+}
+
+export function* customerBookingsSega() {
+  alert('hello');
+  yield takeLatest(types.GET_SERVICE_DETAILS_REQUEST, getServices);
+}
+
+function* getServices(params) {
+  alert('hello');
+  console.log('PARAMS ', params);
+  // try {
+  //   const res = yield ServiceProviderDeatilApi(params);
+  //   console.log(res);
+  //   yield put({
+  //     type: types.GET_SERVICE_PROVIDERS_SUCCESS,
+  //     payload: res,
+  //   });
+  //   console.log('[res]', res);
+  //   params.cbSuccess(res);
+  // } catch (error) {
+  //   console.log('[Error]', error);
+  //   yield put({
+  //     type: types.GET_SERVICE_PROVIDERS_FAILURE,
+  //     payload: null,
+  //   });
+  //   // let msg = responseValidator(error?.response?.status, error?.response?.data);
+  //   params?.cbFailure(error);
+  // }
 }
