@@ -21,6 +21,15 @@ const styles = StyleSheet.create({
     width: '100%',
     marginVertical: WP('5'),
   },
+  styleDropdownMenu: {
+    borderWidth: 1,
+    borderColor: '#fff',
+    paddingLeft: WP('5'),
+  },
+  styleMainWrapper: {
+    borderRadius: 10,
+    marginTop: 5,
+  },
 });
 
 export default styles;

@@ -3,6 +3,7 @@ import {combineReducers} from 'redux';
 import authReducer from './auth-reducers/auth-reducer';
 import profileReducer from './profile-reducers/profile-reducer';
 import userTypeReducer from './userType-reducers/userType-reducers';
+import bookAppointmentReducer from './customer-bookAppointment/customer-bookAppointment';
 import * as types from '../actions/types';
 
 const appReducer = combineReducers({
@@ -10,6 +11,7 @@ const appReducer = combineReducers({
   auth: authReducer,
   profile: profileReducer,
   userType: userTypeReducer,
+  bookAppointment: bookAppointmentReducer,
 });
 
 const rootReducer = (state, action) => {

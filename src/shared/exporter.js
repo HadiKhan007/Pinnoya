@@ -29,6 +29,8 @@ export {
   SPRegisterStep1VS,
   SPRegisterStep2VS,
   SPRegisterStep3VS,
+  AddKiddsVS,
+  Addkiddsfield,
 } from './utilities/validations';
 export {
   StatusBarHeight,

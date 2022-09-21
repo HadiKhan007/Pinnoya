@@ -16,8 +16,8 @@ import {colors, WP, spacing} from '../../../shared/exporter';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import CountDown from 'react-native-countdown-component';
 import {useDispatch} from 'react-redux';
-import {verifyOTPRequest} from '../../../redux/actions';
-const VerifyOtp = ({navigation, route}) => {
+import {verifySignupOTPRequest} from '../../../redux/actions';
+const SignUpVerifyOtp = ({navigation, route}) => {
   const [resend, setResend] = useState(false);
   const [value, setValue] = useState('');
   const [timerCount, setTimer] = useState(60);
@@ -50,24 +50,21 @@ const VerifyOtp = ({navigation, route}) => {
         'type',
         userType == 'Customer' ? 'customer' : 'service_provider',
       );
-      data.append('token', value);
+      data.append('otp', value);
+      data.append('id', userId);
 
       const cbSuccess = res => {
-        console.log('verify otp RESPONSE sc==> ', res);
-        if (res?.message) {
-          setLoading(false);
-          navigation.replace('ResetPassword', {
-            userType: userType,
-            userId: userId,
-          });
-        }
+        console.log('CUSTOMER PHONE VERIFIED==> ', res);
+        alert('Phone verified');
+        navigation.replace('AddPersonalInfo', {token: res?.customer_token});
       };
       const cbFailure = err => {
         console.log('err cbfail', err);
         Alert.alert(err);
         setLoading(false);
       };
-      dispatch(verifyOTPRequest(data, cbSuccess, cbFailure));
+      console.log('DATA ==> ', data);
+      dispatch(verifySignupOTPRequest(data, cbSuccess, cbFailure));
     } catch (error) {
       setLoading(false);
       console.log('err catch', error);
@@ -87,7 +84,7 @@ const VerifyOtp = ({navigation, route}) => {
       <View style={styles.contentContainer}>
         <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
           <AuthHeading
-            title={'Verify Otp'}
+            title={'Verify Phone'}
             subtitle={'Pellentesque in ipsum id orci porta dapibus.'}
           />
           <View>
@@ -175,4 +172,4 @@ const VerifyOtp = ({navigation, route}) => {
   );
 };
 
-export default VerifyOtp;
+export default SignUpVerifyOtp;

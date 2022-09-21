@@ -5,19 +5,22 @@ import Splash from '../screens/Splash';
 import Walkthrough from '../screens/Walkthrough';
 import App from '../navigation/BottomTabs';
 import AuthStack from '../navigation/stacks/AuthStack';
+import {useReducer, useSelector} from 'react-redux';
 
 const AppStack = createStackNavigator();
 
 const MainAppNav = () => {
+  const {userInfo} = useSelector(state => state?.auth);
+
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="Splash"
+        initialRouteName="AuthStack"
         screenOptions={{headerShown: false}}>
         <AppStack.Screen name={'Splash'} component={Splash} />
+        <AppStack.Screen name={'App'} component={App} />
         <AppStack.Screen name={'Auth'} component={AuthStack} />
         {/* <AppStack.Screen name={'Walkthrough'} component={Walkthrough} /> */}
-        <AppStack.Screen name={'App'} component={App} />
       </AppStack.Navigator>
     </NavigationContainer>
   );

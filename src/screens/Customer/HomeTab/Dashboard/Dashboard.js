@@ -1,15 +1,44 @@
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './styles';
 import {
   Button,
   HomeHeader,
   HomeModal,
   ServiceCard,
+  AppLoader,
 } from '../../../../components';
-import {colors, serviceList, spacing} from '../../../../shared/exporter';
+import {colors, spacing} from '../../../../shared/exporter';
+import {useDispatch, useSelector} from 'react-redux';
+import {getAllSericeAction} from '../../../../redux/actions';
+
 const Dashboard = ({navigation}) => {
   const [openModal, setopenModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const [serviceList, setServiceList] = useState([]);
+  const {userInfo, token} = useSelector(state => state?.auth);
+  useEffect(() => {
+    getServiceList();
+  }, []);
+
+  const getServiceList = () => {
+    try {
+      setLoading(true);
+      const cbSuccess = res => {
+        setServiceList(res?.data);
+        setLoading(false);
+      };
+      const cbFailure = err => {
+        setLoading(false);
+      };
+      dispatch(getAllSericeAction(token, cbSuccess, cbFailure));
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <HomeHeader
@@ -27,25 +56,31 @@ const Dashboard = ({navigation}) => {
           <View style={styles.listContainer}>
             <FlatList
               showsVerticalScrollIndicator={false}
-              data={serviceList}
+              data={serviceList?.data}
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity
                     style={spacing.mx1}
                     onPress={() => {
-                      navigation?.navigate('ServiceDetail');
+                      navigation.navigate('ServiceDetail', {
+                        serviceId: item?.service?.id,
+                        serviceType: item?.service?.service_type,
+                      });
                     }}>
                     <ServiceCard
+                      title={item?.service?.service_type}
+                      subTitle={item?.service?.description}
+                      source={item?.image}
                       item={item}
                       imgStyle={styles.imageStyle}
-                      disabled={true}
                     />
                   </TouchableOpacity>
                 );
               }}
             />
+            {/* <AppLoader loading={loading} /> */}
 
-            <Button
+            {/* <Button
               onPressBtn={() => {
                 // setopenModal(true);
                 navigation?.navigate('Chat');
@@ -62,7 +97,7 @@ const Dashboard = ({navigation}) => {
               bgColor={colors.b_gradient}
               btnText={'Full Time Services'}
               textColor={colors.white}
-            />
+            /> */}
           </View>
         </View>
       </View>

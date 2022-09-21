@@ -6,7 +6,7 @@ export const DocumentCard = ({onPress}) => {
     <View style={styles.container}>
       <View style={styles.btnContainer}>
         <Image source={appIcons.alertIcon} style={styles.imageStyle} />
-        <Text style={[styles.btnText, {width: '65%', left: 10}]}>
+        <Text style={[styles.btnText, {width: '60%', left: 10}]}>
           Document Verification is pending.
         </Text>
         <TouchableOpacity style={styles.touchable} onPress={onPress}>
@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     padding: WP('3'),
   },
   imageStyle: {
-    height: 23,
-    width: 23,
+    height: 40,
+    width: 40,
     resizeMode: 'contain',
     left: 3,
   },

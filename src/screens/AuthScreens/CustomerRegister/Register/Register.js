@@ -1,4 +1,4 @@
-import React, {useEffect, useRef,useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View} from 'react-native';
 import {
   appImages,
@@ -18,25 +18,20 @@ import {
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Formik} from 'formik';
 
-
 const Register = ({navigation}) => {
   // const [data, setdata] = useState('')
   const locationBSheetRef = useRef(null);
   const onRegisterStep1Hanlder = () => {
     locationBSheetRef.current.open();
   };
-  const handleSubmit = (values)=>{
+  const handleSubmit = values => {
     // setdata(values)
-    navigation.navigate('CSignUp2',{
-      item:values
-    })
+    navigation.navigate('CSignUp2', {
+      item: values,
+    });
     // console.log("valiuiiii",values)
-  }
+  };
   // console.log("first+++++++===++++++++++++++++++++++++++++++++++++++++====",data)
-  // console.log("+++++++++++++++++++++",values)
-
-
-
 
   return (
     <>
@@ -162,7 +157,7 @@ const Register = ({navigation}) => {
                 />
                 <View style={styles.buttonContainer}>
                   <Button
-                  onPressBtn={handleSubmit}
+                    onPressBtn={handleSubmit}
                     bgColor={colors.b_gradient}
                     textColor={colors.white}
                     btnText={'Next'}

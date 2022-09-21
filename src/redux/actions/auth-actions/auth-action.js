@@ -1,11 +1,18 @@
 import * as TYPES from '../types';
 
 //Email Validation Action
-export const loginRequest = (route,params, cbSuccess, cbFailure) => {
+export const loginRequest = (data, cbSuccess, cbFailure) => {
   return {
     type: TYPES.LOGIN_REQUEST_REQUEST,
-    route,
-    params,
+    data,
+    cbSuccess,
+    cbFailure,
+  };
+};
+export const providerLoginRequest = (data, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.PROVIDER_LOGIN_REQUEST,
+    data,
     cbSuccess,
     cbFailure,
   };
@@ -18,7 +25,7 @@ export const socialLoginRequest = (
   cbFailure,
 ) => {
   return {
-    type: TYPES.SOCIAL_LOGIN_REQUEST_REQUEST,
+    type: TYPES.SOCIAL_LOGIN_REQUEST,
     login_type,
     params,
     cbSuccess,
@@ -26,9 +33,18 @@ export const socialLoginRequest = (
   };
 };
 //Sign up obj Action
-export const signUpRequest = (params, cbSuccess, cbFailure) => {
+export const signUpRequest = (data, cbSuccess, cbFailure) => {
   return {
-    type: TYPES.SIGNUP_REQUEST,
+    type: TYPES.CUSTOMER_SIGNUP_REQUEST,
+    data,
+    cbSuccess,
+    cbFailure,
+  };
+};
+
+export const serviceProviderSignUpRequest = (params, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.SERVICE_PROVIDER_SIGNUP_REQUEST,
     params,
     cbSuccess,
     cbFailure,
@@ -36,10 +52,10 @@ export const signUpRequest = (params, cbSuccess, cbFailure) => {
 };
 
 //Forgot Password Action
-export const forgotPassRequest = (params, cbSuccess, cbFailure) => {
+export const forgotPasswordRequest = (data, cbSuccess, cbFailure) => {
   return {
     type: TYPES.FORGOT_PASSWORD_REQUEST,
-    params,
+    data,
     cbSuccess,
     cbFailure,
   };
@@ -53,11 +69,27 @@ export const resetPassRequest = (params, cbSuccess, cbFailure) => {
     cbFailure,
   };
 };
+export const resetPasswordAction = (data, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.PASSWORD_RESET_REQUEST,
+    data,
+    cbSuccess,
+    cbFailure,
+  };
+};
 //Verify OTP Action
-export const verifyOTPRequest = (params, cbSuccess, cbFailure) => {
+export const verifyOTPRequest = (data, cbSuccess, cbFailure) => {
   return {
     type: TYPES.OTP_VERIFY_REQUEST,
-    params,
+    data,
+    cbSuccess,
+    cbFailure,
+  };
+};
+export const verifySignupOTPRequest = (data, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.SIGNUP_OTP_VERIFY_REQUEST,
+    data,
     cbSuccess,
     cbFailure,
   };
@@ -76,5 +108,23 @@ export const logoutRequset = params => {
   return {
     type: TYPES.LOGOUT_REQUEST_REQUEST,
     params,
+  };
+};
+export const addKidRequest = (token, data, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.ADD_KIDS_REQUEST,
+    token,
+    data,
+    cbSuccess,
+    cbFailure,
+  };
+};
+export const addPetRequest = (token, data, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.ADD_PETS_REQUEST,
+    token,
+    data,
+    cbSuccess,
+    cbFailure,
   };
 };

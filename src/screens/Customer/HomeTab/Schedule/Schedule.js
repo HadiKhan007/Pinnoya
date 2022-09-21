@@ -6,7 +6,12 @@ import {
   appIcons,
   Schedule_List,
 } from '../../../../shared/exporter';
-import {AppHeader, ReviewModal, ScheduleListCard} from '../../../../components';
+import {
+  AppHeader,
+  ReviewModal,
+  ScheduleListCard,
+  Button,
+} from '../../../../components';
 import styles from './styles';
 import {TouchableOpacity} from 'react-native';
 import TickIcon from 'react-native-vector-icons/Feather';
@@ -90,6 +95,16 @@ const Schedule = ({navigation}) => {
           modalRef.current.close();
         }}
       />
+      <View style={{alignSelf: 'center'}}>
+        <Button
+          onPressBtn={() => {
+            navigation?.navigate('BookingDetail');
+          }}
+          bgColor={colors.b_gradient}
+          btnText={'Schedule Now'}
+          textColor={colors.white}
+        />
+      </View>
     </>
   );
 };
