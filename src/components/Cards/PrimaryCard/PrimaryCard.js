@@ -10,6 +10,7 @@ export const PrimaryCard = ({
   desc,
   rightIcon,
   rating,
+  title,
 }) => {
   return (
     <View style={styles.container}>
@@ -20,7 +21,7 @@ export const PrimaryCard = ({
       )}
       <View style={styles.aiRowSpace}>
         <View style={styles.aiRow}>
-          <Text style={styles.h1}>Irene foks</Text>
+          <Text style={styles.h1}>{title}</Text>
           <TouchableOpacity style={styles.btnCon}>
             <TickIcon name="check" size={8} color={colors.white} />
           </TouchableOpacity>

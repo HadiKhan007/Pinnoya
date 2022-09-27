@@ -48,7 +48,7 @@ const ServiceItemDetail = ({navigation, route}) => {
       };
       dispatch(
         getServiceProviderDetailAction(
-          item?.service_provider?.id,
+          item?.service_provide?.id,
           cbSuccess,
           cbFailure,
         ),
@@ -73,8 +73,9 @@ const ServiceItemDetail = ({navigation, route}) => {
         <View style={styles.secondContentContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <PrimaryCard
+              title={item?.service_provider?.first_name}
               status={'Available'}
-              desc={`Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.`}
+              desc={item?.service_provider?.description}
               onlineStatus={'Online'}
               rightIcon={true}
             />
@@ -112,13 +113,13 @@ const ServiceItemDetail = ({navigation, route}) => {
             <UploadPicCard />
             <TitleHeading title={'License'} />
             <View style={styles.aiRow}>
-              {[1, 2, 3].map(item => {
+              {[item?.service_provide?.govt_id].map(item => {
                 return <UploadPicCard width={'30%'} />;
               })}
             </View>
             <TitleHeading title={'Certificates'} />
             <View style={styles.aiRow}>
-              {[1, 2, 3].map(item => {
+              {[item?.service_provider?.certificates].map(item => {
                 return <UploadPicCard width={'30%'} />;
               })}
             </View>
@@ -132,7 +133,7 @@ const ServiceItemDetail = ({navigation, route}) => {
             <View style={styles.aiCenter}>
               <Button
                 onPressBtn={() => {
-                  navigation?.navigate('Schedule');
+                  navigation?.navigate('Schedule', {item: item});
                 }}
                 bgColor={colors.b_gradient}
                 btnText={'Schedule Now'}

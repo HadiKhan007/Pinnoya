@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { StatusBar, Platform, LogBox } from 'react-native';
+import React, {useEffect} from 'react';
+import {StatusBar, Platform, LogBox} from 'react-native';
 import MainNavigation from './src/navigation';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import store, { persistor } from './src/redux/store';
-import InternetConnectionAlert from "react-native-internet-connection-alert";
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/lib/integration/react';
+import store, {persistor} from './src/redux/store';
+import InternetConnectionAlert from 'react-native-internet-connection-alert';
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {
 //   initialConfig,
@@ -12,7 +12,7 @@ import InternetConnectionAlert from "react-native-internet-connection-alert";
 //   web_client_id,
 // } from './src/shared/exporter';
 // import {StripeProvider} from '@stripe/stripe-react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 // ignore warnings
 LogBox.ignoreAllLogs();
@@ -38,10 +38,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <PaperProvider>
-          <InternetConnectionAlert
-            onChange={(connectionState) => {
-            }}
-          >
+          <InternetConnectionAlert onChange={connectionState => {}}>
             <MainNavigation />
           </InternetConnectionAlert>
         </PaperProvider>

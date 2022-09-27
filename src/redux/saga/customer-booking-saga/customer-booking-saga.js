@@ -12,10 +12,9 @@ export function* customerBookings() {
 }
 
 function* getServiceProviderDetail(params) {
-  alert('dasdsa');
   try {
     const res = yield ServiceProviderDeatilApi(params?.params);
-
+    console.log('absv',res);
     yield put({
       type: types.GET_SERVICE_PROVIDERS_SUCCESS,
       payload: res,

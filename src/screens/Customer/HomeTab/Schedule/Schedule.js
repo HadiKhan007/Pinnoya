@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, Image, FlatList} from 'react-native';
 import {
   appImages,
@@ -16,10 +16,43 @@ import styles from './styles';
 import {TouchableOpacity} from 'react-native';
 import TickIcon from 'react-native-vector-icons/Feather';
 import StarRating from 'react-native-star-rating';
-const Schedule = ({navigation}) => {
+import {getServiceProviderDetailAction} from '../../../../redux/actions';
+import {useDispatch, useSelector} from 'react-redux';
+import {useIsFocused} from '@react-navigation/core';
+
+const Schedule = ({navigation, route}) => {
   const [data, setData] = useState(Schedule_List);
   const [rating, setRating] = useState(0);
   const modalRef = useRef(null);
+  const isFocused = useIsFocused();
+  const {item} = route?.params;
+  const dispatch = useDispatch(null);
+  console.log(item);
+
+  useEffect(() => {
+    if (isFocused) {
+      getServiceProviderDetails();
+    }
+  }, [isFocused]);
+  const getServiceProviderDetails = () => {
+    try {
+      const cbSuccess = res => {
+        console.log('RESPONSE ', res);
+      };
+      const cbFailure = err => {
+        console.log('ERROR.. ', err);
+      };
+      dispatch(
+        getServiceProviderDetailAction(
+          item?.service_provide?.id,
+          cbSuccess,
+          cbFailure,
+        ),
+      );
+    } catch (error) {
+      console.log('ERROR ', error);
+    }
+  };
   return (
     <>
       <AppHeader
@@ -34,7 +67,9 @@ const Schedule = ({navigation}) => {
           {/* Header */}
           <View style={styles.aiRowSpace}>
             <View style={styles.aiRow}>
-              <Text style={styles.h1}>Irene foks</Text>
+              <Text style={styles.h1}>
+                {item?.service_provider?.first_name}
+              </Text>
               <TouchableOpacity style={styles.btnCon}>
                 <TickIcon name="check" size={8} color={colors.white} />
               </TouchableOpacity>

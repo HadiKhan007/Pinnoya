@@ -143,6 +143,7 @@ const ServiceDetail = ({navigation, route}) => {
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate('ServiceItemDetail', {item: item});
+                  console.log('Data', item);
                 }}>
                 <ServiceDetailCard
                   onPressHire={() =>
